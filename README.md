@@ -1,5 +1,5 @@
 # clover
-<img align="right" width="250px" style="margin-top:-20px" src="https://media.discordapp.net/attachments/1000915094475120733/1008081136515305472/logosetinha.png?width=1440&height=427">
+<img align="right" width="250px" style="margin-top:-20px" src="https://media.discordapp.net/attachments/1000915094475120733/1010187422753095740/Logotipo.png">
 
 </br>
 </br>
