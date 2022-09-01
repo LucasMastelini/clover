@@ -1,0 +1,43 @@
+package mariano.igor.conexaobancodados.services;
+
+import mariano.igor.conexaobancodados.enums.StatusEmail;
+import mariano.igor.conexaobancodados.models.EmailModel;
+import mariano.igor.conexaobancodados.repositories.IEmailRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+
+@Service
+public class EmailService {
+
+    // @Autowired -> Cria um ponto de injeção do EmailRepository para utilizar os seus métodos
+    @Autowired
+    IEmailRepository emailRepository;
+    @Autowired
+    private JavaMailSender emailSender;
+
+    //Amazon Simple Email Service
+    public EmailModel sendEmail(EmailModel emailModel) {
+        emailModel.setSendDateEmail(LocalDateTime.now());
+        try{
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setFrom(emailModel.getEmailFrom());
+            message.setTo(emailModel.getEmailTo());
+            message.setSubject(emailModel.getSubject());
+            message.setText(emailModel.getText());
+            emailSender.send(message);
+
+            emailModel.setStatusEmail(StatusEmail.SENT);
+        } catch(MailException e){
+            emailModel.setStatusEmail(StatusEmail.ERROR);
+        } finally {
+            return emailRepository.save(emailModel);
+        }
+
+
+    }
+}
