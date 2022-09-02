@@ -15,6 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "Produto")
 public class ProdutoModel implements Serializable {
@@ -32,13 +33,13 @@ public class ProdutoModel implements Serializable {
             joinColumns = @JoinColumn(name = "id_produto"),
             inverseJoinColumns = @JoinColumn(name = "id_carrinho_compras")
     )
-    private List<CarrinhoComprasModel> carrinhos;
+    private List<CarrinhoComprasModel> carrinhos = new ArrayList<>();
     @OneToMany(mappedBy = "produto", orphanRemoval = true)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    private List<EspecificacaoProdutoModel> especificacoes;
+    private List<EspecificacaoProdutoModel> especificacoes= new ArrayList<>();
     @OneToMany(mappedBy = "produto", orphanRemoval = true)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    private List<ProdutoImagemModel> imagens;
+    private List<ProdutoImagemModel> imagens = new ArrayList<>();
     @ManyToMany
     @JsonBackReference
     @JoinTable(
@@ -46,16 +47,7 @@ public class ProdutoModel implements Serializable {
             joinColumns = @JoinColumn(name = "id_produto"),
             inverseJoinColumns = @JoinColumn(name = "id_subcategoria")
     )
-    private List<SubcategoriaModel> subcategorias;
+    private List<SubcategoriaModel> subcategorias = new ArrayList<>();
 
-    public ProdutoModel(String sku, String nome, String descricao, Double valor) {
-        this.sku = sku;
-        this.nome = nome;
-        this.descricao = descricao;
-        this.valor = valor;
-        carrinhos = new ArrayList<>();
-        especificacoes = new ArrayList<>();
-        imagens = new ArrayList<>();
-        subcategorias = new ArrayList<>();
-    }
+
 }
