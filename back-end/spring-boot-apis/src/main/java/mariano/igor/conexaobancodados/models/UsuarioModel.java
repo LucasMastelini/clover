@@ -14,9 +14,10 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "Usuario")
 
-@NoArgsConstructor
 public class UsuarioModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,22 +43,8 @@ public class UsuarioModel implements Serializable {
     private Double token;
     @OneToMany(mappedBy = "usuario", orphanRemoval = true)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    private List<EnderecoModel> enderecos;
+    private List<EnderecoModel> enderecos = new ArrayList<>();
     @OneToMany(mappedBy = "usuario", orphanRemoval = true)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    private List<PedidosModel> pedidos;
-
-    public UsuarioModel(Long id, String nome, String sexo, String cpf, String telefone, String celular, String email, String senha, Double token) {
-        this.id = id;
-        this.nome = nome;
-        this.sexo = sexo;
-        this.cpf = cpf;
-        this.telefone = telefone;
-        this.celular = celular;
-        this.email = email;
-        this.senha = senha;
-        this.token = token;
-        enderecos = new ArrayList<>();
-        pedidos = new ArrayList<>();
-    }
+    private List<PedidosModel> pedidos = new ArrayList<>();
 }

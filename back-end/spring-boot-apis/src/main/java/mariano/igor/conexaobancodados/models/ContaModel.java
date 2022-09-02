@@ -14,6 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "Conta")
 public class ContaModel implements Serializable {
@@ -34,14 +35,6 @@ public class ContaModel implements Serializable {
     private String responsavel;
     @OneToMany(mappedBy = "conta", orphanRemoval = true)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    private List<TipoPagamentoModel> tiposPagamento;
+    private List<TipoPagamentoModel> tiposPagamento = new ArrayList<>();
 
-    public ContaModel(Long id, String tipoConta, String agencia, String conta, String responsavel) {
-        this.id = id;
-        this.tipoConta = tipoConta;
-        this.agencia = agencia;
-        this.conta = conta;
-        this.responsavel = responsavel;
-        tiposPagamento = new ArrayList<>();
-    }
 }
