@@ -40,6 +40,12 @@ public class ProdutoModel implements Serializable {
     @OneToMany(mappedBy = "produto", orphanRemoval = true)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<ProdutoImagemModel> imagens = new ArrayList<>();
+    @OneToMany(mappedBy = "produto", orphanRemoval = true)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    private List<CorModel> cores = new ArrayList<>();
+    @OneToMany(mappedBy = "produto", orphanRemoval = true)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    private List<TamanhoModel> tamanhos = new ArrayList<>();
     @ManyToMany
     @JsonBackReference
     @JoinTable(

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 
 @Getter
 @Setter
@@ -19,4 +20,8 @@ public class TamanhoModel {
     private String numeracao;
     @Column
     private int qtdTamnaho;
+    @ManyToOne
+    @JoinColumn(name = "id_produto", nullable = false)
+    @Valid
+    private ProdutoModel produto;
 }
