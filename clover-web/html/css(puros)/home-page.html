@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <title>Clover | Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./css/home-page.css" />
+  <body>
+
+    <div class="display-container">
+
+      <div class="slider">
+        <img class="img-slides" src="https://lojapiticas.vteximg.com.br/arquivos/ids/167929/SDA%20DESK.png?v=637993828253800000" alt=""/>
+        <img class="img-slides"src="https://lojapiticas.vteximg.com.br/arquivos/ids/167781/Full_1920x545_v1.png?v=637970367695270000" alt=""/>
+        <img class="img-slides" src="https://lojapiticas.vteximg.com.br/arquivos/ids/167712/one-piece-adsFull.png?v=637950470315230000" alt=""/>
+
+        <div class="arrow-slides">
+          <div class="arrow-right" onclick="plusDivs(-1)">&#10094;</div>
+          <div class="arrow-left" onclick="plusDivs(1)">&#10095;</div>
+        </div>
+      </div>
+
+      <div class="page-control">
+        <span class="item-page-control" onclick="currentDiv(1)"></span>
+        <span class="item-page-control" onclick="currentDiv(2)"></span>
+        <span class="item-page-control" onclick="currentDiv(3)"></span>
+      </div>
+
+    </div>
+
+    <div class="ofert-container">
+
+      <div class="line-style"></div>
+
+      <div class="grid-ofert">
+        <div class="item-grid border">
+          <img class="img-grid" src="/clover-web/images/icon_truck.png" alt="">
+          <p class="text-grid">Frete grátis nas compras acima de R$250</p>
+        </div>
+
+        <!-- <div class="line-style-vertical"></div> -->
+
+        <div class="item-grid border">
+          <img class="img-grid" src="/clover-web/images/icon_credit-card.png" alt="">
+          <p class="text-grid">Parcele em até 10x sem juros em compras acima de R$ 499</p>
+        </div>
+
+        <!-- <div class="line-style-vertical"></div> -->
+
+        <div class="item-grid">
+          <img class="img-grid" src="/clover-web/images/icon_reload.png" alt="">
+          <p class="text-grid">Troque ou devolva suas compras com facilidade no site</p>
+        </div>
+      </div>
+
+      <div class="line-style"></div>
+
+    </div>
+
+    <script>
+      var slideIndex = 1;
+      showDivs(slideIndex);
+
+      function plusDivs(n) {
+        showDivs((slideIndex += n));
+      }
+
+      function currentDiv(n) {
+        showDivs((slideIndex = n));
+      }
+
+      function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("img-slides");
+        if (n > x.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = x.length;
+        }
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        x[slideIndex - 1].style.display = "block";
+      }
+
+      carousel();
+
+      function carousel(n) {
+        var i;
+        var x = document.getElementsByClassName("img-slides");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > x.length) {
+          slideIndex = 1;
+        }
+        x[slideIndex - 1].style.display = "block";
+        setTimeout(carousel, 4000); // Change image every 2 seconds
+      }
+    </script>
+  </body>
+</html>
