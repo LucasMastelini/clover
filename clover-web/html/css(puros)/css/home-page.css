@@ -80,7 +80,6 @@ body {
     width: 100%;
     height: 1px;
     background-color: #35DAF0;
-    margin: 2%;
 }
 
 .grid-ofert {
@@ -88,6 +87,7 @@ body {
     display: grid;
     grid-template-columns: auto auto auto;
     align-items: center;
+    margin: 2%;
 }
 
 .item-grid {
@@ -99,6 +99,7 @@ body {
 
 .border {
     border-right: 1px solid #35DAF0;
+    height: 50%;
 }
 
 .img-grid {
@@ -109,5 +110,54 @@ body {
     font-size: 16px;
     text-align: left;
     color: #FFFFFF;
-    padding: 20px;
+    padding: 2%;
+}
+
+.colletions-container {
+    width: 90%;
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title-home {
+    font-size: 30px;
+    text-align: center;
+    color: #D235E2;
+    margin: 2%;
+    margin-bottom: 3%;
+}
+
+.grid-collections {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.group-one-collections {
+    width: 63%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.img-collection {
+    width: 47%;
+}
+
+.img-collection-small {
+    width: 30vw;
+    height: 45%;
+}
+
+.group-two-collections {
+    height: 77.3vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
 }
