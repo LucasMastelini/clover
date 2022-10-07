@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+body{
+    background-color: black;
+    background-image: url(/clover-web/images/Rectangle135.png);
+    /* background-repeat: round; */
+}
+.quem-somos{
+    display: flex;
+    width: 100%;
+    background-image: url(/clover-web/images/Rectangle158.png);
+    background-repeat: round;
+    align-items: center;
+    justify-content: space-around;
+}
+.titulo-principal{
+    font-size: 4rem;
+    color: #fff;
+}
+
+.agradecimento{
+    display: flex;
+    justify-content: space-evenly;
+    background-image: url(../clover-web/images/Rectangle135.png);
+    align-items: center;
+}
+.text-agradecimento{
+    max-width: 45%;
+}
+
+.titulo-padrao1{
+    color: #35DAF0;
+    font-size: 36px;
+    text-transform: uppercase;
+    margin-bottom: 10%;
+}
+.texto1{
+    color: white;
+    font-size: 20px;
+}
+.texto2{
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+}
+.valor-simulado{
+    color: gray;
+}
+.valor-produto{
+    color: #F7A6FF;
+    font-weight: bold;
+    font-size: 24px;
+}
+.opcao-parcela{
+    font-size: 16px;
+    font-weight: bold;
+}
+.identidade-visual{
+    display: flex;
+    justify-content: space-evenly;
+    background-image: url(../clover-web/images/Rectangle135.png);
+    align-items: center;
+    margin-bottom: 10%;
+}
+.text-ident-visual{
+    max-width: 50%;
+    justify-content: center;
+}
+.container-card{
+    max-width: 40%;
+}
+#card img{
+    max-width: 100%;
+}
+#card {
+    padding: 5%;
+    border-radius: 25px;
+}
+#card p{
+    color: white;
+
+}
+.gradient-border {
+    --borderWidth: 2px;
+    background-color:#000923 ;
+    position: relative;
+    border-radius: var(--borderWidth);
+  }
+  .gradient-border:after {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--borderWidth));
+    left: calc(-1 * var(--borderWidth));
+    height: calc(100% + var(--borderWidth) * 2);
+    width: calc(100% + var(--borderWidth) * 2);
+    background: linear-gradient(60deg, rgba(53, 218, 240, 1),
+    rgba(202, 28, 219, 1));
+    border-radius: calc(13 * var(--borderWidth));
+    z-index: -1;
+    animation: animatedgradient 3s ease alternate infinite;
+    background-size: 300% 300%;
+  }
+  
+@keyframes animatedgradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+.sobre-nos h3 {
+    display: flex;
+    justify-content: center;
+}
+.container-sobre-card{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    justify-content: space-around;
+   
+}
+.sobre-card{
+    height: 300px;
+    margin: 10%;
+    background-color: #151313;
+    border-radius: 25px;
+
+}
+.sc-cabecalho{
+    height: 10%;
+    border-radius: 25px 25px 0 0;
+}
+.scard-verde{
+    color: #35DAF0;
+}
+.scard-verde-icon{
+    color: #35DAF0;
+    justify-content: center;
+    display: flex;
+    font-weight: bolder;
+    font-size: 4.5rem;
+}
+.scard-rosa{
+    background-color: #F7A6FF;
+}
+.scard-rosa-icon{
+    color: #F7A6FF;
+    justify-content: center;
+    display: flex;
+    font-weight: bolder;
+}
+.scard-azul{
+    background-color: #274FC0;
+    color: #274FC0;
+}
+.sc-icon ion-icon{
+   font-size: 4.5rem;
+   padding: 10%;
+}
+.sc-texto{
+    padding:2% 10%;
+}
+.container-time h3{
+    display: flex;
+    justify-content: space-around;
+}
+.grid-container{
+    display: grid;
+    grid-template-columns: 120px 120px 90px 120px 120px;
+    grid-template-rows: 150px 150px 100px;
+    justify-content: center;
+    font-size: 16px;
+}
+.grid-item img{
+    height: 120px;
+    border-radius: 50%; 
+}
+.nosso-time{
+    padding-bottom: 10%;
+    border-bottom: 2px solid #F7A6FF;
+}
+.nossas-redes{
+    padding: 2%;
+}
+.container-redes{
+    max-width: 90%;
+    display: flex;
+    justify-content: space-around;
+}
+.redes-icon{
+    display: flex;
+}
+.texto-rosag{
+    color: #F7A6FF;
+    font-size: 24px;
+}
+.texto-rosap{
+    color: #F7A6FF;
+    font-size: 12px;
+}
+.texto-redes{
+    display: block;
+    padding: 5%;
+}
+.grid-container-redes{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
+}.grid-container-redes img{
+    max-width: 100%;
+    height: 200px;
+
+}
