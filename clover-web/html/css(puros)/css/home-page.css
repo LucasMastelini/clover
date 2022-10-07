@@ -130,14 +130,6 @@ body {
     gap: 3%;
     flex-wrap: wrap;
 }
-/* 
-.grid-collections {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-} */
 
 .group-one-collections {
     width: 64%;
@@ -155,18 +147,16 @@ body {
 }
 
 .img-collection-small {
-    width: 28vw;
+    width: 29vw;
     max-height: 37vh;
     background-color: black;
     opacity: 0.2;
-    height: 45%;
 }
 /* grid -- gap -- flex-wrap -- min ou max width/height */
 .group-two-collections {
     max-height: 75vh;
     display: grid;
     grid-template-rows: max-content;
-    /* flex-direction: column; */
     align-items: flex-end;
     justify-content: space-between;
     gap: 4.4vh;
