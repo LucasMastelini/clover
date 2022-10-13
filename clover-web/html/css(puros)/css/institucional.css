@@ -74,11 +74,12 @@ body{
     max-width: 40%;
 }
 #card img{
-    max-width: 100%;
+    /* max-width: 100%; */
 }
 #card {
     padding: 5%;
     border-radius: 25px;
+    max-width: 80%;
 }
 #card p{
     color: white;
@@ -138,14 +139,14 @@ body{
     border-radius: 25px 25px 0 0;
 }
 .scard-verde{
-    color: #35DAF0;
+    background-color: #35DAF0;
 }
 .scard-verde-icon{
     color: #35DAF0;
     justify-content: center;
     display: flex;
     font-weight: bolder;
-    font-size: 4.5rem;
+    
 }
 .scard-rosa{
     background-color: #F7A6FF;
@@ -158,14 +159,21 @@ body{
 }
 .scard-azul{
     background-color: #274FC0;
-    color: #274FC0;
 }
-.sc-icon ion-icon{
-   font-size: 4.5rem;
+.scard-azul-icon{
+    color: #274FC0;
+    justify-content: center;
+    display: flex;
+    font-weight: bolder;
+}
+.sc-icon {
+   height: 4.5rem;
    padding: 10%;
+   font-size: 4.5rem;
 }
 .sc-texto{
     padding:2% 10%;
+    justify-content: center;
 }
 .container-time h3{
     display: flex;
@@ -197,6 +205,10 @@ body{
 .redes-icon{
     display: flex;
 }
+.redes-icon ion-icon{
+    width: 7%;
+    height: 10vh;
+}
 .texto-rosag{
     color: #F7A6FF;
     font-size: 24px;
@@ -216,4 +228,7 @@ body{
     max-width: 100%;
     height: 200px;
 
+}
+@media screen {
+    
 }
