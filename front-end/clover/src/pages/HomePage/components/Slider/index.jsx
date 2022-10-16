@@ -2,6 +2,11 @@ import React from "react";
 import './style.css'
 
 function Slider() {
+
+  const plusDivs = () => {
+    
+  } 
+
   return (
     <>
       <div class="display-container">
@@ -15,19 +20,19 @@ function Slider() {
             <img class="img-slides" src="https://lojapiticas.vteximg.com.br/arquivos/ids/167712/one-piece-adsFull.png?v=637950470315230000" alt=""/> */}
 
           <div class="arrow-slides bloquear-selecao">
-            <div class="arrow-right" onclick="plusDivs(-1)">
+            <div class="arrow-right" onClick={plusDivs(-1)}>
               &#10094;
             </div>
-            <div class="arrow-left" onclick="plusDivs(1)">
+            <div class="arrow-left" onClick="plusDivs(1)">
               &#10095;
             </div>
           </div>
         </div>
 
         <div class="page-control">
-          <span class="item-page-control" onclick="currentDiv(1)"></span>
-          <span class="item-page-control" onclick="currentDiv(2)"></span>
-          <span class="item-page-control" onclick="currentDiv(3)"></span>
+          <span class="item-page-control" onClick="currentDiv(1)"></span>
+          <span class="item-page-control" onClick="currentDiv(2)"></span>
+          <span class="item-page-control" onClick="currentDiv(3)"></span>
         </div>
       </div>
     </>
