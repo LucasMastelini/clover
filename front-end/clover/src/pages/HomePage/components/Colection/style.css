@@ -1,0 +1,73 @@
+.colletions-container {
+    width: 90%;
+    height: 75vh;
+    margin: 2% 5% 0 5%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 3%;
+    flex-wrap: wrap;
+}
+
+.group-one-collections {
+    width: 64%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 3%;
+}
+
+.item-collection-one {
+    width: 47%;
+    height: 100%;
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    transition: all 0.5s;
+    cursor: pointer; 
+}
+
+.item-collection-one:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.img-collection {
+    width: 100%;
+    height: 100%;  
+    filter: brightness(30%);
+}
+
+.text-collection-img {
+    position: absolute;
+    color: #35DAF0;
+}
+
+.group-two-collections {
+    width: 33%;
+    display: grid;
+    grid-template-rows: max-content;
+    align-items: flex-end;
+    gap: 5vh;
+}
+
+.item-collection-two {
+    width: 100%;
+    height: 35vh;
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    transition: all 0.5s;
+    cursor: pointer; 
+}
+
+.item-collection-two:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}

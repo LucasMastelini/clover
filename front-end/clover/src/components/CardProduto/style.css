@@ -1,0 +1,69 @@
+.container-card{
+    max-width: 284px;
+    z-index: 900px  ;
+}
+.gradient-border img{
+    max-width: 100%;
+}
+.gradient-border {
+    padding: 5%;
+    border-radius: 25px;
+    max-width: 80%;
+}
+.gradient-border p{
+    color: white;
+}
+
+.gradient-border {
+    --borderWidth: 2px;
+    background-color:#000923 ;
+    position: relative;
+    border-radius: var(--borderWidth);
+}
+
+.gradient-border:after {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--borderWidth));
+    left: calc(-1 * var(--borderWidth));
+    height: calc(100% + var(--borderWidth) * 2);
+    width: calc(100% + var(--borderWidth) * 2);
+    background: linear-gradient(60deg, rgba(53, 218, 240, 1),
+    rgba(202, 28, 219, 1));
+    border-radius: calc(13 * var(--borderWidth));
+    z-index: -1;
+    animation: animatedgradient 3s ease alternate infinite;
+    background-size: 300% 300%;
+}
+  
+@keyframes animatedgradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.texto1{
+    color: white;
+    font-size: 20px;
+}
+
+.valor-simulado{
+    color: gray;
+}
+
+.valor-produto{
+    color: #F7A6FF;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.opcao-parcela{
+    font-size: 16px;
+    font-weight: bold;
+}
