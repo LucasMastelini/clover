@@ -1,0 +1,20 @@
+
+.item-collabs {
+    min-width: 228px;
+    height: 140px;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    border: none;
+    z-index: 900px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.item-collabs:hover {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+}

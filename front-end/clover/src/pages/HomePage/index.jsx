@@ -1,7 +1,14 @@
 import React from "react";
+
+import Colection from "./components/Colection";
 import Oferts from "./components/Oferts";
 import Slider from "./components/Slider";
+import CarroselCards from "../../components/CarroselCards";
+import Collab from "./components/Collab";
+
 import './style.css';
+import Comment from "./components/Comment";
+import CardProduto from "../../components/CardProduto";
 
 function HomePage() {
     return(
@@ -9,149 +16,42 @@ function HomePage() {
         <>
             <Slider></Slider>
 
+            <div className="line-style"></div>
+
             <Oferts></Oferts>
 
-            <h2 class="title-home">NOSSAS COLEÇÕES</h2>
+            <div className="line-style"></div>
 
-            <div class="colletions-container">
+            <h2 className="title-home">NOSSAS COLEÇÕES</h2>
 
-                <div class="group-one-collections">
-                    
-                    <div class="item-collection-one">
-                    <img class="img-collection" src="/images/imgMoletom.png" alt=""/>
-                    <h2 class="text-collection-img">MOLETONS</h2>
-                    </div>
-                    <div class="item-collection-one">
-                    <img class="img-collection" src="/images/imgCamiseta.png" alt=""/>
-                    <h2 class="text-collection-img">CAMISETAS</h2>
-                    </div>
-                    
-                </div>
+            <Colection></Colection>
 
-                <div class="group-two-collections">
+            <div className="line-style"></div>
 
-                    <div class="item-collection-two">
-                    <img class="img-collection" src="/images/imgDecoracao.png" alt=""/>
-                    <h2 class="text-collection-img">DECORAÇÃO</h2>
-                    </div>
-                    <div class="item-collection-two">
-                    <img class="img-collection" src="/images/imgAcessorios.png" alt=""/>
-                    <h2 class="text-collection-img">ACESSÓRIOS</h2>
-                    </div>
+            <h2 className="title-home">NOSSOS PARCEIROS</h2>
 
-                </div>
+            <CarroselCards >  
+                <Collab></Collab>
+            </CarroselCards>
 
-            </div>
+            <h2 className="title-home">LANÇAMENTOS PARA O CLOVER LOVERS</h2>
 
-            <h2 class="title-home">NOSSOS PARCEIROS</h2>
+            <CarroselCards>
+                <CardProduto></CardProduto>
+                <CardProduto></CardProduto>
+                <CardProduto></CardProduto>
+                <CardProduto></CardProduto>
+                <CardProduto></CardProduto>
+                <CardProduto></CardProduto>
+            </CarroselCards>
 
-            <div class="collabs-container">
-            
-                <div class="items-collabs">
-                    
-                    <button class="item-collabs">
-                    <img src="/images/imgDisney.png" alt=""/>
-                    </button>
-                    <button class="item-collabs">
-                    <img src="/images/imgMarvel.png" alt=""/>
-                    </button>
-                    <button class="item-collabs">
-                    <img src="/images/imgStranger.png" alt=""/>
-                    </button>
-                    <button class="item-collabs">
-                    <img src="/images/imgDC.png" alt=""/>
-                    </button>
-                    <button class="item-collabs">
-                    <img src="/images/imgStarWars.png" alt=""/>
-                    </button>
-                    <button class="item-collabs">
-                    <img src="/images/imgDisney.png" alt=""/>
-                    </button>
-                    
-                </div>
+            <div className="line-style"></div>
 
-                <div class="arrow-slides-middle bloquear-selecao">
-                    <div class="arrow-right" onclick="plusDivs(-1)">&#10094;</div>
-                    <div class="arrow-left" onclick="plusDivs(1)">&#10095;</div>
-                </div>
+            <h2 className="title-home">VEJA O QUE OS NOSSOS CLOVER LOVER FALAM DA NOSSA LOJA</h2>
 
-            </div>
-
-            <h2 class="title-home">VEJA O QUE OS NOSSOS CLOVER LOVER FALAM DA NOSSA LOJA</h2>
-
-            <div class="collabs-container">
-            
-                <div class="items-collabs">
-                    
-                    <button class="item-comments">
-                    <span class="top-comments">
-                        <img src="/images/icon-comentario.png" alt=""/>
-                        <p>10/08/2022</p>
-                    </span>
-                    <span class="middle-comments">
-                        <p class="text-comments">Gosto bastante da loja, compro na piticas a muito tempo, tenho várias camisetas e sempre lançam novidades que me atraem.</p>
-                        <h4>Adelmo A.</h4>
-                    </span>
-                    <img src="/images/nota.png" alt=""/>
-                    </button>
-                    
-                    <button class="item-comments">
-                    <span class="top-comments">
-                        <img src="/images/icon-comentario.png" alt=""/>
-                        <p>10/08/2022</p>
-                    </span>
-                    <span class="middle-comments">
-                        <p class="text-comments">Gosto bastante da loja, compro na piticas a muito tempo, tenho várias camisetas e sempre lançam novidades que me atraem.</p>
-                        <h4>Adelmo A.</h4>
-                    </span>
-                    <img src="/images/nota.png" alt=""/>
-                    </button>
-
-                    <button class="item-comments">
-                    <span class="top-comments">
-                        <img src="/images/icon-comentario.png" alt=""/>
-                        <p>10/08/2022</p>
-                    </span>
-                    <span class="middle-comments">
-                        <p class="text-comments">Gosto bastante da loja, compro na piticas a muito tempo, tenho várias camisetas e sempre lançam novidades que me atraem.</p>
-                        <h4>Adelmo A.</h4>
-                    </span>
-                    <img src="/images/nota.png" alt=""/>
-                    </button>
-
-                    <button class="item-comments">
-                    <span class="top-comments">
-                        <img src="/images/icon-comentario.png" alt=""/>
-                        <p>10/08/2022</p>
-                    </span>
-                    <span class="middle-comments">
-                        <p class="text-comments">Gosto bastante da loja, compro na piticas a muito tempo, tenho várias camisetas e sempre lançam novidades que me atraem.</p>
-                        <h4>Adelmo A.</h4>
-                    </span>
-                    <img src="/images/nota.png" alt=""/>
-                    </button>
-
-                    <button class="item-comments">
-                    <span class="top-comments">
-                        <img src="/images/icon-comentario.png" alt=""/>
-                        <p>10/08/2022</p>
-                    </span>
-                    <span class="middle-comments">
-                        <p class="text-comments">Gosto bastante da loja, compro na piticas a muito tempo, tenho várias camisetas e sempre lançam novidades que me atraem.</p>
-                        <h4>Adelmo A.</h4>
-                    </span>
-                    <img src="/images/nota.png" alt=""/>
-                    </button>
-                    
-                </div>
-
-                <div class="arrow-slides-middle bloquear-selecao">
-                    <div class="arrow-right" onclick="plusDivs(-1)">&#10094;</div>
-                    <div class="arrow-left" onclick="plusDivs(1)">&#10095;</div>
-                </div>
-
-            </div>
-
+            <CarroselCards>
+                <Comment></Comment>
+            </CarroselCards>
         </>
 
     );
