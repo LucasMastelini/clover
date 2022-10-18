@@ -13,9 +13,9 @@ code {
     monospace;
 }
 
-/* .nav-link {
-  
-} */
+.nav-link {
+  text-decoration: none;
+}
 
 /*
 .bloquear-selecao {
