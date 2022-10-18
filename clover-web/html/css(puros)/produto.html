@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/produto.css">
+    <script src="https://kit.fontawesome.com/19e6c30f65.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section id="produto">
+        <div class="image-slider">
+            <div id="escopo">
+                <div class="images"></div>
+                <div class="back-btn">
+                    <i class="fa-solid fa-caret-left"></i>
+                </div>
+                <div class="next-btn">
+                    <i class="fa-solid fa-caret-right"></i>
+                </div>
+            </div>
+            <div class="thumbnails"></div>
+        </div>
+        <div id="informacoes">
+            <h1 id="titulo">Camiseta Gonew Dry Touch Fast Masculina - Branco</h1>
+            <div id="avaliacaoVendidos">
+                <div id="avaliacao">
+                    <h3 id="avaliacaoTitulo">Avaliação</h3>
+                    <div class="rating">
+                        <input type="radio" name="star" id="star1"><label for="star1">
+                        </label>
+                        <input type="radio" name="star" id="star2"><label for="star2">
+                        </label>
+                        <input type="radio" name="star" id="star3"><label for="star3">
+                        </label>
+                        <input type="radio" name="star" id="star4"><label for="star4">
+                        </label>
+                        <input type="radio" name="star" id="star5"><label for="star5">
+                        </label>
+                    </div>
+                </div>
+                <h3 id="vendidos">Vendidos: +999999</h3>
+            </div>
+            <div id="calculoFrete">
+                <i class="fa-solid fa-truck"></i>
+                <h4 class="tituloCalcularFrete">calcular o frete</h4>
+                <div id="calcular">
+                    <input class="inputCalcular" placeholder="Insira o CEP">
+                    <button class="buttonCalcular">Calcular</button>
+                </div>
+            </div>
+            <div id="cores">
+                <h3>Selecione a cor</h3>
+                <div id="opcoesCores" onclick="mudarCores(event)">
+                    <div id="cor1">
+                    </div>
+                    <div id="cor2">
+                    </div>
+                    <div id="cor3">
+                    </div>
+                </div>
+            </div>
+            <div id="tamanhos">
+                <h3>Selecione o tamanho</h3>
+                <div id="opcoesTamanhos" onclick="mudarTamanhos(event)">
+                    <div id="tamanhoP">
+                        P
+                    </div>
+                    <div id="tamanhoM">
+                        M
+                    </div>
+                    <div id="tamanhoG">
+                        G
+                    </div>
+                </div>
+            </div>
+            <div id="preco">
+                <div id="precoVista">
+                    <h1 id="precoVistaRiscado">R$6000</h1>
+                    <h1 id="precoVistaSemRisco">R$9000</h1>
+                </div>
+                <h3 id="parcelas">ou 12x de R$8,10</h3>
+            </div>
+            <button id="comprar">Comprar</button>
+        </div>
+    </section>
+
+    <section id="descricaoTamanhos">
+        <img src="/images/img-1839133966-1582028828-72d6bff5c120774339797e2b0275fddc1582028828.png" width="35%"
+            height="40%">
+        <div id="containerColunasTamanho">
+            <div class="colunas">
+                <h1>Tamanho</h1>
+                <p class="tamanhoRoupa">
+                <h3>P</h3>
+                Comprimento de base até a gola: 65cm. Largura da barriga: 50cm.
+                Comprimento do ombro: 14cm. Comprimento da manga: 19,5cm.
+                </p>
+                <p class="tamanhoRoupa">
+                <h3>M</h3>
+                Comprimento de base até a gola: 65cm. Largura da barriga: 50cm.
+                Comprimento do ombro: 14cm. Comprimento da manga: 19,5cm.
+                </p>
+                <p class="tamanhoRoupa">
+                <h3>G</h3>
+                Comprimento de base até a gola: 65cm. Largura da barriga: 50cm.
+                Comprimento do ombro: 14cm. Comprimento da manga: 19,5cm.
+                </p>
+            </div>
+            <div class="colunas">
+                <p class="tamanhoRoupa">
+                <h3>GG</h3>
+                Comprimento de base até a gola: 65cm. Largura da barriga: 50cm.
+                Comprimento do ombro: 14cm. Comprimento da manga: 19,5cm.
+                </p>
+                <p class="tamanhoRoupa">
+                <h3>XG</h3>
+                Comprimento de base até a gola: 65cm. Largura da barriga: 50cm.
+                Comprimento do ombro: 14cm. Comprimento da manga: 19,5cm.
+                </p>
+                <p class="tamanhoRoupa">
+                <h3>XGG</h3>
+                Comprimento de base até a gola: 65cm. Largura da barriga: 50cm.
+                Comprimento do ombro: 14cm. Comprimento da manga: 19,5cm.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="thumbnail-slider">
+        <h2 class="title-section">O que outros clientes também compraram</h2>
+        <div class="thumbnail-container">
+            <div class="item">
+                <img src="/images/s-l300.jpg" width="95%">
+                <div class="texto">Camiseta branca lisa - Masculina</div>
+                <div id="containerPreco">
+                    <div id="preco">
+                        <div id="precoVista">
+                            <h1 id="precoVistaRiscado">R$6000</h1>
+                            <h1 id="precoVistaSemRisco">R$9000</h1>
+                        </div>
+                        <h3 id="parcelas">ou 12x de R$8,10</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/images/s-l300.jpg" width="95%">
+                <div class="texto">Camiseta branca Masculina</div>
+                <div id="containerPreco">
+                    <div id="preco">
+                        <div id="precoVista">
+                            <h1 id="precoVistaRiscado">R$6000</h1>
+                            <h1 id="precoVistaSemRisco">R$9000</h1>
+                        </div>
+                        <h3 id="parcelas">ou 12x de R$8,10</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/images/s-l300.jpg" width="95%">
+                <div class="texto">Camiseta branca Masculina</div>
+                <div id="containerPreco">
+                    <div id="preco">
+                        <div id="precoVista">
+                            <h1 id="precoVistaRiscado">R$6000</h1>
+                            <h1 id="precoVistaSemRisco">R$9000</h1>
+                        </div>
+                        <h3 id="parcelas">ou 12x de R$8,10</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/images/s-l300.jpg" width="95%">
+                <div class="texto">Camiseta branca Masculina</div>
+                <div id="containerPreco">
+                    <div id="preco">
+                        <div id="precoVista">
+                            <h1 id="precoVistaRiscado">R$6000</h1>
+                            <h1 id="precoVistaSemRisco">R$9000</h1>
+                        </div>
+                        <h3 id="parcelas">ou 12x de R$8,10</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/images/s-l300.jpg" width="95%">
+                <div class="texto">Camiseta branca Masculina</div>
+                <div id="containerPreco">
+                    <div id="preco">
+                        <div id="precoVista">
+                            <h1 id="precoVistaRiscado">R$6000</h1>
+                            <h1 id="precoVistaSemRisco">R$9000</h1>
+                        </div>
+                        <h3 id="parcelas">ou 12x de R$8,10</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/images/s-l300.jpg" width="95%">
+                <div class="texto">Camiseta branca Masculina</div>
+                <div id="containerPreco">
+                    <div id="preco">
+                        <div id="precoVista">
+                            <h1 id="precoVistaRiscado">R$6000</h1>
+                            <h1 id="precoVistaSemRisco">R$9000</h1>
+                        </div>
+                        <h3 id="parcelas">ou 12x de R$8,10</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/images/s-l300.jpg" width="95%">
+                <div class="texto">Camiseta branca Masculina</div>
+                <div id="containerPreco">
+                    <div id="preco">
+                        <div id="precoVista">
+                            <h1 id="precoVistaRiscado">R$6000</h1>
+                            <h1 id="precoVistaSemRisco">R$9000</h1>
+                        </div>
+                        <h3 id="parcelas">ou 12x de R$8,10</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/images/s-l300.jpg" width="95%">
+                <div class="texto">Camiseta branca Masculina</div>
+                <div id="containerPreco">
+                    <div id="preco">
+                        <div id="precoVista">
+                            <h1 id="precoVistaRiscado">R$6000</h1>
+                            <h1 id="precoVistaSemRisco">R$9000</h1>
+                        </div>
+                        <h3 id="parcelas">ou 12x de R$8,10</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/images/s-l300.jpg" width="95%">
+                <div class="texto">Camiseta branca Masculina</div>
+                <div id="containerPreco">
+                    <div id="preco">
+                        <div id="precoVista">
+                            <h1 id="precoVistaRiscado">R$6000</h1>
+                            <h1 id="precoVistaSemRisco">R$9000</h1>
+                        </div>
+                        <h3 id="parcelas">ou 12x de R$8,10</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/images/s-l300.jpg" width="95%">
+                <div class="texto">Camiseta branca Masculina</div>
+                <div id="containerPreco">
+                    <div id="preco">
+                        <div id="precoVista">
+                            <h1 id="precoVistaRiscado">R$6000</h1>
+                            <h1 id="precoVistaSemRisco">R$9000</h1>
+                        </div>
+                        <h3 id="parcelas">ou 12x de R$8,10</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- controls slides -->
+        <div class="controls"></div>
+    </div>
+    <script>
+        var tamanhoAnterior;
+
+        function mudarTamanhos(event) {
+
+            if (tamanhoAnterior) {
+                tamanhoAnterior.className = "";
+            }
+
+            tamanhoAnterior = document.getElementById(event.target.id);
+            tamanhoAnterior.className = "selected";
+        }
+
+    </script>
+
+
+    <script>
+
+        var corAnterior;
+
+        let images = [
+            "/images/roupaslidebranca.png",
+            "/images/roupaslidebranca.png",
+            "/images/roupaslidebranca.png",
+            "/images/roupaslidebranca.png",
+            "/images/roupaslidebranca.png"
+        ];
+
+        function mudarCores(event) {
+
+            if (corAnterior) {
+                corAnterior.className = "";
+            }
+
+            corAnterior = document.getElementById(event.target.id);
+            corAnterior.className = "selected";
+
+        }
+
+        //////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////
+
+
+        function imageSlider(parent, images) {
+
+            let currentImage = 0;
+            let slider = {
+                parent: parent,
+                images: parent.querySelector(".images"),
+                thumbnails: parent.querySelector(".thumbnails"),
+                backBtn: parent.querySelector(".back-btn"),
+                nextBtn: parent.querySelector(".next-btn")
+            };
+
+            slider.images.innerHTML = images.map(function (image) {
+                return `<img src="${image}"/>`
+            }).join("");
+
+            let imageNodes = slider.images.querySelectorAll("img");
+            imageNodes[currentImage].classList.add("active");
+
+            slider.thumbnails.innerHTML = slider.images.innerHTML;
+
+            let thumbnailNodes = slider.thumbnails.querySelectorAll("img");
+            thumbnailNodes[currentImage].classList.add("active");
+
+
+            for (let i = 0; i < thumbnailNodes.length; i++) {
+                thumbnailNodes[i].addEventListener("click", function () {
+                    slider.thumbnails.querySelector("img.active").classList.remove("active");
+                    thumbnailNodes[i].classList.add("active");
+                    imageNodes[currentImage].classList.remove("active");
+                    currentImage = i;
+                    imageNodes[currentImage].classList.add("active");
+                });
+            }
+
+            slider.backBtn.addEventListener("click", function () {
+                imageNodes[currentImage].classList.remove("active");
+                currentImage--;
+                if (currentImage < 0) {
+                    currentImage = images.length - 1;
+                }
+                imageNodes[currentImage].classList.add("active");
+                slider.thumbnails.querySelector("img.active").classList.remove("active");
+                thumbnailNodes[currentImage].classList.add("active");
+            });
+
+            slider.nextBtn.addEventListener("click", function () {
+                imageNodes[currentImage].classList.remove("active");
+                currentImage = (currentImage + 1) % images.length;
+                imageNodes[currentImage].classList.add("active");
+                slider.thumbnails.querySelector("img.active").classList.remove("active");
+                thumbnailNodes[currentImage].classList.add("active");
+            });
+
+        }
+
+        imageSlider(document.querySelector(".image-slider"), images);
+
+        let cor1 = document.getElementById("cor1");
+        let cor2 = document.getElementById("cor2");
+        let cor3 = document.getElementById("cor3");
+
+
+        cor1.addEventListener('click', function handleClick() {
+
+            let contador = 0;
+
+            var imagesSlider = document.querySelectorAll(".images img");
+            var imagesThumbnail = document.querySelectorAll(".thumbnails img");
+
+            images = [
+                "/images/roupaslidebranca.png",
+                "/images/roupaslidebranca.png",
+                "/images/roupaslidebranca.png",
+                "/images/roupaslidebranca.png",
+                "/images/roupaslidebranca.png"
+            ];
+
+            for (i = 0; i < imagesSlider.length; i++) {
+                imagesSlider[i].src = images[contador];
+                imagesThumbnail[i].src = images[contador];
+                contador++;
+            }
+        });
+
+
+        cor2.addEventListener('click', function handleClick() {
+
+            let contador = 0;
+
+            var imagesSlider = document.querySelectorAll(".images img");
+            var imagesThumbnail = document.querySelectorAll(".thumbnails img");
+
+            images = [
+                "/images/roupaslidepreta.png",
+                "/images/roupaslidepreta.png",
+                "/images/roupaslidepreta.png",
+                "/images/roupaslidepreta.png",
+                "/images/roupaslidepreta.png",
+            ];
+
+            for (i = 0; i < imagesSlider.length; i++) {
+                imagesSlider[i].src = images[contador];
+                imagesThumbnail[i].src = images[contador];
+                contador++;
+            }
+        });
+
+
+
+        cor3.addEventListener('click', function handleClick() {
+
+            let contador = 0;
+
+            var imagesSlider = document.querySelectorAll(".images img");
+            var imagesThumbnail = document.querySelectorAll(".thumbnails img");
+
+            images = [
+                "/images/roupaslideazul.png",
+                "/images/roupaslideazul.png",
+                "/images/roupaslideazul.png",
+                "/images/roupaslideazul.png",
+                "/images/roupaslideazul.png",
+            ];
+
+            for (i = 0; i < imagesSlider.length; i++) {
+                imagesSlider[i].src = images[contador];
+                imagesThumbnail[i].src = images[contador];
+                contador++;
+            }
+        });
+
+
+    </script>
+
+    <script>
+        const controls = document.querySelector(".controls");
+        const container = document.querySelector(".thumbnail-container");
+        const allBox = container.children;
+        const containerWidth = container.offsetWidth;
+        const margin = 30;
+        var items = 0;
+        var totalItems = 0;
+        var jumpSlideWidth = 0;
+
+
+        // item setup per slide
+
+        responsivo = [
+            { breakPoint: { width: 0, item: 1 } }, //if width greater than 0 (1 item will show) 
+            { breakPoint: { width: 600, item: 2 } }, //if width greater than 600 (2  item will show) 
+            { breakPoint: { width: 1000, item: 4 } } //if width greater than 1000 (4 item will show) 
+        ]
+
+        function load() {
+            for (let i = 0; i < responsivo.length; i++) {
+                if (window.innerWidth > responsivo[i].breakPoint.width) {
+                    items = responsivo[i].breakPoint.item
+                }
+            }
+            start();
+        }
+
+        function start() {
+            var totalItemsWidth = 0
+            for (let i = 0; i < allBox.length; i++) {
+                // width and margin setup of items
+                allBox[i].style.width = (containerWidth / items) - margin + "px";
+                allBox[i].style.margin = (margin / 2) + "px";
+                totalItemsWidth += containerWidth / items;
+                totalItems++;
+            }
+
+            // thumbnail-container width set up
+            container.style.width = totalItemsWidth + "px";
+
+            // slides controls number set up
+            const allSlides = Math.ceil(totalItems / items);
+            const ul = document.createElement("ul");
+            for (let i = 1; i <= allSlides; i++) {
+                const li = document.createElement("li");
+                li.id = i;
+                li.setAttribute("onclick", "controlSlides(this)");
+                ul.appendChild(li);
+                if (i == 1) {
+                    li.className = "active";
+                }
+            }
+            controls.appendChild(ul);
+        }
+
+        // when click on numbers slide to next slide
+        function controlSlides(ele) {
+            // select controls children  'ul' element 
+            const ul = controls.children;
+
+            // select ul children 'li' elements;
+            const li = ul[0].children
+
+
+            var active;
+
+            for (let i = 0; i < li.length; i++) {
+                if (li[i].className == "active") {
+                    // find who is now active
+                    active = i;
+                    // remove active class from all 'li' elements
+                    li[i].className = "";
+                }
+            }
+            // add active class to current slide
+            ele.className = "active";
+
+            var numb = (ele.id - 1) - active;
+            jumpSlideWidth = jumpSlideWidth + (containerWidth * numb);
+            container.style.marginLeft = -jumpSlideWidth + "px";
+        }
+
+        window.onload = load();
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
