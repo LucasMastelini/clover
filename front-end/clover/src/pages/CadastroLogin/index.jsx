@@ -1,5 +1,9 @@
-import React, { useState, useEffect } from "react";
-import api from "../../Api/api";
+import React, { useState } from "react";
+// import api from "../../Api/api";
+import cadastro from "../../Api/cadastro";
+import listar from "../../Api/listarUsuarios";
+import {Formik, Field, Form, ErrorMessage} from 'formik';
+import schema from '../../schema';
 
 import './style.css';
 import userIcon from '../../assets/image/user.png'
@@ -8,22 +12,37 @@ import telefoneIcon from '../../assets/image/celular.png'
 import passwordIcon from '../../assets/image/senha.png'
 
 function CadastroLogin() {
-    // const switchers = [...document.querySelectorAll(".switcher")];
-    const [switchers, setswitchers] = useState([]);
+    // const [switchers, setswitchers] = useState([]);
+    // setswitchers([...document.querySelectorAll(".switcher")])
     
-    useEffect(() => {
-        setswitchers([...document.querySelectorAll(".switcher")])
+    // function switcher(){
+       
+    // }
+
+    // function listarUsuarios(){
+    //     listar.get()
+    //     .then(res => {
+    //         console.log(res.data)
+    //     })
+    //     .catch(err => {
+    //         console.log(err)
+    //     })
+    // }
+    // listarUsuarios()
+
+    
+
+
+    // cadastro.post('/cadastro-usuario', 
+    // {
         
-        switchers.forEach((item) => {
-            item.addEventListener("click", function () {
-                switchers.forEach((item) =>
-                    item.parentElement.classList.remove("is-active")
-                );
-                this.parentElement.classList.add("is-active");
-            });
-        });
+    // })
+
+    function onSubmit(values, actions){
+        console.log('SUBMIT',values)
         
-    }, [])
+    }
+
     
     return (
         
@@ -35,45 +54,61 @@ function CadastroLogin() {
                             Cadastre-se
                             <span className="underline"></span>
                         </button>
-                        <form className="form form-cadastro">
+                        <Formik
+                        validationSchema={schema}
+                        onSubmit={onSubmit} 
+                        validateOnMount
+                        initialValues={{
+                            nome: '',
+                            email: '',
+                            senha: '',
+                            confirmacao: '',
+                            celular: '',
+                        }}
+                        render = {({values, errors, touched}) => (
+                            <Form className="form form-cadastro" >
                             <fieldset>
                                 <div className="input-block">
                                     {/* <!- <Label>Nome Completo</Label>  */}
                                     <i className="icon">
                                         <img src={userIcon} alt="" />
                                     </i>
-                                    <input id="cadastro-nome" type="text" placeholder="Nome completo" required />
+                                    <Field name="nome"  type="text" placeholder="Nome completo"  />
+                                    <ErrorMessage name="nome"/>
                                 </div>
                                 <div className="input-block">
                                     <i>
                                         <img src={emailIcon} alt="" />
                                     </i>
-                                    <input id="cadastro-email" type="email" placeholder="E-mail" required />
+                                    <Field name="email" value={values.email} type="email" placeholder="E-mail"  />
+                                    <ErrorMessage name="email"/>
                                 </div>
                                 <div className="input-block">
                                     <i>
                                         <img src={passwordIcon} alt="" />
                                     </i>
-                                    <input id="cadastro-senha" type="password" placeholder="Senha" required />
+                                    <Field name="senha" id="cadastro-senha" type="password" placeholder="Senha"  />
                                 </div>
                                 <div className="input-block">
                                     <i>
                                         <img src={passwordIcon} alt="" />
                                     </i>
-                                    <input id="cadastro-senha-confirm" type="password" placeholder="Confirme sua senha" required />
+                                    <Field name="confirmacao" id="cadastro-senha-confirm" type="password" placeholder="Confirme sua senha"  />
                                 </div>
                                 <div className="input-block">
                                     <i>
                                         <img  src={telefoneIcon} alt="" />
                                     </i>
-                                    <input id="cadastro-telefone" type="tel" placeholder="Numero de celular" required />
+                                    <Field name="celular" id="cadastro-telefone" type="text" placeholder="Numero de celular"  />
                                 </div>
                             </fieldset>
                             <button type="submit" className="btn-signup">Criar conta</button>
-                        </form>
+                        </Form>
+                        )}
+                        />
                     </div>
                     <div className="form-wrapper">
-                        <button type="button" className="switcher switcher-signup">
+                        <button  type="button" className="switcher switcher-signup">
                             Entrar
                             <span className="underline"></span>
                         </button>
@@ -102,19 +137,7 @@ function CadastroLogin() {
 
     );
 }
-{
-    function listarUsuarios(){
-        api.get()
-        .then(res => {
-            console.log(res.data)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    }
 
-    listarUsuarios()
-}
 
 
 
