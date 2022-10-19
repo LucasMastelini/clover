@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-// import api from "../../Api/api";
-import cadastro from "../../Api/cadastro";
-import listar from "../../Api/listarUsuarios";
+import React from "react";
+import api from "../../Api/api";
+// import cadastro from "../../Api/cadastro";
+// import listar from "../../Api/listarUsuarios";
 import {Formik, Field, Form, ErrorMessage} from 'formik';
 import schema from '../../schema';
 
@@ -10,6 +10,7 @@ import userIcon from '../../assets/image/user.png'
 import emailIcon from '../../assets/image/email.png'
 import telefoneIcon from '../../assets/image/celular.png'
 import passwordIcon from '../../assets/image/senha.png'
+
 
 function CadastroLogin() {
     // const [switchers, setswitchers] = useState([]);
@@ -39,10 +40,19 @@ function CadastroLogin() {
     // })
 
     function onSubmit(values, actions){
-        console.log('SUBMIT',values)
         
+        api.post('cadastro-usuario',
+            values
+        )
+        .then(res => {
+            // actions.resetForm();
+            console.log('SUBMIT',values)
+        }).catch(err => {
+            console.log(err)
+            console.log(values)
+            // actions.resetForm();
+        })
     }
-
     
     return (
         
@@ -57,7 +67,7 @@ function CadastroLogin() {
                         <Formik
                         validationSchema={schema}
                         onSubmit={onSubmit} 
-                        validateOnMount
+                        // validateOnMount
                         initialValues={{
                             nome: '',
                             email: '',
@@ -74,14 +84,14 @@ function CadastroLogin() {
                                         <img src={userIcon} alt="" />
                                     </i>
                                     <Field name="nome"  type="text" placeholder="Nome completo"  />
-                                    <ErrorMessage name="nome"/>
+                                   
                                 </div>
                                 <div className="input-block">
                                     <i>
                                         <img src={emailIcon} alt="" />
                                     </i>
                                     <Field name="email" value={values.email} type="email" placeholder="E-mail"  />
-                                    <ErrorMessage name="email"/>
+                                    
                                 </div>
                                 <div className="input-block">
                                     <i>
