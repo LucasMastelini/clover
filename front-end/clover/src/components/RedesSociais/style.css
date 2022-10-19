@@ -1,0 +1,44 @@
+.nossas-redes{
+    padding: 5%;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+.container-redes{
+    width: 90%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.redes-icon{
+    display: flex;
+}
+.redes-icon ion-icon{
+    width: 7%;
+    height: 10vh;
+}
+.texto-rosag{
+    color: #F7A6FF;
+    font-size: 24px;
+    font-weight: 900
+}
+.texto-rosap{
+    color: #F7A6FF;
+    font-size: 12px;
+    font-weight: 900;
+}
+.texto-redes{
+    display: block;
+    padding: 5%;
+}
+
+.grid-container-redes{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
+    margin-bottom: 100px;
+}
+
+.grid-container-redes img{
+    max-width: 100%;
+    /* height: 200px; */
+
+}
