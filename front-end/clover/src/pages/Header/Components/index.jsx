@@ -52,7 +52,9 @@ function Header(){
                         <span class="icon">
                             <BsPerson></BsPerson>
                         </span>
-                        <span class="text">Minha conta</span>
+                        <a href="./CadastroLogin">
+                            <span class="text">Minha conta</span></a>
+                       
                     </li>
                     <li id="carrinhoMobile" class="list">
                         <a href="">
