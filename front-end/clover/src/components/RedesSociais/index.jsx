@@ -5,6 +5,8 @@ import instaTwo from '../../assets/image/imgInstaTwo.png';
 import instaThree from '../../assets/image/imgInstaThree.png';
 import instaFour from '../../assets/image/imgInstaFour.png';
 import instaFive from '../../assets/image/imgInstaFive.png';
+import { AiFillInstagram } from "react-icons/ai";
+import { FaFacebookSquare } from "react-icons/fa";
 
 import './style.css';
 
@@ -13,15 +15,17 @@ export default function RedesSociais() {
     <>
       <section class="nossas-redes">
         <div class="container-redes">
-          <div class="redes-icons scard-verde-icon">
-            <ion-icon name="logo-instagram"></ion-icon>
+          <div class="redes-icons">
+            {/* <ion-icon name="logo-instagram"></ion-icon> */}
+            <AiFillInstagram/>
             <div class="texto-redes">
               <p class="texto-rosap">Siga nosso</p>
               <p class="texto-rosag">Instagram</p>
             </div>
           </div>
-          <div class="scard-verde-icon">
-            <ion-icon name="logo-facebook"></ion-icon>
+          <div class="redes-icons">
+            {/* <ion-icon name="logo-facebook"></ion-icon> */}
+            <FaFacebookSquare/>
             <div class="texto-redes">
               <p class="texto-rosap">Curta nosso</p>
               <p class="texto-rosag">Facebook</p>

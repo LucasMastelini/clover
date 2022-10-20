@@ -29,8 +29,8 @@ body {
 .agradecimento {
     display: flex;
     justify-content: space-evenly;
-    background-image: url(/src/assets/image/Rectangle135.png);
     align-items: center;
+    margin: 2% 0 2% 0;
 }
 
 .text-agradecimento {
@@ -73,7 +73,7 @@ body {
 .identidade-visual {
     display: flex;
     justify-content: space-evenly;
-    background-image: url(/src/assets/image/Rectangle135.png);
+    /* background-image: url(/src/assets/image/Rectangle135.png); */
     align-items: center;
     margin-bottom: 10%;
 }
@@ -87,9 +87,9 @@ body {
     max-width: 40%;
 }
 
-#card img {
-    /* max-width: 100%; */
-}
+/* #card img {
+    max-width: 100%;
+} */
 
 #card {
     padding: 5%;
@@ -172,7 +172,6 @@ body {
     justify-content: center;
     display: flex;
     font-weight: bolder;
-
 }
 
 .scard-rosa {
@@ -198,7 +197,6 @@ body {
 }
 
 .sc-icon {
-    height: 4.5rem;
     padding: 10%;
     font-size: 4.5rem;
 }
