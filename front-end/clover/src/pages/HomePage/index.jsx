@@ -9,11 +9,15 @@ import Collab from "./components/Collab";
 import './style.css';
 import Comment from "./components/Comment";
 import CardProduto from "../../components/CardProduto";
+import RedesSociais from "../../components/RedesSociais";
+import Footer from "../../components/Footer";
+import Header from "../Header";
 
 function HomePage() {
     return(
 
         <>
+            <Header></Header>
             <Slider></Slider>
 
             <div className="line-style"></div>
@@ -52,6 +56,9 @@ function HomePage() {
             <CarroselCards>
                 <Comment></Comment>
             </CarroselCards>
+
+            <RedesSociais/>
+            <Footer/>
         </>
 
     );
