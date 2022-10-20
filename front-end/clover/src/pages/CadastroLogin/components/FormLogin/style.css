@@ -7,15 +7,15 @@
   box-sizing: border-box;
 }
 
-/* ::selection{
+::selection{
   background-color: #9E22D9;
-} */
+}
 
 body {
   margin: 0;
   font-family: Roboto, -apple-system, "Helvetica Neue", "Segoe UI", Arial,
     sans-serif;
-  background-image: url("../../assets/image/fundo.png");
+  background-image: url("../../../../assets/image/fundo.png");
   background-size: cover;
   background-repeat: no-repeat;
 }

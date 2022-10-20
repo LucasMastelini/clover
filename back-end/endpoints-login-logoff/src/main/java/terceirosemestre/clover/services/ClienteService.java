@@ -125,8 +125,8 @@ public class ClienteService {
     public ClienteDTO login(ClienteLoginDTO loginDTO) {
         Cliente cli = repo.findByEmail(loginDTO.getEmail());
         if(cli != null){
-            BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
-            boolean isPasswordMatches = bcrypt.matches(loginDTO.getSenha(), cli.getSenha());
+           // BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
+            boolean isPasswordMatches = loginDTO.getSenha().matches(cli.getSenha());
 
             if(isPasswordMatches){
                 cli.setLogado(true);
