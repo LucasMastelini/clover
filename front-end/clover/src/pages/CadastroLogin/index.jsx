@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import api from "../../Api/api";
+// import api from "../../Api/api";
 // import cadastro from "../../Api/cadastro";
 // import listar from "../../Api/listarUsuarios";
 import { Formik, Field, Form } from "formik";
-import schema from "../../schema";
+// import schema from "../../schema";
 
-import "./style.css";
 import userIcon from "../../assets/image/user.png";
 import emailIcon from "../../assets/image/email.png";
 import telefoneIcon from "../../assets/image/celular.png";
@@ -14,6 +13,7 @@ import FormCadastro from "./components/FormCadastro/FormCadastro";
 import FormLogin from "./components/FormLogin/FormLogin";
 import Header from "../Header";
 import Footer from "../../components/Footer";
+
 function CadastroLogin() {
   // const [switchers, setSwitchers] = useState();
   // const [isActive, setIsActive] = useState();
@@ -36,18 +36,37 @@ function CadastroLogin() {
 
   // }, [])
 
-  return (
-    <>
-      <Header />
-      <section className="forms-section">
-        <div className="forms">
-          <FormCadastro />
-          <FormLogin />
-        </div>
-      </section>
-      <Footer />
-    </>
-  );
+  useEffect(() => {
+
+    const switchers = [...document.querySelectorAll('.switcher')]
+
+    switchers.forEach(item => {
+        item.addEventListener('click', function () {
+            switchers.forEach(item => item.parentElement.classList.remove('is-active'))
+            this.parentElement.classList.add('is-active')
+        })
+    })
+
+}, [])
+
+
+
+    return (
+
+        <>
+        <Header/>
+            <section className="forms-section">
+                <div className="forms">
+                
+                    <FormCadastro />
+                    <FormLogin />
+
+
+                </div>
+            </section>
+        </>
+    );
+
 }
 
 export default CadastroLogin;

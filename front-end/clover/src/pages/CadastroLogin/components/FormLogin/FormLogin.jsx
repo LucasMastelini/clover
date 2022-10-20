@@ -5,7 +5,7 @@ import api from "../../../../Api/api";
 import { Formik, Field, Form } from 'formik';
 import schemaLogin from '../../../../schemaLogin';
 
-import './style.css';
+
 import userIcon from '../../../../assets/image/user.png'
 import emailIcon from '../../../../assets/image/email.png'
 import telefoneIcon from '../../../../assets/image/celular.png'

@@ -63,7 +63,7 @@ a:hover {
     text-align: center;
 }
 
-input {
+.input-fild {
     height: 25px;
     border-radius: 15px;
     border: solid 1px #510090;
