@@ -27,8 +27,8 @@
 }
 
 .arrow-right, .arrow-left{
-    width: 20px;
-    height: 20px;
+    width: 2vw;
+    height: 2vw;
     display: flex;
     align-items: center;
     justify-content: center;

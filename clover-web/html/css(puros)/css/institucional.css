@@ -4,11 +4,6 @@
     padding: 0;
     font-family: 'Montserrat', sans-serif;
 }
-body{
-    background-color: black;
-    background-image: url(/clover-web/images/Rectangle135.png);
-    /* background-repeat: round; */
-}
 .quem-somos{
     display: flex;
     width: 100%;
@@ -74,7 +69,7 @@ body{
     max-width: 40%;
 }
 #card img{
-    max-width: 100%;
+    /* max-width: 100%; */
 }
 #card {
     padding: 5%;

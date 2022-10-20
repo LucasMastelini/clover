@@ -1,4 +1,4 @@
-/* .container-card{
+.container-card{
     max-width: 284px;
     z-index: 900px  ;
 }
@@ -66,89 +66,4 @@
 .opcao-parcela{
     font-size: 16px;
     font-weight: bold;
-} */
-
-.item {
-    width: 239.75px;
-    margin: 15px;
-    border-image-source: linear-gradient(to left, #35DAF0, #c42be6);
-    line-height: 1px;
-    text-align: left;
-    font-size: 50px;
-    color: #ffffff;
-    float: left;
-    border: double 5px transparent;
-    border-radius: 20px;
-    background-image: linear-gradient(#081538, #081538), radial-gradient(circle at top left, #35DAF0, #c42be6);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.item:hover {
-    background-image: linear-gradient(#3b3153, #3b3153), radial-gradient(circle at top left, #35DAF0, #c42be6);
-}
-
-.img {
-    margin-top: 4%;
-    width: 91.5%;
-    border-radius: 15px;
-    margin-bottom: 2%;
-}
-
-.texto {
-    font-size: 16px;
-    font-family: 'Montserrat Medium', sans-serif;
-    color: white;
-    line-height: 1.5rem;
-    text-align: left;
-    padding-left: 4%;
-    padding-right: 4%;
-}
-
-.container-preco {
-    width: 100%;
-    display: flex;
-    margin-top: 2%;
-    justify-content: left;
-    flex-direction: column;
-    padding: 4%;
-}
-
-.preco {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 3%;
-    line-height: 0.1rem;
-}
-
-.preco-vista {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    height: 1.2rem;
-}
-
-.preco-vista-riscado {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.0rem;
-    text-decoration: line-through;
-    color: #787676;
-    margin-right: 2%;
-}
-
-.preco-vista-sem-risco {
-    font-family: 'Montserrat Medium', sans-serif;
-    font-size: 1.2rem;
-    color: #F7A6FF;
-}
-
-.text-parcelas {
-    text-align: start;
-    font-family: 'Montserrat Medium', sans-serif;
-    font-size: 1rem;
-    margin-bottom: 5.5%;
 }

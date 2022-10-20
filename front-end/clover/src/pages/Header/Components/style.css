@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+ul {
+    justify-content: space-evenly;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+a:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+#contaMobile {
+    display: none;
+}
+
+#carrinhoMobile {
+    display: none;
+}
+
+#logo img {
+    height: 60px;
+}
+
+#header {
+    box-sizing: border-box;
+    /* padding: 1rem; */
+    /* padding-bottom: 1rem; */
+    /* display: flex; */
+    background: #C468CD;
+}
+
+.principal {
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+    padding: 1rem;
+    border-bottom: solid 2px #fff;
+}
+
+.controles {
+    display: flex;
+    /* font-size: 20px; */
+    font-weight: bold;
+}
+
+.icon {
+    color: #510090;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+input {
+    height: 35px;
+    border-radius: 15px;
+    border: solid 3px #510090;
+}
+
+#menu {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+#menu a {
+    display: block;
+    padding: 0.5rem;
+}
+
+#menu a:hover {
+    color: #ffffff;
+    padding-left: 2%;
+    /* transition: 2s; */
+    font-weight: bold;
+}
+
+#menu ul {
+    background-color: #C468CD;
+}
+
+#btn-mobile {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    #header {
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .principal {
+        border: none;
+    }
+    .pesquisa {
+        display: none;
+    }
+    .controles {
+        display: none;
+    }
+    #logo img {
+        height: 50px;
+    }
+    #contaMobile {
+        display: block;
+    }
+    #carrinhoMobile {
+        display: block;
+    }
+    #menu {
+        display: block;
+        position: absolute;
+        width: 100%;
+        top: 70px;
+        right: 0px;
+        /* color: #fff; */
+        background: #260429;
+        transition: 0.6s;
+        z-index: 1000;
+        height: 0px;
+        visibility: hidden;
+        overflow-y: hidden;
+    }
+    #nav.active #menu {
+        height: calc(100vh - 70px);
+        visibility: visible;
+        overflow-y: auto;
+    }
+    #menu a {
+        color: #fff;
+        padding: 1rem 0;
+        margin: 0 1rem;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+        width: 100%;
+    }
+    #btn-mobile {
+        display: flex;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        border: none;
+        background: none;
+        cursor: pointer;
+        gap: 0.5rem;
+    }
+    #hamburger {
+        border-top: 2px solid;
+        width: 20px;
+    }
+    #hamburger::after,
+    #hamburger::before {
+        content: '';
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: currentColor;
+        margin-top: 5px;
+        transition: 0.3s;
+        position: relative;
+    }
+    #nav.active #hamburger {
+        border-top-color: transparent;
+    }
+    #nav.active #hamburger::before {
+        transform: rotate(135deg);
+    }
+    #nav.active #hamburger::after {
+        transform: rotate(-135deg);
+        top: -7px;
+    }
+}
