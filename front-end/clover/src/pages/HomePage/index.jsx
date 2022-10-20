@@ -5,10 +5,12 @@ import Oferts from "./components/Oferts";
 import Slider from "./components/Slider";
 import CarroselCards from "../../components/CarroselCards";
 import Collab from "./components/Collab";
-
-import './style.css';
 import Comment from "./components/Comment";
 import CardProduto from "../../components/CardProduto";
+import Footer from "../../components/Footer";
+import RedesSociais from "../../components/RedesSociais";
+
+import './style.css';
 
 function HomePage() {
     return(
@@ -52,6 +54,12 @@ function HomePage() {
             <CarroselCards>
                 <Comment></Comment>
             </CarroselCards>
+
+            <div className="line-style"></div>
+
+            <RedesSociais></RedesSociais>
+
+            <Footer></Footer>
         </>
 
     );

@@ -1,5 +1,16 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+
+import CardProduto from '../../components/CardProduto';
+import RedesSociais from '../../components/RedesSociais';
+import Footer from "../../components/Footer";
+
+import mocaSpock from '../../assets/image/moca-spock.png'
+import mocoGamer from '../../assets/image/moco-gamer.png'
+
+import { FaBalanceScale } from "react-icons/fa";
+import { GiArcheryTarget } from "react-icons/gi";
+import { BsFillLightbulbFill } from "react-icons/bs";
+
 import './style.css';
 
 
@@ -7,14 +18,16 @@ function QuemSomos() {
   return (
     <>
       <main>
+
         <section class="quem-somos">
           <div class="img-qmSomos">
-            <img src="/images/moça-spock.png" alt="" />
+            <img src={mocaSpock} alt="" />
           </div>
           <div class="titulo-principal">
             <h1>Quem somos</h1>
           </div>
         </section>
+
         <section class="agradecimento">
           <div class="text-agradecimento">
             <h3 class="titulo-padrao1">Criado pro geek em você!</h3>
@@ -25,22 +38,14 @@ function QuemSomos() {
               A moda e os acessórios online que te espelham!</p>
           </div>
           <div class="img-agradecimento">
-            <img src="/images/wepik-photo-mode-2022722-115922 1.png" alt="" />
+            <img src={mocoGamer} alt="" />
           </div>
         </section>
-        <section class="identidade-visual">
-          <div class="container-card">
-            <div id="card" class="gradient-border">
-              <img src="/images/Rectangle101.png" alt="" />
-              <p class="texto1">Camiseta branca lisa - masculina </p>
-              <p><span class="valor-simulado">R$84,50</span>
-                <span class="valor-produto">R$79,90
-                </span>
-              </p>
-              <p class="opcao-parcela">ou 12x de R$8,10</p>
-            </div>
 
-          </div>
+        <section class="identidade-visual">
+
+          <CardProduto></CardProduto>
+
           <div class="text-ident-visual">
             <h3 class="titulo-padrao1">identidade visual</h3>
             <p class="texto1">
@@ -49,13 +54,14 @@ function QuemSomos() {
             </p>
           </div>
         </section>
+
         <section class="sobre-nos">
           <h3 class="titulo-padrao1"> Sobre nós</h3>
           <div class="container-sobre-card">
             <div class="sobre-card">
               <div class="sc-cabecalho scard-rosa"></div>
               <div class="sc-icon scard-rosa-icon">
-                <img src="/images/icon-missão.png" alt="" />
+                <GiArcheryTarget/>
               </div>
               <div class="sc-texto scard-rosa-icon">
                 <p>Missão</p>
@@ -72,7 +78,7 @@ function QuemSomos() {
             <div class="sobre-card">
               <div class="sc-cabecalho scard-verde"></div>
               <div class="sc-icon scard-verde-icon">
-                <ion-icon name="bulb-outline"></ion-icon>
+                <BsFillLightbulbFill/>
               </div>
               <div class="sc-texto scard-verde-icon">
                 <p>Visão</p>
@@ -89,7 +95,7 @@ function QuemSomos() {
             <div class="sobre-card">
               <div class="sc-cabecalho scard-azul"></div>
               <div class="sc-icon scard-azul-icon">
-                <img src="/images/icon-valores.png" alt="" />
+                <FaBalanceScale/>
               </div>
               <div class="sc-texto scard-azul-icon">
                 <p>Valores</p>
@@ -108,6 +114,7 @@ function QuemSomos() {
 
           </div>
         </section>
+
         <section class="nosso-time">
           <div class="container-time">
             <h3 class="titulo-padrao1">Nossa equipe</h3>
@@ -154,40 +161,12 @@ function QuemSomos() {
               <div class="grid-item"></div>
             </div>
           </div>
+        </section>
 
+        <RedesSociais></RedesSociais>
 
-        </section>
-        <section class="nossas-redes">
-          <div class="container-redes">
-            <div class="redes-icons scard-verde-icon">
-              <ion-icon name="logo-instagram"></ion-icon>
-              <div class="texto-redes">
-                <p class="texto-rosap">
-                  Siga nosso
-                </p>
-                <p class="texto-rosag">Instagram</p>
-              </div>
-            </div>
-            <div class="scard-verde-icon">
-              <ion-icon name="logo-facebook"></ion-icon>
-              <div class="texto-redes">
-                <p class="texto-rosap">
-                  Curta nosso
-                </p>
-                <p class="texto-rosag">Facebook</p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="redes-img">
-          <div class="grid-container-redes">
-            <img class="grid-item" src="/clover-web/images/maripose.jpg" alt="" />
-            <img class="grid-item" src="/clover-web/images/barbi.webp" alt="" />
-            <img class="grid-item" src="/clover-web/images/ronaldin.jfif" alt="" />
-            <img class="grid-item" src="/clover-web/images/picaxu.webp" alt="" />
-            <img class="grid-item" src="/clover-web/images/miranha.jpg" alt="" />
-          </div>
-        </section>
+        <Footer></Footer>
+
       </main>
     </>
   )

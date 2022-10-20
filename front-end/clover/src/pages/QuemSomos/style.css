@@ -29,8 +29,8 @@ body {
 .agradecimento {
     display: flex;
     justify-content: space-evenly;
-    background-image: url(/src/assets/image/Rectangle135.png);
     align-items: center;
+    margin: 2% 0 2% 0;
 }
 
 .text-agradecimento {
@@ -73,7 +73,7 @@ body {
 .identidade-visual {
     display: flex;
     justify-content: space-evenly;
-    background-image: url(/src/assets/image/Rectangle135.png);
+    /* background-image: url(/src/assets/image/Rectangle135.png); */
     align-items: center;
     margin-bottom: 10%;
 }
@@ -87,9 +87,9 @@ body {
     max-width: 40%;
 }
 
-#card img {
-    /* max-width: 100%; */
-}
+/* #card img {
+    max-width: 100%;
+} */
 
 #card {
     padding: 5%;
@@ -172,7 +172,6 @@ body {
     justify-content: center;
     display: flex;
     font-weight: bolder;
-
 }
 
 .scard-rosa {
@@ -198,7 +197,6 @@ body {
 }
 
 .sc-icon {
-    height: 4.5rem;
     padding: 10%;
     font-size: 4.5rem;
 }
@@ -229,51 +227,6 @@ body {
 .nosso-time {
     padding-bottom: 10%;
     border-bottom: 2px solid #F7A6FF;
-}
-
-.nossas-redes {
-    padding: 2%;
-}
-
-.container-redes {
-    max-width: 90%;
-    display: flex;
-    justify-content: space-around;
-}
-
-.redes-icon {
-    display: flex;
-}
-
-.redes-icon ion-icon {
-    width: 7%;
-    height: 10vh;
-}
-
-.texto-rosag {
-    color: #F7A6FF;
-    font-size: 24px;
-}
-
-.texto-rosap {
-    color: #F7A6FF;
-    font-size: 12px;
-}
-
-.texto-redes {
-    display: block;
-    padding: 5%;
-}
-
-.grid-container-redes {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-}
-
-.grid-container-redes img {
-    max-width: 100%;
-    height: 200px;
-
 }
 
 @media screen {}
