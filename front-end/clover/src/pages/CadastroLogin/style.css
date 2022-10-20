@@ -7,9 +7,9 @@
   box-sizing: border-box;
 }
 
-::selection{
+/* ::selection{
   background-color: #9E22D9;
-}
+} */
 
 body {
   margin: 0;
@@ -93,12 +93,12 @@ body {
 
 .switcher-cadastro {
   color: #fff;
-  margin-left: 70%;
+  margin-left: 65%;
 }
 
 .switcher-signup {
   color: #fff;
-  margin-right: 70%;
+  margin-right: 65%;
 }
 
 .underline {

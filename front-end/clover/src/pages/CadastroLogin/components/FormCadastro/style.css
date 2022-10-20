@@ -15,7 +15,7 @@ body {
   margin: 0;
   font-family: Roboto, -apple-system, "Helvetica Neue", "Segoe UI", Arial,
     sans-serif;
-  background-image: url("../../assets/image/fundo.png");
+  background-image: url("../../../../assets/image/fundo.png");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -93,12 +93,12 @@ body {
 
 .switcher-cadastro {
   color: #fff;
-  margin-left: 70%;
+  margin-left: 65%;
 }
 
 .switcher-signup {
   color: #fff;
-  margin-right: 70%;
+  margin-right: 65%;
 }
 
 .underline {

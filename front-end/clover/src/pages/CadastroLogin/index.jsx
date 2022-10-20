@@ -12,7 +12,7 @@ import telefoneIcon from '../../assets/image/celular.png'
 import passwordIcon from '../../assets/image/senha.png'
 import FormCadastro from "./components/FormCadastro/FormCadastro";
 import FormLogin from "./components/FormLogin/FormLogin";
-
+import Header from "../Header"
 function CadastroLogin() {
    
     // const [switchers, setSwitchers] = useState();
@@ -42,9 +42,10 @@ function CadastroLogin() {
     return (
 
         <>
+        <Header/>
             <section className="forms-section">
                 <div className="forms">
-
+                
                     <FormCadastro />
                     <FormLogin />
 
