@@ -136,7 +136,7 @@ function QuemSomos() {
             </div>
           </div>
         </section>
-        <RedesSociais></RedesSociais>
+        <RedesSociais/>
         <Footer></Footer>
       </main>
     </>

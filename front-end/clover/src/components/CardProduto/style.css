@@ -1,69 +1,84 @@
-.container-card{
-    max-width: 284px;
-    z-index: 900px  ;
-}
-.gradient-border img{
-    max-width: 100%;
-}
-.gradient-border {
-    padding: 5%;
-    border-radius: 25px;
-    max-width: 80%;
-}
-.gradient-border p{
-    color: white;
-}
-
-.gradient-border {
-    --borderWidth: 2px;
-    background-color:#000923 ;
-    position: relative;
-    border-radius: var(--borderWidth);
+.item {
+    width: 239.75px;
+    margin: 15px;
+    border-image-source: linear-gradient(to left, #35DAF0, #c42be6);
+    line-height: 1px;
+    text-align: left;
+    font-size: 50px;
+    color: #ffffff;
+    float: left;
+    border: double 5px transparent;
+    border-radius: 20px;
+    background-image: linear-gradient(#081538, #081538), radial-gradient(circle at top left, #35DAF0, #c42be6);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
 }
 
-.gradient-border:after {
-    content: '';
-    position: absolute;
-    top: calc(-1 * var(--borderWidth));
-    left: calc(-1 * var(--borderWidth));
-    height: calc(100% + var(--borderWidth) * 2);
-    width: calc(100% + var(--borderWidth) * 2);
-    background: linear-gradient(60deg, rgba(53, 218, 240, 1),
-    rgba(202, 28, 219, 1));
-    border-radius: calc(13 * var(--borderWidth));
-    z-index: -1;
-    animation: animatedgradient 3s ease alternate infinite;
-    background-size: 300% 300%;
-}
-  
-@keyframes animatedgradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+.item:hover {
+    background-image: linear-gradient(#3b3153, #3b3153), radial-gradient(circle at top left, #35DAF0, #c42be6);
 }
 
-.texto1{
-    color: white;
-    font-size: 20px;
+.img {
+    margin-top: 4%;
+    width: 91.5%;
+    border-radius: 15px;
+    margin-bottom: 2%;
 }
 
-.valor-simulado{
-    color: gray;
-}
-
-.valor-produto{
-    color: #F7A6FF;
-    font-weight: bold;
-    font-size: 24px;
-}
-
-.opcao-parcela{
+.texto {
     font-size: 16px;
-    font-weight: bold;
+    font-family: 'Montserrat Medium', sans-serif;
+    color: white;
+    line-height: 1.5rem;
+    text-align: left;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+.container-preco {
+    width: 100%;
+    display: flex;
+    margin-top: 2%;
+    justify-content: left;
+    flex-direction: column;
+    padding: 4%;
+}
+
+.preco {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3%;
+    line-height: 0.1rem;
+}
+
+.preco-vista {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    height: 1.2rem;
+}
+
+.preco-vista-riscado {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.0rem;
+    text-decoration: line-through;
+    color: #787676;
+    margin-right: 2%;
+}
+
+.preco-vista-sem-risco {
+    font-family: 'Montserrat Medium', sans-serif;
+    font-size: 1.2rem;
+    color: #F7A6FF;
+}
+
+.text-parcelas {
+    text-align: start;
+    font-family: 'Montserrat Medium', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 5.5%;
 }
