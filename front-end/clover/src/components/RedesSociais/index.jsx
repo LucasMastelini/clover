@@ -13,33 +13,33 @@ import './style.css';
 export default function RedesSociais() {
   return (
     <>
-      <section class="nossas-redes">
-        <div class="container-redes">
-          <div class="redes-icons">
+      <section className="nossas-redes">
+        <div className="container-redes">
+          <div className="redes-icons">
             {/* <ion-icon name="logo-instagram"></ion-icon> */}
             <AiFillInstagram/>
-            <div class="texto-redes">
-              <p class="texto-rosap">Siga nosso</p>
-              <p class="texto-rosag">Instagram</p>
+            <div className="texto-redes">
+              <p className="texto-rosap">Siga nosso</p>
+              <p className="texto-rosag">Instagram</p>
             </div>
           </div>
-          <div class="redes-icons">
+          <div className="redes-icons">
             {/* <ion-icon name="logo-facebook"></ion-icon> */}
             <FaFacebookSquare/>
-            <div class="texto-redes">
-              <p class="texto-rosap">Curta nosso</p>
-              <p class="texto-rosag">Facebook</p>
+            <div className="texto-redes">
+              <p className="texto-rosap">Curta nosso</p>
+              <p className="texto-rosag">Facebook</p>
             </div>
           </div>
         </div>
       </section>
-      <section class="redes-img">
-        <div class="grid-container-redes">
-          <img class="grid-item" src={instaOne} alt="" />
-          <img class="grid-item" src={instaTwo} alt="" />
-          <img class="grid-item" src={instaThree} alt=""/>
-          <img class="grid-item" src={instaFour} alt="" />
-          <img class="grid-item" src={instaFive} alt="" />
+      <section className="redes-img">
+        <div className="grid-container-redes">
+          <img className="grid-item" src={instaOne} alt="" />
+          <img className="grid-item" src={instaTwo} alt="" />
+          <img className="grid-item" src={instaThree} alt=""/>
+          <img className="grid-item" src={instaFour} alt="" />
+          <img className="grid-item" src={instaFive} alt="" />
         </div>
       </section>
     </>

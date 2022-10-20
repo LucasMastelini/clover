@@ -1,14 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
-}
-body {
-    background-color: black;
-    background-image: url(/src/assets/image/Rectangle135.png);
-    /* background-repeat: round; */
-}
 .quem-somos {
     display: flex;
     width: 100%;
@@ -34,7 +23,7 @@ body {
     color: #35DAF0;
     font-size: 36px;
     text-transform: uppercase;
-    margin-bottom: 10%;
+    margin: 0 0 5% 0;
 }
 .texto1 {
     color: white;
@@ -44,6 +33,7 @@ body {
     color: white;
     font-size: 12px;
     font-weight: 500;
+    text-align: center;
 }
 .valor-simulado {
     color: gray;
@@ -62,57 +52,17 @@ body {
     justify-content: space-evenly;
     /* background-image: url(/src/assets/image/Rectangle135.png); */
     align-items: center;
-    margin-bottom: 10%;
+    margin: 5% 0;
 }
 .text-ident-visual {
     max-width: 50%;
     justify-content: center;
 }
-.container-card {
-    max-width: 40%;
+.sobre-nos {
+    margin: 5% 0;
+    gap: 20px;
 }
-/* #card img {
-    max-width: 100%;
-} */
-#card {
-    padding: 5%;
-    border-radius: 25px;
-    max-width: 80%;
-}
-#card p {
-    color: white;
-}
-.gradient-border {
-    --borderWidth: 2px;
-    background-color: #000923;
-    position: relative;
-    border-radius: var(--borderWidth);
-}
-.gradient-border:after {
-    content: '';
-    position: absolute;
-    top: calc(-1 * var(--borderWidth));
-    left: calc(-1 * var(--borderWidth));
-    height: calc(100% + var(--borderWidth) * 2);
-    width: calc(100% + var(--borderWidth) * 2);
-    background: linear-gradient(60deg, rgba(53, 218, 240, 1),
-            rgba(202, 28, 219, 1));
-    border-radius: calc(13 * var(--borderWidth));
-    z-index: -1;
-    animation: animatedgradient 3s ease alternate infinite;
-    background-size: 300% 300%;
-}
-@keyframes animatedgradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
+
 .sobre-nos h3 {
     display: flex;
     justify-content: center;
@@ -121,6 +71,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-around;
+    margin: 0 5%;
 }
 .sobre-card {
     height: 300px;
@@ -167,9 +118,15 @@ body {
     padding: 2% 10%;
     justify-content: center;
 }
-.container-time h3 {
+.container-time {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-around;
+}
+.icon-photo {
+    width: 100px;
+    height: 100px;
 }
 .grid-container {
     display: grid;
@@ -183,7 +140,7 @@ body {
     border-radius: 50%;
 }
 .nosso-time {
-    padding-bottom: 10%;
-    border-bottom: 2px solid #F7A6FF;
+    margin: 5% 0;
+
 }
 @media screen {}
