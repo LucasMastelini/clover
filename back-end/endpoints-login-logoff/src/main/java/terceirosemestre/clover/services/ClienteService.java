@@ -16,12 +16,18 @@ import terceirosemestre.clover.domain.enums.TipoCliente;
 import terceirosemestre.clover.dto.*;
 import terceirosemestre.clover.repositories.ClienteRepository;
 import terceirosemestre.clover.repositories.EnderecoRepository;
+import terceirosemestre.clover.resources.utils.ListaObj;
+import terceirosemestre.clover.resources.utils.ListaObjOrdenada;
 import terceirosemestre.clover.services.exceptions.DataIntegrityException;
 import terceirosemestre.clover.services.exceptions.ObjectNotFoundException;
 
 import javax.transaction.Transactional;
-import java.util.List;
-import java.util.Optional;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class ClienteService {
@@ -146,4 +152,157 @@ public class ClienteService {
         }
         return false;
     }
+
+    public List<ClienteGerarArquivoDTO> listaClientesToArquivo() {
+       return repo.findAll().stream().map(x -> new ClienteGerarArquivoDTO(x)).collect(Collectors.toList());
+    }
+
+    public List<Endereco> listaEnderecoToArquivo(){
+        return enderecoRepository.findAll();
+    }
+
+
+    public boolean gerarArquivoCsv() {
+        List<ClienteGerarArquivoDTO> lista = listaClientesToArquivo();
+
+        for(int i = 0; i < lista.size() - 1; i++){
+            int menIndice = i;
+            for(int j = i + 1; j < lista.size(); j++){
+                if(lista.get(j).getNome().substring(0,1).toLowerCase().hashCode() < lista.get(menIndice).getNome().substring(0,1).toLowerCase().hashCode()){
+                    menIndice = j;
+                }
+            }
+            ClienteGerarArquivoDTO aux = lista.get(i);
+            lista.set(i, lista.get(menIndice));
+            lista.set(menIndice, aux);
+        }
+
+        List<Endereco> listaEnderecos = listaEnderecoToArquivo();
+
+        FileWriter arq = null;
+        Formatter saida = null;
+        String nomeArq = "arquivo.csv";
+
+        try {
+            arq = new FileWriter(nomeArq, StandardCharsets.ISO_8859_1);
+            saida = new Formatter(arq);
+        } catch (IOException erro) {
+            return false;
+        }
+
+        try {
+            Date data = new Date(System.currentTimeMillis());
+            SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
+            saida.format("%S;%S;%S;%S;%S\n", "id", "nome", "e-mail", "cpf/cnpj", "tipo");
+            int count = 0;
+            for (int i = 0; i < lista.size(); i++) {
+                ClienteGerarArquivoDTO p = lista.get(i);
+                String tipo = p.getTipo() == 1 ? "PESSOA_FISICA" : "PESSOA_JURIDICA";
+
+                saida.format("%d;%S;%s;%s;%S\n", p.getId(), p.getNome(), p.getEmail(), p.getCpfOuCnpj(), tipo);
+                count++;
+            }
+            saida.format("\n%d REGISTROS\n\n\n", count);
+
+
+            count = 0;
+            for (Endereco e : listaEnderecos) {
+                if(e.getComplemento() == null){
+                    e.setComplemento("N/A");
+                }
+                saida.format("%d;%S;%S;%S;%S;%S;%S;%S;%S\n", e.getId(), e.getBairro(), e.getCep(), e.getComplemento(), e.getLogradouro(), e.getNumero(), e.getCliente().getNome(), e.getCidade().getNome(), e.getCidade().getEstado().getNome());
+                count++;
+            }
+            saida.format("\n%d REGISTROS\n\n\n", count);
+            return true;
+
+        } catch (FormatterClosedException erro) {
+            return false;
+        } finally {
+            saida.close();
+            try {
+                arq.close();
+            } catch (IOException erro) {
+                return false;
+            }
+        }
+
+    }
+
+    public boolean gravarArquivoTxt() {
+        List<ClienteGerarArquivoDTO> lista = listaClientesToArquivo();
+        List<Endereco> listaEnderecos = listaEnderecoToArquivo();
+        ListaObj listaObj= new ListaObj(100);
+        for(Endereco e : listaEnderecos){
+            listaObj.adiciona(e);
+        }
+
+        for(int i = 0; i < lista.size() - 1; i++){
+            int menIndice = i;
+            for(int j = i + 1; j < lista.size(); j++){
+                if(lista.get(j).getNome().substring(0,1).toLowerCase().hashCode() < lista.get(menIndice).getNome().substring(0,1).toLowerCase().hashCode()){
+                    menIndice = j;
+                }
+            }
+            ClienteGerarArquivoDTO aux = lista.get(i);
+            lista.set(i, lista.get(menIndice));
+            lista.set(menIndice, aux);
+        }
+
+        FileWriter arq = null;
+        Formatter saida = null;
+        String nomeArq = "arquivo.txt";
+
+
+        try {
+            arq = new FileWriter(nomeArq, StandardCharsets.UTF_8);
+            saida = new Formatter(arq);
+        } catch (IOException erro) {
+            System.out.println("Erro ao abrir o arquivo");
+            System.exit(1);
+        }
+
+        try {
+            Date data = new Date(System.currentTimeMillis());
+            SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            String dataFormatada = formatador.format(data);
+
+            saida.format("00V1RELATORIOCLIENTES-%s\n", dataFormatada);
+            int count = 0;
+            for (int i = 0; i < lista.size(); i++) {
+                ClienteGerarArquivoDTO p = lista.get(i);
+                String tipo = p.getTipo() == 1 ? "PESSOA_FISICA" : "PESSOA_JURIDICA";
+
+                saida.format("02%06d%-40S%-40s%-15s%-15S\n", p.getId(), p.getNome(), p.getEmail(), p.getCpfOuCnpj(), tipo);
+                count++;
+            }
+            saida.format("01%08d\n\n\n", count);
+
+            saida.format("00V1RELATORIOENDERECOSCLIENTES-%s\n", dataFormatada);
+
+            count = 0;
+            for (Endereco e : listaEnderecos) {
+                if(e.getComplemento() == null){
+                    e.setComplemento("N/A");
+                }
+                saida.format("03%06d%-25S%-10s%-20S%-40S%-8S%-40S%-20S%-5S\n", e.getId(), e.getBairro(), e.getCep(), e.getComplemento(), e.getLogradouro(), e.getNumero(), e.getCliente().getNome(), e.getCidade().getNome(), e.getCidade().getEstado().getNome());
+                count++;
+            }
+            saida.format("01%08d\n\n\n", count);
+            return true;
+
+        } catch (FormatterClosedException erro) {
+            return false;
+        } finally {
+            saida.close();
+            try {
+                arq.close();
+            } catch (IOException erro) {
+                return false;
+            }
+        }
+    }
+
+
 }
