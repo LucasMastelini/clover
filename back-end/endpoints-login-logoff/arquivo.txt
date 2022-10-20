@@ -1,0 +1,27 @@
+00V1RELATORIOCLIENTES-20/10/2022 15:08:17
+02000006AMANDA NUNES                            guilhermepereira@gmail.com              47193770845    PESSOA_FISICA  
+02000007BRENDA                                  brenda@gmail.com                        47193770845    PESSOA_FISICA  
+02000010CLAUDIO                                 luan@gmail.com                          47193770845    PESSOA_FISICA  
+02000013DANIEL AMARAL                           danielamaral@gmail.com                  47193770845    PESSOA_FISICA  
+02000005EMERSON NASCIMENTO                      matheusnascimento@gmail.com             47193770845    PESSOA_FISICA  
+02000008FLAVIA MARTINS                          flaviamartins@gmail.com                 47193770845    PESSOA_FISICA  
+02000002GUSTAVO LEAL                            gustavoleal@gmail.com                   47193770845    PESSOA_FISICA  
+02000003LUCAS MASTELINI                         lucasmastelini@gmail.com                43014395870    PESSOA_FISICA  
+02000001MARIA SILVA                             igormartins337@gmail.com                28765101030    PESSOA_FISICA  
+02000009NATHALIA ALVES                          luciana@gmail.com                       47193770845    PESSOA_JURIDICA
+02000014PAULO SERGIO                            paulosergio@gmail.com                   47193770845    PESSOA_FISICA  
+02000012RONALDO TESOTO                          lararegina@gmail.com                    47193770845    PESSOA_FISICA  
+02000011WELLINGTON                              Matheus Torok@gmail.com                 47193770845    PESSOA_FISICA  
+02000004ZINEDINE ZIDANE                         fabiogomes@gmail.com                    47193770845    PESSOA_FISICA  
+0100000014
+
+
+00V1RELATORIOENDERECOSCLIENTES-20/10/2022 15:08:17
+03000001JARDIM                   3854578   APTO 303            RUA FLORES                              300     MARIA SILVA                             UBERLÂNDIA          MINAS GERAIS
+03000002JARDIM PINHEIROS         09854690  CASA                PAU BRASIL                              221     MARIA SILVA                             SÃO PAULO           SÃO PAULO
+03000003GOPOÚVA                  07040190  N/A                 RUA CABO SANSÃO ALVES DOS SANTOS        2555    LUCAS MASTELINI                         SÃO PAULO           SÃO PAULO
+03000004PARQUE DAS FIGUEIRAS     14065695  N/A                 RUA ARTHUR FRACCADOSSO                  457     ZINEDINE ZIDANE                         SÃO PAULO           SÃO PAULO
+03000005JARDIM BELA VISTA        16902210  N/A                 RUA EDSON FERNANDO DO NASCIMENTO        98      EMERSON NASCIMENTO                      UBERLÂNDIA          MINAS GERAIS
+0100000005
+
+

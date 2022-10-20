@@ -43,7 +43,7 @@ a:hover {
     align-items: center;
     justify-content: space-between;
     display: flex;
-    padding: 1rem;
+    padding: 1rem 4rem;
     border-bottom: solid 2px #fff;
 }
 
