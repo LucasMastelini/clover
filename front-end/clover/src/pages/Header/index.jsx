@@ -2,11 +2,6 @@ import React, { Profiler } from "react";
 
 import "./style.css";
 
-// import logo from '../../../../assets/image/logo.png';
-// import logo from '../../../../icons-react/scr/icons/ProfileFilled';
-
-// import { BsCart2 } from "react-icons/ai";
-// import { IoPersonSharp } from "react-icons/io";
 import { NavLink } from "react-router-dom";
 
 import cloverLogo from "../../assets/image/logo.png";
@@ -15,8 +10,6 @@ import carrinho from "../../assets/image/carrinho.png";
 import lupa from "../../assets/image/lupa.png";
 
 import { useNavigate, useLocation } from "react-router-dom";
-
-// import { BsPerson } from "react-icons/ai";
 
 function Header() {
   const navegar = useNavigate();
