@@ -41,7 +41,7 @@ a:hover {
 
 .principal {
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     display: flex;
     padding: 1rem;
     border-bottom: solid 2px #fff;
@@ -49,20 +49,28 @@ a:hover {
 
 .controles {
     display: flex;
-    /* font-size: 20px; */
+    width: 20%;
+    align-items: center;
+    justify-content: space-between;
     font-weight: bold;
 }
 
 .icon {
     color: #510090;
-    font-size: 1.5em;
+    width: 1rem;
+    margin: 0 5px;
+    /* height: 10vh; */
     text-align: center;
 }
 
 input {
-    height: 35px;
+    height: 25px;
     border-radius: 15px;
-    border: solid 3px #510090;
+    border: solid 1px #510090;
+}
+.input-icons{
+    align-items: center;
+    display: flex;
 }
 
 #menu {

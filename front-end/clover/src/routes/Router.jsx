@@ -4,14 +4,14 @@ import HomePage from '../pages/HomePage'
 import QuemSomos from '../pages/QuemSomos'
 import CadastroLogin from '../pages/CadastroLogin'
 
-export default function Router() {
+export default function Router() { 
   return (
-    <BrowserRouter>
+    // <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage/>}/>
         <Route path="/quem-somos" element={<QuemSomos/>}/>
         <Route path="/cadastro-login" element={<CadastroLogin/>}/>
       </Routes>
-    </BrowserRouter>
+    // </BrowserRouter>
   )
 }
