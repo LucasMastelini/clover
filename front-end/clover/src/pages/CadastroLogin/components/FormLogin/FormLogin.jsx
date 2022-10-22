@@ -35,22 +35,23 @@ function FormLogin(props) {
             values
         )
             .then(res => {
-                actions.resetForm();
+                // actions.resetForm();
+                // console.log(res)
                 console.log('SUBMIT', values)
-                alert(`Bem vindo ${values.nome}`)
+                alert(`Bem Vindo ${res.data.nome }!`)
+                actions.resetForm();
             }).catch(err => {
                 console.log(err)
-                console.log(values)
+                // console.log(values)
                 if(err.response.status === 403){
                 alert("Email ou Senha incorretos")}
-                actions.resetForm();
             })
             
     }
     
     return (
         <>
-            <div className="form-wrapper is-active">
+            <div className="form-wrapper">
                 <button on type="button" className="switcher switcher-signup"
                 >
                     Entrar

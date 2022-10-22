@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import { Formik, Field, Form } from "formik";
 // import schema from "../../schema";
 
+import './style.css'
 import userIcon from "../../assets/image/user.png";
 import emailIcon from "../../assets/image/email.png";
 import telefoneIcon from "../../assets/image/celular.png";
@@ -60,10 +61,12 @@ function CadastroLogin() {
                 
                     <FormCadastro />
                     <FormLogin />
+                    
 
 
                 </div>
             </section>
+            <Footer/>
         </>
     );
 
