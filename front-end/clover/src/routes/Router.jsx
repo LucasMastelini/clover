@@ -4,7 +4,7 @@ import HomePage from '../pages/HomePage'
 import QuemSomos from '../pages/QuemSomos'
 import CadastroLogin from '../pages/CadastroLogin'
 
-export default function Router() { 
+export default function Router() {
   return (
     // <BrowserRouter>
       <Routes>
