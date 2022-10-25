@@ -1,4 +1,4 @@
-import React, { Profiler } from "react";
+import React from "react";
 
 import "./style.css";
 
@@ -9,7 +9,7 @@ import iconPerson from "../../assets/image/person.png";
 import carrinho from "../../assets/image/carrinho.png";
 import lupa from "../../assets/image/lupa.png";
 
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
   const navegar = useNavigate();
@@ -24,7 +24,7 @@ function Header() {
           </div>
         </div>
         <div>
-          <NavLink id="logo" to="/" className={logo}>
+          <NavLink id="logo" to="/" className={cloverLogo}>
             <img className="logo" src={cloverLogo} alt="" />
           </NavLink>
         </div>

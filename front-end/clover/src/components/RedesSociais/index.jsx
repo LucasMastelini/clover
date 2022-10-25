@@ -16,7 +16,6 @@ export default function RedesSociais() {
       <section className="nossas-redes">
         <div className="container-redes">
           <div className="redes-icons">
-            {/* <ion-icon name="logo-instagram"></ion-icon> */}
             <AiFillInstagram/>
             <div className="texto-redes">
               <p className="texto-rosap">Siga nosso</p>
@@ -24,7 +23,6 @@ export default function RedesSociais() {
             </div>
           </div>
           <div className="redes-icons">
-            {/* <ion-icon name="logo-facebook"></ion-icon> */}
             <FaFacebookSquare/>
             <div className="texto-redes">
               <p className="texto-rosap">Curta nosso</p>
