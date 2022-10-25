@@ -11,24 +11,13 @@ import './style.css'
 export default function Collab() {
   return (
     <>
-      <button className="item-collabs">
-        <img src={imgDisney} alt="" />
-      </button>
-      <button className="item-collabs">
-        <img src={imgMarvel} alt="" />
-      </button>
-      <button className="item-collabs">
-        <img src={imgStranger} alt="" />
-      </button>
-      <button className="item-collabs">
-        <img src={imgDC} alt="" />
-      </button>
-      <button className="item-collabs">
-        <img src={imgStarWars} alt="" />
-      </button>
-      <button className="item-collabs">
-        <img src={imgDisney} alt="" />
-      </button>
+        {
+          [imgDisney, imgMarvel, imgStranger, imgDC, imgStarWars].map((item)=>(
+            <button className="item-collabs" key={item}>
+              <img src={item} alt="" />
+            </button>
+          ))
+        }
     </>
   );
 }
