@@ -10,21 +10,28 @@ import carrinho from "../../assets/image/carrinho.png";
 import lupa from "../../assets/image/lupa.png";
 
 import { useNavigate, useLocation } from "react-router-dom";
+import MinhaConta from "./components/minhaConta/MinhaConta";
 
 function Header() {
   const navegar = useNavigate();
+
+  function abaCadastroLogin() {
+    return (
+      navegar("/cadastro-login")
+    );
+  };
 
   return (
     <header id="header" className="header">
       <div className="principal">
         <div className="pesquisa">
           <div className="input-icons">
-            <input className="input-field" type="search" />
+            <input className="input-field input" type="search" />
             <img className="icon" src={lupa} alt="" />
           </div>
         </div>
         <div>
-          <NavLink id="logo" to="/" className={logo}>
+          <NavLink id="logo" to="/" className="logo">
             <img className="logo" src={cloverLogo} alt="" />
           </NavLink>
         </div>
@@ -33,12 +40,10 @@ function Header() {
             <span>
               <img className="icon" src={iconPerson} alt="" />
             </span>
-            <span onClick={() => navegar("/cadastro-login")} className="text">
-              Minha conta
-            </span>
+           <MinhaConta></MinhaConta>
           </div>
           <div>
-            <span onClick={() => navegar("/cadastro-login")}>
+            <span onClick={abaCadastroLogin}>
               <img className="icon" src={carrinho} alt="" />
             </span>
           </div>
@@ -65,7 +70,7 @@ function Header() {
               <span className="text">Minha conta</span>
             </a>
           </li>
-          <li id="carrinhoMobile" className="list">
+          <li id="carrinhoMobile" className="list carrinhoMobile">
             <NavLink href="">
               <span>
                 <img className="icon" src={carrinho} alt="" />

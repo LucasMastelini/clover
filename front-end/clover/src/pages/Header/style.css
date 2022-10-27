@@ -62,7 +62,11 @@ a:hover {
     /* height: 10vh; */
     text-align: center;
 }
-
+.input {
+    height: 25px;
+    border-radius: 15px;
+    border: solid 1px #510090;
+}
 .input-fild {
     height: 25px;
     border-radius: 15px;
@@ -118,10 +122,10 @@ a:hover {
     .logo img {
         height: 50px;
     }
-    #contaMobile {
+    .contaMobile {
         display: block;
     }
-    #carrinhoMobile {
+    .carrinhoMobile {
         display: block;
     }
     .menu {
