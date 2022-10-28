@@ -1,0 +1,28 @@
+#descricaoTamanhos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    width: 90%;
+    font-family: 'Montserrat Medium', sans-serif;
+    font-size: 16px;
+    margin-bottom: 4%;
+}
+
+#containerColunasTamanho {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 55%;
+}
+
+.colunas {
+    width: 45%;
+    margin-left: 2%;
+}
+
+.colunas h3 {
+    color: yellow;
+}
