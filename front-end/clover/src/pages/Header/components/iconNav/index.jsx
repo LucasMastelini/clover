@@ -1,8 +1,10 @@
 import React from "react";
 
-function IconNav () {
-    return (
-        <>
-        </>
-    )
+import "./style.css";
+
+function IconNav() {
+
+  return <div className="texto">lista</div>;
 }
+
+export default IconNav
