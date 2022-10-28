@@ -1,14 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, {useState} from "react";
 import api from "../../../../Api/api";
-// import cadastro from "../../../../Api/cadastro";
-// import listar from "../../../../Api/listarUsuarios";
 import { Formik, Field, Form } from 'formik';
-import schemaLogin from '../../../../schemaLogin';
 
-
-import userIcon from '../../../../assets/image/user.png'
 import emailIcon from '../../../../assets/image/email.png'
-import telefoneIcon from '../../../../assets/image/celular.png'
 import passwordIcon from '../../../../assets/image/senha.png'
 
 function FormLogin(props) {
@@ -28,6 +22,7 @@ function FormLogin(props) {
     //     )
     
     // }, [])
+    const [response, setResponse] = useState([]);
     
     function onSubmit(values, actions) {
 
@@ -38,8 +33,11 @@ function FormLogin(props) {
                 // actions.resetForm();
                 // console.log(res)
                 console.log('SUBMIT', values)
-                alert(`Bem Vindo ${res.data.nome }!`)
+                setResponse(values);
+                alert(`Bem Vindo ${res.data.nome}!`)
+                localStorage.setItem('responseKey', JSON.stringify(response))
                 actions.resetForm();
+                console.log(localStorage.getItem())
             }).catch(err => {
                 console.log(err)
                 // console.log(values)
@@ -51,7 +49,7 @@ function FormLogin(props) {
     
     return (
         <>
-            <div className="form-wrapper">
+            <div className="form-wrapper is-active">
                 <button on type="button" className="switcher switcher-signup"
                 >
                     Entrar

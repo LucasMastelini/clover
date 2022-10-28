@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import api from "../../../../Api/api";
-// import cadastro from "../../../../Api/cadastro";
-// import listar from "../../../../Api/listarUsuarios";
 import { Formik, Field, Form } from 'formik';
 import schema from '../../../../schema';
 
@@ -30,7 +28,7 @@ function FormCadastro() {
     
     return (
         <>
-            <div className="form-wrapper is-active">
+            <div className="form-wrapper ">
                 <button type="button" className="switcher switcher-cadastro"
                 >
                     Cadastre-se
