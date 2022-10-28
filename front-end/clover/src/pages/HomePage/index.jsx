@@ -11,59 +11,59 @@ import RedesSociais from "../../components/RedesSociais";
 import Header from "../Header";
 import Footer from "../../components/Footer";
 
-import './style.css';
+import "./style.css";
 
 function HomePage() {
-    return(
+  return (
+    <>
+      <Header></Header>
+      <Slider></Slider>
 
-        <>
-            <Header></Header>
-            <Slider></Slider>
+      <div className="line-style"></div>
 
-            <div className="line-style"></div>
+      <Oferts></Oferts>
 
-            <Oferts></Oferts>
+      <div className="line-style"></div>
 
-            <div className="line-style"></div>
+      <h2 className="title-home">NOSSAS COLEÇÕES</h2>
 
-            <h2 className="title-home">NOSSAS COLEÇÕES</h2>
+      <Colection></Colection>
 
-            <Colection></Colection>
+      <div className="line-style"></div>
 
-            <div className="line-style"></div>
+      <h2 className="title-home">NOSSOS PARCEIROS</h2>
 
-            <h2 className="title-home">NOSSOS PARCEIROS</h2>
+      <CarroselCards>
+        <Collab></Collab>
+      </CarroselCards>
 
-            <CarroselCards >  
-                <Collab></Collab>
-            </CarroselCards>
+      <h2 className="title-home">LANÇAMENTOS PARA O CLOVER LOVERS</h2>
 
-            <h2 className="title-home">LANÇAMENTOS PARA O CLOVER LOVERS</h2>
+      <CarroselCards>
+        <CardProduto></CardProduto>
+        <CardProduto></CardProduto>
+        <CardProduto></CardProduto>
+        <CardProduto></CardProduto>
+        <CardProduto></CardProduto>
+        <CardProduto></CardProduto>
+      </CarroselCards>
 
-            <CarroselCards>
-                <CardProduto></CardProduto>
-                <CardProduto></CardProduto>
-                <CardProduto></CardProduto>
-                <CardProduto></CardProduto>
-                <CardProduto></CardProduto>
-                <CardProduto></CardProduto>
-            </CarroselCards>
+      <div className="line-style"></div>
 
-            <div className="line-style"></div>
+      <h2 className="title-home">
+        VEJA O QUE OS NOSSOS CLOVER LOVER FALAM DA NOSSA LOJA
+      </h2>
 
-            <h2 className="title-home">VEJA O QUE OS NOSSOS CLOVER LOVER FALAM DA NOSSA LOJA</h2>
+      <CarroselCards>
+        <Comment />
+      </CarroselCards>
 
-            <CarroselCards>
-                <Comment></Comment>
-            </CarroselCards>
+      <div className="line-style"></div>
 
-            <div className="line-style"></div>
-
-            <RedesSociais/>
-            <Footer/>
-        </>
-
-    );
+      <RedesSociais />
+      <Footer />
+    </>
+  );
 }
 
 export default HomePage;

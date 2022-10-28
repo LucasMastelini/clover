@@ -3,6 +3,7 @@
 footer {
     width: 100%;
     background-color: #C468CD;
+    font-weight: 600;
 }
 
 .container-footer {
@@ -83,6 +84,7 @@ li {
     padding: 0 0 0 16px;
     font-size: 16px;
     font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
 }
 
 .news-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -102,4 +104,5 @@ li {
     width: 30%;
     border: none;
     background-color: #6CE1F0;
+    font-weight: 600;
 }

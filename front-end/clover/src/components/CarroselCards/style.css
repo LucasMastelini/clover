@@ -15,7 +15,13 @@
     justify-content: space-between;
     overflow: hidden;
     z-index: 1000px;
+    scroll-behavior: smooth;
+    overflow-x: auto;
     gap: 30px;
+}
+
+.items-collabs::-webkit-scrollbar {
+    display: none;
 }
 
 .arrow-slides-middle {
