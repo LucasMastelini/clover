@@ -11,15 +11,15 @@ export default function ContainerCompra() {
 
     return (
         <>
-            <section id="produto">
+            <section className="produto">
                 <div className="slides">
                     <ContainerSlider images={productImages} />
                 </div>
-                <div id="informacoes">
-                    <h1 id="titulo">Camiseta Gonew Dry Touch Fast Masculina - Branco</h1>
-                    <div id="avaliacaoVendidos">
-                        <div id="avaliacao">
-                            <h3 id="avaliacaoTitulo">Avaliação</h3>
+                <div className="informacoes">
+                    <h1 className="titulo">Camiseta Gonew Dry Touch Fast Masculina - Branco</h1>
+                    <div className="avaliacao-vendidos">
+                        <div className="avaliacao">
+                            <h3 className="avaliacao-titulo">Avaliação</h3>
                             <div className="rating">
                                 <input type="radio" name="star" id="star1" /><label htmlFor="star1">
                                 </label>
@@ -33,49 +33,49 @@ export default function ContainerCompra() {
                                 </label>
                             </div>
                         </div>
-                        <h3 id="vendidos">Vendidos: +999999</h3>
+                        <h3 className="vendidos">Vendidos: +999999</h3>
                     </div>
-                    <div className="calculoFrete">
+                    <div className="calculo-frete">
                     <BsTruck />
-                        <h4 className="tituloCalcularFrete">calcular o frete</h4>
-                        <div id="calcular">
-                            <input className="inputCalcular" placeholder="Insira o CEP" />
-                            <button className="buttonCalcular">Calcular</button>
+                        <h4 className="titulo-calcular-frete">calcular o frete</h4>
+                        <div className="calcular">
+                            <input className="input-calcular" placeholder="Insira o CEP" />
+                            <button className="button-calcular">Calcular</button>
                         </div>
                     </div>
-                    <div id="cores">
+                    <div className="cores">
                         <h3>Selecione a cor</h3>
-                        <div id="opcoesCores">
-                            <div id="cor1">
+                        <div className="opcoesCores">
+                            <div className="cor1">
                             </div>
-                            <div id="cor2">
+                            <div className="cor2">
                             </div>
-                            <div id="cor3">
+                            <div className="cor3">
                             </div>
                         </div>
                     </div>
-                    <div id="tamanhos">
+                    <div className="tamanhos">
                         <h3>Selecione o tamanho</h3>
-                        <div id="opcoesTamanhos">
-                            <div id="tamanhoP">
+                        <div className="opcoesTamanhos">
+                            <div className="tamanhoP">
                                 P
                             </div>
-                            <div id="tamanhoM">
+                            <div className="tamanhoM">
                                 M
                             </div>
-                            <div id="tamanhoG">
+                            <div className="tamanhoG">
                                 G
                             </div>
                         </div>
                     </div>
-                    <div id="preco">
-                        <div id="precoVista">
-                            <h1 id="precoVistaRiscado">R$6000</h1>
-                            <h1 id="precoVistaSemRisco">R$9000</h1>
+                    <div className="preco">
+                        <div className="preco-vista">
+                            <h1 className="preco-vista-riscado">R$6000</h1>
+                            <h1 className="preco-vista-sem-risco">R$9000</h1>
                         </div>
-                        <h3 id="parcelas">ou 12x de R$8,10</h3>
+                        <h3 className="parcelas">ou 12x de R$8,10</h3>
                     </div>
-                    <button id="comprar">Comprar</button>
+                    <button className="comprar">Comprar</button>
                 </div>
             </section>
         </>
