@@ -1,4 +1,4 @@
-import React, { Profiler } from "react";
+import React from "react";
 
 import "./style.css";
 
@@ -9,13 +9,13 @@ import iconPerson from "../../assets/image/person.png";
 import carrinho from "../../assets/image/carrinho.png";
 import lupa from "../../assets/image/lupa.png";
 
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
   const navegar = useNavigate();
 
   return (
-    <header id="header">
+    <header id="header" className="header">
       <div className="principal">
         <div className="pesquisa">
           <div className="input-icons">
@@ -24,7 +24,7 @@ function Header() {
           </div>
         </div>
         <div>
-          <NavLink id="logo" to="/">
+          <NavLink id="logo" to="/" className={cloverLogo}>
             <img className="logo" src={cloverLogo} alt="" />
           </NavLink>
         </div>
@@ -48,15 +48,16 @@ function Header() {
         <button
           aria-label="Abrir Menu"
           id="btn-mobile"
+          className="btn-mobile"
           aria-haspopup="true"
           aria-controls="menu"
           aria-expanded="false"
         >
           Menu
-          <span id="hamburger"></span>
+          <span id="hamburger" className="hambirger"></span>
         </button>
-        <ul id="menu" role="menu">
-          <li id="contaMobile" className="list active">
+        <ul id="menu" role="menu" className="menu">
+          <li id="contaMobile" className="list active contaMobile">
             <span>
               <img className="icon" src={iconPerson} alt="" />
             </span>

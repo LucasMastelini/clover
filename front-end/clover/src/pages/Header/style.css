@@ -19,19 +19,19 @@ a:hover {
     background: rgba(0, 0, 0, 0.05);
 }
 
-#contaMobile {
+.contaMobile {
     display: none;
 }
 
-#carrinhoMobile {
+.carrinhoMobile {
     display: none;
 }
 
-#logo img {
+.logo img {
     height: 60px;
 }
 
-#header {
+.header {
     box-sizing: border-box;
     /* padding: 1rem; */
     /* padding-bottom: 1rem; */
@@ -63,7 +63,7 @@ a:hover {
     text-align: center;
 }
 
-.input-fild {
+.input-field {
     height: 25px;
     border-radius: 15px;
     border: solid 1px #510090;
@@ -73,35 +73,35 @@ a:hover {
     display: flex;
 }
 
-#menu {
+.menu {
     display: flex;
     list-style: none;
     gap: 0.5rem;
     padding: 1rem;
 }
 
-#menu a {
+.menu a {
     display: block;
     padding: 0.5rem;
 }
 
-#menu a:hover {
+.menu a:hover {
     color: #ffffff;
     padding-left: 2%;
     /* transition: 2s; */
     font-weight: bold;
 }
 
-#menu ul {
+.menu ul {
     background-color: #C468CD;
 }
 
-#btn-mobile {
+.btn-mobile {
     display: none;
 }
 
 @media (max-width: 600px) {
-    #header {
+    .header {
         height: 70px;
         display: flex;
         justify-content: space-between;
@@ -115,7 +115,7 @@ a:hover {
     .controles {
         display: none;
     }
-    #logo img {
+    .logo img {
         height: 50px;
     }
     #contaMobile {
@@ -124,7 +124,7 @@ a:hover {
     #carrinhoMobile {
         display: block;
     }
-    #menu {
+    .menu {
         display: block;
         position: absolute;
         width: 100%;
@@ -138,19 +138,19 @@ a:hover {
         visibility: hidden;
         overflow-y: hidden;
     }
-    #nav.active #menu {
+    .navegation.active #menu {
         height: calc(100vh - 70px);
         visibility: visible;
         overflow-y: auto;
     }
-    #menu a {
+    .menu a {
         color: #fff;
         padding: 1rem 0;
         margin: 0 1rem;
         border-bottom: 2px solid rgba(0, 0, 0, 0.05);
         width: 100%;
     }
-    #btn-mobile {
+    .btn-mobile {
         display: flex;
         padding: 0.5rem 1rem;
         font-size: 1rem;
@@ -159,12 +159,12 @@ a:hover {
         cursor: pointer;
         gap: 0.5rem;
     }
-    #hamburger {
+    .hamburger {
         border-top: 2px solid;
         width: 20px;
     }
-    #hamburger::after,
-    #hamburger::before {
+    .hamburger::after,
+    .hamburger::before {
         content: '';
         display: block;
         width: 20px;
@@ -174,13 +174,13 @@ a:hover {
         transition: 0.3s;
         position: relative;
     }
-    #nav.active #hamburger {
+    .navegation.active #hamburger {
         border-top-color: transparent;
     }
-    #nav.active #hamburger::before {
+    .navegation.active #hamburger::before {
         transform: rotate(135deg);
     }
-    #nav.active #hamburger::after {
+    .navegation.active #hamburger::after {
         transform: rotate(-135deg);
         top: -7px;
     }

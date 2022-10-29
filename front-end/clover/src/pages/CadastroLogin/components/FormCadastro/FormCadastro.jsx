@@ -10,27 +10,27 @@ import emailIcon from '../../../../assets/image/email.png'
 import telefoneIcon from '../../../../assets/image/celular.png'
 import passwordIcon from '../../../../assets/image/senha.png'
 
+
 function FormCadastro() {
     function onSubmit(values, actions) {
 
         api.post('/clientes/cadastro',
-            values
-        )
+            values)
             .then(res => {
-                actions.resetForm();
                 console.log('SUBMIT', values)
-                alert(`Email Cadastrado`)
+                console.log(res)
+                alert(res.data.nome `Cadastrado efetuado com sucesso `)
+                actions.resetForm();
             }).catch(err => {
                 // console.log(err.response)
                 alert(err.response.data.msg)
-                actions.resetForm();
             })
     }
 
     
     return (
         <>
-            <div className="form-wrapper ">
+            <div className="form-wrapper is-active">
                 <button type="button" className="switcher switcher-cadastro"
                 >
                     Cadastre-se
@@ -52,7 +52,7 @@ function FormCadastro() {
                             <fieldset>
                                 <div className="input-block">
                                     {/* <!- <Label>Nome Completo</Label>  */}
-                                    <i className="icon">
+                                    <i>
                                         <img src={userIcon} alt="" />
                                     </i>
                                     <Field name="nome" type="text" placeholder="Nome completo" required/>
