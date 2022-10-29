@@ -1,11 +1,11 @@
-body,
+/* body,
 html {
     background-color: #000923;
     display: flex;
     align-items: center;
     flex-direction: column;
     width: 100%;
-}
+} */
 
 @font-face {
     font-family: 'Montserrat';
