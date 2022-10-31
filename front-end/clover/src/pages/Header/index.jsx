@@ -12,6 +12,7 @@ import lupa from "../../assets/image/lupa.png";
 import IconNav from "./components/iconNav";
 import MinhaConta from "./components/minhaConta/MinhaConta";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
   const itens = [

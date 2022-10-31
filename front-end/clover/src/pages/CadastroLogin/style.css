@@ -18,6 +18,7 @@ body {
   background-image: url("../../assets/image/fundo.png");
   background-size: cover;
   background-repeat: no-repeat;
+  box-sizing: border-box;
 }
 
 .forms-section {
@@ -38,7 +39,7 @@ body {
   display: flex;
   align-items: flex-start;
   margin-top: 1%;
-  margin-left: 5%;
+  margin-right: 4%;
 
 }
 
@@ -93,12 +94,12 @@ body {
 
 .switcher-cadastro {
   color: #fff;
-  margin-left: 65%;
+  margin-left: 69%;
 }
 
 .switcher-signup {
   color: #fff;
-  margin-right: 65%;
+  margin-right: 60%;
 }
 
 .underline {
@@ -203,7 +204,7 @@ body {
 
 .form-signup {
   animation: hideSignup 1s ease-out forwards;
-  margin-right: 10rem;
+  margin-right: 5rem;
 }
 
 .form-wrapper.is-active .form-signup {
