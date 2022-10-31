@@ -1,15 +1,17 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import HomePage from '../pages/HomePage'
-import QuemSomos from '../pages/QuemSomos'
-import CadastroLogin from '../pages/CadastroLogin'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "../pages/HomePage";
+import QuemSomos from "../pages/QuemSomos";
+import CadastroLogin from "../pages/CadastroLogin";
+// import ResumoPedidos from "../pages/ResumoPedidos";
 
 export default function Router() {
   return (
-      <Routes>
-        <Route path="/" element={<HomePage/>}/>
-        <Route path="/quem-somos" element={<QuemSomos/>}/>
-        <Route path="/cadastro-login" element={<CadastroLogin/>}/>
-      </Routes>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/quem-somos" element={<QuemSomos />} />
+      <Route path="/cadastro-login" element={<CadastroLogin />} />
+      {/* <Route path="/resumo-pedidos/:produtos" element={<ResumoPedidos />} /> */}
+    </Routes>
   );
-};
+}

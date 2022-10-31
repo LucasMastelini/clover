@@ -11,15 +11,46 @@ import lupa from "../../assets/image/lupa.png";
 
 import IconNav from "./components/iconNav";
 import MinhaConta from "./components/minhaConta/MinhaConta";
+import { useEffect } from "react";
 
 function Header() {
+  const itens = [
+    {
+      id: 1,
+      titulo: "Camiseta",
+      valor: 79.99,
+      descricao: "Uma camiseta branca lisa",
+    },
+    {
+      id: 2,
+      titulo: "Calça Jeans preta",
+      valor: 65.0,
+      descricao: "Deans colado",
+    },
+    {
+      id: 3,
+      titulo: "Air Nex",
+      valor: -99.0,
+      descricao: "Tenis mike original",
+    },
+  ];
+
   const [abrirLista, setAbrirLista] = useState(false);
+  const [itensCarrinho, setItensCarrinho] = useState();
+
+  useEffect(() => {
+    setItensCarrinho(itens);
+  }, [itensCarrinho]);
 
   const navegar = useNavigate();
 
   function abaCadastroLogin() {
     return navegar("/cadastro-login");
   }
+
+  // function abaResumoPedidos(produtos) {
+  //   return navegar(`/resumo-pedidos/${produtos}`);
+  // }
 
   function carregarLista() {
     setAbrirLista(true);
@@ -40,24 +71,25 @@ function Header() {
           <div className="pesquisa">
             <div className="input-icons">
               <input className="input-field input" type="search" />
-              <img className="icon" src={lupa} alt="" />
+              <img className="icon" src={lupa} />
             </div>
           </div>
           <div>
             <div id="logo" onClick={abrirHome} className="logo">
-              <img className="logo" src={cloverLogo} alt="" />
+              <img className="logo" src={cloverLogo} />
             </div>
           </div>
           <div className="controles">
             <div>
               <span>
-                <img className="icon" src={iconPerson} alt="" />
+                <img className="icon" src={iconPerson} />
               </span>
-              <MinhaConta></MinhaConta>
+              <MinhaConta />
             </div>
             <div>
+              <span className="badge-carrinho">{itens.length}</span>
               <span onClick={abaCadastroLogin}>
-                <img className="icon" src={carrinho} alt="" />
+                <img className="icon" src={carrinho} />
               </span>
             </div>
           </div>
@@ -111,12 +143,10 @@ function Header() {
           </ul>
         </nav>
       </header>
-      {abrirLista ? (
+      {abrirLista && (
         <div onMouseEnter={carregarLista} onMouseLeave={minimizarLista}>
           <IconNav />
         </div>
-      ) : (
-        <></>
       )}
     </>
   );
