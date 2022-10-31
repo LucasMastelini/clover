@@ -15,12 +15,12 @@ function FormCadastro() {
         api.post('/clientes/cadastro',
             values)
             .then(res => {
+                alert(`${values.nome} seu cadastrado efetuado com sucesso `)
                 console.log('SUBMIT', values)
                 console.log(res)
-                alert(res.data.nome `Cadastrado efetuado com sucesso `)
                 actions.resetForm();
             }).catch(err => {
-                // console.log(err.response)
+                console.log(err.response)
                 alert(err.response.data.msg)
             })
     }

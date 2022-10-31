@@ -32,12 +32,13 @@ function FormLogin(props) {
             .then(res => {
                 // actions.resetForm();
                 // console.log(res)
-                console.log('SUBMIT', values)
+                // console.log('SUBMIT', values)
                 setResponse(values);
                 alert(`Bem Vindo ${res.data.nome}!`)
                 localStorage.setItem('responseKey', JSON.stringify(response))
+                var jsonResponse = localStorage.getItem('responseKey');
+                console.log(JSON.parse(jsonResponse))
                 actions.resetForm();
-                console.log(localStorage.getItem())
             }).catch(err => {
                 console.log(err)
                 // console.log(values)
@@ -58,7 +59,7 @@ function FormLogin(props) {
                 <Formik
                     // validationSchema={schemaLogin}
                     onSubmit={onSubmit}
-                    // validateOnMount
+                    validateOnMount
                     initialValues={{
                         email: '',
                         senha: '',
@@ -76,7 +77,7 @@ function FormLogin(props) {
                                     <i>
                                         <img src={passwordIcon} alt="" />
                                     </i>
-                                    <Field name="senha" d="login-senha" type="password" placeholder="Senha" required />
+                                    <Field name="senha" id="login-senha" type="password" placeholder="Senha" required />
                                 </div>
                                 <button id="update-senha">Esqueceu sua senha?</button>
                             </fieldset>
