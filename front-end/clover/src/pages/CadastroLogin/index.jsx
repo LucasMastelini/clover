@@ -1,15 +1,6 @@
-import React, { useState, useEffect } from "react";
-// import api from "../../Api/api";
-// import cadastro from "../../Api/cadastro";
-// import listar from "../../Api/listarUsuarios";
-import { Formik, Field, Form } from "formik";
-// import schema from "../../schema";
+import React, { useEffect } from "react";
 
 import './style.css'
-import userIcon from "../../assets/image/user.png";
-import emailIcon from "../../assets/image/email.png";
-import telefoneIcon from "../../assets/image/celular.png";
-import passwordIcon from "../../assets/image/senha.png";
 import FormCadastro from "./components/FormCadastro/FormCadastro";
 import FormLogin from "./components/FormLogin/FormLogin";
 import Header from "../Header";
