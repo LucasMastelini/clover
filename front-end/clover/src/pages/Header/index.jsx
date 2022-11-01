@@ -12,7 +12,6 @@ import lupa from "../../assets/image/lupa.png";
 import IconNav from "./components/iconNav";
 import MinhaConta from "./components/minhaConta/MinhaConta";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 function Header() {
   const itens = [
@@ -39,9 +38,9 @@ function Header() {
   const [abrirLista, setAbrirLista] = useState(false);
   const [itensCarrinho, setItensCarrinho] = useState();
 
-  useEffect(() => {
-    setItensCarrinho(itens);
-  }, [itensCarrinho]);
+  // const adicionarItem = useEffect(() => {
+  //   setItensCarrinho(itens);
+  // }, [itensCarrinho]);
 
   const navegar = useNavigate();
 
@@ -87,11 +86,11 @@ function Header() {
               </span>
               <MinhaConta />
             </div>
-            <div>
-              <span className="badge-carrinho">{itens.length}</span>
+            <div className="content-carrinho">
               <span onClick={abaCadastroLogin}>
-                <img className="icon" src={carrinho} />
+                <img className="icon carrinho" src={carrinho} />
               </span>
+              <span className="badge-carrinho">{itens.length}</span>
             </div>
           </div>
         </div>

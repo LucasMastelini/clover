@@ -1,23 +1,17 @@
 import React, { useState } from "react";
-import "../style.css"
+import "../style.css";
 
 function IconCarrinho(props) {
+  const [listaProduto, setListaProduto] = useState([]);
 
-    const [listaProduto, setListaProduto] = useState([]);
+  setListaProduto(props);
 
-    setListaProduto(props);
-
-    return(
-        {
-            listaProduto.map(item => (
-                <div key={props.id}>
-                    Nome produto: {item.nome}
-                    Valor R$ {item.preco}
-                </div>
-            ))
-        }
-    );
-    
+  return (
+    <div key={listaProduto[0].id}>
+      Nome produto: {listaProduto[0].nome}
+      Valor R$ {listaProduto[0].preco}
+    </div>
+  );
 }
 
 export default IconCarrinho;
