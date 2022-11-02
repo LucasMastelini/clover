@@ -37,3 +37,16 @@
     color: #FFFFFF;
     padding: 2%;
 }
+
+@media (max-width: 500px) {
+    .grid-ofert {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .border {
+        border-right: none;
+        border-bottom: 1px solid #35DAF0;
+        height: 90%;
+    }
+}

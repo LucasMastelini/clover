@@ -36,6 +36,27 @@
 }
 .grid-container-redes img{
     max-width: 100%;
-    /* height: 200px; */
+}
 
+@media (max-width: 500px) {
+    .container-redes {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .redes-icons {
+        margin-bottom: 3%;
+    }
+
+    .grid-container-redes{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 80%;
+        margin: 0 10% 5% 10%;
+    }
+
+    .grid-container-redes img{
+        width: 100%;
+    }
 }
