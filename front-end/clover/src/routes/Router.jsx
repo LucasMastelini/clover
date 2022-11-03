@@ -12,6 +12,7 @@ export default function Router() {
         <Route path="/quem-somos" element={<QuemSomos/>}/>
         <Route path="/cadastro-login" element={<CadastroLogin/>}/>
         <Route path="/compra-produto" element={<CompraProduto/>}/>
+        {/* <Route path="/resumo-pedidos/:produtos" element={<ResumoPedidos />} /> */}
       </Routes>
   )
 }
