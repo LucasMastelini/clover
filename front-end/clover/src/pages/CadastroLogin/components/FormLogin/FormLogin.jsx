@@ -1,14 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, {useState} from "react";
 import api from "../../../../Api/api";
-// import cadastro from "../../../../Api/cadastro";
-// import listar from "../../../../Api/listarUsuarios";
 import { Formik, Field, Form } from 'formik';
-import schemaLogin from '../../../../schemaLogin';
 
-
-import userIcon from '../../../../assets/image/user.png'
 import emailIcon from '../../../../assets/image/email.png'
-import telefoneIcon from '../../../../assets/image/celular.png'
 import passwordIcon from '../../../../assets/image/senha.png'
 
 function FormLogin(props) {
@@ -28,6 +22,7 @@ function FormLogin(props) {
     //     )
     
     // }, [])
+    const [response, setResponse] = useState([]);
     
     function onSubmit(values, actions) {
 
@@ -37,8 +32,12 @@ function FormLogin(props) {
             .then(res => {
                 // actions.resetForm();
                 // console.log(res)
-                console.log('SUBMIT', values)
-                alert(`Bem Vindo ${res.data.nome }!`)
+                // console.log('SUBMIT', values)
+                setResponse(values);
+                alert(`Bem Vindo ${res.data.nome}!`)
+                localStorage.setItem('responseKey', JSON.stringify(response))
+                var jsonResponse = localStorage.getItem('responseKey');
+                console.log(JSON.parse(jsonResponse))
                 actions.resetForm();
             }).catch(err => {
                 console.log(err)
@@ -51,7 +50,7 @@ function FormLogin(props) {
     
     return (
         <>
-            <div className="form-wrapper">
+            <div className="form-wrapper is-active">
                 <button on type="button" className="switcher switcher-signup"
                 >
                     Entrar
@@ -60,7 +59,7 @@ function FormLogin(props) {
                 <Formik
                     // validationSchema={schemaLogin}
                     onSubmit={onSubmit}
-                    // validateOnMount
+                    validateOnMount
                     initialValues={{
                         email: '',
                         senha: '',
@@ -78,7 +77,7 @@ function FormLogin(props) {
                                     <i>
                                         <img src={passwordIcon} alt="" />
                                     </i>
-                                    <Field name="senha" d="login-senha" type="password" placeholder="Senha" required />
+                                    <Field name="senha" id="login-senha" type="password" placeholder="Senha" required />
                                 </div>
                                 <button id="update-senha">Esqueceu sua senha?</button>
                             </fieldset>

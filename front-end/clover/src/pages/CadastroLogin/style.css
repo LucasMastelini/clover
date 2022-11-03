@@ -38,9 +38,8 @@ body {
 .forms {
   display: flex;
   align-items: flex-start;
-  margin-top: 1%;
-  margin-right: 4%;
-
+  margin-top: 2%;
+  margin-bottom: 4%;
 }
 
 .form-wrapper {
@@ -99,7 +98,7 @@ body {
 
 .switcher-signup {
   color: #fff;
-  margin-right: 60%;
+  margin-right: 63%;
 }
 
 .underline {
