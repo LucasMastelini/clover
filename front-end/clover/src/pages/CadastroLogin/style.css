@@ -38,8 +38,9 @@ body {
 .forms {
   display: flex;
   align-items: flex-start;
-  margin-top: 2%;
-  margin-bottom: 4%;
+  margin-top: 5%;
+  margin-right: 2%;
+  margin-bottom: 5%;
 }
 
 .form-wrapper {
@@ -298,7 +299,7 @@ body {
   box-sizing: border-box;
 }
 
-.input-block input {
+/* .input-block input {
   display: block;
   width: 31vw;
   padding-left: 6%;
@@ -309,6 +310,34 @@ body {
   background: #000923;
   border-radius: 12px;  
   border-image-source: linear-gradient(180deg, #CA1CDB 50%, #35DAF0 70%);
+  box-sizing: border-box;
+} */
+
+.input-valida{
+  display: block;
+  width: 31vw;
+  padding-left: 6%;
+  font-size: 16px;
+  line-height: 6vh;
+  color: #ffffff;
+  border: 2px solid #7a35f099;
+  background: #000923;
+  border-radius: 12px;  
+  box-sizing: border-box;
+
+}
+
+.input-invalida{
+  display: block;
+  width: 31vw;
+  padding-left: 6%;
+  font-size: 16px;
+  line-height: 6vh;
+  color: #ffffff;
+  border: 2px solid #9F2C2C;
+  background: 
+  #1D0101;
+  border-radius: 12px;  
   box-sizing: border-box;
 }
 
