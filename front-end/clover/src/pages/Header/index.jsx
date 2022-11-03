@@ -9,9 +9,9 @@ import iconPerson from "../../assets/image/person.png";
 import carrinho from "../../assets/image/carrinho.png";
 import lupa from "../../assets/image/lupa.png";
 
-import IconNav from "./components/iconNav";
-import MinhaConta from "./components/minhaConta/MinhaConta";
-import { useEffect } from "react";
+import IconNav from "./components/IconNav";
+import MinhaConta from "./components/MinhaConta";
+// import { useEffect } from "react";
 
 function Header() {
   const itens = [
@@ -36,7 +36,7 @@ function Header() {
   ];
 
   const [abrirLista, setAbrirLista] = useState(false);
-  const [itensCarrinho, setItensCarrinho] = useState();
+  // const [itensCarrinho, setItensCarrinho] = useState();
 
   // const adicionarItem = useEffect(() => {
   //   setItensCarrinho(itens);
@@ -71,24 +71,24 @@ function Header() {
           <div className="pesquisa">
             <div className="input-icons">
               <input className="input-field input" type="search" />
-              <img className="icon" src={lupa} />
+              <img className="icon" src={lupa}/>
             </div>
           </div>
           <div>
             <div id="logo" onClick={abrirHome} className="logo">
-              <img className="logo" src={cloverLogo} />
+              <img className="logo" src={cloverLogo}/>
             </div>
           </div>
           <div className="controles">
             <div>
               <span>
-                <img className="icon" src={iconPerson} />
+                <img className="icon" src={iconPerson}/>
               </span>
               <MinhaConta />
             </div>
             <div className="content-carrinho">
               <span onClick={abaCadastroLogin}>
-                <img className="icon carrinho" src={carrinho} />
+                <img className="icon carrinho" src={carrinho}/>
               </span>
               <span className="badge-carrinho">{itens.length}</span>
             </div>

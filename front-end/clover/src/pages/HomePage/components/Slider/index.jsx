@@ -4,22 +4,32 @@ import "./style.css";
 function Slider() {
   useEffect(() => {
 
+    // {
+    //   if (e.target.value.length <= 4) {
+    //     setMensagemErro(true)
+    //   }
+    //     {/* {
+    //   5 > 2 ? <div style={{color: "#fffff"}}>SIM cinco e maior que dois</div> : <div>nunca vou cair aqui</div>
+    // } */}
+    // }
     var slideIndex = 1;
-
     function carousel(n) {
       var i;
       var x = document.getElementsByClassName("img-slides");
-      var y = document.getElementsByClassName("item-page-control")
+      var y = document.getElementsByClassName("item-page-control");
+      console.log("Esse e o indece x: ",x);
+      console.log("Esse e o indece y", y);  
       for (i = 0; i < x.length; i++) {
         x[i].style.display = "none";
-        if (i === 0) {
+        if (i === 0 ) {
           y[i].style.backgroundColor = "green";
-        } else if (i === 1 ) {
+        } 
+        else if (i === 1) {
           y[i].style.backgroundColor = "red";
         } else if (i === 2) {
           y[i].style.backgroundColor = "blue";
         } else {
-           y[i].style.backgroundColor = "#35DAF0";
+           y[i].style.backgroundColor = "gray";
         }
         //bryan.braga
       }
@@ -28,7 +38,7 @@ function Slider() {
         slideIndex = 1;
       }
       x[slideIndex - 1].style.display = "block";
-      setTimeout(carousel, 4000); // Change image every 2 seconds
+      setTimeout(carousel, 6000); // Change image every 2 seconds
     }
 
     carousel();
@@ -63,8 +73,8 @@ function Slider() {
 
         <div className="page-control">
           <span className="item-page-control"></span>
-          <span className="item-page-control teste"></span>
-          <span className="item-page-control teste3"></span>
+          <span className="item-page-control"></span>
+          <span className="item-page-control"></span>
         </div>
       </div>
     </>
