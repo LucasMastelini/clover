@@ -4,10 +4,22 @@ import 'swiper/css/thumbs'
 import './style.css'
 import ContainerSlider from '../ContainerSlider'
 import { productImages } from '../ContainerSlider/conteudo'
-import { BsTruck } from 'react-icons/bs';
+import { BsTruck } from 'react-icons/bs'
+import React, { useEffect, useState } from 'react'
+import Rate from '../Rate'
 
 
 export default function ContainerCompra() {
+
+    const [rating, setRating] = useState(0);
+    const [rating2, setRating2] = useState(0);
+    
+    const [show, setShow] = useState(false);
+    const onClick = () => setShow(true);
+
+    useEffect(() => {
+        console.log(show);
+    }, [show]);
 
     return (
         <>
@@ -20,29 +32,19 @@ export default function ContainerCompra() {
                     <div className="avaliacao-vendidos">
                         <div className="avaliacao">
                             <h3 className="avaliacao-titulo">Avaliação</h3>
-                            <div className="rating">
-                                <input type="radio" name="star" id="star1" /><label htmlFor="star1">
-                                </label>
-                                <input type="radio" name="star" id="star2" /><label htmlFor="star2">
-                                </label>
-                                <input type="radio" name="star" id="star3" /><label htmlFor="star3">
-                                </label>/
-                                <input type="radio" name="star" id="star4" /><label htmlFor="star4">
-                                </label>
-                                <input type="radio" name="star" id="star5" /><label htmlFor="star5">
-                                </label>
-                            </div>
                         </div>
+                        <Rate rating={rating} onRating={(rate) => setRating(rate)} />
                         <h3 className="vendidos">Vendidos: +999999</h3>
                     </div>
                     <div className="calculo-frete">
-                    <BsTruck />
+                        <BsTruck />
                         <h4 className="titulo-calcular-frete">calcular o frete</h4>
                         <div className="calcular">
                             <input className="input-calcular" placeholder="Insira o CEP" />
-                            <button className="button-calcular">Calcular</button>
+                            <button className="button-calcular" type="button" onClick={onClick}>Calcular</button>
                         </div>
                     </div>
+                    {show ? <Text /> : null}
                     <div className="cores">
                         <h3>Selecione a cor</h3>
                         <div className="opcoesCores">
@@ -82,3 +84,6 @@ export default function ContainerCompra() {
 
     );
 }
+
+const Text = () => <div>You clicked the button!</div>;
+
