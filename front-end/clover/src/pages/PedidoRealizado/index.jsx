@@ -11,6 +11,7 @@ function PedidoRealizado() {
     function updateStep(step) {
       updateCurrentStep(step);
     }
+
   
     return (
         
@@ -25,7 +26,7 @@ function PedidoRealizado() {
       </div>
   
         <StepNavigation labelArray={labelArray} currentStep={currentStep} updateStep={updateStep}></StepNavigation>
-        <p>Step: {currentStep}</p>
+        
        
       </div>
     );

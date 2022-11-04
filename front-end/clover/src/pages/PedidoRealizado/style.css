@@ -20,8 +20,8 @@
     width: 29px;
     height: 29px;
     line-height: 25px;
-    background-color: green;
-    color: white;
+    background-color: #35DAF0;
+    color: black;
     border-radius: 50%;
     border: 2px solid transparent;
     cursor: pointer;
@@ -33,17 +33,21 @@
   .stepWrapper {
     display: flex;
     margin-bottom: 20px;
+    color: white
   }
   
   .stepBlock .circleWrapper {
     padding: 0px 40px;
     position: relative;
   }
+
+
   
   .selected .circle {
     color: black;
     background-color: white;
-    border-color: green;
+    border-color: #35DAF0;
+    
   }
   
   .stepBlock:not(:last-child) > .circleWrapper::after {
@@ -53,7 +57,7 @@
     position: absolute;
     top: 0px;
     bottom: 0px;
-    background-color: green;
+    background-color: #35DAF0;
     margin: auto;
     z-index: -1;
   }
@@ -85,15 +89,39 @@
   .texto_descricao_subtitulo{
     margin-bottom: 6%;
     margin-top: 6%;
+    color:#ffff;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+
   }
   
   .texto_descricao_produto_2{
     margin-bottom: 8%;
+    color:#ffff;
+    font-weight: 400;
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 20px;
   }
   
   .titulo_produto{
     color: white;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 40px;
+    line-height: 58px;
+    font-family: Inter;
   }
+  .texto_descricao_produto{
+    color:#ffff;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+  }
+
   
   
   .logo{
