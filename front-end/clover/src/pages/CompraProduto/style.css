@@ -7,6 +7,14 @@ html {
     width: 100%;
 } */
 
+.title-carrossel {
+    font-size: 30px;
+    text-align: center;
+    color: #D235E2;
+    margin: 6% 5% 5% 5%;
+}
+
+
 @font-face {
     font-family: 'Montserrat';
     src: url('../../assets/fontes/Montserrat-Thin.eot');

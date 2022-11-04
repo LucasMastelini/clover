@@ -170,6 +170,7 @@ textarea:focus,
 
 .opcoesCores {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
     height: 10vh;

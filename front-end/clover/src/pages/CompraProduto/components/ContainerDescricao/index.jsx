@@ -6,7 +6,7 @@ export default function ContainerDescricao() {
     return (
         <>
             <section id="descricaoTamanhos">
-                <img src={camiseta} width="35%" height="40%" />
+                <img className="camiseta-exemplo" src={camiseta} />
                 <div id="containerColunasTamanho">
                     <div className="colunas">
                         <h1>Tamanho</h1>
