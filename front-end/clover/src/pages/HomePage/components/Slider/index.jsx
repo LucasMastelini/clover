@@ -17,8 +17,8 @@ function Slider() {
       var i;
       var x = document.getElementsByClassName("img-slides");
       var y = document.getElementsByClassName("item-page-control");
-      console.log("Esse e o indece x: ",x);
-      console.log("Esse e o indece y", y);  
+      // console.log("Esse e o indece x: ",x);
+      // console.log("Esse e o indece y", y);  
       for (i = 0; i < x.length; i++) {
         x[i].style.display = "none";
         if (i === 0 ) {
