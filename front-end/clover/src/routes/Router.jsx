@@ -4,6 +4,7 @@ import HomePage from '../pages/HomePage'
 import QuemSomos from '../pages/QuemSomos'
 import CadastroLogin from '../pages/CadastroLogin'
 import CompraProduto from '../pages/CompraProduto'
+import PedidoRealizado from '../pages/PedidoRealizado'
 
 export default function Router() {
   return (
@@ -12,6 +13,7 @@ export default function Router() {
         <Route path="/quem-somos" element={<QuemSomos/>}/>
         <Route path="/cadastro-login" element={<CadastroLogin/>}/>
         <Route path="/compra-produto" element={<CompraProduto/>}/>
+        <Route path="/pedido-realizado" element={<PedidoRealizado/>}/>
         {/* <Route path="/resumo-pedidos/:produtos" element={<ResumoPedidos />} /> */}
       </Routes>
   )
