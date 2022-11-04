@@ -14,7 +14,7 @@ export default function CardProduto() {
 
           <img className="img" src={camiseta} alt="" />
 
-          <div className="texto">Camiseta branca lisa - Masculina</div>
+          <div className="nome-produto">Camiseta branca lisa - Masculina</div>
 
           <div id="containerPreco" className="container-preco">
 

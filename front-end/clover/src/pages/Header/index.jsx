@@ -6,37 +6,18 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 import cloverLogo from "../../assets/image/logo.png";
 import iconPerson from "../../assets/image/person.png";
-import carrinho from "../../assets/image/carrinho.png";
+import iconCarrinho from "../../assets/image/carrinho.png";
 import lupa from "../../assets/image/lupa.png";
 
 import IconNav from "./components/iconNav";
-import MinhaConta from "./components/minhaConta/MinhaConta";
-import { useEffect } from "react";
+import MinhaConta from "./components/minhaConta";
+import IconCarrinho from "./components/iconCarrinho";
+// import { useEffect } from "react";
 
 function Header() {
-  const itens = [
-    {
-      id: 1,
-      titulo: "Camiseta",
-      valor: 79.99,
-      descricao: "Uma camiseta branca lisa",
-    },
-    {
-      id: 2,
-      titulo: "Calça Jeans preta",
-      valor: 65.0,
-      descricao: "Deans colado",
-    },
-    {
-      id: 3,
-      titulo: "Air Nex",
-      valor: -99.0,
-      descricao: "Tenis mike original",
-    },
-  ];
 
   const [abrirLista, setAbrirLista] = useState(false);
-  const [itensCarrinho, setItensCarrinho] = useState();
+  // const [itensCarrinho, setItensCarrinho] = useState();
 
   // const adicionarItem = useEffect(() => {
   //   setItensCarrinho(itens);
@@ -63,6 +44,19 @@ function Header() {
   function abrirHome() {
     setAbrirLista(-1);
   }
+  function abrirCarrinho() {
+    return navegar("/carrinho");
+  }
+
+  function sair() {
+    localStorage.clear();
+    alert("SAIU")
+    return navegar("/");
+  }
+  function navegarUsuario() {
+    window.alert('TÁ NA USUÁRIO');
+    return navegar("/usuario");
+  }
 
   return (
     <>
@@ -84,13 +78,13 @@ function Header() {
               <span>
                 <img className="icon" src={iconPerson} />
               </span>
-              <MinhaConta onClick={abaCadastroLogin}/>
-            </div>  
-            <div className="content-carrinho">
+              <MinhaConta sair={sair} navegarUsuario={navegarUsuario} />
+            </div>
+            <div className="content-carrinho" onClick={abrirCarrinho}>
               <span>
-                <img className="icon carrinho" src={carrinho} />
+                <img className="icon carrinho" src={iconCarrinho} />
               </span>
-              <span className="badge-carrinho">{itens.length}</span>
+              <span className="badge-carrinho">{3}</span>
             </div>
           </div>
         </div>
@@ -120,14 +114,7 @@ function Header() {
                 <span className="text">Minha conta</span>
               </a>
             </li>
-            <li id="carrinhoMobile" className="list carrinhoMobile">
-              <NavLink href="">
-                <span>
-                  <img className="icon" src={carrinho} alt="" />
-                </span>
-                <span className="text">Carrinho</span>
-              </NavLink>
-            </li>
+            <li id="carrinhoMobile" className="list carrinhoMobile"></li>
             <li className="list" onMouseEnter={carregarLista}>
               <a href="/">Vestuario</a>
             </li>

@@ -4,6 +4,7 @@ import HomePage from '../pages/HomePage'
 import QuemSomos from '../pages/QuemSomos'
 import Usuario from '../pages/Usuario'
 import CadastroLogin from '../pages/CadastroLogin'
+import Carrinho from '../pages/Carrinho'
 // import CompraProduto from '../pages/CompraProduto'
 
 export default function Router() {
@@ -13,6 +14,7 @@ export default function Router() {
         <Route path="/quem-somos" element={<QuemSomos/>}/>
         <Route path="/cadastro-login" element={<CadastroLogin/>}/>
         <Route path="/usuario" element={<Usuario/>}/>
+        <Route path="/carrinho" element={<Carrinho/>}/>
         {/* <Route path="/compra-produto" element={<CompraProduto/>}/> */}
         {/* <Route path="/resumo-pedidos/:produtos" element={<ResumoPedidos />} /> */}
       </Routes>
