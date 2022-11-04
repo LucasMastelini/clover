@@ -1,0 +1,75 @@
+#descricaoTamanhos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    width: 90%;
+    font-family: 'Montserrat Medium', sans-serif;
+    font-size: 16px;
+    margin: auto;
+    margin-top: 12%;
+    margin-bottom: 4%;
+}
+
+#containerColunasTamanho {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 55%;
+}
+
+.colunas {
+    width: 45%;
+    margin-left: 2%;
+}
+
+.colunas h1 {
+    font-family: 'Montserrat Bold', sans-serif;
+    line-height: 4rem;
+}
+
+
+.colunas h3 {
+    color: yellow;
+    line-height: 3.3rem;
+    font-family: 'Montserrat Bold', sans-serif;
+
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../../../../assets/fontes/Montserrat-Thin.eot');
+    src: url('../../../../assets/fontes/Montserrat-Thin.eot?#iefix') format('embedded-opentype'),
+        url('../../../../assets/fontes/Montserrat-Thin.woff2') format('woff2'),
+        url('../../../../assets/fontes/Montserrat-Thin.woff') format('woff'),
+        url('../../../../assets/fontes/Montserrat-Thin.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat Bold';
+    src: url('../../../../assets/fontes/Montserrat-Bold.eot');
+    src: url('../../../../assets/fontes/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../../../../assets/fontes/Montserrat-Bold.woff2') format('woff2'),
+        url('../../../../assets/fontes/Montserrat-Bold.woff') format('woff'),
+        url('../../../../assets/fontes/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat Medium';
+    src: url('../../../../assets/fontes/Montserrat-Medium.eot');
+    src: url('../../../../assets/fontes/Montserrat-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../../../../assets/fontes/Montserrat-Medium.woff2') format('woff2'),
+        url('../../../../assets/fontes/Montserrat-Medium.woff') format('woff'),
+        url('../../../../assets/fontes/Montserrat-Medium.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
