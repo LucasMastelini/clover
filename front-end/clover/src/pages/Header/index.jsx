@@ -84,10 +84,10 @@ function Header() {
               <span>
                 <img className="icon" src={iconPerson} />
               </span>
-              <MinhaConta />
-            </div>
+              <MinhaConta onClick={abaCadastroLogin}/>
+            </div>  
             <div className="content-carrinho">
-              <span onClick={abaCadastroLogin}>
+              <span>
                 <img className="icon carrinho" src={carrinho} />
               </span>
               <span className="badge-carrinho">{itens.length}</span>
