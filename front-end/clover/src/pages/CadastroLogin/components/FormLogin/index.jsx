@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import api from "../../../Api/api";
+import api from "../../../../Api/api";
 import { Formik, Field, Form } from 'formik';
 
-import emailIcon from '../../../assets/image/email.png'
-import passwordIcon from '../../../assets/image/senha.png'
-import schemaLogin from "../../../schemaLogin";
+import emailIcon from '../../../../assets/image/email.png'
+import passwordIcon from '../../../../assets/image/senha.png'
+import schemaLogin from "../../../../schemaLogin";
 import { useNavigate } from "react-router-dom";
 
 function FormLogin(props) {

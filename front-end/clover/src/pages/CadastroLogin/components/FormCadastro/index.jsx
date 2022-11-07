@@ -1,12 +1,12 @@
 // import React, { useState } from "react";
-import api from "../../../Api/api";
+import api from "../../../../Api/api";
 import { Formik, Field, Form } from 'formik';
-import schema from '../../../schema';
+import schema from '../../../../schema';
 
-import userIcon from '../../../assets/image/user.png'
-import emailIcon from '../../../assets/image/email.png'
-import telefoneIcon from '../../../assets/image/celular.png'
-import passwordIcon from '../../../assets/image/senha.png'
+import userIcon from '../../../../assets/image/user.png'
+import emailIcon from '../../../../assets/image/email.png'
+import telefoneIcon from '../../../../assets/image/celular.png'
+import passwordIcon from '../../../../assets/image/senha.png'
 
 
 function FormCadastro() {
