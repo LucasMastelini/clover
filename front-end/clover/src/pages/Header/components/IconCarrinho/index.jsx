@@ -1,16 +1,20 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import carrinho from "../../../../assets/image/carrinho.png";
+
 import "./style.css";
 
 function IconCarrinho(props) {
-  const [listaProduto, setListaProduto] = useState([]);
 
-  setListaProduto(props);
 
+
+ const navigate = useNavigate();
+
+  function abrirCarrinho(){
+    return(navigate("/carrinho"));
+  }
   return (
-    <div key={listaProduto[0].id}>
-      Nome produto: {listaProduto[0].nome}
-      Valor R$ {listaProduto[0].preco}
-    </div>
+    <></>
   );
 }
 
