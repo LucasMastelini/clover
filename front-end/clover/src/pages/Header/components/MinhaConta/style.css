@@ -1,0 +1,16 @@
+.menu-perfil{
+    background-color: transparent;
+    color: rgb(212, 184, 223);
+    width: 20px;
+    font-weight: 800;
+}
+.option-color{
+    font-weight: 800;
+    background-color: rgb(54, 8, 54);
+    width: 240px;
+}
+.option-color:hover{
+    background-color:rgb(127, 6, 127);
+    color: #fff;
+    padding-left: 3px;
+}
