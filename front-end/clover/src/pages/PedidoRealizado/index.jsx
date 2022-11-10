@@ -14,9 +14,9 @@ function PedidoRealizado() {
 
   
     return (
-        
+      <div className='controleGeral'>
       <div className="App">
-       <img className="logo" src={logoPedido} alt="Logo"></img>
+      <img className="icone" src={logoPedido} alt="Logo"></img>
       <h1 className="titulo_produto">Pedido Recebido</h1>
       <div className="descricao_geral">
       <p className="texto_descricao_subtitulo">Olá, <strong>*NOME*!</strong> Tudo bem?</p>
@@ -28,6 +28,7 @@ function PedidoRealizado() {
         <StepNavigation labelArray={labelArray} currentStep={currentStep} updateStep={updateStep}></StepNavigation>
         
        
+      </div>
       </div>
     );
   }

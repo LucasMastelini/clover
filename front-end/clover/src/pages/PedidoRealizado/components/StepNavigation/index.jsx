@@ -1,9 +1,6 @@
 import React from "react";
 import Step from "../step";
 
-
-
-
 export default function StepNavigation(props) {
     return (
         <div className="stepWrapper">

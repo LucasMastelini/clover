@@ -7,7 +7,6 @@ import CadastroLogin from '../pages/CadastroLogin'
 import CompraProduto from '../pages/CompraProduto'
 import PedidoRealizado from '../pages/PedidoRealizado'
 import Carrinho from '../pages/Carrinho'
-// import CompraProduto from '../pages/CompraProduto'
 
 export default function Router() {
   return (
@@ -19,7 +18,6 @@ export default function Router() {
         <Route path="/pedido-realizado" element={<PedidoRealizado/>}/>
         <Route path="/usuario" element={<Usuario/>}/>
         <Route path="/carrinho" element={<Carrinho/>}/>
-        {/* <Route path="/compra-produto" element={<CompraProduto/>}/> */}
         {/* <Route path="/resumo-pedidos/:produtos" element={<ResumoPedidos />} /> */}
       </Routes>
   )

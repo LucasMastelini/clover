@@ -1,7 +1,6 @@
 import React from "react";
 import iconPerson from "../../../../assets/image/person.png";
 import { useNavigate } from "react-router-dom";
-
 import "./style.css";
 
 function MinhaConta({ sair, navegarUsuario }) {
