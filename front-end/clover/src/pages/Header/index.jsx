@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 
-import "./style.css";
-
 import { NavLink, useNavigate } from "react-router-dom";
-
 import cloverLogo from "../../assets/image/logo.png";
 import iconPerson from "../../assets/image/person.png";
 import carrinho from "../../assets/image/carrinho.png";
 import lupa from "../../assets/image/lupa.png";
-
 import IconNav from "./components/IconNav";
 import MinhaConta from "./components/MinhaConta";
+import "./style.css";
 // import { useEffect } from "react";
 
 function Header() {

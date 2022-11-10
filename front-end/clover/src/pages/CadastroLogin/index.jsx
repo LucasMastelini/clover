@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 
 import './style.css'
-import FormCadastro from "./components/FormCadastro/FormCadastro";
-import FormLogin from "./components/FormLogin/FormLogin";
+import FormCadastro from "./components/FormCadastro";
+import FormLogin from "./components/FormLogin";
 import Header from "../Header";
 import Footer from "../../components/Footer";
 

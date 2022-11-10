@@ -1,4 +1,4 @@
-import React from "react";
+// import React, { useState } from "react";
 import api from "../../../../Api/api";
 import { Formik, Field, Form } from 'formik';
 import schema from '../../../../schema';
@@ -10,6 +10,10 @@ import passwordIcon from '../../../../assets/image/senha.png'
 
 
 function FormCadastro() {
+    // const [validate, setValidate] = useState(false);
+
+
+
     function onSubmit(values, actions) {
 
         api.post('/clientes/cadastro',
@@ -23,9 +27,16 @@ function FormCadastro() {
                 console.log(err.response)
                 alert(err.response.data.msg)
             })
+
     }
 
-    
+    // function validacao(values) {
+    //     if (values.senha !== values.confirmacao) {
+    //         setValidate(false)
+    //     }
+    // }
+
+
     return (
         <>
             <div className="form-wrapper ">
@@ -45,7 +56,7 @@ function FormCadastro() {
                         confirmacao: '',
                         celular: '',
                     }}
-                    render={({ values, errors, touched }) => (
+                    render={({ values, touched, actions }) => (
                         <Form className="form form-cadastro" >
                             <fieldset>
                                 <div className="input-block">
@@ -53,33 +64,55 @@ function FormCadastro() {
                                     <i>
                                         <img src={userIcon} alt="" />
                                     </i>
-                                    <Field name="nome" type="text" placeholder="Nome completo" required/>
+                                    <Field
+                                        className="input-valida"
+                                        name="nome"
+                                        type="text"
+                                        placeholder="Nome completo" required />
 
                                 </div>
                                 <div className="input-block">
                                     <i>
                                         <img src={emailIcon} alt="" />
                                     </i>
-                                    <Field name="email" type="email" placeholder="E-mail" required/>
+                                    <Field
+                                        className="input-valida"
+                                        name="email"
+                                        type="email"
+                                        placeholder="E-mail" required />
 
                                 </div>
                                 <div className="input-block">
                                     <i>
                                         <img src={passwordIcon} alt="" />
                                     </i>
-                                    <Field name="senha" id="cadastro-senha" type="password" placeholder="Senha" required/>
+                                    <Field
+                                        className="input-valida"
+                                        name="senha"
+                                        id="cadastro-senha"
+                                        type="password"
+                                        placeholder="Senha" required />
+
                                 </div>
                                 <div className="input-block">
                                     <i>
                                         <img src={passwordIcon} alt="" />
                                     </i>
-                                    <Field name="confirmacao" id="cadastro-senha-confirm" type="password" placeholder="Confirme sua senha" required />
+                                    <Field
+                                        className="input-valida"
+                                        name="confirmacao" id="cadastro-senha-confirm"
+                                        type="password"
+                                        placeholder="Confirme sua senha" required />
                                 </div>
                                 <div className="input-block">
                                     <i>
                                         <img src={telefoneIcon} alt="" />
                                     </i>
-                                    <Field name="celular" id="cadastro-telefone" type="text" placeholder="Numero de celular" required/>
+                                    <Field
+                                        className="input-valida"
+                                        name="celular" id="cadastro-telefone"
+                                        type="text"
+                                        placeholder="Numero de celular" required />
                                 </div>
                             </fieldset>
                             <button type="submit" className="btn-signup">Criar conta</button>

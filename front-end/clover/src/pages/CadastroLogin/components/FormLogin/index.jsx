@@ -4,6 +4,8 @@ import { Formik, Field, Form } from 'formik';
 
 import emailIcon from '../../../../assets/image/email.png'
 import passwordIcon from '../../../../assets/image/senha.png'
+import schemaLogin from "../../../../schemaLogin";
+import { useNavigate } from "react-router-dom";
 
 function FormLogin(props) {
 
@@ -23,6 +25,7 @@ function FormLogin(props) {
     
     // }, [])
     const [response, setResponse] = useState([]);
+    const navegar = useNavigate();
     
     function onSubmit(values, actions) {
 
@@ -30,14 +33,14 @@ function FormLogin(props) {
             values
         )
             .then(res => {
-                // actions.resetForm();
-                // console.log(res)
-                // console.log('SUBMIT', values)
+                
                 setResponse(values);
-                alert(`Bem Vindo ${res.data.nome}!`)
-                localStorage.setItem('responseKey', JSON.stringify(response))
+                alert(`Bem Vindo ${res.data.nome}!`);
+                localStorage.setItem('responseKey', JSON.stringify(response));
                 var jsonResponse = localStorage.getItem('responseKey');
-                console.log(JSON.parse(jsonResponse))
+                console.log(JSON.parse(jsonResponse));
+                console.log('SUBMIT', values);
+                navegar("/")
                 actions.resetForm();
             }).catch(err => {
                 console.log(err)
@@ -57,7 +60,7 @@ function FormLogin(props) {
                     <span className="underline"></span>
                 </button>
                 <Formik
-                    // validationSchema={schemaLogin}
+                    validationSchema={schemaLogin}
                     onSubmit={onSubmit}
                     validateOnMount
                     initialValues={{
@@ -71,13 +74,13 @@ function FormLogin(props) {
                                     <i>
                                         <img className="email" src={emailIcon} alt="" />
                                     </i>
-                                    <Field name="email" id="login-email" type="email" placeholder="E-mail" required />
+                                    <Field className="input-valida" name="email" id="login-email" type="email" placeholder="E-mail" required />
                                 </div>
                                 <div className="input-block">
                                     <i>
                                         <img src={passwordIcon} alt="" />
                                     </i>
-                                    <Field name="senha" id="login-senha" type="password" placeholder="Senha" required />
+                                    <Field className="input-valida" name="senha" id="login-senha" type="password" placeholder="Senha" required />
                                 </div>
                                 <button id="update-senha">Esqueceu sua senha?</button>
                             </fieldset>
