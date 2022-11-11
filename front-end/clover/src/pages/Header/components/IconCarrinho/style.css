@@ -4,34 +4,7 @@
     flex-direction: row-reverse;
 }
 
-.icon {
-    color: #510090;
-    width: 1.3rem;
-    margin: 0 5px;
-    /* height: 10vh; */
-    text-align: center;
-}
 .carrinho{
     width: 1.6rem;
     align-self: flex-start;
-}
-.badge-carrinho {
-    background-color: #f1b7e3;
-    padding: 0.1rem;
-    border-radius: 100%;
-    font-size: 8px;
-    font-weight: bolder;
-    position: fixed;
-    width: 14px;
-    display: flex;
-    justify-content: center;
-
-    
-    /* background-color: #f1b7e3;
-    padding: 4px;
-    border-radius: 100%;
-    font-size: 8px;
-    font-weight: bolder;
-    position: fixed;
-     */
 }

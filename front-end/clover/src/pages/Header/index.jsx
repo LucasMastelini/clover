@@ -7,10 +7,12 @@ import iconCarrinho from "../../assets/image/carrinho.png";
 import lupa from "../../assets/image/lupa.png";
 import IconNav from "./components/IconNav";
 import MinhaConta from "./components/MinhaConta";
+import MobileNavbar from "./mobile-menu";
 import "./style.css";
 // import { useEffect } from "react";
 
 function Header() {
+  const mobileMenu = new MobileNavbar();
 
   const [abrirLista, setAbrirLista] = useState(false);
   // const [itensCarrinho, setItensCarrinho] = useState();
@@ -89,12 +91,12 @@ function Header() {
             aria-label="Abrir Menu"
             id="btn-mobile"
             className="btn-mobile"
+            onClick={() => mobileMenu.handleClick()}
             aria-haspopup="true"
             aria-controls="menu"
             aria-expanded="false"
           >
-            Menu
-            <span id="hamburger" className="hambirger"></span>
+            <span id="hamburger" className="hamburger"></span>
           </button>
           <ul
             id="menu"
