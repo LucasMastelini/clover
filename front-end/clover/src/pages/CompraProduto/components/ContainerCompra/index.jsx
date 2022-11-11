@@ -3,11 +3,9 @@ import 'swiper/css/navigation'
 import 'swiper/css/thumbs'
 import './style.css'
 import ContainerSlider from '../ContainerSlider'
-import { productImages } from '../ContainerSlider/conteudo'
 import { BsTruck } from 'react-icons/bs'
 import React, { useEffect, useState } from 'react'
 import Rate from '../Rate'
-
 
 import img1 from '../ContainerSlider/conteudo/images/slider01.jpg';
 import img2 from '../ContainerSlider/conteudo/images/slider02.jpg';
@@ -17,11 +15,12 @@ import img5 from '../ContainerSlider/conteudo/images/slider05.jpg';
 import img6 from '../ContainerSlider/conteudo/images/slider06.jpg';
 import img7 from '../ContainerSlider/conteudo/images/spider-man-pc.jpg';
 
+import { mudarCores, mudarTamanhos } from './transicaocor'
+
 
 export default function ContainerCompra() {
 
     const [rating, setRating] = useState(0);
-    const [rating2, setRating2] = useState(0);
 
     const [show, setShow] = useState(false);
     const onClick = () => setShow(true);
@@ -114,25 +113,25 @@ export default function ContainerCompra() {
                     {show ? <Text /> : null}
                     <div className="cores">
                         <h3>Selecione a cor</h3>
-                        <div className="opcoesCores">
-                            <div className="cor1" onClick={() => escolherCor(1)}>
+                        <div id="opcoesCores" onClick={ mudarCores }>
+                            <div id="cor1" className='cor1' onClick={() => escolherCor(1)}>
                             </div>
-                            <div className="cor2" onClick={() => escolherCor(2)}>
+                            <div id="cor2" className='cor2' onClick={() => escolherCor(2)}>
                             </div>
-                            <div className="cor3" onClick={() => escolherCor(3)}>
+                            <div id="cor3" className='cor3' onClick={() => escolherCor(3)}>
                             </div>
                         </div>
                     </div>
-                    <div className="tamanhos">
+                    <div className="tamanhos" onClick={ mudarTamanhos }>
                         <h3>Selecione o tamanho</h3>
-                        <div className="opcoesTamanhos">
-                            <div className="tamanhoP">
+                        <div id="opcoesTamanhos">
+                            <div id="tamanhoP">
                                 P
                             </div>
-                            <div className="tamanhoM">
+                            <div id="tamanhoM">
                                 M
                             </div>
-                            <div className="tamanhoG">
+                            <div id="tamanhoG">
                                 G
                             </div>
                         </div>
