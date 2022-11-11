@@ -168,7 +168,7 @@ textarea:focus,
     margin-bottom: 7%;
 }
 
-.opcoesCores {
+#opcoesCores {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -178,7 +178,11 @@ textarea:focus,
 
 }
 
-.opcoesTamanhos {
+#opcoesCores .selected {
+    border: 3px solid #F7A6FF;
+}
+
+#opcoesTamanhos {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -187,7 +191,11 @@ textarea:focus,
 
 }
 
-.cor1 {
+#opcoesTamanhos .selected {
+    border: 3px solid #F7A6FF;
+}
+
+#cor1 {
     height: 6vh;
     width: 10%;
     background-color: #F7F7F7;
@@ -196,7 +204,7 @@ textarea:focus,
     cursor: pointer;
 }
 
-.cor2 {
+#cor2 {
     height: 6vh;
     width: 10%;
     background-color: #050505;
@@ -206,7 +214,7 @@ textarea:focus,
     cursor: pointer;
 }
 
-.cor3 {
+#cor3 {
     height: 6vh;
     width: 10%;
     background-color: #0B198F;
@@ -223,7 +231,7 @@ textarea:focus,
     height: 12vh;
 }
 
-.tamanhoP, .tamanhoM, .tamanhoG {
+#tamanhoP, #tamanhoM, #tamanhoG {
     height: 6vh;
     width: 10%;
     font-family: 'Montserrat Medium', sans-serif;
