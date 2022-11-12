@@ -1,16 +1,15 @@
 import { NavLink } from "react-router-dom";
-import { FaBars, FaHome } from "react-icons/fa";
-import { BiSearch } from "react-icons/bi";
+import { FaBars, FaRegUserCircle } from "react-icons/fa";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SideBarMenu";
 
-import { FaTshirt, FaAddressCard, FaCity} from "react-icons/fa";
+import { FaTshirt, FaAddressCard, FaCity } from "react-icons/fa";
 import { BsFillCreditCardFill } from "react-icons/bs"
 import { CgLogOff } from "react-icons/cg"
 
 const routes = [
- 
+
   {
     path: "/pedidos",
     name: "Pedidos",
@@ -80,7 +79,7 @@ const SideBar = ({ children }) => {
       <div className="main-container">
         <motion.div
           animate={{
-            width: isOpen ? "200px" : "45px",
+            width: isOpen ? "300px" : "50px",
 
             transition: {
               duration: 0.5,
@@ -100,7 +99,9 @@ const SideBar = ({ children }) => {
                   exit="hidden"
                   className="logo"
                 >
-                  Clover
+                  <div className="welcome">
+                    <FaRegUserCircle className="user" /> <p className="welcome-user-text">Olá, Barreira!</p>
+                  </div>
                 </motion.h1>
               )}
             </AnimatePresence>
