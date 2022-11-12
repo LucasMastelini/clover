@@ -8,7 +8,7 @@ import CompraProduto from '../pages/CompraProduto'
 import PedidoRealizado from '../pages/PedidoRealizado'
 import Carrinho from '../pages/Carrinho'
 
-import Users from '../pages/Usuario/pages/Users'
+import Pedidos from '../pages/Usuario/pages/Pedidos'
 import Cartoes from '../pages/Usuario/pages/Cartoes'
 import DadosPessoais from '../pages/Usuario/pages/DadosPessoais'
 import Enderecos from '../pages/Usuario/pages/Enderecos'
@@ -22,9 +22,11 @@ export default function Router() {
       <Route path="/cadastro-login" element={<CadastroLogin />} />
       <Route path="/compra-produto" element={<CompraProduto />} />
       <Route path="/pedido-realizado" element={<PedidoRealizado />} />
+
+      
+      <Route path="/pedidos" element={<Pedidos />} />
       <Route path="/usuario" element={<Usuario />} />
       <Route path="/carrinho" element={<Carrinho />} />
-      <Route path="/users" element={<Users />} />
       <Route path="/cartoes" element={<Cartoes />} />
       <Route path="/dados-pessoais" element={<DadosPessoais />} />
       <Route path="/enderecos" element={<Enderecos />} />

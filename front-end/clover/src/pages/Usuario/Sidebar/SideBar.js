@@ -10,13 +10,9 @@ import { BsFillCreditCardFill } from "react-icons/bs"
 import { CgLogOff } from "react-icons/cg"
 
 const routes = [
+ 
   {
-    path: "/usuario",
-    name: "Dashboard",
-    icon: <FaHome />,
-  },
-  {
-    path: "/users",
+    path: "/pedidos",
     name: "Pedidos",
     icon: <FaTshirt />,
   },
