@@ -12,7 +12,6 @@ function PedidoRealizado() {
       updateCurrentStep(step);
     }
 
-  
     return (
       <div className='controleGeral'>
       <div className="App">
@@ -26,8 +25,7 @@ function PedidoRealizado() {
       </div>
   
         <StepNavigation labelArray={labelArray} currentStep={currentStep} updateStep={updateStep}></StepNavigation>
-        
-       
+              
       </div>
       </div>
     );

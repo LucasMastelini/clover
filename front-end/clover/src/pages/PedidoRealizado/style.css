@@ -33,7 +33,7 @@
   .stepWrapper {
     display: flex;
     margin-bottom: 20px;
-    color: white
+    color: white;
   }
   
   .stepBlock .circleWrapper {
@@ -45,10 +45,12 @@
   
   .selected .circle {
     color: black;
-    background-color: white;
-    border-color: #35DAF0;
+    background-color: green;
+    border-color: green;
     
   }
+
+ 
   
   .stepBlock:not(:last-child) > .circleWrapper::after {
     content: '';
@@ -61,15 +63,20 @@
     margin: auto;
     z-index: -1;
   }
+
+
   
   .stepBlock:not(:last-child) > .circleWrapper::after {
     height: 3px;
   }
+
+
   
   .stepBlock:not(:last-child).selected > .circleWrapper::after, .stepBlock:not(:last-child).selected ~ .stepBlock:not(:last-child) > .circleWrapper::after {
     height: 2px;
     opacity: 0.6;
   }
+
   
   .primaryButton {
     padding: 10px 25px;
