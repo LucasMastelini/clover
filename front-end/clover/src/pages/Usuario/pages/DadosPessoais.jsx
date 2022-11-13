@@ -6,7 +6,24 @@ import './style.css';
 
 function DadosPessoais() {
 
-  const [countryName, setCountryName] = useState("lalalala");
+  const [nome, setNome] = useState("Alex");
+  const [sobrenome, setSobrenome] = useState("Barreira");
+  const [email, setEmail] = useState("alex.barreira@sptech.school.com");
+  const [cpf, setCpf] = useState("386.118.288-28");
+  const [genero, setGenero] = useState("Masculino");
+  const [dataNascimento, setDataNascimento] = useState("28/12/1994");
+  const [telCelular, setTelCelular] = useState("(11)964616681");
+
+  const [disabled, setDisabled] = useState(true);
+  const [isBlue, setIsBlue] = useState(false);
+  const [buttonText, setButtonText] = useState(false);
+
+
+  function handleGameClick() {
+    setDisabled(!disabled);
+    setIsBlue(!isBlue);
+    setButtonText(!buttonText);
+  }
 
   return (
     <>
@@ -22,54 +39,67 @@ function DadosPessoais() {
             <div className="container-informacoes">
               <label>
                 Nome
-                <input value={countryName}
-                  onChange={event => { setCountryName(event.target.value) }}
-                  InputLabelProps={{ shrink: true }} />
+                <input value={nome}
+                  style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0' }}
+                  onChange={event => { setNome(event.target.value) }}
+                  disabled={disabled}
+                />
               </label>
 
               <label>
                 Sobrenome
-                <input value={countryName}
-                  onChange={event => { setCountryName(event.target.value) }}
-                  InputLabelProps={{ shrink: true }} />
+                <input value={sobrenome}
+                  style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0' }}
+                  onChange={event => { setSobrenome(event.target.value) }}
+                  disabled={disabled}
+                />
               </label>
 
               <label className='email'>
                 E-mail
-                <input value={countryName}
-                  onChange={event => { setCountryName(event.target.value) }}
-                  InputLabelProps={{ shrink: true }} />
+                <input value={email}
+                  style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0'}}
+                  onChange={event => { setEmail(event.target.value) }}
+                  disabled={disabled}
+                />
               </label>
 
               <label>
                 CPF
-                <input value={countryName}
-                  onChange={event => { setCountryName(event.target.value) }}
-                  InputLabelProps={{ shrink: true }} />
+                <input value={cpf}
+                  style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0' }}
+                  onChange={event => { setCpf(event.target.value) }}
+                  disabled={disabled}
+                />
               </label>
 
               <label>
                 Gênero
-                <input value={countryName}
-                  onChange={event => { setCountryName(event.target.value) }}
-                  InputLabelProps={{ shrink: true }} />
+                <input value={genero}
+                  style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0' }}
+                  onChange={event => { setGenero(event.target.value) }}
+                  disabled={disabled}
+                />
               </label>
 
               <label>
                 Data de nascimento
-                <input value={countryName}
-                  onChange={event => { setCountryName(event.target.value) }}
-                  InputLabelProps={{ shrink: true }} />
+                <input value={dataNascimento}
+                  style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0' }}
+                  onChange={event => { setDataNascimento(event.target.value) }}
+                  disabled={disabled}
+                />
               </label>
 
               <label>
                 Celular
-                <input value={countryName}
-                  onChange={event => { setCountryName(event.target.value) }}
-                  InputLabelProps={{ shrink: true }} />
+                <input value={telCelular}
+                  style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0' }}
+                  onChange={event => { setTelCelular(event.target.value) }}
+                  disabled={disabled}
+                />
               </label>
-
-              <button>Salvar</button>
+              <div className='teste' onClick={handleGameClick}>{buttonText ? "Salvar" : "Editar"}</div>
             </div>
           </div>
         </form>
