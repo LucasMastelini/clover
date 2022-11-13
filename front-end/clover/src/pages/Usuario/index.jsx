@@ -1,12 +1,13 @@
 import React, { Profiler } from "react";
 import Header from "../Header";
-
+import SideBar from "./Sidebar/SideBar";
 import "./style.css";
 
 function Usuario() {
   return (
     <>
       <Header />
+      <SideBar />
       <div class="container-usuario">
         <div class="id-usuario">
           {/* <img src="../../../src/assets/image/imgMarvel.png" alt=""> */}
