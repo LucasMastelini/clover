@@ -8,11 +8,11 @@ import CompraProduto from '../pages/CompraProduto'
 import PedidoRealizado from '../pages/PedidoRealizado'
 import Carrinho from '../pages/Carrinho'
 
-import Pedidos from '../pages/Usuario/pages/Pedidos'
-import Cartoes from '../pages/Usuario/pages/Cartoes'
-import DadosPessoais from '../pages/Usuario/pages/DadosPessoais'
-import Enderecos from '../pages/Usuario/pages/Enderecos'
-import Sair from '../pages/Usuario/pages/Sair'
+import Pedidos from '../../src/pages/Usuario/pages/Pedidos'
+import Cartoes from '../../src/pages/Usuario/pages/Cartoes'
+import DadosPessoais from '../../src/pages/Usuario/pages/DadosPessoais'
+import Enderecos from '../../src/pages/Usuario/pages/Enderecos'
+import Sair from '../../src/pages/Usuario/pages/Sair'
 
 export default function Router() {
   return (
