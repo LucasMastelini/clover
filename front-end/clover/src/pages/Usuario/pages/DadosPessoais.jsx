@@ -2,7 +2,7 @@ import { React, useState } from 'react'
 import Header from '../../Header'
 import SideBar from '../Sidebar/SideBar';
 import { BiUser } from 'react-icons/bi';
-import './style.css';
+import './style-dados-pessoais.css';
 
 function DadosPessoais() {
 
@@ -39,7 +39,9 @@ function DadosPessoais() {
             <div className="container-informacoes">
               <label>
                 Nome
-                <input value={nome}
+                <input
+                  className="input-dados-pessoais"
+                  value={nome}
                   style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0' }}
                   onChange={event => { setNome(event.target.value) }}
                   disabled={disabled}
@@ -48,7 +50,9 @@ function DadosPessoais() {
 
               <label>
                 Sobrenome
-                <input value={sobrenome}
+                <input
+                  className="input-dados-pessoais"
+                  value={sobrenome}
                   style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0' }}
                   onChange={event => { setSobrenome(event.target.value) }}
                   disabled={disabled}
@@ -57,8 +61,10 @@ function DadosPessoais() {
 
               <label className='email'>
                 E-mail
-                <input value={email}
-                  style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0'}}
+                <input
+                  className="input-dados-pessoais"
+                  value={email}
+                  style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0' }}
                   onChange={event => { setEmail(event.target.value) }}
                   disabled={disabled}
                 />
@@ -66,7 +72,9 @@ function DadosPessoais() {
 
               <label>
                 CPF
-                <input value={cpf}
+                <input
+                  className="input-dados-pessoais"
+                  value={cpf}
                   style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0' }}
                   onChange={event => { setCpf(event.target.value) }}
                   disabled={disabled}
@@ -75,7 +83,9 @@ function DadosPessoais() {
 
               <label>
                 Gênero
-                <input value={genero}
+                <input
+                  className="input-dados-pessoais"
+                  value={genero}
                   style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0' }}
                   onChange={event => { setGenero(event.target.value) }}
                   disabled={disabled}
@@ -84,7 +94,9 @@ function DadosPessoais() {
 
               <label>
                 Data de nascimento
-                <input value={dataNascimento}
+                <input
+                  className="input-dados-pessoais"
+                  value={dataNascimento}
                   style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0' }}
                   onChange={event => { setDataNascimento(event.target.value) }}
                   disabled={disabled}
@@ -93,7 +105,9 @@ function DadosPessoais() {
 
               <label>
                 Celular
-                <input value={telCelular}
+                <input
+                  className="input-dados-pessoais"
+                  value={telCelular}
                   style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0' }}
                   onChange={event => { setTelCelular(event.target.value) }}
                   disabled={disabled}
