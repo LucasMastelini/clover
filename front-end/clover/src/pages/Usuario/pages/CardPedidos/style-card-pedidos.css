@@ -1,0 +1,204 @@
+.container-card {
+    margin-top: 3.5%;
+    background-color: rgba(255, 255, 255, 0.21);
+    width: 85%;
+    display: flex;
+    justify-content: center;
+}
+
+.container-card .card {
+    border: 2px solid #35DAF0;
+    background-color: #c897ee73;
+    margin-top: 2.5%;
+    height: 35%;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.pedidos-esquerda {
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+}
+
+.pedidos-esquerda img {
+    border-radius: 15px;
+    width: 40%;
+    margin-right: 6%;
+}
+
+.pedidos-direita {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    text-align: right;
+}
+
+.infos-pedidos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-family: 'Montserrat Medium', sans-serif;
+}
+
+.infos-pedidos .item-pedido {
+    display: flex;
+    flex-direction: row;
+    color: white;
+}
+
+.infos-pedidos .item-pedido .pedido-titulo {
+    margin-right: 2.5%;
+    font-family: 'Montserrat Medium', sans-serif;
+}
+
+.infos-pedidos .item-pedido .pedido-numero {
+    font-family: 'Montserrat Bold', sans-serif;
+}
+
+.infos-pedidos .pedido-destinatario {
+    color: white;
+    font-family: 'Montserrat Medium', sans-serif;
+}
+
+.infos-pedidos .pedido-detalhes {
+    color: #35DAF0;
+    font-style: italic;
+    cursor: pointer;
+}
+
+.data {
+    color: white;
+    font-size: 20px;
+    font-family: 'Montserrat Bold', sans-serif;
+}
+
+.data-titulo {
+    font-family: 'Montserrat Medium', sans-serif;
+    color: white;
+}
+
+.modal {
+
+    background-size: 300% 300%;
+    background-image: linear-gradient(-45deg,
+            rgba(59, 173, 227, 1) 0%,
+            rgba(87, 111, 230, 1) 25%,
+            rgba(152, 68, 183, 1) 51%,
+            rgba(255, 53, 127, 1) 100%);
+
+    animation: AnimateBG 15s ease infinite, fadeIn 2s;
+
+    width: 75vw;
+    height: 80vh;
+    margin: 10vh 12.5vw;
+    padding: 2.5% 2.5%;
+    border-radius: 10px;
+}
+
+.modal .modal-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.modal img {
+    width: 75%;
+}
+
+.modal .modal-container .modal-lado-esquerdo {
+    width: 45%;
+}
+
+.modal .modal-container .modal-lado-esquerdo .titulo-pedido {
+    font-size: 20px;
+    font-family: 'Montserrat Bold', sans-serif;
+    color: white;
+    margin-bottom: 4%;
+}
+
+.modal .modal-container .modal-lado-esquerdo .numero-titulo-pedido {
+    color: black;
+    margin-bottom: 4%;
+}
+
+.modal .modal-container .fechar {
+    color: #35DAF0;
+    background-color: black;
+    cursor: pointer;
+    width: 4%;
+    height: 8%;
+    border-radius: 100%;
+}
+
+.modal .modal-container .fechar:hover {
+    background-color: rgb(39, 38, 38);
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+@keyframes AnimateBG {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../../../../assets/fontes/Montserrat-Thin.eot');
+    src: url('../../../../assets/fontes/Montserrat-Thin.eot?#iefix') format('embedded-opentype'),
+        url('../../../../assets/fontes/Montserrat-Thin.woff2') format('woff2'),
+        url('../../../../assets/fontes/Montserrat-Thin.woff') format('woff'),
+        url('../../../../assets/fontes/Montserrat-Thin.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat Bold';
+    src: url('../../../../assets/fontes/Montserrat-Bold.eot');
+    src: url('../../../../assets/fontes/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../../../../assets/fontes/Montserrat-Bold.woff2') format('woff2'),
+        url('../../../../assets/fontes/Montserrat-Bold.woff') format('woff'),
+        url('../../../../assets/fontes/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat Medium';
+    src: url('../../../../assets/fontes/Montserrat-Medium.eot');
+    src: url('../../../../assets/fontes/Montserrat-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../../../../assets/fontes/Montserrat-Medium.woff2') format('woff2'),
+        url('../../../../assets/fontes/Montserrat-Medium.woff') format('woff'),
+        url('../../../../assets/fontes/Montserrat-Medium.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
