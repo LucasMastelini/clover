@@ -54,7 +54,7 @@
     margin-bottom: 2%;
 }
 
-.container-informacoes input {
+.container-informacoes .input-dados-pessoais {
     background-color: transparent;
     border: 2px solid #D02EE0;
     border-radius: 3px;
