@@ -9,10 +9,12 @@ import IconNav from "./components/IconNav";
 import MinhaConta from "./components/MinhaConta";
 import MobileNavbar from "./mobile-menu";
 import "./style.css";
+import {useCarrinho} from '../Carrinho/Context';
 // import { useEffect } from "react";
 
 function Header() {
   const mobileMenu = new MobileNavbar();
+  const { item = [] } = useCarrinho();
 
   const [abrirLista, setAbrirLista] = useState(false);
   // const [itensCarrinho, setItensCarrinho] = useState();
@@ -82,7 +84,7 @@ function Header() {
               <span>
                 <img className="icon carrinho" src={iconCarrinho} />
               </span>
-              <span className="badge-carrinho">{3}</span>
+              <span className="badge-carrinho">{item.length}</span>
             </div>
           </div>
         </div>
