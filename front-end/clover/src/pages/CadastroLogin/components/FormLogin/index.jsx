@@ -74,13 +74,26 @@ function FormLogin(props) {
                                     <i>
                                         <img className="email" src={emailIcon} alt="" />
                                     </i>
-                                    <Field className="input-valida" name="email" id="login-email" type="email" placeholder="E-mail" required />
+                                    <Field 
+                                    autocomplete="off"
+                                    className="input-valida" 
+                                    name="email"
+                                    id="login-email" 
+                                    type="email" 
+                                    placeholder="E-mail" 
+                                    required />
                                 </div>
                                 <div className="input-block">
                                     <i>
                                         <img src={passwordIcon} alt="" />
                                     </i>
-                                    <Field className="input-valida" name="senha" id="login-senha" type="password" placeholder="Senha" required />
+                                    <Field 
+                                    className="input-valida" 
+                                    name="senha" 
+                                    id="login-senha" 
+                                    type="password" 
+                                    placeholder="Senha" 
+                                    required />
                                 </div>
                                 <button id="update-senha">Esqueceu sua senha?</button>
                             </fieldset>
