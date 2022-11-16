@@ -1,0 +1,22 @@
+.container-pagina {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 900px;
+}
+
+.barra-fixa {
+    width: 15%;
+    height: 100%;
+    background-color: blue;
+}
+
+.corpo-pagina {
+    width: 85%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding-top: 10%;
+}

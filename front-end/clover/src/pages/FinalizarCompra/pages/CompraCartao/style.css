@@ -1,0 +1,206 @@
+.container-compra {
+    width: 90%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    min-height: 100vh;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    padding-bottom: 60px;
+}
+
+.container-compra form {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 10px 15px rgba(0,0,0,.1);
+    padding: 20px;
+    width: 90%;
+    padding-top: 160px;
+}
+
+.container-compra form .input-box {
+    margin-top: 20px;
+}
+
+.container-compra form .input-box span {
+    display: block;
+    color: #999;
+    padding-bottom: 5px;
+}
+
+.container-compra form .input-box input,
+.container-compra form .input-box select  {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 3px solid #D02EE0;
+    color: #444;
+    text-transform: uppercase;
+}
+
+.container-compra form .flexbox {
+    display: flex;
+    gap: 15px;
+}
+
+.container-compra form .flexbox .input-box {
+    flex: 1 1 150px ;
+}
+
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    
+}
+input[type=number] { 
+   -moz-appearance: textfield;
+   appearance: textfield;
+
+}
+
+.container-compra form .submit-btn {
+    width: 100%;
+    background: linear-gradient(45deg, blueviolet, deeppink);
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .2s linear;
+}
+
+.container-compra form .submit-btn:hover {
+    letter-spacing: 2px;
+    opacity: .8;
+}
+
+.container-compra .card-container {
+    margin-bottom: -150px;
+    position: relative;
+    height: 250px;
+    width: 400px;
+    box-sizing: border-box;
+    cursor: default;
+}
+
+.container-compra .card-container .front{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(45deg, blueviolet, deeppink);
+    border-radius: 10px;
+    backface-visibility: hidden;
+    box-shadow: 0 15px 25px rgba(0,0,0,.2);
+    padding: 20px;    
+    transform: perspective(1000px) rotateY(0deg);
+    transition: transform .4s ease-out;
+}
+.container-compra .card-container .front input {
+    outline: none;
+    border: none;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+.container-compra .card-container .front .icones-cartao {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.container-compra .card-container .front .icones-cartao svg {
+    width: 60px;
+    height: 55px;
+}
+
+.container-compra .card-container .front .icones-cartao svg .icon-bandeira {
+    background-color: #fff;
+}
+
+.container-compra .card-container .front .card-number-box {
+    padding: 30px 0;
+    font-size: 22px;
+    color: #fff;
+    width: 100%;
+}
+
+.container-compra .card-container .front .flexbox {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-compra .card-container .front .flexbox .box:nth-child(1) {
+    margin-right: auto;
+}
+
+.container-compra .card-container .front .flexbox .box:nth-child(1) input {
+    width: 100%;
+}
+
+.container-compra .card-container .front .flexbox .box:nth-child(2) {
+    width: 40%;
+}
+
+.container-compra .card-container .front .flexbox .box {
+    font-size: 15px;
+    color: #fff;
+}
+
+.container-compra .card-container .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(45deg, blueviolet, deeppink);
+    border-radius: 10px;
+    padding: 20px 0;
+    text-align: right;
+    backface-visibility: hidden;
+    box-shadow: 0 15px 25px rgba(0,0,0,.2);
+    transform: perspective(1000px) rotateY(180deg);
+    transition: transform .4s ease-out;
+}
+
+.container-compra .card-container .back .stripe {
+    background: #000;
+    width: 100%;
+    margin: 10px 0;
+    height: 50px;
+}
+
+.container-compra .card-container .back .box {
+    padding: 0 20px;
+}
+
+.container-compra .card-container .back .box span {
+    color: #fff;
+    font-size: 15px;
+}
+
+.container-compra .card-container .back .box .cvv-box {
+    height: 50px;
+    padding: 10px;
+    margin-top: 5px;
+    color: #333;
+    background: #fff;
+    border-radius: 5px;
+    border-color: none;
+    width: 100%;
+}
+
+.container-compra .card-container .back .box svg {
+    margin-top: 30px;
+    width: 40px;
+    height: 35px;
+}
