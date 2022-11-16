@@ -8,6 +8,7 @@
     width: 100vw;
     display: flex;
     justify-content: center;
+    animation: fadeIn 5s;
 }
 
 .dados-pessoais {
@@ -37,15 +38,58 @@
     font-family: 'Montserrat Medium', sans-serif;
 }
 
-input {
+.container-informacoes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.container-informacoes label{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat Medium', sans-serif;
+    width: 45%;
+    line-height: 2.5rem;
+    margin-bottom: 2%;
+}
+
+.container-informacoes .input-dados-pessoais {
     background-color: transparent;
-    border: 3px solid #D02EE0;
+    border: 2px solid #D02EE0;
     border-radius: 3px;
-    width: 40%;
+    outline: none;
     height: 35px;
     color: white;
     padding-left: 1%;
 }
+
+.container-informacoes .email {
+    width: 95%;
+}
+
+.teste {
+    width: 15%;
+    margin-left: auto;
+    font-family: 'Montserrat Bold', sans-serif;
+    text-align: center;
+    background-color: #35DAF0;
+    color: black;
+    border-radius: 15px;
+    line-height: 2.5rem;
+    margin-top: 2%;
+    margin-right: 2.5%;
+    cursor: pointer;
+}
+
+.teste:hover {
+    background-color: #7bf0ff;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
 
 @font-face {
     font-family: 'Montserrat';
