@@ -12,7 +12,7 @@ function MinhaConta({ sair, navegarUsuario }) {
   //  localStorage.setItem('nome-usuario','Brenda')
   const acessoUsario = localStorage.getItem("nome-usuario");
 
-  console.log(acessoUsario);;
+  // console.log(acessoUsario);;
 
   return (
     <>

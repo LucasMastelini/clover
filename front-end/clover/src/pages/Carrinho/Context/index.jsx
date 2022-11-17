@@ -16,6 +16,20 @@ export function CarrinhoProvider({ children }) {
       itemBusca.quantidade += 1;
     }
     setItem(listaItens);
+
+    console.table(item)
+  }
+
+  function aumentarQuantidade(idProd){
+
+    console.log(idProd)
+    const listaItens = [...item];
+    console.log(listaItens)
+
+    // const itemBusca = listaItens.find((i) => i.id === idProd);
+    // itemBusca.quantidade += 1;
+    
+    // setItem(listaItens);
   }
 
   function removerQuantidade(idProd) {
@@ -27,13 +41,18 @@ export function CarrinhoProvider({ children }) {
       itemBusca.quantidade -= 1;
       setItem(listaItens)
     }else{
-      const novaLitaItens = listaItens.filter(prod => prod.id !== idProd);
-      setItem(novaLitaItens)
+      {deletarItem(idProd)}
     }
+  }
+
+  function deletarItem(idProd) {
+    const listaItens = [...item];
+    const novaLitaItens = listaItens.filter(prod => prod.id !== idProd);
+    setItem(novaLitaItens);
   }
   
   return (
-    <CarrinhoContext.Provider value={{ item, adicionarQuantidade, removerQuantidade }}>
+    <CarrinhoContext.Provider value={{ item, aumentarQuantidade, removerQuantidade }}>
       {children}
     </CarrinhoContext.Provider>
   );
