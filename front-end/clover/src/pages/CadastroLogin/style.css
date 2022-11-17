@@ -173,10 +173,6 @@ body {
     background: rgba(200, 151, 238, 0.2);
     border-radius: 25px;
     border: 3px solid #CA1CDB;
-    
-
-
-    
     ;
   }
 }
@@ -324,7 +320,7 @@ body {
   background: #000923;
   border-radius: 12px;  
   box-sizing: border-box;
-
+  outline: 0;
 }
 
 .input-invalida{
@@ -339,6 +335,7 @@ body {
   #1D0101;
   border-radius: 12px;  
   box-sizing: border-box;
+  outline: 0;
 }
 
 ::-webkit-input-placeholder{
