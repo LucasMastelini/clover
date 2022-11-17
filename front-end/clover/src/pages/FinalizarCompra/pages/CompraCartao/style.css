@@ -29,9 +29,30 @@
     margin-top: 20px;
 }
 
+/* @keyframes move-card {
+    0% {
+        transform: perspective(1000px) rotateY(180deg);
+        transition: transform .4s ease-out;
+    }
+
+    100% {
+        transform: perspective(1000px) rotateY(0deg);
+        transition: transform .4s ease-out;
+    }
+}
+
+.input-box .cvv-input:hover {
+    .back{
+
+        animation: move-card;
+    }
+    border: 1px solid red;
+} */
+
 .container-compra form .input-box span {
     display: block;
-    color: #999;
+    color: #000;
+    font-weight: 600;
     padding-bottom: 5px;
 }
 
@@ -41,7 +62,8 @@
     padding: 10px;
     border-radius: 10px;
     border: 3px solid #D02EE0;
-    color: #444;
+    color: #000;
+    font-weight: 600;
     text-transform: uppercase;
 }
 
@@ -58,10 +80,10 @@ input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     
 }
+
 input[type=number] { 
    -moz-appearance: textfield;
    appearance: textfield;
-
 }
 
 .container-compra form .submit-btn {
@@ -101,14 +123,17 @@ input[type=number] {
     backface-visibility: hidden;
     box-shadow: 0 15px 25px rgba(0,0,0,.2);
     padding: 20px;    
-    transform: perspective(1000px) rotateY(0deg);
-    transition: transform .4s ease-out;
+    /* transform: perspective(1000px) rotateY(0deg); 
+    transition: transform .4s ease-out;  */
 }
+
 .container-compra .card-container .front input {
     outline: none;
     border: none;
     text-transform: uppercase;
     font-size: 18px;
+    background: transparent;
+    color: #fff;
 }
 
 .container-compra .card-container .front .icones-cartao {
@@ -148,7 +173,7 @@ input[type=number] {
 }
 
 .container-compra .card-container .front .flexbox .box:nth-child(2) {
-    width: 40%;
+    width: 30%;
 }
 
 .container-compra .card-container .front .flexbox .box {
@@ -168,8 +193,9 @@ input[type=number] {
     text-align: right;
     backface-visibility: hidden;
     box-shadow: 0 15px 25px rgba(0,0,0,.2);
-    transform: perspective(1000px) rotateY(180deg);
-    transition: transform .4s ease-out;
+    /* transform: perspective(1000px) rotateY(180deg);
+    transition: transform 10s ease-out;
+    animation-fill-mode: forwards; */
 }
 
 .container-compra .card-container .back .stripe {
@@ -192,7 +218,8 @@ input[type=number] {
     height: 50px;
     padding: 10px;
     margin-top: 5px;
-    color: #333;
+    color: #000;
+    font-weight: 600;
     background: #fff;
     border-radius: 5px;
     border-color: none;
