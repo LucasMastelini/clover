@@ -1,11 +1,10 @@
 .container-geral {
-    width: 100vw;
-    display: flex;
-    flex-direction: row;
+    width: 50vw;
+   float: left;
 }
 
 .container-pedidos {
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     animation: fadeIn 5s;

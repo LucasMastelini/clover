@@ -8,9 +8,7 @@ function Pedidos() {
 
   return (
     <>
-      <Header />
       <div className="container-geral">
-        <SideBar></SideBar>
         <div className="container-pedidos">
           <CardPedidos />
         </div>
