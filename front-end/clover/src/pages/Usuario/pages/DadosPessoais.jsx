@@ -29,7 +29,6 @@ function DadosPessoais() {
     <>
       <Header />
       <div className="container-geral">
-        <SideBar></SideBar>
         <form className="container-dados-pessoais">
           <div className="dados-pessoais">
             <div className="title">
