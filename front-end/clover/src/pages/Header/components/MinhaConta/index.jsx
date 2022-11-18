@@ -10,20 +10,20 @@ function MinhaConta({ sair, navegarUsuario }) {
     return navegar("/cadastro-login");
   }
   //  localStorage.setItem('nome-usuario','Brenda')
-  const acessoUsario = localStorage.getItem("nome-usuario");
-
-  console.log(acessoUsario);;
+  const acessoUsario = JSON.parse(localStorage.getItem("responseKey")) ;
+  console.log(acessoUsario);
+  var nome = acessoUsario.nome.split(" ");
 
   return (
     <>
-      {acessoUsario == null ? (
+      {acessoUsario === null ? (
         <span onClick={navegarCadastroLogin} className="text">
           Minha conta
         </span>
       ) : (
         <>
           {" "}
-          <span>Olá, {acessoUsario}</span>
+          <span>Olá, {nome[0]}</span>
           <select className="menu-perfil">
             <option value="" className="option-color"></option>
             <option value="" className="option-color" onClick={sair}>
