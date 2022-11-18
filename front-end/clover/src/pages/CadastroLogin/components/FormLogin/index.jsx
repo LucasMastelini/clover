@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import api from "../../../../Api/api";
 import { Formik, Field, Form } from 'formik';
 
@@ -6,35 +6,34 @@ import emailIcon from '../../../../assets/image/email.png'
 import passwordIcon from '../../../../assets/image/senha.png'
 import schemaLogin from "../../../../schemaLogin";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
-function FormLogin(props) {
+function FormLogin() {
 
-    const [response, setResponse] = useState([]);
+    const[validacao , setValidacao] = useState(true);
     const navegar = useNavigate();
-    
+
     function onSubmit(values, actions) {
 
         api.post('/login',
             values
         )
             .then(res => {
-                setResponse(res.data);
                 alert(`Bem Vindo ${res.data.nome}!`);
-                localStorage.setItem('responseKey', JSON.stringify(response));
-                var jsonResponse = JSON.parse(localStorage.getItem('responseKey'));
-                console.log(jsonResponse);
-                console.log('SUBMIT', res.data);
-                // navegar("/")
+                localStorage.setItem('nome', res.data.nome);
+                localStorage.setItem('email', res.data.email);
+                // console.log('SUBMIT', res.data);
+                navegar("/")
                 actions.resetForm();
             }).catch(err => {
-                console.log(err)
-                // console.log(values)
-                if(err.response.status === 403){
-                alert("Email ou Senha incorretos")}
+                // console.log(err)
+                if (err.response.status === 403) {
+                    alert("Email ou Senha incorretos")
+                }
             })
-            
     }
-    
+
+
     return (
         <>
             <div className="form-wrapper is-active">
@@ -44,6 +43,7 @@ function FormLogin(props) {
                     <span className="underline"></span>
                 </button>
                 <Formik
+                    
                     validationSchema={schemaLogin}
                     onSubmit={onSubmit}
                     validateOnMount
@@ -51,37 +51,37 @@ function FormLogin(props) {
                         email: '',
                         senha: '',
                     }}
-                    render={({ values }) => (
+                    render={({ values, touched }) => (
                         <Form className="form form-signup">
                             <fieldset>
                                 <div className="input-block">
                                     <i>
                                         <img className="email" src={emailIcon} alt="" />
                                     </i>
-                                    <Field 
-                                    autocomplete="off"
-                                    className="input-valida" 
-                                    name="email"
-                                    id="login-email" 
-                                    type="email" 
-                                    placeholder="E-mail" 
-                                    required />
+                                    <Field
+                                        autoComplete="off"
+                                        className="input-valida"
+                                        name="email"
+                                        id="login-email"
+                                        type="email"
+                                        placeholder="E-mail"
+                                        required />
                                 </div>
                                 <div className="input-block">
                                     <i>
                                         <img src={passwordIcon} alt="" />
                                     </i>
-                                    <Field 
-                                    className="input-valida" 
-                                    name="senha" 
-                                    id="login-senha" 
-                                    type="password" 
-                                    placeholder="Senha" 
-                                    required />
+                                    <Field
+                                        className="input-valida"
+                                        name="senha"
+                                        id="login-senha"
+                                        type="password"
+                                        placeholder="Senha"
+                                        required />
                                 </div>
                                 <button id="update-senha">Esqueceu sua senha?</button>
                             </fieldset>
-                            <button type="submit" className="btn-cadastro">Acessar minha conta </button>
+                            <button type="submit" className="btn-cadastro" disabled={!validacao}>Acessar minha conta </button>
                         </Form>)}
                 />
             </div>
