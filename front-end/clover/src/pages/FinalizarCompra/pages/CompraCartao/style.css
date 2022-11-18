@@ -17,42 +17,26 @@
 }
 
 .container-compra form {
-    background: #fff;
+    background: rgba(217, 217, 217, 0.11);
     border-radius: 5px;
     box-shadow: 0 10px 15px rgba(0,0,0,.1);
     padding: 20px;
     width: 90%;
     padding-top: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .container-compra form .input-box {
     margin-top: 20px;
+    width: 100%;
 }
-
-/* @keyframes move-card {
-    0% {
-        transform: perspective(1000px) rotateY(180deg);
-        transition: transform .4s ease-out;
-    }
-
-    100% {
-        transform: perspective(1000px) rotateY(0deg);
-        transition: transform .4s ease-out;
-    }
-}
-
-.input-box .cvv-input:hover {
-    .back{
-
-        animation: move-card;
-    }
-    border: 1px solid red;
-} */
 
 .container-compra form .input-box span {
     display: block;
-    color: #000;
-    font-weight: 600;
+    color: #fff;
+    font-weight: 500;
     padding-bottom: 5px;
 }
 
@@ -69,6 +53,7 @@
 
 .container-compra form .flexbox {
     display: flex;
+    width: 100%;
     gap: 15px;
 }
 
@@ -87,19 +72,20 @@ input[type=number] {
 }
 
 .container-compra form .submit-btn {
-    width: 100%;
-    background: linear-gradient(45deg, blueviolet, deeppink);
+    width: 50%;
+    background: #35DAF0;
     margin-top: 20px;
     padding: 10px;
     font-size: 20px;
-    color: #fff;
+    color: #000;
+    font-size: 24px;
+    font-weight: 900;
     border-radius: 10px;
     cursor: pointer;
-    transition: .2s linear;
 }
 
 .container-compra form .submit-btn:hover {
-    letter-spacing: 2px;
+    /* letter-spacing: 2px; */
     opacity: .8;
 }
 

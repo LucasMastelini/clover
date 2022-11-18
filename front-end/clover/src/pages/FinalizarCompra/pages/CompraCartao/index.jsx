@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { FcSimCardChip } from "react-icons/fc"
-import { FaCcVisa, /*FaCcMastercard*/ } from "react-icons/fa"
+import { FaCcVisa, FaCcMastercard, FaCcDiscover } from "react-icons/fa"
+import { SiAmericanexpress } from "react-icons/si"
 
 
 import "./style.css";
 
-export default function CompraCartao() {
+export default function CompraCartao({setarPassos, passoAtual}) {
 
     const [numberCard, setNumberCard] = useState("");
     const [nameCard, setNameCard] = useState("");
@@ -22,8 +23,9 @@ export default function CompraCartao() {
         setVirarCartao(false);
     }
 
-    
-    console.log(virarCartao);
+    function enviarDados() {
+        setarPassos(passoAtual + 1);
+    }
 
   return (
     <>
@@ -34,7 +36,11 @@ export default function CompraCartao() {
                 <div className="front">
                     <div className="icones-cartao">
                         <FcSimCardChip/>
-                        <FaCcVisa/>
+                        {/* {numberCard.substring(0,2) === "37" ? (<SiAmericanexpress/>) : (<FaCcVisa/>)}
+                        {numberCard.substring(0,2) === "44" ? (<FaCcVisa/>) : (<FaCcVisa/>)} */}
+                        {numberCard.substring(0,2) === "55" ? (<FaCcMastercard/>) : (<FaCcVisa/>)}
+                        {/* {numberCard.substring(0,2) === "66" ? (<FaCcDiscover/>) : (<FaCcVisa/>)} */}
+                        
                     </div>
                     <input className="card-number-box" placeholder='#### #### #### ####' 
                         defaultValue={numberCard} 
@@ -77,7 +83,7 @@ export default function CompraCartao() {
             <form action="" method="post" className="formulario">
                 <div className="input-box">
                     <span>número do cartão</span>
-                    <input type="number" max={16} 
+                    <input type="number" min={16} max={16} 
                         defaultValue={numberCard} 
                         onChange={event => {setNumberCard(event.target.value)}} 
                         name="" id="" 
@@ -142,7 +148,16 @@ export default function CompraCartao() {
                             maxLength={4} className="cvv-input" name="" id="" />
                     </div>
                 </div>
-                <input type="submit" defaultValue="submit"  className="submit-btn"/>
+                <div className="input-box">
+                    <span>quantidade de parcelas</span>
+                    <input type="text" defaultValue="" 
+                        name="" id="" 
+                        className="card-holder-input"
+                    />
+                </div>
+                <button type="submit" defaultValue="submit"  className="submit-btn">
+                    Finalizar pedido
+                </button>
             </form>
         </div>
     </>
