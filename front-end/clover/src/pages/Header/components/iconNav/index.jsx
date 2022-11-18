@@ -7,4 +7,4 @@ function IconNav() {
   return <div className="texto">Lista</div>;
 }
 
-export default IconNav
+export default IconNav;
