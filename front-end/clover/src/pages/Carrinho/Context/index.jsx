@@ -1,58 +1,77 @@
 import React, { createContext, useState, useContext } from "react";
+import { useEffect } from "react";
 
 const CarrinhoContext = createContext({});
 
 export function CarrinhoProvider({ children }) {
   const [item, setItem] = useState([]);
 
-  function adicionarQuantidade(idProd, nomeProd, valorProd) {
-    const listaItens = [...item];
+  function adicionarProduto(idProd, nomeProd, valorProd) {
+    const listaProdutos = [...item];
 
-    const itemBusca = listaItens.find((i) => i.id === idProd);
+    const itemInformado = listaProdutos.find((i) => i.id === idProd);
 
-    if(!itemBusca){
-      listaItens.push({ id: idProd, nome: nomeProd, valor: valorProd, quantidade: 1 }); 
-    }else{
-      itemBusca.quantidade += 1;
+    if (!itemInformado) {
+      listaProdutos.push({
+        id: idProd,
+        nome: nomeProd,
+        valor: valorProd,
+        quantidade: 1,
+      });
+    } else {
+      itemInformado.quantidade += 1;
     }
-    setItem(listaItens);
 
-    console.table(item)
+    setItem(listaProdutos);
   }
 
-  function aumentarQuantidade(idProd){
+  useEffect(() => {
+    console.log(item);
+  }, [item]);
 
-    console.log(idProd)
-    const listaItens = [...item];
-    console.log(listaItens)
+  function aumentarQuantidade(idProd) {
+    const listaProdutos = [...item];
 
-    // const itemBusca = listaItens.find((i) => i.id === idProd);
-    // itemBusca.quantidade += 1;
-    
-    // setItem(listaItens);
+    const itemInformado = listaProdutos.find((i) => i.id === idProd);
+
+    if (itemInformado) {
+      itemInformado.quantidade += 1;
+    }
+
+    setItem(listaProdutos);
   }
 
   function removerQuantidade(idProd) {
     const listaItens = [...item];
-    
+
     const itemBusca = listaItens.find((i) => i.id === idProd);
 
-    if(itemBusca.quantidade > 1){
+    if (itemBusca.quantidade > 1) {
       itemBusca.quantidade -= 1;
-      setItem(listaItens)
-    }else{
-      {deletarItem(idProd)}
+      setItem(listaItens);
+    } else {
+      {
+        removerProduto(idProd);
+      }
     }
   }
 
-  function deletarItem(idProd) {
+  function removerProduto(idProd) {
     const listaItens = [...item];
-    const novaLitaItens = listaItens.filter(prod => prod.id !== idProd);
+    const novaLitaItens = listaItens.filter((prod) => prod.id !== idProd);
     setItem(novaLitaItens);
   }
-  
+
   return (
-    <CarrinhoContext.Provider value={{ item, aumentarQuantidade, removerQuantidade }}>
+    <CarrinhoContext.Provider
+      value={{
+        item,
+        adicionarProduto,
+        aumentarQuantidade,
+        removerQuantidade,
+        removerProduto,
+      }}
+    >
       {children}
     </CarrinhoContext.Provider>
   );

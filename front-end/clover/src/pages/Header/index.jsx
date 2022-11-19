@@ -10,6 +10,7 @@ import MinhaConta from "./components/MinhaConta";
 import MobileNavbar from "./mobile-menu";
 import "./style.css";
 import {useCarrinho} from '../Carrinho/Context';
+import { useEffect } from "react";
 // import { useEffect } from "react";
 
 function Header() {
@@ -24,6 +25,12 @@ function Header() {
   // }, [itensCarrinho]);
 
   const navegar = useNavigate();
+  
+  var total = 0;
+
+  for (let i = 0; i < item.length; i++) {
+    total += item[i].quantidade;
+  }
 
   function abaCadastroLogin() {
     return navegar("/cadastro-login");
@@ -84,7 +91,7 @@ function Header() {
               <span>
                 <img className="icon carrinho" src={iconCarrinho} />
               </span>
-              <span className="badge-carrinho">{item.length}</span>
+              <span className="badge-carrinho">{total}</span>
             </div>
           </div>
         </div>
