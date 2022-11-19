@@ -9,7 +9,7 @@ import CompraCartao from "./pages/CompraCartao";
 import DadosPessoais from "../Usuario/pages/DadosPessoais";
 import "./style.css";
 
-export default function FinalizarCompra({ children }) {
+export default function FinalizarCompra() {
   const [step, setStep] = useState(2);
 
   return (
