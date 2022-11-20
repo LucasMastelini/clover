@@ -1,7 +1,8 @@
 .texto {
+  z-index: 99;
+  height: 15vh;
   color:#C468CD;
-  background-color: #2d303ab6;
-  height: 30vh;
   padding:3rem 4rem;
-  z-index: +1;
+  background-color: #2d303ab6;
+  /* display: none; */
 }

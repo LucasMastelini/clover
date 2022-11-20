@@ -1,27 +1,45 @@
 import React, { useState } from "react";
 
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useCarrinho } from "../Carrinho/Context";
+
 import cloverLogo from "../../assets/image/logo.png";
 import iconPerson from "../../assets/image/person.png";
 import iconCarrinho from "../../assets/image/carrinho.png";
 import lupa from "../../assets/image/lupa.png";
 import IconNav from "./components/IconNav";
 import MinhaConta from "./components/MinhaConta";
-import MobileNavbar from "./mobile-menu";
+
 import "./style.css";
-// import { useEffect } from "react";
 
 function Header() {
-  const mobileMenu = new MobileNavbar();
+  // ---------- codigo para integração com o back menu de pesquisa ----------
+
+  const [search, setSearch] = useState("");
+
+  console.log(search);
+  const searchLowerCase = search.toLocaleLowerCase();
+
+  //   const pesquisa = //Array dos produtos vindo do back.filter//((pesquisa) =>
+  //     pesquisa.nome.toLowerCase.includes(searchLowerCase)) ||
+  //     pesquisa.marca.toLowerCase.includes(searchLowerCase))
+
+  const { item = [] } = useCarrinho();
+
+  function toggleMenu() {
+    const nav = document.getElementById("nav");
+    nav.classList.toggle("active");
+  }
 
   const [abrirLista, setAbrirLista] = useState(false);
-  // const [itensCarrinho, setItensCarrinho] = useState();
-
-  // const adicionarItem = useEffect(() => {
-  //   setItensCarrinho(itens);
-  // }, [itensCarrinho]);
 
   const navegar = useNavigate();
+
+  var total = 0;
+
+  for (let i = 0; i < item.length; i++) {
+    total += item[i].quantidade;
+  }
 
   function abaCadastroLogin() {
     return navegar("/cadastro-login");
@@ -48,16 +66,17 @@ function Header() {
 
   function sair() {
     localStorage.clear();
-    alert("SAIU")
+    alert("SAIU");
     return navegar("/");
   }
   function navegarUsuario() {
-    window.alert('TÁ NA USUÁRIO');
+    window.alert("TÁ NA USUÁRIO");
     return navegar("/usuario");
   }
 
   return (
     <>
+      <div className="header-fake"></div>
       <header id="header" className="header">
         <div className="principal">
           <div className="pesquisa">
@@ -72,17 +91,19 @@ function Header() {
             </div>
           </div>
           <div className="controles">
-            <div>
+            <div className="opcao-minha-conta">
               <span>
                 <img className="icon" src={iconPerson} />
               </span>
-              <MinhaConta sair={sair} navegarUsuario={navegarUsuario} />
+              <div className="container-minha-conta">
+                <MinhaConta sair={sair} navegarUsuario={navegarUsuario} />
+              </div>
             </div>
             <div className="content-carrinho" onClick={abrirCarrinho}>
               <span>
                 <img className="icon carrinho" src={iconCarrinho} />
               </span>
-              <span className="badge-carrinho">{3}</span>
+              <span className="badge-carrinho">{total}</span>
             </div>
           </div>
         </div>
@@ -90,40 +111,40 @@ function Header() {
           <button
             aria-label="Abrir Menu"
             id="btn-mobile"
-            className="btn-mobile"
-            onClick={() => mobileMenu.handleClick()}
+            onClick={() => toggleMenu()}
             aria-haspopup="true"
             aria-controls="menu"
             aria-expanded="false"
           >
-            <span id="hamburger" className="hamburger"></span>
+            <span id="hamburger" />
           </button>
-          <ul
-            id="menu"
-            role="menu"
-            className="menu"
-            onMouseLeave={minimizarLista}
-          >
-            <li id="contaMobile" className="list active contaMobile">
-              <span>
-                <img className="icon" src={iconPerson} alt="" />
-              </span>
+          <ul id="menu" role="menu" onMouseLeave={minimizarLista}>
+            {/* <MinhaConta sair={sair} navegarUsuario={navegarUsuario} /> */}
+            <li id="contaMobile" className="list active-header contaMobile">
               <a href="./CadastroLogin">
-                <span className="text">Minha conta</span>
+                <span className="list text">Minha conta</span>
               </a>
             </li>
             <li id="carrinhoMobile" className="list carrinhoMobile"></li>
             <li className="list" onMouseEnter={carregarLista}>
-              <a href="/">Vestuario</a>
+              <a href="/" className="text">
+                Vestuario
+              </a>
             </li>
             <li className="list" onMouseEnter={carregarLista}>
-              <a href="/">Acessórios</a>
+              <a href="/" className="text">
+                Acessórios
+              </a>
             </li>
             <li className="list" onMouseEnter={carregarLista}>
-              <a href="/">Colecionaveis</a>
+              <a href="/" className="text">
+                Colecionaveis
+              </a>
             </li>
             <li className="list" onMouseEnter={carregarLista}>
-              <a href="/">Decoração</a>
+              <a href="/" className="text">
+                Decoração
+              </a>
             </li>
           </ul>
         </nav>

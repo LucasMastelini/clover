@@ -1,45 +1,63 @@
-// import React, { useState } from "react";
+import React, { useState } from "react";
 import api from "../../../../Api/api";
 import { Formik, Field, Form } from 'formik';
 import schema from '../../../../schema';
+import { useNavigate } from "react-router-dom";
 
 import userIcon from '../../../../assets/image/user.png'
 import emailIcon from '../../../../assets/image/email.png'
 import telefoneIcon from '../../../../assets/image/celular.png'
 import passwordIcon from '../../../../assets/image/senha.png'
-
+import FormLogin from "../FormLogin";
 
 function FormCadastro() {
-    // const [validate, setValidate] = useState(false);
+    const [validateConfirmacao, setValidateConfirmacao] = useState(true);
+    const [validateEmail, setValidateEmail] = useState(true);
+    const [validateSenha, setValidateSenha] = useState(true);
+    const [validarCadastrado, setValidarCadastrado] = useState(false);
+
+    const [inputValida, setInputValida] = useState("input-valida");
+    const [inputInValida, setInputInValida] = useState("input-invalida");
+    const navegar = useNavigate();
 
 
 
     function onSubmit(values, actions) {
 
+        if (values.senha !== values.confirmacao) {
+            setValidateConfirmacao(false)
+            setValidateSenha(false)
+            setValidateSenha(false)
+            setValidateEmail(true)
+            navegar("/cadastro-login")
+            alert("Senhas não são compativeis")
+            return;
+        }
+
         api.post('/clientes/cadastro',
             values)
             .then(res => {
-                alert(`${values.nome} seu cadastrado efetuado com sucesso `)
-                console.log('SUBMIT', values)
-                console.log(res)
+                setValidateConfirmacao(true)
+                setValidateEmail(true)
+                setValidateSenha(true)
+                console.log(res);
+                alert(`${values.nome} seu cadastrado foi efetuado com sucesso `)
                 actions.resetForm();
+                navegar("/cadastro-login")
             }).catch(err => {
                 console.log(err.response)
-                alert(err.response.data.msg)
+                if (err.response.data.msg) {
+                    setValidateEmail(false);
+                    setValidateSenha(false);
+                    setValidateConfirmacao(true);
+                    alert(`${err.response.data.msg}, Email ou Senha Já existem`)
+                }
             })
-
     }
-
-    // function validacao(values) {
-    //     if (values.senha !== values.confirmacao) {
-    //         setValidate(false)
-    //     }
-    // }
-
 
     return (
         <>
-            <div className="form-wrapper ">
+            <div className="form-wrapper">
                 <button type="button" className="switcher switcher-cadastro"
                 >
                     Cadastre-se
@@ -65,6 +83,7 @@ function FormCadastro() {
                                         <img src={userIcon} alt="" />
                                     </i>
                                     <Field
+                                        autoComplete="off"
                                         className="input-valida"
                                         name="nome"
                                         type="text"
@@ -76,7 +95,8 @@ function FormCadastro() {
                                         <img src={emailIcon} alt="" />
                                     </i>
                                     <Field
-                                        className="input-valida"
+                                        autoComplete="off"
+                                        className={validateEmail ? inputValida : inputInValida}
                                         name="email"
                                         type="email"
                                         placeholder="E-mail" required />
@@ -87,7 +107,8 @@ function FormCadastro() {
                                         <img src={passwordIcon} alt="" />
                                     </i>
                                     <Field
-                                        className="input-valida"
+                                        autoComplete="off"
+                                        className={validateSenha ? inputValida : inputInValida}
                                         name="senha"
                                         id="cadastro-senha"
                                         type="password"
@@ -99,8 +120,10 @@ function FormCadastro() {
                                         <img src={passwordIcon} alt="" />
                                     </i>
                                     <Field
-                                        className="input-valida"
-                                        name="confirmacao" id="cadastro-senha-confirm"
+                                        autoComplete="off"
+                                        className={validateConfirmacao ? inputValida : inputInValida}
+                                        name="confirmacao"
+                                        id="cadastro-senha-confirm"
                                         type="password"
                                         placeholder="Confirme sua senha" required />
                                 </div>
@@ -109,6 +132,7 @@ function FormCadastro() {
                                         <img src={telefoneIcon} alt="" />
                                     </i>
                                     <Field
+                                        autoComplete="off"
                                         className="input-valida"
                                         name="celular" id="cadastro-telefone"
                                         type="text"
