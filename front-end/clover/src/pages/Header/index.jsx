@@ -15,9 +15,31 @@ import "./style.css";
 function Header() {
   // ---------- codigo para integração com o back menu de pesquisa ----------
 
+  const categoriasMock = [
+    {
+      id: 0,
+      nome_categoria: "Vestuario",
+      sub_categoria: ["Camiseta", "Calça", "Bermuda", "Moletõn"],
+    },
+    {
+      id: 1,
+      nome_categoria: "Acessórios",
+      sub_categoria: ["Boné", "Mochila", "Anel"],
+    },
+    {
+      id: 2,
+      nome_categoria: "Colecionaveis",
+      sub_categoria: ["Bonecos", "Baralho", "Kit Fã"],
+    },
+    {
+      id: 3,
+      nome_categoria: "Decoração",
+      sub_categoria: ["Mesa", "Cadeira", "Escova de dente","Mesa", "Cadeira", "Escova de dente","Mesa", "Cadeira", "Escova de dente","Mesa", "Cadeira", "Escova de dente"],
+    },
+  ];
+
   const [search, setSearch] = useState("");
 
-  console.log(search);
   const searchLowerCase = search.toLocaleLowerCase();
 
   //   const pesquisa = //Array dos produtos vindo do back.filter//((pesquisa) =>
@@ -32,6 +54,7 @@ function Header() {
   }
 
   const [abrirLista, setAbrirLista] = useState(false);
+  const [subCategoria, setSubCategoria] = useState([]);
 
   const navegar = useNavigate();
 
@@ -51,6 +74,10 @@ function Header() {
 
   function carregarLista() {
     setAbrirLista(true);
+  }
+
+  function armazenarSubCategoria(sub_categoria_informada) {
+    setSubCategoria(sub_categoria_informada);
   }
 
   function minimizarLista() {
@@ -125,33 +152,27 @@ function Header() {
                 <span className="list text">Minha conta</span>
               </a>
             </li>
-            <li id="carrinhoMobile" className="list carrinhoMobile"></li>
-            <li className="list" onMouseEnter={carregarLista}>
-              <a href="/" className="text">
-                Vestuario
-              </a>
-            </li>
-            <li className="list" onMouseEnter={carregarLista}>
-              <a href="/" className="text">
-                Acessórios
-              </a>
-            </li>
-            <li className="list" onMouseEnter={carregarLista}>
-              <a href="/" className="text">
-                Colecionaveis
-              </a>
-            </li>
-            <li className="list" onMouseEnter={carregarLista}>
-              <a href="/" className="text">
-                Decoração
-              </a>
-            </li>
+            <li id="carrinhoMobile" className="list carrinhoMobile" />
+            {categoriasMock.map((categoria) => {
+              return (
+                <li className="list" onMouseEnter={carregarLista}>
+                  <a
+                    href="/"
+                    className="text"
+                    key={categoria.id}
+                    onMouseEnter={() => armazenarSubCategoria(categoria.sub_categoria)}
+                  >
+                    {categoria.nome_categoria}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       </header>
       {abrirLista && (
         <div onMouseEnter={carregarLista} onMouseLeave={minimizarLista}>
-          <IconNav />
+          <IconNav sub_categoria={subCategoria} />
         </div>
       )}
     </>
