@@ -1,8 +1,12 @@
 .texto {
   z-index: 99;
-  height: 15vh;
+  width: 100%;
   color:#C468CD;
+  font-weight: bolder;
   padding:3rem 4rem;
-  background-color: #2d303ab6;
+  position: fixed;
+  background-color: #202229e8;
+  display: flex;
+  justify-content: space-evenly;
   /* display: none; */
 }
