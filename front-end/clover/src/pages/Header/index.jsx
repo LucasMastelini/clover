@@ -18,23 +18,69 @@ function Header() {
   const categoriasMock = [
     {
       id: 0,
-      nome_categoria: "Vestuario",
-      sub_categoria: ["Camiseta", "Calça", "Bermuda", "Moletõn"],
+      nome_catalogo: "Não sei",
+      categoria: [
+        {
+          id: 0,
+          nome_categoria: "Vestuario",
+          sub_categoria: ["Camiseta", "Calça", "Bermuda", "Moletõn"],
+        },
+        {
+          id: 1,
+          nome_categoria: "Acessórios",
+          sub_categoria: ["Boné", "Mochila", "Anel"],
+        },
+      ],
     },
     {
-      id: 1,
-      nome_categoria: "Acessórios",
-      sub_categoria: ["Boné", "Mochila", "Anel"],
+      id: 0,
+      nome_catalogo: "Não sei 2",
+      categoria: [
+        {
+          id: 0,
+          nome_categoria: "Vestuario",
+          sub_categoria: ["Camiseta", "Calça", "Bermuda", "Moletõn"],
+        },
+        {
+          id: 1,
+          nome_categoria: "Acessórios",
+          sub_categoria: ["Boné", "Mochila", "Anel"],
+        },
+      ],
     },
     {
-      id: 2,
-      nome_categoria: "Colecionaveis",
-      sub_categoria: ["Bonecos", "Baralho", "Kit Fã"],
-    },
-    {
-      id: 3,
-      nome_categoria: "Decoração",
-      sub_categoria: ["Mesa", "Cadeira", "Escova de dente","Mesa", "Cadeira", "Escova de dente","Mesa", "Cadeira", "Escova de dente","Mesa", "Cadeira", "Escova de dente"],
+      id: 0,
+      nome_catalogo: "Não sei",
+      categoria: [
+        {
+          id: 1,
+          nome_categoria: "Acessórios",
+          sub_categoria: ["Boné", "Mochila", "Anel"],
+        },
+        {
+          id: 2,
+          nome_categoria: "Colecionaveis",
+          sub_categoria: ["Bonecos", "Baralho", "Kit Fã"],
+        },
+        {
+          id: 3,
+          nome_categoria: "Decoração",
+          sub_categoria: [
+            "Mesa",
+            "Cadeira",
+            "Escova de dente",
+            "Mesa",
+            "Cadeira",
+            "Escova de dente",
+            "Mesa",
+            "Cadeira",
+            "Escova de dente",
+            "Mesa",
+            "Cadeira",
+            "Escova de dente",
+          ],
+        },
+      ],
     },
   ];
 
@@ -54,7 +100,7 @@ function Header() {
   }
 
   const [abrirLista, setAbrirLista] = useState(false);
-  const [subCategoria, setSubCategoria] = useState([]);
+  const [Categoria, setCategoria] = useState({});
 
   const navegar = useNavigate();
 
@@ -76,8 +122,8 @@ function Header() {
     setAbrirLista(true);
   }
 
-  function armazenarSubCategoria(sub_categoria_informada) {
-    setSubCategoria(sub_categoria_informada);
+  function armazenarCategoria(sub_categoria_informada) {
+    setCategoria(sub_categoria_informada);
   }
 
   function minimizarLista() {
@@ -160,9 +206,11 @@ function Header() {
                     href="/"
                     className="text"
                     key={categoria.id}
-                    onMouseEnter={() => armazenarSubCategoria(categoria.sub_categoria)}
+                    onMouseEnter={() =>
+                      armazenarCategoria(categoria.categoria)
+                    }
                   >
-                    {categoria.nome_categoria}
+                    {categoria.nome_catalogo}
                   </a>
                 </li>
               );
@@ -172,7 +220,7 @@ function Header() {
       </header>
       {abrirLista && (
         <div onMouseEnter={carregarLista} onMouseLeave={minimizarLista}>
-          <IconNav sub_categoria={subCategoria} />
+          <IconNav categoria={Categoria} />
         </div>
       )}
     </>
