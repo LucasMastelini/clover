@@ -1,31 +1,63 @@
 import React, { useState } from "react";
 
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useCarrinho } from "../Carrinho/Context";
+
 import cloverLogo from "../../assets/image/logo.png";
 import iconPerson from "../../assets/image/person.png";
 import iconCarrinho from "../../assets/image/carrinho.png";
 import lupa from "../../assets/image/lupa.png";
 import IconNav from "./components/IconNav";
 import MinhaConta from "./components/MinhaConta";
-import MobileNavbar from "./mobile-menu";
+
 import "./style.css";
-import {useCarrinho} from '../Carrinho/Context';
-import { useEffect } from "react";
-// import { useEffect } from "react";
 
 function Header() {
-  const mobileMenu = new MobileNavbar();
+  // ---------- codigo para integração com o back menu de pesquisa ----------
+
+  const categoriasMock = [
+    {
+      id: 0,
+      nome_categoria: "Vestuario",
+      sub_categoria: ["Camiseta", "Calça", "Bermuda", "Moletõn"],
+    },
+    {
+      id: 1,
+      nome_categoria: "Acessórios",
+      sub_categoria: ["Boné", "Mochila", "Anel"],
+    },
+    {
+      id: 2,
+      nome_categoria: "Colecionaveis",
+      sub_categoria: ["Bonecos", "Baralho", "Kit Fã"],
+    },
+    {
+      id: 3,
+      nome_categoria: "Decoração",
+      sub_categoria: ["Mesa", "Cadeira", "Escova de dente","Mesa", "Cadeira", "Escova de dente","Mesa", "Cadeira", "Escova de dente","Mesa", "Cadeira", "Escova de dente"],
+    },
+  ];
+
+  const [search, setSearch] = useState("");
+
+  const searchLowerCase = search.toLocaleLowerCase();
+
+  //   const pesquisa = //Array dos produtos vindo do back.filter//((pesquisa) =>
+  //     pesquisa.nome.toLowerCase.includes(searchLowerCase)) ||
+  //     pesquisa.marca.toLowerCase.includes(searchLowerCase))
+
   const { item = [] } = useCarrinho();
 
-  const [abrirLista, setAbrirLista] = useState(false);
-  // const [itensCarrinho, setItensCarrinho] = useState();
+  function toggleMenu() {
+    const nav = document.getElementById("nav");
+    nav.classList.toggle("active");
+  }
 
-  // const adicionarItem = useEffect(() => {
-  //   setItensCarrinho(itens);
-  // }, [itensCarrinho]);
+  const [abrirLista, setAbrirLista] = useState(false);
+  const [subCategoria, setSubCategoria] = useState([]);
 
   const navegar = useNavigate();
-  
+
   var total = 0;
 
   for (let i = 0; i < item.length; i++) {
@@ -44,6 +76,10 @@ function Header() {
     setAbrirLista(true);
   }
 
+  function armazenarSubCategoria(sub_categoria_informada) {
+    setSubCategoria(sub_categoria_informada);
+  }
+
   function minimizarLista() {
     setAbrirLista(false);
   }
@@ -57,16 +93,17 @@ function Header() {
 
   function sair() {
     localStorage.clear();
-    alert("SAIU")
+    alert("SAIU");
     return navegar("/");
   }
   function navegarUsuario() {
-    window.alert('TÁ NA USUÁRIO');
+    window.alert("TÁ NA USUÁRIO");
     return navegar("/usuario");
   }
 
   return (
     <>
+      <div className="header-fake"></div>
       <header id="header" className="header">
         <div className="principal">
           <div className="pesquisa">
@@ -81,11 +118,13 @@ function Header() {
             </div>
           </div>
           <div className="controles">
-            <div>
+            <div className="opcao-minha-conta">
               <span>
                 <img className="icon" src={iconPerson} />
               </span>
-              <MinhaConta sair={sair} navegarUsuario={navegarUsuario} />
+              <div className="container-minha-conta">
+                <MinhaConta sair={sair} navegarUsuario={navegarUsuario} />
+              </div>
             </div>
             <div className="content-carrinho" onClick={abrirCarrinho}>
               <span>
@@ -99,47 +138,41 @@ function Header() {
           <button
             aria-label="Abrir Menu"
             id="btn-mobile"
-            className="btn-mobile"
-            onClick={() => mobileMenu.handleClick()}
+            onClick={() => toggleMenu()}
             aria-haspopup="true"
             aria-controls="menu"
             aria-expanded="false"
           >
-            <span id="hamburger" className="hamburger"></span>
+            <span id="hamburger" />
           </button>
-          <ul
-            id="menu"
-            role="menu"
-            className="menu"
-            onMouseLeave={minimizarLista}
-          >
-            <li id="contaMobile" className="list active contaMobile">
-              <span>
-                <img className="icon" src={iconPerson} alt="" />
-              </span>
+          <ul id="menu" role="menu" onMouseLeave={minimizarLista}>
+            {/* <MinhaConta sair={sair} navegarUsuario={navegarUsuario} /> */}
+            <li id="contaMobile" className="list active-header contaMobile">
               <a href="./CadastroLogin">
-                <span className="text">Minha conta</span>
+                <span className="list text">Minha conta</span>
               </a>
             </li>
-            <li id="carrinhoMobile" className="list carrinhoMobile"></li>
-            <li className="list" onMouseEnter={carregarLista}>
-              <a href="/">Vestuario</a>
-            </li>
-            <li className="list" onMouseEnter={carregarLista}>
-              <a href="/">Acessórios</a>
-            </li>
-            <li className="list" onMouseEnter={carregarLista}>
-              <a href="/">Colecionaveis</a>
-            </li>
-            <li className="list" onMouseEnter={carregarLista}>
-              <a href="/">Decoração</a>
-            </li>
+            <li id="carrinhoMobile" className="list carrinhoMobile" />
+            {categoriasMock.map((categoria) => {
+              return (
+                <li className="list" onMouseEnter={carregarLista}>
+                  <a
+                    href="/"
+                    className="text"
+                    key={categoria.id}
+                    onMouseEnter={() => armazenarSubCategoria(categoria.sub_categoria)}
+                  >
+                    {categoria.nome_categoria}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       </header>
       {abrirLista && (
         <div onMouseEnter={carregarLista} onMouseLeave={minimizarLista}>
-          <IconNav />
+          <IconNav sub_categoria={subCategoria} />
         </div>
       )}
     </>

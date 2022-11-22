@@ -5,6 +5,90 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+#menu {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+  }
+  
+  #menu a {
+    display: block;
+    padding: 0.5rem;
+    color: white;
+  }
+  
+  #btn-mobile {
+    display: none;
+  }
+
+  @media (max-width: 500px) {    
+
+    .controles .opcao-minha-conta{
+        display: none;
+    }
+}
+
+  @media (max-width: 650px) {    
+
+    #menu {
+      display: block;
+      position: absolute;
+      width: 100%;
+      top: 70px;
+      right: 0px;
+      background: #260429;
+      transition: 0.6s;
+      z-index: 1000;
+      height: 0px;
+      visibility: hidden;
+      overflow-y: hidden;
+    }
+    #nav.active #menu {
+      height: calc(100vh - 70px);
+      visibility: visible;
+      overflow-y: auto;
+    }
+    #menu a {
+      padding: 1rem 0;
+      margin: 0 1rem;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+    }
+    #btn-mobile {
+      display: flex;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border: none;
+      background: none;
+      cursor: pointer;
+      gap: 0.5rem;
+    }
+    #hamburger {
+      border-top: 2px solid;
+      width: 20px;
+    }
+    #hamburger::after,
+    #hamburger::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: currentColor;
+      margin-top: 5px;
+      transition: 0.3s;
+      position: relative;
+    }
+    #nav.active #hamburger {
+      border-top-color: transparent;
+    }
+    #nav.active #hamburger::before {
+      transform: rotate(135deg);
+    }
+    #nav.active #hamburger::after {
+      transform: rotate(-135deg);
+      top: -7px;
+    }
+}
+
 ul {
     justify-content: space-evenly;
 }
@@ -34,12 +118,21 @@ a:hover {
 
 header {
     box-sizing: border-box;
-    /* position: fixed; */
+    position: fixed;
     width: 100%;
+    z-index: 1;
+    top: 0;
     /* padding: 1rem; */
     /* padding-bottom: 1rem; */
     /* display: flex; */
     background: #C468CD;
+}
+.header-fake{
+    box-sizing: border-box;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    height: 130px;
 }
 
 .principal {
@@ -92,7 +185,7 @@ header {
     justify-content: center;
 }
 
-.menu {
+.menu-header {
     display: flex;
     list-style: none;
     gap: 0.5rem;
@@ -130,6 +223,9 @@ header {
         display: flex;
         justify-content: space-between;
         flex-direction: row-reverse;
+    }
+    .header-fake{
+        height: 70px;
     }
     .principal {
         border: none;
@@ -212,11 +308,5 @@ header {
     .navegation.active .hamburger::after {
         transform: rotate(-135deg);
         top: -7px;
-    }
-}
-@media (max-width: 500px) {
-    .principal{
-
-        padding: 1rem 2rem;
     }
 }
