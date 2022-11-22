@@ -1,0 +1,135 @@
+.container-endereco {
+    width: 90%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    background: rgba(217, 217, 217, 0.09);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    padding-bottom: 60px;
+    color: #fff;
+    gap: 50px;
+    margin-bottom: 60px;
+}
+
+.titulo-endereco {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 30px;
+    font-size: 24px;
+    padding-top: 30px;
+}
+
+.titulo-endereco svg {
+    width: 56px;
+    height: 56px;
+    color: #35DAF0;
+}
+
+.cep-endereco {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    font-size: 24px;
+}
+
+.cep-endereco input {
+    width: 40%;
+    height: 54px;
+    border-radius: 10px;
+}
+
+.cep-endereco .ajuda-cep {
+    color: #35DAF0;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.card-endereco {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background: rgba(200, 151, 238, 0.18);
+    border: 3px solid #35DAF0;
+    border-radius: 5px;
+    gap: 10px;
+}
+
+.card-endereco svg {
+    width: 56px;
+    height: 56px;
+    color: #35DAF0;
+}
+
+.card-endereco .corpo-card-endereco {
+    width: 80%;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding: 30px;
+    gap: 20px;
+}
+
+.card-endereco .corpo-card-endereco button {
+    background: transparent;
+    color: #35DAF0;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.dados-complementares {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 30px;
+    align-items: flex-end;
+}
+
+.dados-complementares button {
+    background: #35DAF0;
+    color: #000;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 25px;
+    width: 30%;
+}
+
+.dados-complementares .box {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.dados-complementares .box input {
+    height: 46px;
+    border: 3px solid #D43AE3;
+    border-radius: 10px;
+    background: transparent;
+    width: 100%;
+}
+
+.dados-complementares .dados-residenciais {
+    display: flex;
+    align-items: row;
+    width: 100%;
+    gap: 30px
+}
+

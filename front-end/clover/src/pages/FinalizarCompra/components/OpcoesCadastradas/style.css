@@ -1,0 +1,40 @@
+.card-opcoes-cadastradas {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    background: rgba(200, 151, 238, 0.18);
+    border: 3px solid #35DAF0;
+    border-radius: 5px;
+    gap: 10px;
+}
+
+.card-opcoes-cadastradas svg {
+    width: 48px;
+    height: 48px;
+    color: #35DAF0;
+}
+
+.card-opcoes-cadastradas svg:nth-child(2) {
+    color: #D30202;
+}
+
+.card-opcoes-cadastradas .icons-opcoes-cadastradas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.card-opcoes-cadastradas .corpo-card-opcoes-cadastradas {
+    width: 50%;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 30px 0;
+    gap: 20px;
+}
