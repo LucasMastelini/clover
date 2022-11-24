@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import StepNavigation from './components/StepNavigation';
 import './style.css';
-import logoPedido from "../../assets/image/logo-caixa-produto.png"
+import logoPedido from "../../assets/image/image-pedido-realizado.png"
 
 function PedidoRealizado() {
 
@@ -12,7 +12,6 @@ function PedidoRealizado() {
       updateCurrentStep(step);
     }
 
-  
     return (
       <div className='controleGeral'>
       <div className="App">
@@ -26,12 +25,10 @@ function PedidoRealizado() {
       </div>
   
         <StepNavigation labelArray={labelArray} currentStep={currentStep} updateStep={updateStep}></StepNavigation>
-        
-       
+              
       </div>
       </div>
     );
   }
 
   export default PedidoRealizado;
-
