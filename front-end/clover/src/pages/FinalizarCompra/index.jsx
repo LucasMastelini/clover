@@ -8,8 +8,9 @@ import EtapaFinalizada from "./components/EtapaFinalizada";
 import CompraCartao from "./pages/CompraCartao";
 import DadosPessoais from "../Usuario/pages/DadosPessoais";
 import "./style.css";
+import Enderecos from "./pages/Enderecos";
 
-export default function FinalizarCompra({ children }) {
+export default function FinalizarCompra() {
   const [step, setStep] = useState(2);
 
   return (
@@ -73,8 +74,9 @@ export default function FinalizarCompra({ children }) {
         <div className="corpo-pagina">
 
           {/* {step === 2 ? <DadosPessoais /> : ""} */}
+          {step === 2 ? <Enderecos setarPasso={setStep} passoAtual={step} /> : ""}
           {step === 3 ? <DadosPessoais /> : ""}
-          {step === 2 ? <CompraCartao setarPasso={setStep} passoAtual={step} /> : ""}
+          {step === 4 ? <CompraCartao setarPasso={setStep} passoAtual={step} /> : ""}
 
         </div>
       </div>

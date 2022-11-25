@@ -1,0 +1,53 @@
+.opcoes-entrega {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: transparent;
+    border: 3px solid #35DAF0;
+    border-radius: 5px;
+}
+
+.opcoes-entrega .opcao-entrega {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.opcoes-entrega .opcao-entrega .opcao-frete {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 30px 0;
+    border: 1px solid #35DAF0;
+    font-size: 20px;
+}
+
+.opcoes-entrega .opcao-entrega .opcao-frete input{
+    width: 24px;
+    height: 24px;
+    background: #D9D9D900;
+    border: 2px solid #35DAF0;
+}
+
+.opcoes-entrega .opcao-entrega .opcao-frete .line-frete {
+    width: 3px;
+    height: 70%;
+    background: #35DAF0;
+}
+
+.opcoes-entrega .opcao-entrega .opcao-frete .descricao-frete{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 20px;
+}
+
+.opcoes-entrega .opcao-entrega .opcao-frete .descricao-frete span {
+    font-size: 16px;
+
+}
