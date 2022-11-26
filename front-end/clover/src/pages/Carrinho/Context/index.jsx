@@ -39,7 +39,7 @@ export function CarrinhoProvider({ children }) {
     }
 
     setItem(listaProdutos);
-  }
+  }  
 
   function removerQuantidade(idProd) {
     const listaItens = [...item];
@@ -62,6 +62,16 @@ export function CarrinhoProvider({ children }) {
     setItem(novaLitaItens);
   }
 
+  function valorSubTotalItens() {
+    let valorSubtotal = 0;
+
+   item.map((item_produto) => {
+    valorSubtotal += item_produto.valor * item_produto.quantidade
+   })
+
+   return valorSubtotal.toFixed(2)
+  }
+
   return (
     <CarrinhoContext.Provider
       value={{
@@ -70,6 +80,7 @@ export function CarrinhoProvider({ children }) {
         aumentarQuantidade,
         removerQuantidade,
         removerProduto,
+        valorSubTotalItens
       }}
     >
       {children}

@@ -1,0 +1,55 @@
+
+.calculo-frete {
+    font-family: 'Montserrat', sans-serif;
+    color: #35DAF0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1rem;
+    margin-bottom: 7%;
+}
+
+.calcular {
+    display: flex;
+    align-items: center;
+    background-color: #242348;
+    border-radius: 0.5rem;
+    padding: 2.5% 2.5%;
+}
+
+.input-calcular {
+    font-family: 'Montserrat Medium', sans-serif;
+    font-size: 0.8rem;
+    text-size-adjust: auto;
+    color: #9B9999;
+    background-color: #242348;
+    border: none;
+    border-radius: 0.5rem;
+    padding-left: 1.5%;
+
+}
+
+textarea:focus,
+.input-calcular:focus {
+    outline: none;
+}
+
+.button-calcular {
+    display: flex;
+    align-items: center;
+    font-family: 'Montserrat Medium', sans-serif;
+    text-size-adjust: auto;
+    color: #35DAF0;
+    background-color: transparent;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.titulo-calcular-frete {
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+    margin-right: 0.8rem;
+    text-size-adjust: auto;
+}

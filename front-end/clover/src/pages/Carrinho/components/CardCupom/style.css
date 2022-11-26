@@ -1,0 +1,25 @@
+.container-card-cupom{
+    display: flex;
+    background-color: rgb(42, 33, 61);
+    max-width: 250px;
+    border: 2px gray dashed;
+}
+.porcentagem-cupom{
+    font-size: 2rem;
+    padding: 2%;
+    background-color: rgb(19, 19, 34);
+    font-weight: bolder;
+    color: rgba(255, 255, 255, 0.341);
+}
+.container-nome-cupom{
+    padding: 8px;
+}
+.titulo-cupom{
+    color: rgba(255, 255, 255, 0.685);
+}
+.nome-cupom{
+    text-transform: uppercase;
+    font-size: medium;
+    font-weight: bolder;
+    color: #fff;
+}
