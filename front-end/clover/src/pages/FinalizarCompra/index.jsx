@@ -7,8 +7,10 @@ import EtapaFazendo from "./components/EtapaFazendo";
 import EtapaFinalizada from "./components/EtapaFinalizada";
 import CompraCartao from "./pages/CompraCartao";
 import DadosPessoais from "../Usuario/pages/DadosPessoais";
-import "./style.css";
+import PedidoRealizado from "../PedidoRealizado"
 import Enderecos from "./pages/Enderecos";
+
+import "./style.css";
 
 export default function FinalizarCompra() {
   const [step, setStep] = useState(2);
@@ -61,11 +63,11 @@ export default function FinalizarCompra() {
             <div className="etapa-andamento"></div>
 
             {step === 5 ? (
-              <EtapaFazendo propsName={"Confirmação"} propsNumero={2}/>
+              <EtapaFazendo propsName={"Confirmação"} propsNumero={5}/>
             ) : step > 5 ? (
               <EtapaFinalizada>Confirmação</EtapaFinalizada>
             ) : (
-              <EtapaAFazer propsName={"Confirmação"} propsNumero={2}/>
+              <EtapaAFazer propsName={"Confirmação"} propsNumero={5}/>
             )}
 
           </div>
@@ -75,8 +77,9 @@ export default function FinalizarCompra() {
 
           {/* {step === 2 ? <DadosPessoais /> : ""} */}
           {step === 2 ? <Enderecos setarPasso={setStep} passoAtual={step} /> : ""}
-          {step === 3 ? <DadosPessoais /> : ""}
+          {step === 3 ? <DadosPessoais setarPasso={setStep} passoAtual={step}/> : ""}
           {step === 4 ? <CompraCartao setarPasso={setStep} passoAtual={step} /> : ""}
+          {step === 5 ? <PedidoRealizado setarPasso={setStep} passoAtual={step} /> : ""}
 
         </div>
       </div>
