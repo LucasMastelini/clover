@@ -18,15 +18,18 @@
 }
 
 .input-calcular {
-    font-family: 'Montserrat Medium', sans-serif;
-    font-size: 0.8rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
     text-size-adjust: auto;
-    color: #9B9999;
     background-color: #242348;
     border: none;
     border-radius: 0.5rem;
     padding-left: 1.5%;
-
+}
+.input-calcular::placeholder{
+    color: #9B9999;
+    font-size: 0.8rem;
+    
 }
 
 textarea:focus,
@@ -50,6 +53,6 @@ textarea:focus,
 .titulo-calcular-frete {
     font-size: 0.8rem;
     margin-left: 0.5rem;
-    margin-right: 0.8rem;
+    margin-right: 0.5rem;
     text-size-adjust: auto;
 }

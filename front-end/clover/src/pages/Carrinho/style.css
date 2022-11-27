@@ -35,6 +35,10 @@
 
   /* border-top: 2px solid var(--rosa); */
 }
+.contem-carrinho:nth-last-child(3){
+    border-bottom: 6px double #fff;
+ 
+}
 .cabecalho {
   background-color: rgba(38, 46, 68, 1);
   justify-content: left;
@@ -72,6 +76,7 @@
   justify-content: space-between;
   padding: 3%;
   border-radius: 10px;
+ 
   /* border: 1px solid #fff; */
   box-shadow: 19px 16px 53px -21px rgba(145, 145, 145, 0.3) inset;
   /* border: 1px gray solid; */
@@ -126,4 +131,24 @@ background-color: aqua;
   color: #fff;
   font-weight: bolder;
   cursor: pointer;
+}
+.container-carrinho-vazio{
+    color: #fff;
+    height: 70vh;
+    background-color: #000923;
+    display: flex;
+    justify-content: center;
+    padding: 5%
+}
+.img-sacola img{
+    width: 15vw;
+}
+.img-sacola{
+    max-width: 50%;
+}
+.text-carrinho-vazio{
+    max-width: 50%;
+    align-items: center;
+    margin: 100px;
+
 }

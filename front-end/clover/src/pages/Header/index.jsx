@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useCarrinho } from "../Carrinho/Context";
 
 import cloverLogo from "../../assets/image/logo.png";
@@ -13,6 +13,8 @@ import MinhaConta from "./components/MinhaConta";
 import "./style.css";
 
 function Header() {
+  const rota = useLocation();
+
   // ---------- codigo para integração com o back menu de pesquisa ----------
 
   const categoriasMock = [
@@ -149,7 +151,7 @@ function Header() {
 
   return (
     <>
-      <div className="header-fake"></div>
+      <div className="header-fake" />
       <header id="header" className="header">
         <div className="principal">
           <div className="pesquisa">
@@ -180,43 +182,46 @@ function Header() {
             </div>
           </div>
         </div>
-        <nav id="nav" className="navegation">
-          <button
-            aria-label="Abrir Menu"
-            id="btn-mobile"
-            onClick={() => toggleMenu()}
-            aria-haspopup="true"
-            aria-controls="menu"
-            aria-expanded="false"
-          >
-            <span id="hamburger" />
-          </button>
-          <ul id="menu" role="menu" onMouseLeave={minimizarLista}>
-            {/* <MinhaConta sair={sair} navegarUsuario={navegarUsuario} /> */}
-            <li id="contaMobile" className="list active-header contaMobile">
-              <a href="./CadastroLogin">
-                <span className="list text">Minha conta</span>
-              </a>
-            </li>
-            <li id="carrinhoMobile" className="list carrinhoMobile" />
-            {categoriasMock.map((categoria) => {
-              return (
-                <li className="list" onMouseEnter={carregarLista}>
-                  <a
-                    href="/"
-                    className="text"
-                    key={categoria.id}
-                    onMouseEnter={() =>
-                      armazenarCategoria(categoria.categoria)
-                    }
-                  >
-                    {categoria.nome_catalogo}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+
+        {rota.pathname !== "/carrinho" && rota.pathname !== "/cadastro-login" && (
+          <nav id="nav" className="navegation">
+            <button
+              aria-label="Abrir Menu"
+              id="btn-mobile"
+              onClick={() => toggleMenu()}
+              aria-haspopup="true"
+              aria-controls="menu"
+              aria-expanded="false"
+            >
+              <span id="hamburger" />
+            </button>
+            <ul id="menu" role="menu" onMouseLeave={minimizarLista}>
+              {/* <MinhaConta sair={sair} navegarUsuario={navegarUsuario} /> */}
+              <li id="contaMobile" className="list active-header contaMobile">
+                <a href="./CadastroLogin">
+                  <span className="list text">Minha conta</span>
+                </a>
+              </li>
+              <li id="carrinhoMobile" className="list carrinhoMobile" />
+              {categoriasMock.map((categoria) => {
+                return (
+                  <li className="list" onMouseEnter={carregarLista}>
+                    <a
+                      href="/"
+                      className="text"
+                      key={categoria.id}
+                      onMouseEnter={() =>
+                        armazenarCategoria(categoria.categoria)
+                      }
+                    >
+                      {categoria.nome_catalogo}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        )}
       </header>
       {abrirLista && (
         <div onMouseEnter={carregarLista} onMouseLeave={minimizarLista}>

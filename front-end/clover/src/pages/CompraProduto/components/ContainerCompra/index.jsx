@@ -90,7 +90,7 @@ export default function ContainerCompra() {
             <Rate rating={rating} onRating={(rate) => setRating(rate)} />
             <h3 className="vendidos">Vendidos: +999999</h3>
           </div>
-            <CampoFrete></CampoFrete>
+            <CampoFrete />
           {show ? <Text /> : null}
           <div className="cores">
             <h3>Selecione a cor</h3>
