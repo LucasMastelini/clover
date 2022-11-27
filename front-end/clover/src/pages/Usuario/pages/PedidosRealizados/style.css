@@ -1,0 +1,19 @@
+.container-geral-pedidos {
+    width: 90%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+
+.container-pedidos {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 5s;
+    flex-direction: column;
+    background: rgba(217, 217, 217, 0.09);
+    padding: 30px 0;
+    gap: 30px;
+}
+

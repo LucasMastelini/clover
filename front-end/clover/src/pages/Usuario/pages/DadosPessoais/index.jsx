@@ -1,8 +1,6 @@
 import { React, useState } from 'react'
-import Header from '../../Header'
-import SideBar from '../Sidebar/SideBar';
 import { BiUser } from 'react-icons/bi';
-import './style-dados-pessoais.css';
+import './style.css';
 
 function DadosPessoais() {
 
@@ -27,7 +25,6 @@ function DadosPessoais() {
 
   return (
     <>
-      <Header />
       <div className="container-geral">
         <form className="container-dados-pessoais">
           <div className="dados-pessoais">

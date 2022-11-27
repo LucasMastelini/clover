@@ -32,7 +32,7 @@ export default function Enderecos() {
             <OpcoesCadastradas 
                 logradouro={"Avenida Rosa Fioravante"} 
                 number={189} 
-                cep={"09862-305"}
+                cep={"CEP: 09862-305"}
                 cidade={"São Bernardo do Campo"}
                 uf={"SP"}
             />

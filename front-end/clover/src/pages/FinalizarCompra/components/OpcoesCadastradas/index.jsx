@@ -12,7 +12,7 @@ export default function OpcoesCadastradas(props) {
         <BsHouseFill /*{props.icon}*//>
         <div className="corpo-card-opcoes-cadastradas">
           <p>{props.logradouro}, {props.number}</p>
-          <p>CEP: {props.cep}</p>
+          <p>{props.cep}</p>
           <p>{props.cidade} - {props.uf}</p>
         </div>
         <div className="icons-opcoes-cadastradas">

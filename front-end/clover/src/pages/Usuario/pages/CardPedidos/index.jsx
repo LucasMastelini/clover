@@ -1,6 +1,6 @@
 import React from 'react'
-import './style-card-pedidos.css'
-import Spiderman from './images/spiderman.jpg'
+import './style.css'
+import spiderman from './images/spiderman.jpg'
 import { useState } from 'react';
 import Modal from 'react-modal';
 
@@ -31,7 +31,7 @@ function CardPedidos() {
             <div className='container-card'>
                 <div className="card">
                     <div className="pedidos-esquerda">
-                        <img src={Spiderman} />
+                        <img src={spiderman} />
                         <div className="infos-pedidos">
                             <div className="item-pedido">
                                 <p className="pedido-titulo">Pedido:</p>
@@ -58,7 +58,7 @@ function CardPedidos() {
                 <div className="modal-lado-esquerdo">
                     <h2 className="numero-titulo-pedido">Pedido {pedido}</h2>
                     <div className="titulo-pedido">{tituloPedido}</div>
-                    <img src={Spiderman} />
+                    <img src={spiderman} />
                 </div>
                 <button className="fechar" onClick={handleCloseModal}>X</button>
             </div>
