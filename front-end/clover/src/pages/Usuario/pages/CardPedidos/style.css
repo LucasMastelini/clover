@@ -1,7 +1,5 @@
 .container-card {
-    margin-top: 3.5%;
-    background-color: rgba(255, 255, 255, 0.21);
-    width: 85%;
+    width: 95%;
     display: flex;
     justify-content: center;
 }
@@ -9,15 +7,13 @@
 .container-card .card {
     border: 2px solid #35DAF0;
     background-color: #c897ee73;
-    margin-top: 2.5%;
-    height: 35%;
+    border-radius: 10px;
     width: 95%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding-left: 2%;
-    padding-right: 2%;
+    padding: 20px;
 }
 
 .pedidos-esquerda {
@@ -73,14 +69,14 @@
 
     font-family: 'Montserrat Bold', sans-serif;
 
-    text-shadow:
+    /* text-shadow:
         0 0 5px rgba(170, 233, 243, 0.541),
         0 0 5px rgba(170, 233, 243, 0.443),
         0 0 5px rgba(170, 233, 243, 0.281),
         0 0 80px #0ff,
         0 0 90px #0ff,
         0 0 100px #0ff,
-        0 0 150px #0ff;
+        0 0 150px #0ff; */
 }
 
 .data {

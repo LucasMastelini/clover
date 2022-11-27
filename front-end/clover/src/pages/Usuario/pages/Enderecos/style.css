@@ -1,0 +1,11 @@
+.container-enderecos {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    background: rgba(217, 217, 217, 0.09);
+    padding: 30px 10px;
+    animation: fadeIn 5s;
+}
