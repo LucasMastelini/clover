@@ -1,4 +1,5 @@
 import React from "react";
+import { IMaskInput } from "react-imask";
 import { BsTruck } from "react-icons/bs";
 import "./style.css";
 
@@ -10,7 +11,8 @@ function CampoFrete() {
         <BsTruck />
         <h4 className="titulo-calcular-frete">calcular o frete</h4>
         <div className="calcular">
-          <input className="input-calcular" placeholder="Insira o CEP" />
+          <IMaskInput className="input-calcular" mask="0 0000-000" placeholder="Insira o CEP" />
+
           <button
             className="button-calcular"
             type="button"
