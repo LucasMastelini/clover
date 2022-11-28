@@ -9,6 +9,7 @@ import PedidoRealizado from "../pages/PedidoRealizado";
 import Carrinho from "../pages/Carrinho";
 import { CarrinhoProvider } from "../pages/Carrinho/Context";
 import FinalizarCompra from '../pages/FinalizarCompra'
+import Filtros from "../pages/Filtros";
 
 export default function Router() {
   return (
@@ -18,6 +19,7 @@ export default function Router() {
         <Route path="/quem-somos" element={<QuemSomos />} />
         <Route path="/cadastro-login" element={<CadastroLogin />} />
         <Route path="/compra-produto" element={<CompraProduto />} />
+        <Route path="/filtros" element={<Filtros />} />
         <Route path="/pedido-realizado" element={<PedidoRealizado />} />
         <Route path="/usuario" element={<Usuario />} />
         <Route path="/carrinho" element={<Carrinho />} />

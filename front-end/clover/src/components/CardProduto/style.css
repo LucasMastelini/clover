@@ -1,5 +1,6 @@
 .item {
-    width: 239.75px;
+    max-width: 239.75px;
+    min-width: 239.75px;
     margin: 15px;
     border-image-source: linear-gradient(to left, #35DAF0, #c42be6);
     line-height: 1px;
