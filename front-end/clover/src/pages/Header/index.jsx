@@ -9,82 +9,51 @@ import iconCarrinho from "../../assets/image/carrinho.png";
 import lupa from "../../assets/image/lupa.png";
 import IconNav from "./components/IconNav";
 import MinhaConta from "./components/MinhaConta";
+import api from "../../Api/api";
 
 import "./style.css";
+import { useEffect } from "react";
 
 function Header() {
+
+  const [categoriasBanco , setCategoriasBanco] = useState();
+
+  useEffect(() => {
+  api.get().then(res => {
+    console.log(res);
+    setCategoriasBanco(res.data);
+  }).catch(err =>{
+    console.log(err);
+  });
+  
+  }, [])
+
   const rota = useLocation();
 
-  // ---------- codigo para integração com o back menu de pesquisa ----------
+  const [produtos, setProdutos] = useState(
+    [
+      {
+        id:1,
+        nome: "Camisetas",
+      },
+      {
+        id:2,
+        nome: "Bones",
+      },
+      {
+        id:3,
+        nome: "Action Figures",
+      },
+      {
+        id:4,
+        nome: "Moletons",
+      },
+      {
+        id:5,
+        nome: "Calças",
+      },
 
-  const categoriasMock = [
-    {
-      id: 0,
-      nome_catalogo: "Não sei",
-      categoria: [
-        {
-          id: 0,
-          nome_categoria: "Vestuario",
-          sub_categoria: ["Camiseta", "Calça", "Bermuda", "Moletõn"],
-        },
-        {
-          id: 1,
-          nome_categoria: "Acessórios",
-          sub_categoria: ["Boné", "Mochila", "Anel"],
-        },
-      ],
-    },
-    {
-      id: 0,
-      nome_catalogo: "Não sei 2",
-      categoria: [
-        {
-          id: 0,
-          nome_categoria: "Vestuario",
-          sub_categoria: ["Camiseta", "Calça", "Bermuda", "Moletõn"],
-        },
-        {
-          id: 1,
-          nome_categoria: "Acessórios",
-          sub_categoria: ["Boné", "Mochila", "Anel"],
-        },
-      ],
-    },
-    {
-      id: 0,
-      nome_catalogo: "Não sei",
-      categoria: [
-        {
-          id: 1,
-          nome_categoria: "Acessórios",
-          sub_categoria: ["Boné", "Mochila", "Anel"],
-        },
-        {
-          id: 2,
-          nome_categoria: "Colecionaveis",
-          sub_categoria: ["Bonecos", "Baralho", "Kit Fã"],
-        },
-        {
-          id: 3,
-          nome_categoria: "Decoração",
-          sub_categoria: [
-            "Mesa",
-            "Cadeira",
-            "Escova de dente",
-            "Mesa",
-            "Cadeira",
-            "Escova de dente",
-            "Mesa",
-            "Cadeira",
-            "Escova de dente",
-            "Mesa",
-            "Cadeira",
-            "Escova de dente",
-          ],
-        },
-      ],
-    },
-  ];
+    ]);
 
   const [search, setSearch] = useState("");
 
@@ -102,7 +71,7 @@ function Header() {
   }
 
   const [abrirLista, setAbrirLista] = useState(false);
-  const [Categoria, setCategoria] = useState({});
+  const [subCategoria, setSubCategoria] = useState({});
 
   const navegar = useNavigate();
 
@@ -125,7 +94,7 @@ function Header() {
   }
 
   function armazenarCategoria(sub_categoria_informada) {
-    setCategoria(sub_categoria_informada);
+    setSubCategoria(sub_categoria_informada);
   }
 
   function minimizarLista() {
@@ -203,18 +172,18 @@ function Header() {
                 </a>
               </li>
               <li id="carrinhoMobile" className="list carrinhoMobile" />
-              {categoriasMock.map((categoria) => {
+              {produtos?.map((colecao) => {
                 return (
                   <li className="list" onMouseEnter={carregarLista}>
                     <a
                       href="/"
                       className="text"
-                      key={categoria.id}
+                      key={colecao.id}
                       onMouseEnter={() =>
-                        armazenarCategoria(categoria.categoria)
+                        armazenarCategoria(colecao.categorias)
                       }
                     >
-                      {categoria.nome_catalogo}
+                      {colecao.nome}
                     </a>
                   </li>
                 );
@@ -225,7 +194,7 @@ function Header() {
       </header>
       {abrirLista && (
         <div onMouseEnter={carregarLista} onMouseLeave={minimizarLista}>
-          <IconNav categoria={Categoria} />
+          <IconNav categoria={categoriasBanco} />
         </div>
       )}
     </>

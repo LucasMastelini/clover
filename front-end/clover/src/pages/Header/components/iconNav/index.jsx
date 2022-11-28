@@ -3,28 +3,40 @@ import React, { useState } from "react";
 import "./style.css";
 
 function IconNav(props) {
-  const [categoria, setCategoria] = useState(props.categoria);
+  
+  const [subCategoria, setSubCategoria] = useState(props);
+  const [abrirLista, setAbrirLista] = useState(false);
 
-  console.log(categoria);
+  function carregarLista() {
+    setAbrirLista(true);
+  }
+
+  console.log(subCategoria.categoria);
 
   return (
     <div className="texto">
-      {categoria.map((item) => {
+      {
+      subCategoria.categoria?.map((colecao) => {
         return (
           <div className="container">
-            <p>{item.nome_categoria}</p>
-            <p className="item-sub-categoria">{item.sub_categoria.map((sub_cat) => {
+            <p>{colecao.nome}</p>
+            <p className="item-sub-categoria">{colecao.subcategorias?.map((sub_cat) => {
               return(
-                <p>
-                  {
-                  sub_cat
-                  }
-                </p>
+                <li className="list" onMouseEnter={carregarLista}>
+                    <a
+                      href="/"
+                      className="item-sub-categoria"
+                      key={sub_cat.id}
+                    >
+                      {sub_cat.nome}
+                    </a>
+                  </li>
               )
             })}</p>
           </div>
         );
-      })}
+      })
+      }
     </div>
   );
 }
