@@ -72,7 +72,7 @@ function FormCadastro() {
                         email: '',
                         senha: '',
                         confirmacao: '',
-                        celular: '',
+                        telefone: '',
                     }}
                     render={({ values, touched, actions }) => (
                         <Form className="form form-cadastro" >
@@ -134,7 +134,8 @@ function FormCadastro() {
                                     <Field
                                         autoComplete="off"
                                         className="input-valida"
-                                        name="celular" id="cadastro-telefone"
+                                        name="telefone" 
+                                        id="cadastro-telefone"
                                         type="text"
                                         placeholder="Numero de celular" required />
                                 </div>
