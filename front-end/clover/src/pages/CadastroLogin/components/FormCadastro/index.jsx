@@ -40,18 +40,30 @@ function FormCadastro() {
                 setValidateConfirmacao(true)
                 setValidateEmail(true)
                 setValidateSenha(true)
-                console.log(res);
+                // console.log(res);
                 alert(`${values.nome} seu cadastrado foi efetuado com sucesso `)
                 actions.resetForm();
                 navegar("/cadastro-login")
             }).catch(err => {
                 console.log(err.response)
-                if (err.response.data.msg) {
+                err.response.data.errors?.for((erro) =>{
+                    if(erro.fieldName === "email" )
+                    {
                     setValidateEmail(false);
+                    setValidateSenha(true);
+                    setValidateConfirmacao(true);
+                    alert(`${erro.message}`)
+                    }
+                    else if(erro.fieldName === "senha")
+                    {
+                    setValidateEmail(true);
                     setValidateSenha(false);
                     setValidateConfirmacao(true);
-                    alert(`${err.response.data.msg}, Email ou Senha Já existem`)
-                }
+                    alert(`${erro.message} de validação (Pelo menos 8 caracteres, uma maiuscula, um "@,/,#,$..." e um numero)`)
+                    }
+                })
+                    
+                
             })
     }
 
