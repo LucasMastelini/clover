@@ -2,8 +2,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import "./style.css";
+
 import ContainerSlider from "../ContainerSlider";
 import { BsTruck } from "react-icons/bs";
+import CampoFrete from "../../../Carrinho/components/CampoFrete";
 import React, { useEffect, useState } from "react";
 import Rate from "../Rate";
 
@@ -88,20 +90,7 @@ export default function ContainerCompra() {
             <Rate rating={rating} onRating={(rate) => setRating(rate)} />
             <h3 className="vendidos">Vendidos: +999999</h3>
           </div>
-          <div className="calculo-frete">
-            <BsTruck />
-            <h4 className="titulo-calcular-frete">calcular o frete</h4>
-            <div className="calcular">
-              <input className="input-calcular" placeholder="Insira o CEP" />
-              <button
-                className="button-calcular"
-                type="button"
-                onClick={onClick}
-              >
-                Calcular
-              </button>
-            </div>
-          </div>
+            <CampoFrete />
           {show ? <Text /> : null}
           <div className="cores">
             <h3>Selecione a cor</h3>
