@@ -1,0 +1,47 @@
+.container-filtros {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.container-filtros .direcionamento-paginas {
+    width: 90%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    color: #fff;
+    align-items: center;
+}
+
+.container-filtros .direcionamento-paginas h4 {
+    cursor: pointer;
+}
+
+.container-filtros .direcionamento-paginas a {
+    color: #fff;
+}
+
+.container-filtros .direcionamento-paginas .tela-atual {
+    color: #35DAF0;
+}
+
+.container-filtros .direcionamento-paginas .bolinha{
+    width: 8px;
+    height: 8px;
+    border-radius: 5px;
+    background: #fff;
+}
+
+.container-filtros .corpo-tela-filtros {
+    max-width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 50px;
+}
