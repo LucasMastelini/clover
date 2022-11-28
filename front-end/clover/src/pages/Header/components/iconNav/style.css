@@ -10,3 +10,13 @@
   justify-content: space-evenly;
   /* display: none; */
 }
+.item-sub-categoria{
+  color: white;
+  font-size: small;
+  font-weight: 100;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+}

@@ -122,16 +122,9 @@ header {
     width: 100%;
     z-index: 1;
     top: 0;
-    /* padding: 1rem; */
-    /* padding-bottom: 1rem; */
-    /* display: flex; */
     background: #C468CD;
 }
 .header-fake{
-    box-sizing: border-box;
-    top: 0;
-    width: 100%;
-    z-index: 1;
     height: 130px;
 }
 
@@ -155,11 +148,13 @@ header {
     height: 25px;
     border-radius: 15px;
     border: solid 1px #510090;
+    padding: 10px;
 }
 .input-fild {
     height: 25px;
     border-radius: 15px;
     border: solid 1px #510090;
+   
 }
 .input-icons{
     align-items: center;
