@@ -10,6 +10,8 @@ import Carrinho from "../pages/Carrinho";
 import { CarrinhoProvider } from "../pages/Carrinho/Context";
 import FinalizarCompra from '../pages/FinalizarCompra'
 import Filtros from "../pages/Filtros";
+import Erro404 from "../pages/Erro404";
+// import Teste from "../pages/NotFound/teste";
 
 export default function Router() {
   return (
@@ -24,6 +26,8 @@ export default function Router() {
         <Route path="/usuario" element={<Usuario />} />
         <Route path="/carrinho" element={<Carrinho />} />
         <Route path="/finalizar-compra" element={<FinalizarCompra/>} />
+        <Route path="/*" element={<Erro404/>} />
+        
         {/* <Route path="/resumo-pedidos/:produtos" element={<ResumoPedidos />} /> */}
       </Routes>
     </CarrinhoProvider>
