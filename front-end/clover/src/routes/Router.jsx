@@ -12,6 +12,8 @@ import FinalizarCompra from '../pages/FinalizarCompra'
 import Filtros from "../pages/Filtros";
 import Erro404 from "../pages/Erro404";
 // import Teste from "../pages/NotFound/teste";
+import TelaAdmin from "../pages/TelaAdmin";
+
 
 export default function Router() {
   return (
@@ -27,7 +29,8 @@ export default function Router() {
         <Route path="/carrinho" element={<Carrinho />} />
         <Route path="/finalizar-compra" element={<FinalizarCompra/>} />
         <Route path="/*" element={<Erro404/>} />
-        
+        <Route path="/admin" element={<TelaAdmin/>} />
+
         {/* <Route path="/resumo-pedidos/:produtos" element={<ResumoPedidos />} /> */}
       </Routes>
     </CarrinhoProvider>
