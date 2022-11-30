@@ -17,6 +17,8 @@ import java.util.List;
 public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
 
 
+
+
 //    @Query("SELECT p from Produto p WHERE p.nome LIKE %:name% ORDER BY p.nome")
     List<Produto> findByNomeContainingIgnoreCaseOrderByNomeAsc(String nome);
 

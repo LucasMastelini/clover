@@ -18,21 +18,29 @@ public class StorageController {
     @Autowired
     private StorageService service;
 
-    @PostMapping("/upload")
+//    @PostMapping("/upload")
+//    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file){
+//        return new ResponseEntity<>(service.uploadFile(file), HttpStatus.OK);
+//    }
+
+    @PostMapping("/file/upload")
     public ResponseEntity<String> uploadFile(
             @RequestParam(value = "file") MultipartFile file,
             @RequestParam(value = "idProduto") Integer id,
             @RequestParam(value = "hexadecimal") String hexadecimal
     ){
-        return new ResponseEntity<>(service.uploadFile(file), HttpStatus.OK);
+        URI uri = service.uploadFile(file);
+        return ResponseEntity.created(uri).build();
     }
 
-    @GetMapping()
+
+
+    @GetMapping("/file")
     public List<String> getAllFiles(){
         return service.listAllFiles();
     }
 
-    @GetMapping("/download/{fileName}")
+    @GetMapping("/file/download/{fileName}")
     public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable String fileName){
        byte[] data = service.downloadFile(fileName);
        ByteArrayResource resource = new ByteArrayResource(data);
@@ -44,7 +52,7 @@ public class StorageController {
                .body(resource);
     }
 
-    @DeleteMapping("/delete/{fileName}")
+    @DeleteMapping("/file/delete/{fileName}")
     public ResponseEntity<String> deleteFile(@PathVariable String fileName){
         return new ResponseEntity<>(service.deleteFile(fileName), HttpStatus.OK);
     }

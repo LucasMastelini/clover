@@ -3,6 +3,7 @@ package clover.mlclover.entities;
 
 import clover.mlclover.dtos.ProdutoDTO;
 import clover.mlclover.dtos.ProdutoPostDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,7 +11,9 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @Entity
@@ -41,11 +44,9 @@ public class Produto implements Serializable {
     @OneToMany(mappedBy = "produto")
     private List<ProdutoCor> produtoCores = new ArrayList<>();
 
-
-
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "id.produto")
-//    private Set<ItemPedido> itens = new HashSet<>();
+    @JsonIgnore
+    @OneToMany(mappedBy = "id.produto")
+    private Set<ItemPedido> itens = new HashSet<>();
 
     public Produto(String nome, Double preco) {
         this.nome = nome;
@@ -72,6 +73,14 @@ public class Produto implements Serializable {
         this.descricao = obj.getDescricao();
     }
 
+    @JsonIgnore
+    public List<Pedido> getPedidos(){
+        List<Pedido> lista = new ArrayList<>();
+        for(ItemPedido ip : itens){
+            lista.add(ip.getPedido());
+        }
+        return lista;
+    }
 
 //    @JsonIgnore
 //    public List<Pedido> getPedidos(){

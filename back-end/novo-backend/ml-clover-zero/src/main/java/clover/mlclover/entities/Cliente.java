@@ -3,16 +3,17 @@ package clover.mlclover.entities;
 import clover.mlclover.dtos.ClienteCadastroInicialDTO;
 import clover.mlclover.dtos.ClienteDTO;
 import clover.mlclover.dtos.ClienteUpdateFinalizacaoCompraDTO;
+import clover.mlclover.entities.enums.Perfil;
 import clover.mlclover.entities.enums.TipoCliente;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 @Table
@@ -20,7 +21,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class Cliente {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -34,8 +34,16 @@ public class Cliente {
     private String genero;
     private Date dataNascimento;
 
+    @JsonIgnore // os pedidos de cliente não serão serializados
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos = new ArrayList<>();
+
     @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "PERFIS")
+    private Set<Integer> perfis = new HashSet<>();
 
     public Cliente(Integer id, String nome, String email, String senha, String telefone, String cpfOuCnpj, TipoCliente tipo, String genero, Date dataNascimento, List<Endereco> enderecos) {
         this.id = id;
@@ -48,6 +56,7 @@ public class Cliente {
         this.genero = genero;
         this.dataNascimento = dataNascimento;
         this.enderecos = enderecos;
+
     }
 
     public Cliente(ClienteDTO dto){
@@ -62,6 +71,7 @@ public class Cliente {
         this.email = dto.getEmail();
         this.senha = dto.getSenha();
         this.telefone = dto.getTelefone();
+        addPerfil(Perfil.CLIENTE);
     }
 
     public Cliente(ClienteUpdateFinalizacaoCompraDTO dto){
@@ -71,6 +81,15 @@ public class Cliente {
         this.dataNascimento = dto.getDataNascimento();
         this.tipo = TipoCliente.toEnum(dto.getTipo()).getCod();
         this.enderecos = dto.getEnderecos();
+
+    }
+
+    public Set<Perfil> getPerfis(){
+        return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
+    }
+
+    public void addPerfil(Perfil perfil){
+        perfis.add(perfil.getCod());
     }
 
     public TipoCliente getTipo() {

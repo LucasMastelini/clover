@@ -17,8 +17,8 @@
   }
   
   .circle {
-    width: 29px;
-    height: 29px;
+    width: 53px;
+    height: 50px;
     line-height: 25px;
     background-color: #35DAF0;
     color: black;
@@ -28,27 +28,59 @@
     -moz-background-clip: padding-box;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
+    align-items: center;
+    justify-content: center;
+
   }
   
   .stepWrapper {
     display: flex;
     margin-bottom: 20px;
-    color: white
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
   }
   
   .stepBlock .circleWrapper {
-    padding: 0px 40px;
+    padding: 8px 60px;
     position: relative;
+  }
+
+  .circle{
+    color: black;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10%;
+    font-size: 20px;
+    font-weight: bold;
   }
 
 
   
   .selected .circle {
+    background-color: green;
+    border-color: green;
+    align-items: center;
+  }
+
+   
+  .selected2  {
     color: black;
-    background-color: white;
-    border-color: #35DAF0;
+    background-color: red;
+    border-color: green;
     
   }
+   
+  .selected3 {
+    color: black;
+    background-color: rosybrown;
+    border-color: green;
+    
+  }
+
+
+
+ 
   
   .stepBlock:not(:last-child) > .circleWrapper::after {
     content: '';
@@ -57,19 +89,25 @@
     position: absolute;
     top: 0px;
     bottom: 0px;
-    background-color: #35DAF0;
+    background-color: green;
     margin: auto;
     z-index: -1;
   }
+
+
   
   .stepBlock:not(:last-child) > .circleWrapper::after {
     height: 3px;
   }
+
+
   
   .stepBlock:not(:last-child).selected > .circleWrapper::after, .stepBlock:not(:last-child).selected ~ .stepBlock:not(:last-child) > .circleWrapper::after {
     height: 2px;
-    opacity: 0.6;
+    opacity: 1.8;
+    background-color: #35DAF0;
   }
+
   
   .primaryButton {
     padding: 10px 25px;
@@ -93,7 +131,7 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 28px;
+    font-size: 32px;
 
   }
   
@@ -103,14 +141,14 @@
     font-weight: 400;
     font-family: 'Inter';
     font-style: normal;
-    font-size: 20px;
+    font-size: 29px;
   }
   
   .titulo_produto{
     color: white;
     font-style: normal;
     font-weight: 900;
-    font-size: 40px;
+    font-size: 50px;
     line-height: 58px;
     font-family: Inter;
   }
@@ -119,7 +157,8 @@
     font-family: Inter;
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 29px;
+    margin-bottom: 3px;
   }
   
   .icone{

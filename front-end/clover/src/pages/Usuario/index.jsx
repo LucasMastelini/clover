@@ -3,57 +3,60 @@ import PedidosRealizados from "./pages/PedidosRealizados";
 import Cartoes from "./pages/Cartoes";
 import DadosPessoais from "./pages/DadosPessoais";
 import Enderecos from "./pages/Enderecos";
-
-import {
-  FaRegUserCircle,
-  FaTshirt,
-  FaCity,
-  FaAddressCard,
-} from "react-icons/fa";
+import { FaRegUserCircle, FaTshirt, FaCity, FaAddressCard } from "react-icons/fa";
 import { BsFillCreditCardFill } from "react-icons/bs";
 import { useState } from "react";
-
 import "./style.css";
 
-function Usuario() {
+var opcaoAnterior;
 
-    const [step, setStep] = useState(0);
+  function mudarOpcoes(event) {
+
+    var opcao1 = document.getElementById("sidebar-user-option1");
+    opcao1.classList.remove("selected");
+
+    if (opcaoAnterior) {
+      opcaoAnterior.className = "";
+    }
+
+    opcaoAnterior = document.getElementById(event.target.id);
+    opcaoAnterior.className = "selected";
+  }
+
+  function Usuario() {
+
+    const [step, setStep] = useState(1);
 
   return (
     <>
-      <Header/>
+      <Header />
       <div className="container-geral">
-        <div className="container-principal">
+        <div id="container-principal" onClick={mudarOpcoes}>
           <div className="welcome">
             <FaRegUserCircle className="user" />{" "}
             <p className="welcome-user-text">Olá, Barreira!</p>
           </div>
-          <div className="option" onClick={() => setStep(1)}>
-            <FaTshirt className="icon" />
-            <p className="icon-title">Pedidos</p>
+          <div id="sidebar-user-option1" class="selected" onClick={() => setStep(1)}>
+            <FaTshirt className="icon" /> Pedidos
           </div>
-          <div className="option" onClick={() => setStep(2)}>
-            <BsFillCreditCardFill className="icon" />
-            <p className="icon-title">Cartões</p>
+          <div id="sidebar-user-option2" onClick={() => setStep(2)}>
+            <BsFillCreditCardFill className="icon" /> Cartões
           </div>
-          <div className="option" onClick={() => setStep(3)}>
-            <FaAddressCard className="icon" />
-            <p className="icon-title">Dados Pessoais</p>
+          <div id="sidebar-user-option3" onClick={() => setStep(3)}>
+            <FaAddressCard className="icon" /> Dados Pessoais
           </div>
-          <div className="option" onClick={() => setStep(4)}>
-            <FaCity className="icon" />
-            <p className="icon-title">Endereços</p>
+          <div id="sidebar-user-option4" onClick={() => setStep(4)}>
+            <FaCity className="icon" /> Endereços
           </div>
-          <div className="option" onClick={() => setStep(5)}>
-            <FaTshirt className="icon" />
-            <p className="icon-title">Sair</p>
+          <div id="sidebar-user-option5" onClick={() => setStep(5)}>
+            <FaTshirt className="icon" /> Sair
           </div>
         </div>
         <div className="container-corpo">
-          {step === 1 ? <PedidosRealizados/> : ""}
-          {step === 2 ? <Cartoes/> : ""}
-          {step === 3 ? <DadosPessoais/> : ""}
-          {step === 4 ? <Enderecos/> : ""}
+          {step === 1 ? <PedidosRealizados /> : ""}
+          {step === 2 ? <Cartoes /> : ""}
+          {step === 3 ? <DadosPessoais /> : ""}
+          {step === 4 ? <Enderecos /> : ""}
         </div>
       </div>
     </>
