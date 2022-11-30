@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import StepNavigation from './components/StepNavigation';
 import './style.css';
-import logoPedido from "../../assets/image/logo-caixa-produto.png"
+import logoPedido from "../../assets/image/image-pedido-realizado.png"
 
 function PedidoRealizado() {
 
@@ -12,7 +12,6 @@ function PedidoRealizado() {
       updateCurrentStep(step);
     }
 
-  
     return (
       <div className='controleGeral'>
       <div className="App">
@@ -24,14 +23,15 @@ function PedidoRealizado() {
       <p className="texto_descricao_produto_2">Obrigado por escolher a Clover. É muito bom ter você aqui!</p> 
   
       </div>
+      <div>
   
         <StepNavigation labelArray={labelArray} currentStep={currentStep} updateStep={updateStep}></StepNavigation>
-        
-       
+
+        </div>
+              
       </div>
       </div>
     );
   }
 
   export default PedidoRealizado;
-

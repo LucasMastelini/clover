@@ -105,7 +105,7 @@
     border-bottom: #fff 0.5px solid;
   }
   
-  .container-principal {
+  #container-principal {
     width: 20%;
     /* background: rgb(0, 7, 61); */
     color: #35DAF0;
@@ -153,13 +153,17 @@
 
   /* opções */
 
-  .option {
+  #sidebar-user-option1, #sidebar-user-option2, #sidebar-user-option3, 
+  #sidebar-user-option4, #sidebar-user-option5 {
     padding: 6% 0% 6% 5%;
     font-family: 'Montserrat Medium', sans-serif;
     color: white;
     display: flex;
     align-items: center;
     flex-direction: row;
+    cursor: pointer;
+    width: 100%;
+    background-color: transparent;
   }
 
 
@@ -173,7 +177,7 @@
     font-family: 'Montserrat Medium', sans-serif;
   }
 
-  .option:hover {
+  #container-principal .selected {
     color: #35DAF0;
     border-left: 4px solid #35DAF0;
     background-color: #c897ee3b;

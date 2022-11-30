@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useCarrinho } from "../Carrinho/Context";
 
 import cloverLogo from "../../assets/image/logo.png";
@@ -9,34 +9,51 @@ import iconCarrinho from "../../assets/image/carrinho.png";
 import lupa from "../../assets/image/lupa.png";
 import IconNav from "./components/IconNav";
 import MinhaConta from "./components/MinhaConta";
+import api from "../../Api/api";
 
 import "./style.css";
+import { useEffect } from "react";
 
 function Header() {
-  // ---------- codigo para integração com o back menu de pesquisa ----------
 
-  const categoriasMock = [
-    {
-      id: 0,
-      nome_categoria: "Vestuario",
-      sub_categoria: ["Camiseta", "Calça", "Bermuda", "Moletõn"],
-    },
-    {
-      id: 1,
-      nome_categoria: "Acessórios",
-      sub_categoria: ["Boné", "Mochila", "Anel"],
-    },
-    {
-      id: 2,
-      nome_categoria: "Colecionaveis",
-      sub_categoria: ["Bonecos", "Baralho", "Kit Fã"],
-    },
-    {
-      id: 3,
-      nome_categoria: "Decoração",
-      sub_categoria: ["Mesa", "Cadeira", "Escova de dente","Mesa", "Cadeira", "Escova de dente","Mesa", "Cadeira", "Escova de dente","Mesa", "Cadeira", "Escova de dente"],
-    },
-  ];
+  const [categoriasBanco , setCategoriasBanco] = useState();
+
+  useEffect(() => {
+  api.get().then(res => {
+    console.log(res);
+    setCategoriasBanco(res.data);
+  }).catch(err =>{
+    console.log(err);
+  });
+  
+  }, [])
+
+  const rota = useLocation();
+
+  const [produtos, setProdutos] = useState(
+    [
+      {
+        id:1,
+        nome: "Camisetas",
+      },
+      {
+        id:2,
+        nome: "Bones",
+      },
+      {
+        id:3,
+        nome: "Action Figures",
+      },
+      {
+        id:4,
+        nome: "Moletons",
+      },
+      {
+        id:5,
+        nome: "Calças",
+      },
+
+    ]);
 
   const [search, setSearch] = useState("");
 
@@ -54,7 +71,7 @@ function Header() {
   }
 
   const [abrirLista, setAbrirLista] = useState(false);
-  const [subCategoria, setSubCategoria] = useState([]);
+  const [subCategoria, setSubCategoria] = useState({});
 
   const navegar = useNavigate();
 
@@ -76,7 +93,7 @@ function Header() {
     setAbrirLista(true);
   }
 
-  function armazenarSubCategoria(sub_categoria_informada) {
+  function armazenarCategoria(sub_categoria_informada) {
     setSubCategoria(sub_categoria_informada);
   }
 
@@ -103,7 +120,7 @@ function Header() {
 
   return (
     <>
-      <div className="header-fake"></div>
+      <div className="header-fake" />
       <header id="header" className="header">
         <div className="principal">
           <div className="pesquisa">
@@ -134,45 +151,50 @@ function Header() {
             </div>
           </div>
         </div>
-        <nav id="nav" className="navegation">
-          <button
-            aria-label="Abrir Menu"
-            id="btn-mobile"
-            onClick={() => toggleMenu()}
-            aria-haspopup="true"
-            aria-controls="menu"
-            aria-expanded="false"
-          >
-            <span id="hamburger" />
-          </button>
-          <ul id="menu" role="menu" onMouseLeave={minimizarLista}>
-            {/* <MinhaConta sair={sair} navegarUsuario={navegarUsuario} /> */}
-            <li id="contaMobile" className="list active-header contaMobile">
-              <a href="./CadastroLogin">
-                <span className="list text">Minha conta</span>
-              </a>
-            </li>
-            <li id="carrinhoMobile" className="list carrinhoMobile" />
-            {categoriasMock.map((categoria) => {
-              return (
-                <li className="list" onMouseEnter={carregarLista}>
-                  <a
-                    href="/"
-                    className="text"
-                    key={categoria.id}
-                    onMouseEnter={() => armazenarSubCategoria(categoria.sub_categoria)}
-                  >
-                    {categoria.nome_categoria}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+
+        {rota.pathname !== "/carrinho" && rota.pathname !== "/cadastro-login" && (
+          <nav id="nav" className="navegation">
+            <button
+              aria-label="Abrir Menu"
+              id="btn-mobile"
+              onClick={() => toggleMenu()}
+              aria-haspopup="true"
+              aria-controls="menu"
+              aria-expanded="false"
+            >
+              <span id="hamburger" />
+            </button>
+            <ul id="menu" role="menu" onMouseLeave={minimizarLista}>
+              {/* <MinhaConta sair={sair} navegarUsuario={navegarUsuario} /> */}
+              <li id="contaMobile" className="list active-header contaMobile">
+                <a href="./CadastroLogin">
+                  <span className="list text">Minha conta</span>
+                </a>
+              </li>
+              <li id="carrinhoMobile" className="list carrinhoMobile" />
+              {produtos?.map((colecao) => {
+                return (
+                  <li className="list" onMouseEnter={carregarLista}>
+                    <a
+                      href="/"
+                      className="text"
+                      key={colecao.id}
+                      onMouseEnter={() =>
+                        armazenarCategoria(colecao.categorias)
+                      }
+                    >
+                      {colecao.nome}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        )}
       </header>
       {abrirLista && (
         <div onMouseEnter={carregarLista} onMouseLeave={minimizarLista}>
-          <IconNav sub_categoria={subCategoria} />
+          <IconNav categoria={categoriasBanco} />
         </div>
       )}
     </>

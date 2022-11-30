@@ -40,18 +40,30 @@ function FormCadastro() {
                 setValidateConfirmacao(true)
                 setValidateEmail(true)
                 setValidateSenha(true)
-                console.log(res);
+                // console.log(res);
                 alert(`${values.nome} seu cadastrado foi efetuado com sucesso `)
                 actions.resetForm();
                 navegar("/cadastro-login")
             }).catch(err => {
                 console.log(err.response)
-                if (err.response.data.msg) {
+                err.response.data.errors?.map((erro) =>{
+                    if(erro.fieldName === "email" )
+                    {
                     setValidateEmail(false);
+                    setValidateSenha(true);
+                    setValidateConfirmacao(true);
+                    alert(`${erro.message}`)
+                    }
+                    else if(erro.fieldName === "senha")
+                    {
+                    setValidateEmail(true);
                     setValidateSenha(false);
                     setValidateConfirmacao(true);
-                    alert(`${err.response.data.msg}, Email ou Senha Já existem`)
-                }
+                    alert(`${erro.message} de validação (Pelo menos 8 caracteres, uma maiuscula, um "@,/,#,$..." e um numero)`)
+                    }
+                })
+                    
+                
             })
     }
 
@@ -72,7 +84,7 @@ function FormCadastro() {
                         email: '',
                         senha: '',
                         confirmacao: '',
-                        celular: '',
+                        telefone: '',
                     }}
                     render={({ values, touched, actions }) => (
                         <Form className="form form-cadastro" >
@@ -134,7 +146,8 @@ function FormCadastro() {
                                     <Field
                                         autoComplete="off"
                                         className="input-valida"
-                                        name="celular" id="cadastro-telefone"
+                                        name="telefone" 
+                                        id="cadastro-telefone"
                                         type="text"
                                         placeholder="Numero de celular" required />
                                 </div>

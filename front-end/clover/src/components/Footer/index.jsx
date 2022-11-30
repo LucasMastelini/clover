@@ -1,9 +1,12 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "./style.css";
 
 export default function Footer() {
+
+  const navigate = useNavigate();
+
   return (
     <>
       <footer>
@@ -11,7 +14,7 @@ export default function Footer() {
           <div className="item-footer">
             <h2 className="title">Institucional</h2>
             <ul className="item-lista">
-              <NavLink className="nav-link" to="/quem-somos"><li>Quem somos</li></NavLink>
+              <li onClick={() => navigate("/quem-somos")}>Quem somos</li>
             </ul>
           </div>
 
