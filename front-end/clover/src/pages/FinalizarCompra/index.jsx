@@ -76,9 +76,9 @@ export default function FinalizarCompra() {
         <div className="corpo-pagina">
 
           {/* {step === 2 ? <DadosPessoais /> : ""} */}
-          {step === 2 ? <Enderecos setarPasso={setStep} passoAtual={step} /> : ""}
+          {step === 1 ? <Enderecos setarPasso={setStep} passoAtual={step} /> : ""}
           {step === 3 ? <DadosPessoais setarPasso={setStep} passoAtual={step}/> : ""}
-          {step === 4 ? <CompraCartao setarPasso={setStep} passoAtual={step} /> : ""}
+          {step === 2 ? <CompraCartao setarPasso={setStep} passoAtual={step} /> : ""}
           {step === 5 ? <PedidoRealizado setarPasso={setStep} passoAtual={step} /> : ""}
 
         </div>
