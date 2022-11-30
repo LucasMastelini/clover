@@ -16,4 +16,6 @@ public interface ProdutoCorRepository extends JpaRepository<ProdutoCor, Integer>
     void deleteByProdutoId(Integer idProduto);
     void deleteByCor(String hexadecimal);
 
+    ProdutoCor findByProdutoIdAndCorHexadecimal(Integer idProduto, String hexadecimal);
+
 }

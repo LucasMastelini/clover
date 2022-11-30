@@ -1,6 +1,7 @@
 package clover.mlclover.controllers.exception;
 
 
+import clover.mlclover.services.exceptions.AuthorizationException;
 import clover.mlclover.services.exceptions.DataIntegrityException;
 import clover.mlclover.services.exceptions.ObjectNotFoundException;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +36,13 @@ public class ResourceExceptionHandler {
             err.addError(error.getField(), error.getDefaultMessage());
         }
         return ResponseEntity.status(400).body(err);
+    }
+
+    @ExceptionHandler(AuthorizationException.class)
+    public ResponseEntity<StandardError> authorization(AuthorizationException e, HttpServletRequest request){
+        StandardError err = new StandardError(403, e.getMessage(), System.currentTimeMillis());
+
+        return ResponseEntity.status(404).body(err);
     }
 
 //    @ExceptionHandler(IllegalStateException.class)

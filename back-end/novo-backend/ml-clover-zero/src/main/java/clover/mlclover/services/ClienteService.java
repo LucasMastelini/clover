@@ -3,10 +3,13 @@ package clover.mlclover.services;
 import clover.mlclover.dtos.*;
 import clover.mlclover.entities.Cliente;
 import clover.mlclover.entities.LocalidadeCep;
+import clover.mlclover.entities.enums.Perfil;
 import clover.mlclover.entities.enums.TipoCliente;
 import clover.mlclover.repositories.ClienteRepository;
 import clover.mlclover.repositories.EnderecoRepository;
 import clover.mlclover.repositories.LocalidadeCepRepository;
+import clover.mlclover.security.UserSS;
+import clover.mlclover.services.exceptions.AuthorizationException;
 import clover.mlclover.services.exceptions.DataIntegrityException;
 import clover.mlclover.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 //import com.gtbr.ViaCepClient;
@@ -35,7 +39,14 @@ public class ClienteService {
     @Autowired
     private LocalidadeCepRepository cepRepository;
 
+    @Autowired
+    BCryptPasswordEncoder encoder;
+
     public Cliente find(Integer id){
+        UserSS user = UserService.authenticated();
+        if(user == null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())){
+            throw new AuthorizationException("Acesso negado");
+        }
         Optional<Cliente> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException(
                 "Objeto não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
@@ -44,6 +55,7 @@ public class ClienteService {
 
     @Transactional
     public Cliente cadastroInicial(Cliente obj) {
+        obj.setSenha(encoder.encode(obj.getSenha()));
         obj = repo.save(obj);
         return obj;
     }
