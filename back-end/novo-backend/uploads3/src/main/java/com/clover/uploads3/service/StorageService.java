@@ -1,8 +1,10 @@
 package com.clover.uploads3.service;
 
+import com.amazonaws.AmazonClientException;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.*;
 import com.amazonaws.util.IOUtils;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +14,9 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,12 +29,32 @@ public class StorageService {
     @Autowired
     private AmazonS3 s3Client;
 
-    public String uploadFile(MultipartFile file){
-        File fileObj = convertMultiPartFileToFile(file);
-        String fileName=System.currentTimeMillis()+"_"+ file.getOriginalFilename();
-        s3Client.putObject(new PutObjectRequest(bucketName,fileName, fileObj));
-        fileObj.delete();
-        return "File uploaded :" + fileName;
+
+    public URI uploadFile(MultipartFile file) {
+        try {
+            File fileObj = convertMultiPartFileToFile(file);
+            String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+            String contentType = file.getContentType();
+            InputStream is = file.getInputStream();
+            return uploadFile(is, fileName, contentType);
+        } catch (IOException e) {
+            throw  new RuntimeException("Erro de IO: " + e.getMessage());
+        }
+            //s3Client.putObject(new PutObjectRequest(bucketName, fileName, fileObj));
+            // fileObj.delete();
+
+    }
+
+
+    public URI uploadFile(InputStream is, String fileName, String contentType){
+        try {
+        ObjectMetadata meta = new ObjectMetadata();
+        meta.setContentType(contentType);
+        s3Client.putObject(bucketName, fileName, is, meta);
+        return s3Client.getUrl(bucketName, fileName).toURI();
+        } catch (URISyntaxException e) {
+           throw  new RuntimeException("Erro ao converter URL para URI");
+        }
     }
 
 

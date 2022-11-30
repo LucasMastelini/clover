@@ -1,0 +1,1155 @@
+{
+	"info": {
+		"_postman_id": "70861839-1d52-45aa-8b67-99753c347e67",
+		"name": "ml-clover",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20782341"
+	},
+	"item": [
+		{
+			"name": "categorias",
+			"item": [
+				{
+					"name": "categorias paginadas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categorias/page?page=5&linesPerPage=2&orderBy=nome&direction=ASC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias",
+								"page"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "5"
+								},
+								{
+									"key": "linesPerPage",
+									"value": "2"
+								},
+								{
+									"key": "orderBy",
+									"value": "nome"
+								},
+								{
+									"key": "direction",
+									"value": "ASC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "todas as categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categorias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "categoria por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categorias/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "nova categoria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Novidades\",\r\n    \"subcategorias\" : [\r\n        {\r\n            \"id\" : 1,\r\n            \"nome\": \"One Piece\"\r\n        },\r\n        {\r\n            \"id\" : 2,\r\n            \"nome\" : \"Naruto\"\r\n        }\r\n    ],\r\n    \"produtos\" : [\r\n        {\r\n            \"id\" : 2,\r\n            \"nome\" : \"Moletom Shanks One Piece Red\",\r\n            \"preco\" : 159.9\r\n        },\r\n        {\r\n            \"id\" : 1,\r\n            \"nome\" : \"Camiseta Luffy Nika\",\r\n            \"preco\" : 59.9\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/admin/categorias",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editar categoria",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"nome\" : \"Cocada\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/categorias/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "excluir categoria",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/clientes/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "clientes",
+			"item": [
+				{
+					"name": "cadastro",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n\"cpfOuCnpj\" : \"47193770845\",\r\n\"tipo\" : 1,\r\n\"genero\" : \"Masculino\",\r\n\"cep\" : \"38746928\",\r\n\"dataNascimento\" : ,\r\n\"cidadeId\" : 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/clientes/payment-info/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clientes",
+								"payment-info",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"nome\" : \"Igor\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/clientes/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"nome\" : \"Igor\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/clientes/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar-todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/clientes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpZ29yM0BnbWFpbC5jb20iLCJleHAiOjE2Njk2NzEwMTd9.NdDG7ryWBWkyXORycTSrBb9P4tzdPaVitWTeu6-EO0Tkar8Yxivcq0ENr7zixc13lrIWKggj7psG_FVqf-PnnA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/clientes/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clientes",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar cep",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cep\": \"01001010\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/clientes/cep",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clientes",
+								"cep"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastro-inicial",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "file",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Igor Martins Rodrigues Mariano\",\r\n    \"email\": \"igor3@gmail.com\",\r\n    \"telefone\": \"11954556393\",\r\n    \"senha\": \"Econom1@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/clientes/cadastro",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clientes",
+								"cadastro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"igor3@gmail.com\",\r\n    \"senha\": \"Econom1@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logoff",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\" : \"Maria Silva\",\r\n    \"email\" : \"igormartins337@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/logoff",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"logoff"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cores",
+			"item": [
+				{
+					"name": "todas as categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categorias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "categoria por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categorias/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "nova categoria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Mangás\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/categorias",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editar categoria",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"nome\" : \"Cocada\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/categorias/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "excluir categoria",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/clientes/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tamanhos",
+			"item": [
+				{
+					"name": "todas as categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categorias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "categoria por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categorias/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "nova categoria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Mangás\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/categorias",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editar categoria",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"nome\" : \"Cocada\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/categorias/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "excluir categoria",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/clientes/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "produtos",
+					"item": [
+						{
+							"name": "cadastro",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpZ29yQGdtYWlsLmNvbSIsImV4cCI6MTY2OTY2OTg2OH0.nzB7aqHZwB1LQJiKP_fQgUAav2aryPD-cS5oBTDMpPivppGrMavXYuOF3svjC1bTUXeJ0zqRjtJUt7aPnXT5Yw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\" : \"Camiseta Naruto\",\r\n    \"preco\" : 155,\r\n    \"subtitulo\" : \"A espada de Zoro\",\r\n    \"descricao\" : \"Emmna é uma espada muito famosa no mundo de One Piece por já ter pertencido...\",\r\n    \"categorias\": [\r\n        {\r\n            \"id\" : 1,\r\n            \"nome\" : \"Animes\"\r\n        },\r\n        {\r\n            \"id\" : 2,\r\n            \"nome\" : \"Filmes\"\r\n        },\r\n        {\r\n            \"id\" : 3,\r\n            \"nome\" : \"Séries\"\r\n        }\r\n    ],\r\n    \"subcategorias\": [\r\n        {\r\n            \"id\": 1,\r\n            \"nome\" : \"One Piece\"\r\n        },\r\n        {\r\n            \"id\" : 5,\r\n            \"nome\": \"Dark\"\r\n        }\r\n    ],\r\n    \"cores\": [\r\n        {\r\n            \"hexadecimal\" : \"#FFFFFF\",\r\n            \"nome\" : \"Branco\"\r\n        },\r\n        {\r\n            \"hexadecimal\": \"#008000\",\r\n            \"nome\" : \"Verde\"\r\n        }\r\n\r\n    ],\r\n    \"tamanhos\": [\r\n        {\r\n            \"tamanho\" : \"P\"\r\n        },\r\n        {\r\n            \"tamanho\" : \"M\"\r\n        },\r\n        {\r\n            \"tamanho\" : \"G\"\r\n        }\r\n    ]\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/admin/produtos",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"produtos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\" : \"Chapéu de Palha\",\r\n    \"preco\" : 4,\r\n    \"categorias\": [\r\n        {\r\n            \"id\" : 1,\r\n            \"nome\" : \"Animes\"\r\n        },\r\n        {\r\n            \"id\" : 2,\r\n            \"nome\" : \"Filmes\"\r\n        },\r\n        {\r\n            \"id\" : 3,\r\n            \"nome\": \"Séries\"\r\n        }\r\n    ],\r\n    \"subcategorias\": [\r\n        {\r\n            \"id\": 1,\r\n            \"nome\" : \"One Piece\"\r\n        },\r\n        {\r\n            \"id\" : 5,\r\n            \"nome\": \"Dark\"\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"nome\" : \"Naruto\"\r\n        }\r\n    ],\r\n    \"cores\": [\r\n        {\r\n            \"hexadecimal\" : \"#FFFFFF\",\r\n            \"nome\" : \"Branco\"\r\n        },\r\n        {\r\n            \"hexadecimal\": \"#008000\",\r\n            \"nome\" : \"Verde\"\r\n        }\r\n\r\n    ],\r\n    \"tamanhos\": [\r\n        {\r\n            \"tamanho\" : \"P\"\r\n        },\r\n        {\r\n            \"tamanho\" : \"M\"\r\n        },\r\n        {\r\n            \"tamanho\" : \"G\"\r\n        }\r\n    ]\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/admin/produtos/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"produtos",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/admin/produtos/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"produtos",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "find all",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpZ29yM0BnbWFpbC5jb20iLCJleHAiOjE2Njk2ODAxNzB9.BmejjvlY6RuCoXDkUsqghSOCm6pN9X93qOrWnl-2Z3eSDFvtlo-MvTYTfE5DSZkKwgckc3YyNpG_LR1o9vR9nw",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/admin/produtos",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"produtos"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "categoria",
+					"item": [
+						{
+							"name": "cadastro",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\" : \"Novidades\",\r\n    \"subcategorias\"  :[\r\n        {\r\n            \"id\" : 1,\r\n            \"nome\" : \"One Piece\"\r\n        },\r\n        {\r\n            \"id\" : 2,\r\n            \"nome\": \"Naruto\"\r\n        }\r\n    ],\r\n    \"produtos\" : [\r\n        {\r\n            \"id\": 1,\r\n            \"nome\": \"Emma\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/admin/categorias",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"categorias"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\" : \"Chapéu de Palha\",\r\n    \"preco\" : 4,\r\n    \"categorias\": [\r\n        {\r\n            \"id\" : 1,\r\n            \"nome\" : \"Animes\"\r\n        },\r\n        {\r\n            \"id\" : 2,\r\n            \"nome\" : \"Filmes\"\r\n        },\r\n        {\r\n            \"id\" : 3,\r\n            \"nome\": \"Séries\"\r\n        }\r\n    ],\r\n    \"subcategorias\": [\r\n        {\r\n            \"id\": 1,\r\n            \"nome\" : \"One Piece\"\r\n        },\r\n        {\r\n            \"id\" : 5,\r\n            \"nome\": \"Dark\"\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"nome\" : \"Naruto\"\r\n        }\r\n    ],\r\n    \"cores\": [\r\n        {\r\n            \"hexadecimal\" : \"#FFFFFF\",\r\n            \"nome\" : \"Branco\"\r\n        },\r\n        {\r\n            \"hexadecimal\": \"#008000\",\r\n            \"nome\" : \"Verde\"\r\n        }\r\n\r\n    ],\r\n    \"tamanhos\": [\r\n        {\r\n            \"tamanho\" : \"P\"\r\n        },\r\n        {\r\n            \"tamanho\" : \"M\"\r\n        },\r\n        {\r\n            \"tamanho\" : \"G\"\r\n        }\r\n    ]\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/admin/produtos/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"produtos",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/admin/categorias/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"categorias",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "find all",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/admin/categorias",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"categorias"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "subcategoria",
+					"item": [
+						{
+							"name": "cadastro",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\" : \"Novidades\",\r\n    \"subcategorias\"  :[\r\n        {\r\n            \"id\" : 1,\r\n            \"nome\" : \"One Piece\"\r\n        },\r\n        {\r\n            \"id\" : 2,\r\n            \"nome\": \"Naruto\"\r\n        }\r\n    ],\r\n    \"produtos\" : [\r\n        {\r\n            \"id\": 1,\r\n            \"nome\": \"Emma\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/admin/categorias",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"categorias"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\" : \"Chapéu de Palha\",\r\n    \"preco\" : 4,\r\n    \"categorias\": [\r\n        {\r\n            \"id\" : 1,\r\n            \"nome\" : \"Animes\"\r\n        },\r\n        {\r\n            \"id\" : 2,\r\n            \"nome\" : \"Filmes\"\r\n        },\r\n        {\r\n            \"id\" : 3,\r\n            \"nome\": \"Séries\"\r\n        }\r\n    ],\r\n    \"subcategorias\": [\r\n        {\r\n            \"id\": 1,\r\n            \"nome\" : \"One Piece\"\r\n        },\r\n        {\r\n            \"id\" : 5,\r\n            \"nome\": \"Dark\"\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"nome\" : \"Naruto\"\r\n        }\r\n    ],\r\n    \"cores\": [\r\n        {\r\n            \"hexadecimal\" : \"#FFFFFF\",\r\n            \"nome\" : \"Branco\"\r\n        },\r\n        {\r\n            \"hexadecimal\": \"#008000\",\r\n            \"nome\" : \"Verde\"\r\n        }\r\n\r\n    ],\r\n    \"tamanhos\": [\r\n        {\r\n            \"tamanho\" : \"P\"\r\n        },\r\n        {\r\n            \"tamanho\" : \"M\"\r\n        },\r\n        {\r\n            \"tamanho\" : \"G\"\r\n        }\r\n    ]\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/admin/produtos/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"produtos",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/admin/categorias/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"categorias",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "find all",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/admin/subcategorias",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"subcategorias"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "file",
+					"item": [
+						{
+							"name": "enviar arquivo",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpZ29yM0BnbWFpbC5jb20iLCJleHAiOjE2Njk2ODAxNzB9.BmejjvlY6RuCoXDkUsqghSOCm6pN9X93qOrWnl-2Z3eSDFvtlo-MvTYTfE5DSZkKwgckc3YyNpG_LR1o9vR9nw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/Igor/Desktop/der-cep.png"
+										},
+										{
+											"key": "idProduto",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "hexadecimal",
+											"value": "#FFFFFF",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/admin/file/upload",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"file",
+										"upload"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "produtos",
+			"item": [
+				{
+					"name": "busca categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080",
+							"host": [
+								"localhost"
+							],
+							"port": "8080"
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "produtos search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/produtos/naruto",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produtos",
+								"naruto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "busca paginada",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpZ29yM0BnbWFpbC5jb20iLCJleHAiOjE2Njk2ODEwOTd9.Y4iohN7Dy4ceezKxSYa6SCGYURaazQNxH_lLmzDz-LTLROHEe1UlVM_nSQAhRsWNNdUAt6t2iKufAHd30LLazQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/produtos?nome=nar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produtos"
+							],
+							"query": [
+								{
+									"key": "pagina",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "linhasPorPagina",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "orderBy",
+									"value": "nome",
+									"disabled": true
+								},
+								{
+									"key": "direction",
+									"value": "ASC",
+									"disabled": true
+								},
+								{
+									"key": "categorias",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "subcategorias",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "nome",
+									"value": "nar"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

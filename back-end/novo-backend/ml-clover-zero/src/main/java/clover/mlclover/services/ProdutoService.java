@@ -3,11 +3,13 @@ package clover.mlclover.services;
 import clover.mlclover.dtos.CategoriaGetDTO;
 import clover.mlclover.dtos.ProdutoGetDTO;
 import clover.mlclover.entities.Categoria;
+import clover.mlclover.entities.Cliente;
 import clover.mlclover.entities.Produto;
 import clover.mlclover.entities.Subcategoria;
 import clover.mlclover.repositories.CategoriaRepository;
 import clover.mlclover.repositories.ProdutoRepository;
 import clover.mlclover.repositories.SubcategoriaRepository;
+import clover.mlclover.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -29,6 +31,11 @@ public class ProdutoService {
 
     @Autowired
     ProdutoRepository produtoRepository;
+
+    public Produto find(Integer id){
+        return produtoRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(
+                "Objeto não encontrado! Id: " + id + ", Tipo: " + Produto.class.getName()));
+    }
 
     public List<CategoriaGetDTO> listaCategoriasAndSubcategorias() {
        List<Categoria> categorias = categoriaRepository.findAll();
