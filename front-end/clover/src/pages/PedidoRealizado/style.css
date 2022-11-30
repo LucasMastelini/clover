@@ -17,8 +17,8 @@
   }
   
   .circle {
-    width: 29px;
-    height: 29px;
+    width: 53px;
+    height: 50px;
     line-height: 25px;
     background-color: #35DAF0;
     color: black;
@@ -28,26 +28,39 @@
     -moz-background-clip: padding-box;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
+    align-items: center;
+    justify-content: center;
+
   }
   
   .stepWrapper {
     display: flex;
     margin-bottom: 20px;
     color: white;
+    font-size: 20px;
+    font-weight: bold;
   }
   
   .stepBlock .circleWrapper {
-    padding: 8px 55px;
+    padding: 8px 60px;
     position: relative;
+  }
+
+  .circle{
+    color: black;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10%;
+    font-size: 20px;
+    font-weight: bold;
   }
 
 
   
   .selected .circle {
-    color: black;
     background-color: green;
     border-color: green;
-    
+    align-items: center;
   }
 
    
@@ -91,7 +104,7 @@
   
   .stepBlock:not(:last-child).selected > .circleWrapper::after, .stepBlock:not(:last-child).selected ~ .stepBlock:not(:last-child) > .circleWrapper::after {
     height: 2px;
-    opacity: 0.6;
+    opacity: 1.8;
     background-color: #35DAF0;
   }
 
@@ -118,7 +131,7 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 28px;
+    font-size: 32px;
 
   }
   
@@ -128,14 +141,14 @@
     font-weight: 400;
     font-family: 'Inter';
     font-style: normal;
-    font-size: 20px;
+    font-size: 29px;
   }
   
   .titulo_produto{
     color: white;
     font-style: normal;
     font-weight: 900;
-    font-size: 40px;
+    font-size: 50px;
     line-height: 58px;
     font-family: Inter;
   }
@@ -144,7 +157,8 @@
     font-family: Inter;
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 29px;
+    margin-bottom: 3px;
   }
   
   .icone{

@@ -23,8 +23,11 @@ function PedidoRealizado() {
       <p className="texto_descricao_produto_2">Obrigado por escolher a Clover. É muito bom ter você aqui!</p> 
   
       </div>
+      <div>
   
         <StepNavigation labelArray={labelArray} currentStep={currentStep} updateStep={updateStep}></StepNavigation>
+
+        </div>
               
       </div>
       </div>
