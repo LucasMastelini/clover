@@ -23,7 +23,7 @@ public class ProdutoSubcategoria implements Serializable {
     private Produto produto;
 
     @ManyToOne
-    @JoinColumn(name = "categoria_id")
+    @JoinColumn(name = "subcategoria_id")
     private Subcategoria subcategoria;
 
     public ProdutoSubcategoria(Produto produto, Subcategoria subcategoria){

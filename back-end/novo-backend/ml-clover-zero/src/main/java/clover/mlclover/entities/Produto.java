@@ -29,7 +29,7 @@ public class Produto implements Serializable {
     private Double preco;
 
     private String subtitulo;
-
+    @Column(columnDefinition = "TEXT")
     private String descricao;
 
     @OneToMany(mappedBy = "produto")
