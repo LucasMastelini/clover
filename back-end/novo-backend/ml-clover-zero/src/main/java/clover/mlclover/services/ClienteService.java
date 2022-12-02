@@ -8,8 +8,8 @@ import clover.mlclover.entities.enums.TipoCliente;
 import clover.mlclover.repositories.ClienteRepository;
 import clover.mlclover.repositories.EnderecoRepository;
 import clover.mlclover.repositories.LocalidadeCepRepository;
-import clover.mlclover.security.UserSS;
-import clover.mlclover.services.exceptions.AuthorizationException;
+//import clover.mlclover.security.UserSS;
+//import clover.mlclover.services.exceptions.AuthorizationException;
 import clover.mlclover.services.exceptions.DataIntegrityException;
 import clover.mlclover.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +17,14 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 //import com.gtbr.ViaCepClient;
 //import com.gtbr.domain.Cep;
+
+import org.apache.commons.codec.binary.Base64;
+
 
 import javax.transaction.Transactional;
 
@@ -39,14 +42,30 @@ public class ClienteService {
     @Autowired
     private LocalidadeCepRepository cepRepository;
 
-    @Autowired
-    BCryptPasswordEncoder encoder;
+//    @Autowired
+//    BCryptPasswordEncoder encoder;
+
+
+    /**
+     * Codifica string na base 64 (Encoder)
+     */
+    public static String codificaBase64Encoder(String msg) {
+        return new Base64().encodeToString(msg.getBytes());
+    }
+
+    /**
+     * Decodifica string na base 64 (Decoder)
+     */
+    public static String decodificaBase64Decoder(String msg) {
+        return new String(new Base64().decode(msg));
+    }
+
 
     public Cliente find(Integer id){
-        UserSS user = UserService.authenticated();
-        if(user == null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())){
-            throw new AuthorizationException("Acesso negado");
-        }
+//        UserSS user = UserService.authenticated();
+//        if(user == null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())){
+//            throw new AuthorizationException("Acesso negado");
+//        }
         Optional<Cliente> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException(
                 "Objeto não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
@@ -55,7 +74,7 @@ public class ClienteService {
 
     @Transactional
     public Cliente cadastroInicial(Cliente obj) {
-        obj.setSenha(encoder.encode(obj.getSenha()));
+        obj.setSenha(codificaBase64Encoder(obj.getSenha()));
         obj = repo.save(obj);
         return obj;
     }
