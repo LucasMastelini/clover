@@ -41,7 +41,7 @@
     color: #35DAF0;
 }
 
-.container-admin .body-admin {
+.container-admin .area-upload, .container-admin .body-admin {
     width: 90%;
     margin: 5%;
 }
@@ -80,6 +80,7 @@
 
 .container-admin .body-admin .body-charts .chart {
     width: 45%;
+    min-height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;

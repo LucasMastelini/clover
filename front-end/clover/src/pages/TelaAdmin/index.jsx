@@ -10,6 +10,7 @@ import LineCharts from './components/LineCharts';
 import PieCharts from './components/PieCharts';
 
 import './style.css'
+import AreaUpload from './components/AreaUpload';
 
 export default function TelaAdmin() {
 
@@ -61,6 +62,9 @@ export default function TelaAdmin() {
                         <PieCharts chartData={userData}/> 
                     </div>
                 </div>
+            </div>
+            <div className="area-upload">
+                <AreaUpload/>
             </div>
         </div>
     </>
