@@ -3,14 +3,29 @@
     color: rgb(212, 184, 223);
     width: 20px;
     font-weight: 800;
+    
 }
 .option-color{
     font-weight: 800;
     background-color: rgb(54, 8, 54);
     width: 240px;
+   
 }
+.opcao-minha-conta{
+    display: flex;
+    align-items: center;
+    /* padding: 1%; */
+    font-size: 14px;
+    
+}
+
 .option-color:hover{
     background-color:rgb(127, 6, 127);
     color: #fff;
     padding-left: 3px;
+}
+.container-minha-conta{
+    display: flex;
+    align-items: center;
+    gap: 24px;
 }
