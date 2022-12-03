@@ -9,6 +9,7 @@
     border-radius: 20px;
     border: none;
     z-index: 900px;
+    font-weight: 600;
 }
 
 .top-comments {
