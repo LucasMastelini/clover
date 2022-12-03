@@ -132,16 +132,19 @@ header {
     align-items: center;
     justify-content: space-between;
     display: flex;
-    padding: 1rem 4rem;
+    padding: 1rem 3rem;
     border-bottom: solid 2px #fff;
 }
 
 .controles {
     display: flex;
-    /* width: 20%; */
+    width: 20%;
     align-items: center;
     justify-content: space-between;
     font-weight: bold;
+}
+.content-carrinho{
+    display: flex;
 }
 
 .input {
@@ -162,7 +165,7 @@ header {
 }
 .icon {
     color: #510090;
-    width: 1.3rem;
+    width: 1.2rem;
     margin: 0 5px;
     /* height: 10vh; */
     text-align: center;
@@ -178,6 +181,7 @@ header {
     width: 14px;
     display: flex;
     justify-content: center;
+    flex-direction: row-reverse;
 }
 
 .menu-header {
