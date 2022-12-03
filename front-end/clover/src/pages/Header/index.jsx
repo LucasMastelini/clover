@@ -104,6 +104,9 @@ function Header() {
   function abrirHome() {
     setAbrirLista(-1);
   }
+  function irHome(){
+    return navegar("/");
+  }
   function abrirCarrinho() {
     return navegar("/carrinho");
   }
@@ -130,24 +133,26 @@ function Header() {
             </div>
           </div>
           <div>
-            <div id="logo" onClick={abrirHome} className="logo">
+            <div id="logo" onClick={irHome} className="logo">
               <img className="logo" src={cloverLogo} />
             </div>
           </div>
           <div className="controles">
             <div className="opcao-minha-conta">
+              <div className="container-minha-conta">
               <span>
                 <img className="icon" src={iconPerson} />
               </span>
-              <div className="container-minha-conta">
                 <MinhaConta sair={sair} navegarUsuario={navegarUsuario} />
               </div>
             </div>
             <div className="content-carrinho" onClick={abrirCarrinho}>
+              
+              <span className="badge-carrinho">{total}</span>
               <span>
                 <img className="icon carrinho" src={iconCarrinho} />
               </span>
-              <span className="badge-carrinho">{total}</span>
+              
             </div>
           </div>
         </div>
