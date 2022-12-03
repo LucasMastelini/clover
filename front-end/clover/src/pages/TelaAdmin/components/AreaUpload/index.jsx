@@ -7,18 +7,11 @@ export default function AreaUpload() {
   return (
     <>
       <div className="container-upload">
-        <form action="">
-          <div className="body-upload">
-            <input
-              accept=""
-              multiple
-              type="file"
-              name=""
-              id=""
-              placeholder="Arraste arquivos aqui..."
-            />
-            <label htmlFor="arquivo">Arraste seu arquivo aqui...</label>
-          </div>
+        <form class="form-upload">
+          <label class="input-personalizado">
+            <span class="botao-selecionar">Selecione um arquivo que deseja armazenar...</span>
+            <input type="file" class="input-file" accept="image/*" />
+          </label>
         </form>
         <div className="body-arquivos-registrados">
           <ArquivoRegistrado />
