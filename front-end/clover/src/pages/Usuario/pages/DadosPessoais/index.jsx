@@ -1,27 +1,66 @@
-import { React, useState } from 'react'
+import { React, useState, useEffect } from 'react'
 import { BiUser } from 'react-icons/bi';
 import './style.css';
+import api from '../../../../Api/api';
 
 function DadosPessoais() {
 
-  const [nome, setNome] = useState("Alex");
-  const [sobrenome, setSobrenome] = useState("Barreira");
-  const [email, setEmail] = useState("alex.barreira@sptech.school.com");
-  const [cpf, setCpf] = useState("386.118.288-28");
-  const [genero, setGenero] = useState("Masculino");
-  const [dataNascimento, setDataNascimento] = useState("28/12/1994");
-  const [telCelular, setTelCelular] = useState("(11)964616681");
+
+  const [dadosUsuario, setDadosUsuario] = useState('');
+  const [nome, setNome] = useState('Vazio');
+  const [sobrenome, setSobrenome] = useState('Vazio');
+  const [email, setEmail] = useState('Vazio');
+  const [cpf, setCpf] = useState('Vazio');
+  const [genero, setGenero] = useState('Vazio');
+  const [dataNascimento, setDataNascimento] = useState('Vazio');
+  const [telCelular, setTelCelular] = useState('vazio');
 
   const [disabled, setDisabled] = useState(true);
   const [isBlue, setIsBlue] = useState(false);
   const [buttonText, setButtonText] = useState(false);
+  
+  
+  useEffect(() => {
+    //api.get('/clientes/${localStorage.getItem('id').then((resposta) => {
+    api.get('/clientes/1').then((resposta) => {
+        console.log(resposta.data);
+        setDadosUsuario(resposta.data)
+    })
+}, [])
 
 
-  function handleGameClick() {
+const handleEmail = (e) => {
+  setEmail(e.target.value)
+  console.log(e.target.value);
+}
+
+
+  function handleGameClick(event) {
     setDisabled(!disabled);
     setIsBlue(!isBlue);
     setButtonText(!buttonText);
+    if(event.target.innerHTML == "Salvar"){
+      let data = {
+        nome: dadosUsuario.nome,
+        email: dadosUsuario.email
+      }
+      api.put('/clientes/1', data).then((resposta) => {
+        alert('Todos os dados alterados com sucesso!')
+        // console.log(resposta.data);
+        // setDadosUsuario(resposta.data)
+    }).catch((erro) =>{
+          console.log(erro);
+    })
+    }
+      
   }
+
+  function handleDadosUsuario(e){
+    const newDadosUsuario = {...dadosUsuario};
+    newDadosUsuario[e.target.id] = e.target.value;
+    setDadosUsuario(newDadosUsuario);
+}
+  
 
   return (
     <>
@@ -33,25 +72,16 @@ function DadosPessoais() {
             </div>
 
             <div className="container-informacoes">
-              <label>
-                Nome
-                <input
-                  className="input-dados-pessoais"
-                  value={nome}
-                  style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0' }}
-                  onChange={event => { setNome(event.target.value) }}
-                  disabled={disabled}
-                />
-              </label>
 
-              <label>
-                Sobrenome
+              <label className='email'>
+                Nome Completo
                 <input
                   className="input-dados-pessoais"
-                  value={sobrenome}
+                  value={dadosUsuario?.nome}
                   style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0' }}
-                  onChange={event => { setSobrenome(event.target.value) }}
+                  onChange={handleDadosUsuario}
                   disabled={disabled}
+                  id = 'nome'
                 />
               </label>
 
@@ -59,10 +89,11 @@ function DadosPessoais() {
                 E-mail
                 <input
                   className="input-dados-pessoais"
-                  value={email}
+                  value={dadosUsuario?.email}
                   style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0' }}
-                  onChange={event => { setEmail(event.target.value) }}
+                  onChange={handleDadosUsuario}
                   disabled={disabled}
+                  id = 'email'
                 />
               </label>
 
@@ -70,10 +101,11 @@ function DadosPessoais() {
                 CPF
                 <input
                   className="input-dados-pessoais"
-                  value={cpf}
+                  value={dadosUsuario?.cpfOuCnpj}              
                   style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0' }}
-                  onChange={event => { setCpf(event.target.value) }}
+                  onChange={handleDadosUsuario}
                   disabled={disabled}
+                  id = 'cpfOuCnpj'
                 />
               </label>
 
@@ -81,10 +113,11 @@ function DadosPessoais() {
                 Gênero
                 <input
                   className="input-dados-pessoais"
-                  value={genero}
+                  value={dadosUsuario?.genero}
                   style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0' }}
-                  onChange={event => { setGenero(event.target.value) }}
+                  onChange={handleDadosUsuario}
                   disabled={disabled}
+                  id = 'genero'
                 />
               </label>
 
@@ -92,10 +125,11 @@ function DadosPessoais() {
                 Data de nascimento
                 <input
                   className="input-dados-pessoais"
-                  value={dataNascimento}
+                 value={dadosUsuario?.dataNascimento}
                   style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0' }}
-                  onChange={event => { setDataNascimento(event.target.value) }}
+                  onChange={handleDadosUsuario}
                   disabled={disabled}
+                  id = 'dataNascimento'
                 />
               </label>
 
@@ -103,13 +137,13 @@ function DadosPessoais() {
                 Celular
                 <input
                   className="input-dados-pessoais"
-                  value={telCelular}
+                  value={dadosUsuario?.telefone}
                   style={{ borderColor: isBlue ? '#35DAF0' : '#D02EE0' }}
-                  onChange={event => { setTelCelular(event.target.value) }}
-                  disabled={disabled}
+                  onChange={handleDadosUsuario}
+                  id = 'telefone'
                 />
               </label>
-              <div className='teste' onClick={handleGameClick}>{buttonText ? "Salvar" : "Editar"}</div>
+              <div  className='teste' onClick={handleGameClick}>{buttonText ? "Salvar" : "Editar"}</div>
             </div>
           </div>
         </form>
