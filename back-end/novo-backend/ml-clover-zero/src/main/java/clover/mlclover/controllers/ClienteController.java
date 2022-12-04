@@ -23,9 +23,9 @@ public class ClienteController {
     private ClienteService service;
 
     @RequestMapping(value = "/clientes/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Cliente> find(@PathVariable Integer id){
+    public ResponseEntity<ClienteCompletoDTO> find(@PathVariable Integer id){
 
-        Cliente obj = service.find(id);
+        ClienteCompletoDTO obj = service.findDTO(id);
         return ResponseEntity.status(200).body(obj);
     }
 
@@ -69,12 +69,15 @@ public class ClienteController {
 
 
     @RequestMapping(value = "/clientes/payment-info/{id}", method =RequestMethod.PUT)
-    public ResponseEntity<Void> cadastroFinalizacaoCompra(@Valid @RequestBody ClienteUpdateFinalizacaoCompraDTO objDto, @PathVariable Integer id){
-        Cliente cliente = service.cadastroFinalizacaoCompra(objDto, id);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().
-                path("/{id}").buildAndExpand(cliente.getId()).toUri();
+    public ResponseEntity<ClienteCompletoDTO> cadastroFinalizacaoCompra(@Valid @RequestBody ClienteUpdateFinalizacaoCompraDTO objDto, @PathVariable Integer id){
+        ClienteCompletoDTO cliente = service.cadastroFinalizacaoCompra(objDto, id);
 
-        return ResponseEntity.created(uri).build();
+        return ResponseEntity.status(201).body(cliente);
+
+//        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().
+//                path("/{id}").buildAndExpand(cliente.getId()).toUri();
+//
+//        return ResponseEntity.created(uri).build();
     }
 
     @RequestMapping(value="/clientes/cadastro", method=RequestMethod.POST)
@@ -87,6 +90,8 @@ public class ClienteController {
         return ResponseEntity.created(uri).build();
     }
 
+    // ENDERECOS
+
     @RequestMapping(value = "/clientes/cep",method = RequestMethod.GET)
     public ResponseEntity<CepDTO> consultaCep(@RequestBody CepConsultaDTO consulta){
 
@@ -94,6 +99,78 @@ public class ClienteController {
         return endereco != null ? ResponseEntity.status(200).body(endereco) : ResponseEntity.status(404).build();
 
     }
+
+    @RequestMapping(value = "/clientes/{idCliente}/enderecos", method = RequestMethod.GET)
+    public ResponseEntity<List<EnderecoDTO>> getEnderecos(@PathVariable Integer idCliente){
+        List<EnderecoDTO> lista = service.getEnderecos(idCliente);
+
+        return !lista.isEmpty() ? ResponseEntity.status(200).body(lista) : ResponseEntity.status(204).build();
+    }
+
+
+    @RequestMapping(value = "/clientes/{idCliente}/enderecos", method = RequestMethod.POST)
+    public ResponseEntity<List<EnderecoDTO>> cadastroEndereco(@PathVariable Integer idCliente , @RequestBody EnderecoListaDTO enderecos){
+        List<EnderecoDTO> lista = service.cadastroEndereco(idCliente, enderecos);
+
+        return !lista.isEmpty() ? ResponseEntity.status(201).body(lista) : ResponseEntity.status(400).build();
+    }
+
+
+    @RequestMapping(value = "/clientes/{idCliente}/enderecos/{idEndereco}", method = RequestMethod.PUT)
+    public ResponseEntity<List<EnderecoDTO>> updateEndereco(@PathVariable Integer idCliente,
+                                                            @PathVariable Integer idEndereco,
+                                                            @RequestBody EnderecoDTO endereco){
+        List<EnderecoDTO> lista = service.updateEndereco(idCliente, idEndereco, endereco);
+        return !lista.isEmpty() ? ResponseEntity.status(200).body(lista) : ResponseEntity.status(204).build();
+    }
+
+    @RequestMapping(value = "/clientes/{idCliente}/enderecos/{idEndereco}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteEndereco(@PathVariable Integer idCliente,
+                                               @PathVariable Integer idEndereco){
+
+        boolean isDeleted = service.deleteEndereco(idCliente, idEndereco);
+
+        return isDeleted ? ResponseEntity.status(204).build() : ResponseEntity.status(400).build();
+
+    }
+
+    // CARTÕES
+    @RequestMapping(value = "/clientes/{idCliente}/cartoes", method = RequestMethod.POST)
+    public ResponseEntity<List<CartaoGetDTO>> cadastroCartao(@Valid @RequestBody CartaoDTO dto, @PathVariable Integer idCliente){
+
+        List<CartaoGetDTO> lista = service.cadastroCartao(dto, idCliente);
+
+        return !lista.isEmpty() ? ResponseEntity.status(201).body(lista) : ResponseEntity.status(400).build();
+    }
+
+    @RequestMapping(value = "/clientes/{idCliente}/cartoes/{idCartao}", method = RequestMethod.PUT)
+    public ResponseEntity<List<CartaoGetDTO>> updateCartao(@Valid @RequestBody CartaoDTO dto,
+                                                              @PathVariable Integer idCliente,
+                                                              @PathVariable Integer idCartao){
+        List<CartaoGetDTO> lista = service.updateCartao(dto, idCliente, idCartao);
+
+        return !lista.isEmpty() ? ResponseEntity.status(200).body(lista) : ResponseEntity.status(204).build();
+    }
+
+    @RequestMapping(value = "/clientes/{idCliente}/cartoes", method = RequestMethod.GET)
+    public ResponseEntity<List<CartaoGetDTO>> getCartoes(@PathVariable Integer idCliente){
+        List<CartaoGetDTO> lista = service.getCartoes(idCliente);
+        return !lista.isEmpty() ? ResponseEntity.status(200).body(lista) : ResponseEntity.status(204).build();
+    }
+
+    @RequestMapping(value = "/clientes/{idCliente}/cartoes/{idCartao}", method = RequestMethod.DELETE)
+    public ResponseEntity<List<CartaoGetDTO>> updateCartao(@PathVariable Integer idCliente,
+                                                           @PathVariable Integer idCartao){
+        boolean isDeleted = service.deleteCartao(idCliente, idCartao);
+
+        return isDeleted ? ResponseEntity.status(204).build() : ResponseEntity.status(400).build();
+    }
+
+
+
+
+
+
 
 //    @RequestMapping(value = "/login", method = RequestMethod.POST)
 //    public ResponseEntity<ClienteDTO> login(@RequestBody ClienteLoginDTO loginDTO){

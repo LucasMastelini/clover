@@ -1,9 +1,6 @@
 package clover.mlclover.services;
 
-import clover.mlclover.entities.Cliente;
-import clover.mlclover.entities.ItemPedido;
-import clover.mlclover.entities.PagamentoComBoleto;
-import clover.mlclover.entities.Pedido;
+import clover.mlclover.entities.*;
 import clover.mlclover.entities.enums.EstadoPagamento;
 import clover.mlclover.repositories.ItemPedidoRepository;
 import clover.mlclover.repositories.PagamentoRepository;
@@ -19,7 +16,9 @@ import org.springframework.stereotype.Service;
 
 import java.awt.print.Pageable;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
+import java.util.Stack;
 
 @Service
 public class PedidoService {
@@ -57,6 +56,7 @@ public class PedidoService {
         obj.setCliente(clienteService.find(obj.getCliente().getId()));
         obj.getPagamento().setEstado(EstadoPagamento.PENDENTE);
         obj.getPagamento().setPedido(obj);
+
         if (obj.getPagamento() instanceof PagamentoComBoleto) {
             PagamentoComBoleto pagto = (PagamentoComBoleto) obj.getPagamento();
             boletoService.preencherPagamentoComBoleto(pagto, obj.getInstante());
@@ -83,4 +83,5 @@ public class PedidoService {
 //        Cliente cliente =  clienteService.find(user.getId());
 //        return repo.findByCliente(cliente,  pageRequest);
 //    }
+
 }

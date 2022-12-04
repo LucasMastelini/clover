@@ -2,6 +2,7 @@ package clover.mlclover.dtos;
 
 import clover.mlclover.entities.Produto;
 import clover.mlclover.entities.ProdutoCor;
+import clover.mlclover.entities.ProdutoTamanho;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,7 @@ public class ProdutoGetDTO {
     private String descricao;
 
     private List<ProdutoCorDTO> produtoCores = new ArrayList<>();
+    private List<ProdutoTamanhoDTO> produtoTamanhos = new ArrayList<>();
 
     public ProdutoGetDTO(Produto obj){
         this.id = obj.getId();
@@ -37,6 +39,11 @@ public class ProdutoGetDTO {
             lista.add(new ProdutoCorDTO(pc));
         }
         this.produtoCores = lista;
+        List<ProdutoTamanhoDTO> listaTamanho = new ArrayList<>();
+        for(ProdutoTamanho pt : obj.getProdutoTamanhos()){
+            listaTamanho.add(new ProdutoTamanhoDTO(pt));
+        }
+        this.produtoTamanhos = listaTamanho;
     }
 
     public static Page<ProdutoGetDTO> conversor(Page<Produto> produtos){
