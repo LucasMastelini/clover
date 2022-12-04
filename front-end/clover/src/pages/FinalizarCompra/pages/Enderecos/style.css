@@ -39,14 +39,32 @@
     flex-direction: row;
     align-items: center;
     gap: 30px;
-    font-size: 24px;
+    font-size: 16px;
 }
 
-.cep-endereco input {
+.input-endereco {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    height: 36px;
+    text-size-adjust: auto;
+    background-color: #242348;
+    border: none;
+    color: #fff;
+    border-radius: 0.5rem;
+    padding-left: 1.5%;
+}
+
+.input-endereco::placeholder{
+    color: #9B9999;
+    font-size: 0.8rem;
+    
+}
+
+/* .cep-endereco input {
     width: 40%;
     height: 54px;
     border-radius: 10px;
-}
+} */
 
 .cep-endereco .ajuda-cep {
     color: #35DAF0;
@@ -68,26 +86,26 @@
 }
 
 .card-endereco svg {
-    width: 56px;
-    height: 56px;
+    width: 36px;
+    height: 36px;
     color: #35DAF0;
 }
 
 .card-endereco .corpo-card-endereco {
     width: 80%;
-    font-size: 24px;
+    font-size: 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-end;
-    padding: 30px;
+    padding: 20px;
     gap: 20px;
 }
 
 .card-endereco .corpo-card-endereco button {
     background: transparent;
     color: #35DAF0;
-    font-size: 16px;
+    font-size: 12px;
     font-style: italic;
     font-weight: 300;
 }
@@ -103,10 +121,10 @@
 .dados-complementares button {
     background: #35DAF0;
     color: #000;
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 16px;
+    font-weight: 700;
     padding: 10px;
-    border-radius: 25px;
+    border-radius: 16px;
     width: 30%;
 }
 
@@ -119,7 +137,7 @@
 }
 
 .dados-complementares .box input {
-    height: 46px;
+    height: 40px;
     border: 3px solid #D43AE3;
     border-radius: 10px;
     background: transparent;

@@ -1,5 +1,6 @@
 import React from 'react'
 import { BsHouseDoor, BsHouseFill } from 'react-icons/bs'
+import { IMaskInput } from 'react-imask';
 import OpcoesCadastradas from '../../components/OpcoesCadastradas';
 import OpcoesFrete from '../../components/OpcoesFrete';
 import "./style.css";
@@ -15,7 +16,7 @@ export default function Enderecos() {
 
             <div className="cep-endereco">
                 <p>CEP</p>
-                <input type="text" name="" id="" placeholder='Digite seu CEP'/>
+                <IMaskInput className="input-endereco" type="text" name="" id="" mask="00000-000" placeholder="Insira o CEP"/>
                 <a href='https://buscacepinter.correios.com.br/app/endereco/index.php' 
                     target="_blank" rel="noopener noreferrer" 
                     className="ajuda-cep">

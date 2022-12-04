@@ -22,14 +22,14 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    padding: 30px 0;
+    padding: 10px 0;
     border: 1px solid #35DAF0;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .opcoes-entrega .opcao-entrega .opcao-frete input{
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 16px;
     background: #D9D9D900;
     border: 2px solid #35DAF0;
 }
@@ -44,10 +44,9 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .opcoes-entrega .opcao-entrega .opcao-frete .descricao-frete span {
-    font-size: 16px;
-
+    font-size: 12px;
 }
