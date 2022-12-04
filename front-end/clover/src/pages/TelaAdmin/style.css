@@ -11,6 +11,12 @@
     padding: 1% 3%;
 }
 
+.container-admin .header-admin .container-arquivos{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
 .container-admin .header-admin img {
     width: 12%;
 }
@@ -35,13 +41,17 @@
     font-weight:600;
 }
 
+.container-admin .header-admin .upload-button a{
+    font-weight: 600;
+}
+
 .container-admin .header-admin .upload-button svg {
     width: 24px;
     height: 24px;
     color: #35DAF0;
 }
 
-.container-admin .body-admin {
+.container-admin .area-upload, .container-admin .body-admin {
     width: 90%;
     margin: 5%;
 }
@@ -80,6 +90,7 @@
 
 .container-admin .body-admin .body-charts .chart {
     width: 45%;
+    min-height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
