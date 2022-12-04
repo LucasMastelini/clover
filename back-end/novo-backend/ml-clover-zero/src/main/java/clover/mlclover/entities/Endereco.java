@@ -1,6 +1,8 @@
 package clover.mlclover.entities;
 
+import clover.mlclover.dtos.EnderecoDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +14,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Endereco {
 
     @Id
@@ -28,4 +31,11 @@ public class Endereco {
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
+
+    public Endereco(EnderecoDTO obj){
+        this.localidadeCep = obj.getLocalidadeCep();
+        this.numero = obj.getNumero();
+        this.complemento = obj.getComplemento();
+        this.destinatario = obj.getDestinatario();
+    }
 }

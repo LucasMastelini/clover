@@ -402,7 +402,7 @@ public class AdminService {
             URI url = uploadFile(is, fileName, contentType);
 
             ProdutoCor produtoCor = produtoCorRepository.findByProdutoIdAndCorHexadecimal(idProduto, hexadecimal);
-
+            System.out.println(url.toString());
             produtoCor.addImagem(url.toString());
             produtoCorRepository.save(produtoCor);
 
