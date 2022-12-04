@@ -1,5 +1,8 @@
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import api from "../../Api/api";
 import CardProduto from "../../components/CardProduto";
 import Footer from "../../components/Footer";
 import Header from "../Header";
@@ -8,6 +11,20 @@ import NumeradorPaginas from "./NumeradorPaginas";
 import "./style.css";
 export default function Filtros() {
   const navigate = useNavigate();
+  const [itens , setItens] = useState({});
+
+  useEffect(() =>{
+    api.get('/produtos?categorias=1')
+    .then(res =>{
+      console.log(res);
+      setItens(res);
+    })
+    .catch(erro => {
+    })
+
+  },[])
+  // console.log(itens);
+
 
   return (
     <>
@@ -22,18 +39,7 @@ export default function Filtros() {
         <NumeradorPaginas/>
         
         <div className="corpo-tela-filtros">
-          <CardProduto />
-          <CardProduto />
-          <CardProduto />
-          <CardProduto />
-          <CardProduto />
-          <CardProduto />
-          <CardProduto />
-          <CardProduto />
-          <CardProduto />
-          <CardProduto />
-          <CardProduto />
-          <CardProduto />
+          {itens.data ? <CardProduto/>:<CardProduto/> }
         </div>
       </div>
       <Footer />

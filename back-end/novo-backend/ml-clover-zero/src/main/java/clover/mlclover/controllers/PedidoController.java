@@ -14,6 +14,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping(value="/pedidos")
+@CrossOrigin("*")
 public class PedidoController {
 
     @Autowired
