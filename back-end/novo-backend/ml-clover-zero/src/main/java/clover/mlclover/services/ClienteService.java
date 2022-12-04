@@ -69,6 +69,7 @@ public class ClienteService {
 
 
     public Cliente find(Integer id){
+
 //        UserSS user = UserService.authenticated();
 //        if(user == null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())){
 //            throw new AuthorizationException("Acesso negado");
@@ -80,6 +81,11 @@ public class ClienteService {
     }
 
     public ClienteCompletoDTO findDTO(Integer id){
+
+        if(!isLogado(id)){
+            throw new RuntimeException("Acesso negado. Login necessário");
+        }
+
 //        UserSS user = UserService.authenticated();
 //        if(user == null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())){
 //            throw new AuthorizationException("Acesso negado");
@@ -98,7 +104,11 @@ public class ClienteService {
     }
     @Transactional
     public ClienteCompletoDTO cadastroFinalizacaoCompra(ClienteUpdateFinalizacaoCompraDTO objDto, Integer id) {
-       Cliente cliente = repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(
+        if(!isLogado(id)){
+            throw new RuntimeException("Acesso negado. Login necessário");
+        }
+
+        Cliente cliente = repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(
                 "Objeto não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
        cliente.setTipo(TipoCliente.toEnum(objDto.getTipo()));
        cliente.setCpfOuCnpj(objDto.getCpfOuCnpj());
@@ -142,12 +152,16 @@ public class ClienteService {
     }
 
     public Cliente update(Cliente obj) {
+
         Cliente newObj = find(obj.getId());
         updateData(newObj, obj);
         return repo.save(newObj);
     }
 
     public void delete(Integer id) {
+        if(!isLogado(id)){
+            throw new RuntimeException("Acesso negado. Login necessário");
+        }
         find(id);
         try{
             repo.deleteById(id);
@@ -174,15 +188,20 @@ public class ClienteService {
         newObj.setNome(obj.getNome());
     }
 
-    public CepDTO consultaCep(CepConsultaDTO consulta) {
+    public CepDTO consultaCep(String cep) {
+
         // Cep endereco = ViaCepClient.findCep(cep);
-        LocalidadeCep localidade = cepRepository.findById(consulta.getCep()).orElseThrow(() -> new ObjectNotFoundException(
-                "Objeto não encontrado! CEP: " + consulta + ", Tipo: " + LocalidadeCep.class.getName()));
+        LocalidadeCep localidade = cepRepository.findById(cep).orElseThrow(() -> new ObjectNotFoundException(
+                "Objeto não encontrado! CEP: " + cep + ", Tipo: " + LocalidadeCep.class.getName()));
 
         return new CepDTO(localidade);
     }
 
     public List<EnderecoDTO> cadastroEndereco(Integer idCliente, EnderecoListaDTO enderecos) {
+        if(!isLogado(idCliente)){
+            throw new RuntimeException("Acesso negado. Login necessário");
+        }
+
         Cliente cliente = repo.findById(idCliente).orElseThrow(() -> new ObjectNotFoundException(
                 "Objeto não encontrado! Id: " + idCliente + ", Tipo: " + Cliente.class.getName()));
 
@@ -211,6 +230,10 @@ public class ClienteService {
 
     public List<EnderecoDTO> updateEndereco(Integer idCliente, Integer idEndereco, EnderecoDTO endereco) {
 
+        if(!isLogado(idCliente)){
+            throw new RuntimeException("Acesso negado. Login necessário");
+        }
+
         Endereco e = enderecoRepository.findByIdAndClienteId(idEndereco, idCliente);
 
         if(e == null){
@@ -230,10 +253,17 @@ public class ClienteService {
     }
 
     public List<EnderecoDTO> getEnderecos(Integer idCliente) {
+        if(!isLogado(idCliente)){
+            throw new RuntimeException("Acesso negado. Login necessário");
+        }
         return enderecoRepository.findByClienteId(idCliente).stream().map(x -> new EnderecoDTO(x)).collect(Collectors.toList());
     }
 
     public boolean deleteEndereco(Integer idCliente, Integer idEndereco) {
+        if(!isLogado(idCliente)){
+            throw new RuntimeException("Acesso negado. Login necessário");
+        }
+
         enderecoRepository.deleteByIdAndClienteId(idEndereco, idCliente);
 
         Endereco e = enderecoRepository.findById(idEndereco).orElse(null);
@@ -245,6 +275,10 @@ public class ClienteService {
     // CARTÕES
 
     public List<CartaoGetDTO> cadastroCartao(CartaoDTO dto, Integer idCliente) {
+        if(!isLogado(idCliente)){
+            throw new RuntimeException("Acesso negado. Login necessário");
+        }
+
         Cliente cliente = repo.findById(idCliente).orElseThrow(() -> new ObjectNotFoundException(
                 "Objeto não encontrado! Id: " + idCliente + ", Tipo: " + Cliente.class.getName()));
         Cartao cartao = new Cartao();
@@ -262,6 +296,10 @@ public class ClienteService {
     }
 
     public List<CartaoGetDTO> updateCartao(CartaoDTO dto, Integer idCliente, Integer idCartao) {
+        if(!isLogado(idCliente)){
+            throw new RuntimeException("Acesso negado. Login necessário");
+        }
+
         Cartao cartao = cartaoRepository.findByIdAndClienteId(idCartao, idCliente);
         cartao.setNumero(codificaBase64Encoder(dto.getNumero()));
         cartao.setCvv(codificaBase64Encoder(dto.getCvv()));
@@ -275,10 +313,18 @@ public class ClienteService {
     }
 
     public List<CartaoGetDTO> getCartoes(Integer idCliente) {
+        if(!isLogado(idCliente)){
+            throw new RuntimeException("Acesso negado. Login necessário");
+        }
+
         return cartaoRepository.findAllByClienteId(idCliente).stream().map(x -> new CartaoGetDTO(x)).collect(Collectors.toList());
     }
 
     public boolean deleteCartao(Integer idCliente, Integer idCartao) {
+        if(!isLogado(idCliente)){
+            throw new RuntimeException("Acesso negado. Login necessário");
+        }
+
         enderecoRepository.deleteByIdAndClienteId(idCartao, idCliente);
 
         Cartao c = cartaoRepository.findById(idCartao).orElse(null);
@@ -287,30 +333,38 @@ public class ClienteService {
     }
 
 
-//
-//    public ClienteDTO login(ClienteLoginDTO loginDTO) {
-//        Cliente cli = repo.findByEmail(loginDTO.getEmail());
-//        if(cli != null){
-//           // BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
-//            boolean isPasswordMatches = loginDTO.getSenha().matches(cli.getSenha());
-//
-//            if(isPasswordMatches){
-//                cli.setLogado(true);
-//                update(cli);
-//                return new ClienteDTO(cli);
-//            }
-//        }
-//        return null;
-//    }
-//
-//    public boolean logoff(ClienteDTO logoffDTO) {
-//        Cliente cli = repo.findByEmail(logoffDTO.getEmail());
-//        if(cli != null && cli.isLogado()){
-//            cli.setLogado(false);
-//            update(cli);
-//            return true;
-//        }
-//        return false;
-//    }
+
+    public ClienteDTO login(ClienteLoginDTO loginDTO) {
+        Cliente cli = repo.findByEmail(loginDTO.getEmail());
+        if(cli != null){
+           // BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
+            boolean isPasswordMatches = loginDTO.getSenha().matches(decodificaBase64Decoder(cli.getSenha()));
+
+            if(isPasswordMatches){
+                cli.setLogado(true);
+                update(cli);
+                return new ClienteDTO(cli);
+            }
+        }
+        return null;
+    }
+
+    public boolean logoff(ClienteDTO logoffDTO) {
+
+        Cliente cli = repo.findByEmail(logoffDTO.getEmail());
+        cli.setLogado(false);
+        update(cli);
+        return true;
+
+    }
+
+
+    private boolean isLogado(Integer id){
+        Cliente cli = repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(
+                "Objeto não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
+
+        return cli.isLogado();
+
+    }
 
 }

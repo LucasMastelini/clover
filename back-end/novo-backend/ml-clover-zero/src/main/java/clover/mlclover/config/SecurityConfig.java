@@ -74,7 +74,7 @@
 //        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 //    }
 //
-//    // permite acesso de outras aplicações configurando o CORS
+    // permite acesso de outras aplicações configurando o CORS
 //    @Bean
 //    CorsConfigurationSource corsConfigurationSource(){
 //        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

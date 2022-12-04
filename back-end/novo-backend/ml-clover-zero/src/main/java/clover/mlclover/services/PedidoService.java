@@ -1,5 +1,6 @@
 package clover.mlclover.services;
 
+import clover.mlclover.dtos.PedidoDTO;
 import clover.mlclover.entities.*;
 import clover.mlclover.entities.enums.EstadoPagamento;
 import clover.mlclover.repositories.ItemPedidoRepository;
@@ -41,13 +42,15 @@ public class PedidoService {
     @Autowired
     private ClienteService clienteService;
 
-//    @Autowired
-//    private EmailService emailService;
+    @Autowired
+    private EmailService emailService;
 
-    public Pedido find(Integer id) {
-        Optional<Pedido> obj = repo.findById(id);
-        return obj.orElseThrow(() -> new ObjectNotFoundException(
+    public PedidoDTO find(Integer id) {
+        Pedido obj = repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(
                 "Objeto não encontrado! Id: " + id + ", Tipo: " + Pedido.class.getName()));
+        return new PedidoDTO(obj);
+
+
     }
 
     public Pedido insert(Pedido obj) {
@@ -70,7 +73,7 @@ public class PedidoService {
             ip.setPedido(obj);
         }
         itemPedidoRepository.saveAll(obj.getItens());
-       // emailService.sendOrderConfirmationEmail(obj);
+        emailService.sendOrderConfirmationHtmlEmail(obj);
         return obj;
     }
 

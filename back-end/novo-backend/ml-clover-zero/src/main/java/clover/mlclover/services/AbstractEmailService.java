@@ -26,7 +26,7 @@ public abstract class AbstractEmailService implements EmailService {
     private String sender;
 
     @Override
-    public void sendOrderConfirmationMail(Pedido obj){
+    public void sendOrderConfirmationEmail(Pedido obj){
         SimpleMailMessage sm = prepareSimpleMailMessageFromPedido(obj);
         sendEmail(sm);
     }
@@ -42,6 +42,7 @@ public abstract class AbstractEmailService implements EmailService {
     }
 
     protected String htmlFromTemplatePedido(Pedido obj){
+        // classe para acessar o meu template: Context();
         Context context = new Context();
         context.setVariable("pedido", obj);
         return templateEngine.process("email/confirmacaoPedido", context);
@@ -53,7 +54,7 @@ public abstract class AbstractEmailService implements EmailService {
             MimeMessage mm = prepareMimeMailMessageFromPedido(obj);
             sendHtmlEmail(mm);
         } catch (MessagingException e){
-            sendOrderConfirmationMail(obj);
+            sendOrderConfirmationEmail(obj);
         }
     }
 

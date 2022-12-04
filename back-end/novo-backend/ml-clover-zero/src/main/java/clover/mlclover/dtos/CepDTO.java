@@ -14,21 +14,25 @@ import lombok.Setter;
 public class CepDTO {
 
     private String cep;
-    private String tipoLogradouro;
     private String logradouro;
     private String complemento;
     private String bairro;
     private String cidade;
     private String uf;
+    private String tipoLogradouro;
+    private String latitude;
+    private String longitute;
 
     public CepDTO(LocalidadeCep obj){
         this.cep = obj.getCep();
-        this.tipoLogradouro = obj.getTipoLogradouro();
         this.logradouro = obj.getLogradouro();
         this.complemento = obj.getComplemento();
         this.bairro = obj.getBairro();
         this.cidade = obj.getCidade();
         this.uf = obj.getUf();
+        this.tipoLogradouro = obj.getTipoLogradouro();
+        this.latitude = obj.getLatitude();
+        this.longitute = obj.getLongitude();
     }
 
 }

@@ -91,20 +91,18 @@ INSERT INTO produto_cor (cor_id, produto_id) VALUES
 
 
 INSERT INTO imagens VALUES
-(1, 'https://cloverstorages.s3.us-east-2.amazonaws.com/1669944888043_162051-800-auto.jpg'),
-(1, 'https://cloverstorages.s3.us-east-2.amazonaws.com/1669945259207_162052-800-auto.jpg'),
-(2, 'https://cloverstorages.s3.us-east-2.amazonaws.com/1669943862667_04.jpg'),
-(2, 'https://cloverstorages.s3.us-east-2.amazonaws.com/1669944631055_sasuke-back.jpg'),
-(3, 'https://cloverstorages.s3.us-east-2.amazonaws.com/1669945717351_01.jpg'),
-(3, 'https://cloverstorages.s3.us-east-2.amazonaws.com/1669945727681_02.jpg'),
-(4, 'https://cloverstorages.s3.us-east-2.amazonaws.com/1669946422975_159757-800-auto.jpg'),
-(4, 'https://cloverstorages.s3.us-east-2.amazonaws.com/1669946516739_159758-800-auto.jpg'),
-(5, 'https://cloverstorages.s3.us-east-2.amazonaws.com/1669946979746_165518-800-auto.jpg'),
-(5, 'https://cloverstorages.s3.us-east-2.amazonaws.com/1669946990883_165519-800-auto.jpg'),
-(5, 'https://cloverstorages.s3.us-east-2.amazonaws.com/1669947002427_165520-800-auto.jpg'),
-(5, 'https://cloverstorages.s3.us-east-2.amazonaws.com/1669947013862_165521-800-auto.jpg');
-
-
+(1, 'https://clover3adscparte2.s3.us-east-2.amazonaws.com/1670189361206_162051-800-auto.jpg'),
+(1, 'https://clover3adscparte2.s3.us-east-2.amazonaws.com/1670189450274_162052-800-auto.jpg'),
+(2, 'https://clover3adscparte2.s3.us-east-2.amazonaws.com/1670189778627_sasuke-front.jpg'),
+(2, 'https://clover3adscparte2.s3.us-east-2.amazonaws.com/1670189850185_sasuke-back.jpg'),
+(3, 'https://clover3adscparte2.s3.us-east-2.amazonaws.com/1670189882639_01.jpg'),
+(3, 'https://clover3adscparte2.s3.us-east-2.amazonaws.com/1670189891769_02.jpg'),
+(4, 'https://clover3adscparte2.s3.us-east-2.amazonaws.com/1670189953797_159757-800-auto.jpg'),
+(4, 'https://clover3adscparte2.s3.us-east-2.amazonaws.com/1670189963068_159758-800-auto.jpg'),
+(5, 'https://clover3adscparte2.s3.us-east-2.amazonaws.com/1670189993746_165518-800-auto.jpg'),
+(5, 'https://clover3adscparte2.s3.us-east-2.amazonaws.com/1670190003191_165519-800-auto.jpg'),
+(5, 'https://clover3adscparte2.s3.us-east-2.amazonaws.com/1670190014039_165520-800-auto.jpg'),
+(5, 'https://clover3adscparte2.s3.us-east-2.amazonaws.com/1670190022404_165521-800-auto.jpg');
 
 INSERT INTO LOCALIDADE_CEP (cep, logradouro, complemento, bairro, cidade, uf, tipo_logradouro, id_usuario_ins, dt_usuario_ins, st_ativo, latitude, longitude) VALUES
 ('01002900', 'Viaduto do Chá 15', '', 'Centro', 'São Paulo', 'SP', '', '0', '2022-09-23 14:38:01', '1', '-23.5472091', '-46.6370514'),
