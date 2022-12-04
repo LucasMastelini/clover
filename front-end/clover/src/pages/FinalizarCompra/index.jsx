@@ -11,9 +11,14 @@ import PedidoRealizado from "../PedidoRealizado"
 import Enderecos from "./pages/Enderecos";
 
 import "./style.css";
+// import { useEffect } from "react";
 
 export default function FinalizarCompra() {
   const [step, setStep] = useState(2);
+
+  // useEffect(() => {
+  //   setStep(step + props)
+  // })
 
   return (
     <>

@@ -11,8 +11,8 @@
 }
 
 .card-opcoes-cadastradas svg {
-    width: 48px;
-    height: 48px;
+    width: 36px;
+    height: 36px;
     color: #35DAF0;
 }
 
@@ -30,12 +30,13 @@
 
 .card-opcoes-cadastradas .corpo-card-opcoes-cadastradas {
     width: 50%;
-    font-size: 24px;
+    font-size: 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
-    padding: 30px 0;
+    padding: 20px 0;
     font-weight: 700;
+    color: #fff;
     gap: 20px;
 }

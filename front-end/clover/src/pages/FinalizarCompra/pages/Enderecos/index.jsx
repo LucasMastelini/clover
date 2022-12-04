@@ -1,69 +1,183 @@
-import React from 'react'
-import { BsHouseDoor, BsHouseFill } from 'react-icons/bs'
-import OpcoesCadastradas from '../../components/OpcoesCadastradas';
-import OpcoesFrete from '../../components/OpcoesFrete';
+import React from "react";
+import { useState } from "react";
+import { BsHouseDoor, BsHouseFill } from "react-icons/bs";
+import { IMaskInput } from "react-imask";
+import { useNavigate } from "react-router-dom";
+import FinalizarCompra from "../..";
+import api from "../../../../Api/api";
+import OpcoesCadastradas from "../../components/OpcoesCadastradas";
+import OpcoesFrete from "../../components/OpcoesFrete";
 import "./style.css";
 
-export default function Enderecos() {
+export default function Enderecos({setarPassos, passoAtual}) {
+
+    function enviarDados() {
+        setarPassos(passoAtual + 1);
+    }
+
+  const [cep, setCep] = useState("");
+  const [tipoLogradouro, setTipoLogradouro] = useState("");
+  const [logradouro, setLogradouro] = useState("");
+  const [bairro, setBairro] = useState("");
+  const [cidade, setCidade] = useState("");
+  const [uf, setUf] = useState("");
+  const [numero, setNumero] = useState("");
+  const [complemento, setComplemento] = useState("");
+  const [destinatario, setDestinatario] = useState("");
+
+  const navegar = useNavigate();
+
+  const handleCep = (e) => {
+    let cepVar = e.target.value.replace("-", "");
+
+    setCep(cepVar);
+
+    if (cepVar.length === 8) {
+      api
+        .post(`/clientes/cep/${cepVar}`)
+        .then((result) => {
+            console.log(result);
+          let cepInfo = result.data;
+          document.getElementById("tipo_logradouro").value =
+            cepInfo.tipoLogradouro +
+            " " +
+            cepInfo.logradouro +
+            " - " +
+            cepInfo.bairro;
+          document.getElementById("cidade_endereco").value =
+            cepInfo.cidade + " - " + cepInfo.uf;
+
+          setTipoLogradouro(cepInfo.tipoLogradouro);
+          setLogradouro(cepInfo.logradouro);
+          setBairro(cepInfo.bairro);
+          setCidade(cepInfo.cidade);
+          setUf(cepInfo.uf);
+
+          document.getElementById("complemento_endereco").value =
+            cepInfo.complemento;
+          setComplemento(cepInfo.complemento);
+
+          if (complemento.length > 0) {
+            document.getElementById("complemento_endereco").disabled = true;
+          }
+
+          document.getElementsByClassName("card-endereco")[0].style.display =
+            "flex";
+          document.getElementsByClassName(
+            "dados-complementares"
+          )[0].style.display = "flex";
+        })
+        .catch((error) => {
+          alert("Error in get cep: ", error);
+        });
+    }
+  };
+
+  function cadastrar(evento) {
+    // let idCliente = localStorage.getItem('id');
+    let idCliente = 1;
+
+    const values = {
+        enderecos: [{
+            localidadeCep:{
+                cep: cep,
+                logradouro: logradouro,
+                complemento: complemento,
+                bairro: bairro,
+                cidade: cidade,
+                uf: uf,
+                tipoLogradouro: tipoLogradouro,
+                latitude: -23.5472091,
+                longitude: -46.6370514
+            },
+            numero: evento.target.numero_endereco.value,
+            complemento: evento.target.complemento_endereco.value,
+            destinatario: evento.target.destinatario_endereco.value
+        }]
+    }
+
+    api.post(`/clientes/${idCliente}/enderecos`, values)
+      .then((res) => {
+        console.log(res);
+        // <FinalizarCompra count={1}/>
+        setarPassos(passoAtual + 1);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   return (
     <>
-        <div className="container-endereco">
-            <div className="titulo-endereco">
-                <BsHouseDoor/>
-                <h3>Endereço</h3>
-            </div>
+      <div className="container-endereco">
+        <div className="titulo-endereco">
+          <BsHouseDoor />
+          <h3>Endereço</h3>
+        </div>
 
-            <div className="cep-endereco">
-                <p>CEP</p>
-                <input type="text" name="" id="" placeholder='Digite seu CEP'/>
-                <a href='https://buscacepinter.correios.com.br/app/endereco/index.php' 
-                    target="_blank" rel="noopener noreferrer" 
-                    className="ajuda-cep">
-                    Não sei meu CEP
-                </a>
-            </div>
-
+        <div className="cep-endereco">
+          <p>CEP</p>
+          <IMaskInput
+            className="input-endereco"
+            onChange={handleCep}
+            type="text"
+            name=""
+            id=""
+            mask="00000-000"
+            placeholder="Insira o CEP"
+          />
+          <a
+            href="https://buscacepinter.correios.com.br/app/endereco/index.php"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ajuda-cep"
+          >
+            Não sei meu CEP
+          </a>
+        </div>
+        {/* 
             <h3>Formas de Entrega</h3>
 
-            <OpcoesFrete/>
+            <OpcoesFrete/> */}
 
-            <h3>Endereço de entrega</h3>            
-            
-            <OpcoesCadastradas 
+        <h3 id="titulo-sessao-entrega">Endereço de entrega</h3>
+
+        {/* <OpcoesCadastradas 
                 logradouro={"Avenida Rosa Fioravante"} 
                 number={189} 
                 cep={"CEP: 09862-305"}
                 cidade={"São Bernardo do Campo"}
                 uf={"SP"}
-            />
+            /> */}
 
-            <div className="card-endereco">
-                <BsHouseFill/>
-                <div className="corpo-card-endereco">
-                    <p>Avenida Rosa Fioravante - São Bernardo do Campo - SP</p>
-                    <button>Alterar</button>
-                </div>
+        <div className="card-endereco">
+          <BsHouseFill />
+          <div className="corpo-card-endereco">
+            <input type="text" disabled={true} id="tipo_logradouro" />
+            <input type="text" disabled={true} id="cidade_endereco" />
+            <button>Alterar</button>
+          </div>
+        </div>
+
+        <form action="" className="dados-complementares" onSubmit={cadastrar}>
+          <div className="dados-residenciais">
+            <div className="box">
+              <h4>Número</h4>
+              <input type="text" name="numero_endereco" id="numero_endereco" />
             </div>
 
-            <form action="" className="dados-complementares">
-                <div className="dados-residenciais">
-                    <div className="box">
-                        <h4>Número</h4>
-                        <input type="number" name="" id="" />
-                    </div>
-                    
-                    <div className="box">
-                        <h4>Complemento e referência</h4>
-                        <input type="text" name="" id="" />
-                    </div>
-                </div>
-                <div className="box">
-                    <h4>Destinatário</h4>
-                    <input type="text" name="" id="" />
-                </div>
-                <button className="btn-salvar-dados">Salvar</button>
-            </form>
-        </div>
+            <div className="box">
+              <h4>Complemento e referência</h4>
+              <input type="text" name="complemento_endereco" id="complemento_endereco" />
+            </div>
+          </div>
+          <div className="box">
+            <h4>Destinatário</h4>
+            <input type="text" name="destinatario_endereco" id="destinatario_endereco" />
+          </div>
+          <button type="submit" className="btn-salvar-dados">Salvar</button>
+        </form>
+      </div>
     </>
-  )
+  );
 }

@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Header from "../Header";
-import CardCupom from "./components/CardCupom";
 import CampoFrete from "./components/CampoFrete";
 import sacola from "../../assets/image/sacolavazia.png";
 import { useCarrinho } from "./Context";
@@ -23,7 +22,7 @@ function Carrinho() {
   } = useCarrinho();
 
   const [valorTotal, setValorTotal] = useState(0);
-  const [valorEnvio, setvalorEnvio] = useState(30);
+  const [valorEnvio, setValorEnvio] = useState(30);
   const [valorDesconto, setValorDesconto] = useState(0); //EM PORCENTAGEM %
 
   function calcularDesconto() {
@@ -48,7 +47,7 @@ function Carrinho() {
   //   var valorCupom =
   // }
 
-  TODO: 
+  // TODO: 
   // mascara do cep
   // Badge Carrinho
   //armazenar os itens comprados por sessão
@@ -175,7 +174,6 @@ function Carrinho() {
                       </p>
                     </div>
                     <div className="btn-fim-compra">
-                      <div />
                       <button className="content-btn-fim-compra">
                         Finaliza compra
                       </button>

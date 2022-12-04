@@ -1,0 +1,30 @@
+.container-arquivo {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /* background: red; */
+}
+
+.container-arquivo .body-right-arquivo {
+    font-size: 14px;
+}
+
+.container-arquivo .body-right-arquivo p{
+    font-size: 10px;
+}
+
+.container-arquivo .body-left-arquivo {
+    display: flex;
+    gap: 8px;
+}
+
+.container-arquivo .body-left-arquivo svg {
+    width: 24px;
+    height: 24px;
+}
+
+.container-arquivo .body-left-arquivo svg:nth-child(2) {
+    color: #78e5d5;
+}
