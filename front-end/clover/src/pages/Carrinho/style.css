@@ -78,7 +78,7 @@
   border-radius: 10px;
  
   /* border: 1px solid #fff; */
-  box-shadow: 19px 16px 53px -21px rgba(145, 145, 145, 0.3) inset;
+  /* box-shadow: 19px 16px 53px -21px rgba(145, 145, 145, 0.3) inset; */
   /* border: 1px gray solid; */
 
 }
@@ -110,7 +110,8 @@ background-color: aqua;
 }
 .btn-fim-compra {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  padding: 30px 0;
+  grid-template-columns: 1fr;
 }
 .exibe-valor {
   display: flex;
