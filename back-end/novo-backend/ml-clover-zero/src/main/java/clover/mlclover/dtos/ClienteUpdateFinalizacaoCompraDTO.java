@@ -1,12 +1,16 @@
 package clover.mlclover.dtos;
 
+import clover.mlclover.entities.Cliente;
 import clover.mlclover.entities.Endereco;
 import clover.mlclover.services.validation.ClienteCadastroFC;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -26,9 +30,24 @@ public class ClienteUpdateFinalizacaoCompraDTO implements Serializable {
     private String cpfOuCnpj;
     private Integer tipo;
     private String genero;
-    @NotEmpty(message = "Preenchimento obrigatório")
+    @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "Brazil/East")
     private Date dataNascimento;
-    private List<Endereco> enderecos = new ArrayList<>();
+    private List<EnderecoDTO> enderecos = new ArrayList<>();
+
+    public ClienteUpdateFinalizacaoCompraDTO(Cliente obj){
+        this.id = obj.getId();;
+        this.cpfOuCnpj = obj.getCpfOuCnpj();
+        this.tipo = obj.getTipo().getCod();
+        this.genero = obj.getGenero();
+        this.dataNascimento = obj.getDataNascimento();
+        List<EnderecoDTO> lista = new ArrayList<>();
+        for(Endereco e : obj.getEnderecos()){
+            lista.add(new EnderecoDTO(e));
+        }
+        this.enderecos = lista;
+    }
+
 
 
 

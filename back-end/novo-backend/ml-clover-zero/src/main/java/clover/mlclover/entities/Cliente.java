@@ -3,8 +3,10 @@ package clover.mlclover.entities;
 import clover.mlclover.dtos.ClienteCadastroInicialDTO;
 import clover.mlclover.dtos.ClienteDTO;
 import clover.mlclover.dtos.ClienteUpdateFinalizacaoCompraDTO;
+import clover.mlclover.dtos.EnderecoDTO;
 import clover.mlclover.entities.enums.Perfil;
 import clover.mlclover.entities.enums.TipoCliente;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -32,6 +34,8 @@ public class Cliente {
     private String cpfOuCnpj;
     private Integer tipo;
     private String genero;
+    @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "Brazil/East")
     private Date dataNascimento;
 
     @JsonIgnore // os pedidos de cliente não serão serializados
@@ -45,7 +49,10 @@ public class Cliente {
     @CollectionTable(name = "PERFIS")
     private Set<Integer> perfis = new HashSet<>();
 
-    public Cliente(Integer id, String nome, String email, String senha, String telefone, String cpfOuCnpj, TipoCliente tipo, String genero, Date dataNascimento, List<Endereco> enderecos) {
+    @OneToMany(mappedBy = "cliente")
+    private List<Cartao> cartoes = new ArrayList<>();
+
+    public Cliente(Integer id, String nome, String email, String senha, String telefone, String cpfOuCnpj, TipoCliente tipo, String genero, Date dataNascimento, List<Endereco> enderecos, List<Cartao> cartoes) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -56,7 +63,7 @@ public class Cliente {
         this.genero = genero;
         this.dataNascimento = dataNascimento;
         this.enderecos = enderecos;
-
+        this.cartoes = cartoes;
     }
 
     public Cliente(ClienteDTO dto){
@@ -80,7 +87,18 @@ public class Cliente {
         this.cpfOuCnpj = dto.getCpfOuCnpj();
         this.dataNascimento = dto.getDataNascimento();
         this.tipo = TipoCliente.toEnum(dto.getTipo()).getCod();
-        this.enderecos = dto.getEnderecos();
+
+        List<Endereco> enderecos = new ArrayList<>();
+        for(EnderecoDTO e : dto.getEnderecos()){
+            Endereco endereco = new Endereco();
+            endereco.setCliente(this);
+            endereco.setComplemento(e.getComplemento());
+            endereco.setLocalidadeCep(e.getLocalidadeCep());
+            endereco.setNumero(e.getNumero());
+            endereco.setDestinatario(e.getDestinatario());
+            enderecos.add(endereco);
+        }
+        this.enderecos = enderecos;
 
     }
 

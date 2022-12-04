@@ -1,10 +1,13 @@
 package clover.mlclover.services;
 
 import clover.mlclover.dtos.*;
+import clover.mlclover.entities.Cartao;
 import clover.mlclover.entities.Cliente;
+import clover.mlclover.entities.Endereco;
 import clover.mlclover.entities.LocalidadeCep;
 import clover.mlclover.entities.enums.Perfil;
 import clover.mlclover.entities.enums.TipoCliente;
+import clover.mlclover.repositories.CartaoRepository;
 import clover.mlclover.repositories.ClienteRepository;
 import clover.mlclover.repositories.EnderecoRepository;
 import clover.mlclover.repositories.LocalidadeCepRepository;
@@ -29,6 +32,7 @@ import org.apache.commons.codec.binary.Base64;
 import javax.transaction.Transactional;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class ClienteService {
@@ -41,6 +45,9 @@ public class ClienteService {
 
     @Autowired
     private LocalidadeCepRepository cepRepository;
+
+    @Autowired
+    CartaoRepository cartaoRepository;
 
 //    @Autowired
 //    BCryptPasswordEncoder encoder;
@@ -72,6 +79,17 @@ public class ClienteService {
 
     }
 
+    public ClienteCompletoDTO findDTO(Integer id){
+//        UserSS user = UserService.authenticated();
+//        if(user == null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())){
+//            throw new AuthorizationException("Acesso negado");
+//        }
+        Cliente obj = repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(
+                "Objeto não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
+        return new ClienteCompletoDTO(obj);
+
+    }
+
     @Transactional
     public Cliente cadastroInicial(Cliente obj) {
         obj.setSenha(codificaBase64Encoder(obj.getSenha()));
@@ -79,18 +97,48 @@ public class ClienteService {
         return obj;
     }
     @Transactional
-    public Cliente cadastroFinalizacaoCompra(ClienteUpdateFinalizacaoCompraDTO objDto, Integer id) {
+    public ClienteCompletoDTO cadastroFinalizacaoCompra(ClienteUpdateFinalizacaoCompraDTO objDto, Integer id) {
        Cliente cliente = repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(
-                "Objeto não encontrado! Id: " + objDto.getId() + ", Tipo: " + Cliente.class.getName()));
-
+                "Objeto não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
        cliente.setTipo(TipoCliente.toEnum(objDto.getTipo()));
        cliente.setCpfOuCnpj(objDto.getCpfOuCnpj());
        cliente.setGenero(objDto.getGenero());
        cliente.setDataNascimento(objDto.getDataNascimento());
-       cliente.setEnderecos(objDto.getEnderecos());
-       enderecoRepository.saveAll(objDto.getEnderecos());
+       cliente.setEnderecos(objDto.getEnderecos().stream().map(x -> new Endereco(x)).collect(Collectors.toList()));
 
-       return repo.save(cliente);
+       Cliente cli = repo.save(cliente);
+
+       ClienteCompletoDTO clienteCompleto = new ClienteCompletoDTO();
+
+
+       clienteCompleto.setId(cliente.getId());
+       clienteCompleto.setNome(cli.getNome());
+       clienteCompleto.setEmail(cli.getEmail());
+       clienteCompleto.setTelefone(cli.getTelefone());
+       clienteCompleto.setCpfOuCnpj(cli.getCpfOuCnpj());
+       clienteCompleto.setTipo(cli.getTipo());
+       clienteCompleto.setGenero(cli.getGenero());
+       clienteCompleto.setDataNascimento(cli.getDataNascimento());
+       clienteCompleto.setPerfis(cli.getPerfis().stream().map(x -> x.getCod()).collect(Collectors.toSet()));
+       clienteCompleto.setCartoes(cli.getCartoes().stream().map(x -> new CartaoGetDTO(x)).collect(Collectors.toList()));
+
+       List<Endereco> enderecos = new ArrayList<>();
+
+       for(EnderecoDTO e : objDto.getEnderecos()){
+           Endereco endereco = new Endereco();
+
+           endereco.setCliente(cli);
+           endereco.setComplemento(e.getComplemento());
+           endereco.setLocalidadeCep(e.getLocalidadeCep());
+           endereco.setNumero(e.getNumero());
+           endereco.setDestinatario(e.getDestinatario());
+           enderecos.add(endereco);
+       }
+
+       List<Endereco> listaEnderecos = enderecoRepository.saveAll(enderecos);
+       clienteCompleto.setEnderecos(listaEnderecos);
+
+       return clienteCompleto;
     }
 
     public Cliente update(Cliente obj) {
@@ -133,6 +181,111 @@ public class ClienteService {
 
         return new CepDTO(localidade);
     }
+
+    public List<EnderecoDTO> cadastroEndereco(Integer idCliente, EnderecoListaDTO enderecos) {
+        Cliente cliente = repo.findById(idCliente).orElseThrow(() -> new ObjectNotFoundException(
+                "Objeto não encontrado! Id: " + idCliente + ", Tipo: " + Cliente.class.getName()));
+
+        List<Endereco> lista = new ArrayList<>();
+
+        for(EnderecoDTO e : enderecos.getEnderecos()){
+            Endereco endereco = new Endereco();
+
+            endereco.setCliente(cliente);
+            endereco.setComplemento(e.getComplemento());
+            endereco.setLocalidadeCep(e.getLocalidadeCep());
+            endereco.setNumero(e.getNumero());
+            endereco.setDestinatario(e.getDestinatario());
+            lista.add(endereco);
+        }
+
+        enderecoRepository.saveAll(lista);
+
+        List<Endereco> listaEnderecos = enderecoRepository.findByClienteId(idCliente);
+        List<EnderecoDTO> listaEnderecosDTO = new ArrayList<>();
+        for(Endereco e : listaEnderecos){
+            listaEnderecosDTO.add(new EnderecoDTO(e));
+        }
+        return listaEnderecosDTO;
+    }
+
+    public List<EnderecoDTO> updateEndereco(Integer idCliente, Integer idEndereco, EnderecoDTO endereco) {
+
+        Endereco e = enderecoRepository.findByIdAndClienteId(idEndereco, idCliente);
+
+        if(e == null){
+            throw new ObjectNotFoundException(
+                    "Objeto não encontrado! Id: " + idEndereco+ ", Tipo: " + Endereco.class.getName());
+        }
+
+        e.setComplemento(endereco.getComplemento());
+        e.setDestinatario(endereco.getDestinatario());
+        e.setNumero(endereco.getNumero());
+        e.setLocalidadeCep(endereco.getLocalidadeCep());
+
+        enderecoRepository.save(e);
+
+        return getEnderecos(idCliente);
+
+    }
+
+    public List<EnderecoDTO> getEnderecos(Integer idCliente) {
+        return enderecoRepository.findByClienteId(idCliente).stream().map(x -> new EnderecoDTO(x)).collect(Collectors.toList());
+    }
+
+    public boolean deleteEndereco(Integer idCliente, Integer idEndereco) {
+        enderecoRepository.deleteByIdAndClienteId(idEndereco, idCliente);
+
+        Endereco e = enderecoRepository.findById(idEndereco).orElse(null);
+
+        return e == null;
+
+    }
+
+    // CARTÕES
+
+    public List<CartaoGetDTO> cadastroCartao(CartaoDTO dto, Integer idCliente) {
+        Cliente cliente = repo.findById(idCliente).orElseThrow(() -> new ObjectNotFoundException(
+                "Objeto não encontrado! Id: " + idCliente + ", Tipo: " + Cliente.class.getName()));
+        Cartao cartao = new Cartao();
+        cartao.setCliente(cliente);
+        cartao.setCvv(codificaBase64Encoder(dto.getCvv()));
+        cartao.setNumero(codificaBase64Encoder(dto.getNumero()));
+        cartao.setTitular(dto.getTitular());
+        cartao.setDataVencimento(dto.getDataVencimento());
+        cartao.setUltimosQuatroDigitos(dto.getNumero().substring(12));
+
+        cartaoRepository.save(cartao);
+
+        return cartaoRepository.findAllByClienteId(idCliente).stream().map(x -> new CartaoGetDTO(x)).collect(Collectors.toList());
+
+    }
+
+    public List<CartaoGetDTO> updateCartao(CartaoDTO dto, Integer idCliente, Integer idCartao) {
+        Cartao cartao = cartaoRepository.findByIdAndClienteId(idCartao, idCliente);
+        cartao.setNumero(codificaBase64Encoder(dto.getNumero()));
+        cartao.setCvv(codificaBase64Encoder(dto.getCvv()));
+        cartao.setTitular(dto.getTitular());
+        cartao.setUltimosQuatroDigitos(dto.getNumero().substring(12));
+        cartao.setDataVencimento(dto.getDataVencimento());
+
+        cartaoRepository.save(cartao);
+        return cartaoRepository.findAllByClienteId(idCliente).stream().map(x -> new CartaoGetDTO(x)).collect(Collectors.toList());
+
+    }
+
+    public List<CartaoGetDTO> getCartoes(Integer idCliente) {
+        return cartaoRepository.findAllByClienteId(idCliente).stream().map(x -> new CartaoGetDTO(x)).collect(Collectors.toList());
+    }
+
+    public boolean deleteCartao(Integer idCliente, Integer idCartao) {
+        enderecoRepository.deleteByIdAndClienteId(idCartao, idCliente);
+
+        Cartao c = cartaoRepository.findById(idCartao).orElse(null);
+
+        return c == null;
+    }
+
 
 //
 //    public ClienteDTO login(ClienteLoginDTO loginDTO) {
