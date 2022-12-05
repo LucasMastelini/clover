@@ -402,7 +402,6 @@ public class AdminService {
             URI url = uploadFile(is, fileName, contentType);
 
             ProdutoCor produtoCor = produtoCorRepository.findByProdutoIdAndCorHexadecimal(idProduto, hexadecimal);
-            System.out.println(url.toString());
             produtoCor.addImagem(url.toString());
             produtoCorRepository.save(produtoCor);
 
@@ -423,7 +422,6 @@ public class AdminService {
             InputStream is = new FileInputStream(file);
 
             URI url = uploadFile(is, fileName, contentType);
-
             return url;
         } catch (IOException e) {
             throw  new RuntimeException("Erro de IO: " + e.getMessage());
