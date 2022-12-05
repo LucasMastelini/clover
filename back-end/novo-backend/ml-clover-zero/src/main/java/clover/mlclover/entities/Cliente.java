@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -22,7 +23,8 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Cliente {
+public class Cliente implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -52,7 +54,9 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente")
     private List<Cartao> cartoes = new ArrayList<>();
 
-    public Cliente(Integer id, String nome, String email, String senha, String telefone, String cpfOuCnpj, TipoCliente tipo, String genero, Date dataNascimento, List<Endereco> enderecos, List<Cartao> cartoes) {
+    private boolean isLogado;
+
+    public Cliente(Integer id, String nome, String email, String senha, String telefone, String cpfOuCnpj, TipoCliente tipo, String genero, Date dataNascimento, List<Endereco> enderecos, List<Cartao> cartoes, boolean isLogado) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -64,6 +68,7 @@ public class Cliente {
         this.dataNascimento = dataNascimento;
         this.enderecos = enderecos;
         this.cartoes = cartoes;
+        this.isLogado = isLogado;
     }
 
     public Cliente(ClienteDTO dto){

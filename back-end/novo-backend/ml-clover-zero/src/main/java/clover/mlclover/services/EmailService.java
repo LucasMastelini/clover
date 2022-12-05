@@ -9,7 +9,7 @@ import javax.mail.internet.MimeMessage;
 
 public interface EmailService {
 
-    void sendOrderConfirmationMail(Pedido obj);
+    void sendOrderConfirmationEmail(Pedido obj);
 
     void sendEmail(SimpleMailMessage msg);
 

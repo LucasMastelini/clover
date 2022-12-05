@@ -1,6 +1,7 @@
 package clover.mlclover.controllers;
 
 
+import clover.mlclover.dtos.PedidoDTO;
 import clover.mlclover.entities.Pedido;
 import clover.mlclover.services.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +15,15 @@ import java.net.URI;
 
 @RestController
 @RequestMapping(value="/pedidos")
+@CrossOrigin("*")
 public class PedidoController {
 
     @Autowired
     private PedidoService service;
 
     @RequestMapping(value="/{id}", method= RequestMethod.GET)
-    public ResponseEntity<Pedido> find(@PathVariable Integer id) {
-        Pedido obj = service.find(id);
+    public ResponseEntity<PedidoDTO> find(@PathVariable Integer id) {
+        PedidoDTO obj = service.find(id);
         return ResponseEntity.ok().body(obj);
     }
 

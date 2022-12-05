@@ -92,10 +92,10 @@ public class ClienteController {
 
     // ENDERECOS
 
-    @RequestMapping(value = "/clientes/cep",method = RequestMethod.GET)
-    public ResponseEntity<CepDTO> consultaCep(@RequestBody CepConsultaDTO consulta){
+    @RequestMapping(value = "/clientes/cep/{cep}",method = RequestMethod.POST)
+    public ResponseEntity<CepDTO> consultaCep(@PathVariable String cep){
 
-     CepDTO endereco = service.consultaCep(consulta);
+     CepDTO endereco = service.consultaCep(cep);
         return endereco != null ? ResponseEntity.status(200).body(endereco) : ResponseEntity.status(404).build();
 
     }
@@ -172,16 +172,16 @@ public class ClienteController {
 
 
 
-//    @RequestMapping(value = "/login", method = RequestMethod.POST)
-//    public ResponseEntity<ClienteDTO> login(@RequestBody ClienteLoginDTO loginDTO){
-//        ClienteDTO cli =  service.login(loginDTO);
-//
-//        return cli != null ? ResponseEntity.status(200).body(cli) : ResponseEntity.status(403).build();
-//    }
-//
-//    @RequestMapping(value = "/logoff", method = RequestMethod.POST)
-//    public ResponseEntity<Void> logoff(@RequestBody ClienteDTO logoffDTO){
-//        boolean validacao = service.logoff(logoffDTO);
-//        return validacao ? ResponseEntity.status(200).build() : ResponseEntity.status(400).build();
-//    }
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ResponseEntity<ClienteDTO> login(@RequestBody ClienteLoginDTO loginDTO){
+        ClienteDTO cli =  service.login(loginDTO);
+
+        return cli != null ? ResponseEntity.status(200).body(cli) : ResponseEntity.status(403).build();
+    }
+
+    @RequestMapping(value = "/logoff", method = RequestMethod.POST)
+    public ResponseEntity<Void> logoff(@RequestBody ClienteDTO logoffDTO){
+        boolean validacao = service.logoff(logoffDTO);
+        return validacao ? ResponseEntity.status(200).build() : ResponseEntity.status(400).build();
+    }
 }
