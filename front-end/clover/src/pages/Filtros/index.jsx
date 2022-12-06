@@ -11,20 +11,19 @@ import NumeradorPaginas from "./NumeradorPaginas";
 import "./style.css";
 export default function Filtros() {
   const navigate = useNavigate();
-  const [itens , setItens] = useState({});
+  const [itens , setItens] = useState();
 
   useEffect(() =>{
     api.get('/produtos?categorias=1')
     .then(res =>{
-      console.log(res);
-      setItens(res);
+      // console.log(res);
+      setItens(res.data.content);
     })
     .catch(erro => {
     })
 
   },[])
-  // console.log(itens);
-
+  console.log(itens);
 
   return (
     <>
@@ -36,10 +35,26 @@ export default function Filtros() {
           <h4 className="tela-atual">Animes</h4>
         </div>
 
-        <NumeradorPaginas/>
+        <NumeradorPaginas caunt={itens.length}/>
         
         <div className="corpo-tela-filtros">
-          {itens.data ? <CardProduto/>:<CardProduto/> }
+          {
+            itens?.map((produto) =>{
+              return(
+                <CardProduto
+                key={produto.id}
+                nome={produto.nome}
+                precoSimulado={produto.preco.toFixed(2)}
+                preco={produto.preco}
+                imagem={produto.produtoCores?.map((img)=> {
+                  return(
+                    img.imagens
+                  );
+                })}
+                />
+              );
+            })
+          }
         </div>
       </div>
       <Footer />

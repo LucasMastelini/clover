@@ -11,7 +11,7 @@ function IconNav(props) {
     setAbrirLista(true);
   }
 
-  console.log(subCategoria.categoria);
+  // console.log(subCategoria.categoria);
 
   return (
     <div className="texto">

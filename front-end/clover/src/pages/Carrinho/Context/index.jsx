@@ -57,7 +57,7 @@ export function CarrinhoProvider({ children }) {
   }
 
   useEffect(() => {
-    console.log(item);
+    // console.log(item);
   }, [item]);
 
   function aumentarQuantidade(idProd) {
