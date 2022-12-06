@@ -1,7 +1,9 @@
 package clover.mlclover.controllers;
 
 
+import clover.mlclover.dtos.CarrinhoDTO;
 import clover.mlclover.dtos.PedidoDTO;
+import clover.mlclover.dtos.ProdutoDTO;
 import clover.mlclover.entities.Pedido;
 import clover.mlclover.services.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
+import java.util.Stack;
 
 @RestController
 @RequestMapping(value="/pedidos")
@@ -33,6 +37,12 @@ public class PedidoController {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
+    }
+
+    @RequestMapping(method =RequestMethod.POST, value = "/carrinho")
+    public ResponseEntity<List<Stack<ProdutoDTO>>> carrinho(@RequestBody CarrinhoDTO carrinho){
+        List<Stack<ProdutoDTO>> produtos = service.carrinho(carrinho);
+        return produtos != null ? ResponseEntity.status(200).body(produtos) : ResponseEntity.status(204).build();
     }
 
 //    @RequestMapping(method=RequestMethod.GET)
