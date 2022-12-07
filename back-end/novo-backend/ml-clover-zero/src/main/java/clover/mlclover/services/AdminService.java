@@ -441,9 +441,6 @@ public class AdminService {
             throw  new RuntimeException("Erro ao converter URL para URI");
         }
     }
-
-
-
     public byte[] downloadFile(String fileName){
         S3Object s3Object = s3Client.getObject(bucketName, fileName);
         S3ObjectInputStream inputStream = s3Object.getObjectContent();
@@ -455,7 +452,6 @@ public class AdminService {
         }
         return null;
     }
-
     public String deleteFile(String fileName){
         s3Client.deleteObject(bucketName,fileName);
         return fileName +" removed...";
@@ -474,5 +470,110 @@ public class AdminService {
             log.error("Error converting multipartFile to file", e);
         }
         return convertedFile;
+    }
+
+    // DASHBOARD
+
+    public DashboardDTO getDataDashboard() {
+
+        TicketMedioMesDTO t1 = new TicketMedioMesDTO(180.00, "01/22");
+        TicketMedioMesDTO t2 = new TicketMedioMesDTO(220.00, "02/22");
+        TicketMedioMesDTO t3 = new TicketMedioMesDTO(195.00, "03/22");
+        TicketMedioMesDTO t4 = new TicketMedioMesDTO(162.00, "04/22");
+        TicketMedioMesDTO t5 = new TicketMedioMesDTO(171.00, "05/22");
+        TicketMedioMesDTO t6= new TicketMedioMesDTO(177.00, "06/22");
+        TicketMedioMesDTO t7 = new TicketMedioMesDTO(179.00, "07/22");
+        TicketMedioMesDTO t8 = new TicketMedioMesDTO(208.00, "08/22");
+        TicketMedioMesDTO t9 = new TicketMedioMesDTO(198.00, "09/22");
+        TicketMedioMesDTO t10 = new TicketMedioMesDTO(125.00, "10/22");
+        TicketMedioMesDTO t11 = new TicketMedioMesDTO(160.00, "11/22");
+        TicketMedioMesDTO t12 = new TicketMedioMesDTO(221.00, "12/22");
+
+        Queue<TicketMedioMesDTO> filaTicketMedio = new LinkedList<>();
+
+
+        filaTicketMedio.add(t1);
+        filaTicketMedio.add(t2);
+        filaTicketMedio.add(t3);
+        filaTicketMedio.add(t4);
+        filaTicketMedio.add(t5);
+        filaTicketMedio.add(t6);
+        filaTicketMedio.add(t7);
+        filaTicketMedio.add(t8);
+        filaTicketMedio.add(t9);
+        filaTicketMedio.add(t10);
+        filaTicketMedio.add(t11);
+        filaTicketMedio.add(t12);
+
+        TicketMedioDTO ticketMedio = new TicketMedioDTO();
+
+        while(!filaTicketMedio.isEmpty()){
+            ticketMedio.getLista().add(filaTicketMedio.poll());
+        }
+
+        TaxaConversaoMesDTO tc1 = new TaxaConversaoMesDTO(1.80, "01/22");
+        TaxaConversaoMesDTO tc2 = new TaxaConversaoMesDTO(2.20, "02/22");
+        TaxaConversaoMesDTO tc3 = new TaxaConversaoMesDTO(1.95, "03/22");
+        TaxaConversaoMesDTO tc4 = new TaxaConversaoMesDTO(1.62, "04/22");
+        TaxaConversaoMesDTO tc5 = new TaxaConversaoMesDTO(1.71, "05/22");
+        TaxaConversaoMesDTO tc6 = new TaxaConversaoMesDTO(1.77, "06/22");
+        TaxaConversaoMesDTO tc7 = new TaxaConversaoMesDTO(1.79, "07/22");
+        TaxaConversaoMesDTO tc8 = new TaxaConversaoMesDTO(2.08, "08/22");
+        TaxaConversaoMesDTO tc9 = new TaxaConversaoMesDTO(1.98, "09/22");
+        TaxaConversaoMesDTO tc10 = new TaxaConversaoMesDTO(1.25, "10/22");
+        TaxaConversaoMesDTO tc11 = new TaxaConversaoMesDTO(1.60, "11/22");
+        TaxaConversaoMesDTO tc12 = new TaxaConversaoMesDTO(2.21, "12/22");
+
+
+
+        Queue<TaxaConversaoMesDTO> filaTaxaConversao = new LinkedList<>();
+
+
+        filaTaxaConversao.add(tc1);
+        filaTaxaConversao.add(tc2);
+        filaTaxaConversao.add(tc3);
+        filaTaxaConversao.add(tc4);
+        filaTaxaConversao.add(tc5);
+        filaTaxaConversao.add(tc6);
+        filaTaxaConversao.add(tc7);
+        filaTaxaConversao.add(tc8);
+        filaTaxaConversao.add(tc9);
+        filaTaxaConversao.add(tc10);
+        filaTaxaConversao.add(tc11);
+        filaTaxaConversao.add(tc12);
+
+
+        TaxaConversaoDTO taxaConversao = new TaxaConversaoDTO();
+
+        while(!filaTaxaConversao.isEmpty()){
+            taxaConversao.getLista().add(filaTaxaConversao.poll());
+        }
+
+
+
+        PercentualFaturamentoDTO pf1 = new PercentualFaturamentoDTO("Norte", 9.25);
+        PercentualFaturamentoDTO pf2 = new PercentualFaturamentoDTO("Sul", 26.17);
+        PercentualFaturamentoDTO pf3 = new PercentualFaturamentoDTO("Sudeste", 31.48);
+        PercentualFaturamentoDTO pf4 = new PercentualFaturamentoDTO("Nordeste", 18.12);
+        PercentualFaturamentoDTO pf5 = new PercentualFaturamentoDTO("Centro-Oeste", 14.98);
+
+
+        Queue<PercentualFaturamentoDTO> percentualFaturamento = new LinkedList<>();
+
+
+        percentualFaturamento.add(pf1);
+        percentualFaturamento.add(pf2);
+        percentualFaturamento.add(pf3);
+        percentualFaturamento.add(pf4);
+        percentualFaturamento.add(pf5);
+
+        PercentualFaturamentoPorRegiaoDTO percentualFaturamentoPorRegiao = new PercentualFaturamentoPorRegiaoDTO();
+
+        while(!percentualFaturamento.isEmpty()){
+            percentualFaturamentoPorRegiao.getLista().add(percentualFaturamento.poll());
+        }
+
+
+        return new DashboardDTO(percentualFaturamentoPorRegiao,taxaConversao, ticketMedio);
     }
 }
