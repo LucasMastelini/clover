@@ -1,6 +1,7 @@
 package clover.mlclover.services;
 
 import clover.mlclover.dtos.CategoriaGetDTO;
+import clover.mlclover.dtos.ProdutoDTO;
 import clover.mlclover.dtos.ProdutoGetDTO;
 import clover.mlclover.entities.Categoria;
 import clover.mlclover.entities.Cliente;
@@ -19,6 +20,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
+import java.util.stream.Collectors;
 
 @Service
 public class ProdutoService {
@@ -71,5 +74,11 @@ public class ProdutoService {
 
         Page<Produto> produtos = produtoRepository.findDistinctByNomeContainingIgnoreCaseOrProdutoCategoriasCategoriaInOrProdutoSubcategoriasSubcategoriaIn(produto, categorias, subcategorias, paginacao);
         return ProdutoGetDTO.conversor(produtos);
+    }
+
+    public List<ProdutoGetDTO> getUltimasNovidades() {
+        List<ProdutoGetDTO> lista = produtoRepository.findAll().stream().map(x -> new ProdutoGetDTO(x)).collect(Collectors.toList());
+        Stack<ProdutoGetDTO> pilha = new Stack<>();
+        return lista.stream().map(x -> pilha.push(x)).limit(2).collect(Collectors.toList());
     }
 }
