@@ -11,9 +11,9 @@ import "./style.css";
 
 export default function Enderecos({setarPassos, passoAtual}) {
 
-    function enviarDados() {
-        setarPassos(passoAtual + 1);
-    }
+    // function enviarDados(passoAtual) {
+    //     setarPassos(passoAtual + 1);
+    // }
 
   const [cep, setCep] = useState("");
   const [tipoLogradouro, setTipoLogradouro] = useState("");
@@ -21,6 +21,8 @@ export default function Enderecos({setarPassos, passoAtual}) {
   const [bairro, setBairro] = useState("");
   const [cidade, setCidade] = useState("");
   const [uf, setUf] = useState("");
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
   const [numero, setNumero] = useState("");
   const [complemento, setComplemento] = useState("");
   const [destinatario, setDestinatario] = useState("");
@@ -75,36 +77,27 @@ export default function Enderecos({setarPassos, passoAtual}) {
 
   function cadastrar(evento) {
     // let idCliente = localStorage.getItem('id');
-    let idCliente = 1;
 
-    const values = {
-        enderecos: [{
+    const enderecos = {
             localidadeCep:{
-                cep: cep,
-                logradouro: logradouro,
-                complemento: complemento,
-                bairro: bairro,
-                cidade: cidade,
-                uf: uf,
-                tipoLogradouro: tipoLogradouro,
-                latitude: -23.5472091,
-                longitude: -46.6370514
+              cep: cep,
+              logradouro: logradouro,
+              complemento: complemento,
+              bairro: bairro,
+              cidade: cidade,
+              uf: uf,
+              tipoLogradouro: tipoLogradouro,
+              latitude: latitude,
+              longitude: longitude,
             },
             numero: evento.target.numero_endereco.value,
             complemento: evento.target.complemento_endereco.value,
             destinatario: evento.target.destinatario_endereco.value
-        }]
-    }
+        }
+  
 
-    api.post(`/clientes/${idCliente}/enderecos`, values)
-      .then((res) => {
-        console.log(res);
-        // <FinalizarCompra count={1}/>
-        setarPassos(passoAtual + 1);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    localStorage.setItem('dados_usuario', JSON.stringify(enderecos) );
+   
   }
 
   return (
