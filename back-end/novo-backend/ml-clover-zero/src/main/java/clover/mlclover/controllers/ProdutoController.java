@@ -65,5 +65,12 @@ public class ProdutoController {
     }
 
 
+    @GetMapping("/produtos/novidades")
+    public ResponseEntity<List<ProdutoGetDTO>> getUltimasNovidades(){
+        List<ProdutoGetDTO> lista = service.getUltimasNovidades();
+        return !lista.isEmpty() ? ResponseEntity.status(200).body(lista) : ResponseEntity.status(204).build();
+    }
+
+
 
 }

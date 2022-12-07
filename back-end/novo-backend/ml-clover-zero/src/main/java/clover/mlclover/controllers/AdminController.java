@@ -91,21 +91,73 @@ public class AdminController {
     }
 
 
+
+
     // ARQUIVOS
 
+
+    @GetMapping("gravar-arquivos/{extensao}")
+    public ResponseEntity<ByteArrayResource> gravarArquivos(@PathVariable String extensao) {
+        if(!extensao.equals("txt") && !extensao.equals("csv")){
+            throw new RuntimeException("Extensão não suportada");
+        }
+        URI url = null;
+        if(extensao.equals("txt")){
+            url = service.uploadFile(new File("arquivo.txt"), "txt");
+        }
+        else{
+            url = service.uploadFile(new File("arquivo.csv"), "csv");
+        }
+        String fileName = String.valueOf(url.toString().replace("https://clover3adscparte2.s3.us-east-2.amazonaws.com/", ""));
+
+        byte[] data = service.downloadFile(fileName);
+        ByteArrayResource resource = new ByteArrayResource(data);
+        return ResponseEntity
+                .ok()
+                .contentLength(data.length)
+                .header("Content-type", "application/octet-stream")
+                .header("Content-disposition", "attachment; filename=\"" + fileName + "\"")
+                .body(resource);
+    }
+
+
     @GetMapping("/gravar-arquivo-csv")
-    public ResponseEntity<Void> gravarArquivoCsv() {
-        return service.gerarArquivoCsv() ? ResponseEntity.status(200).build() : ResponseEntity.status(400).build();
+    public ResponseEntity<ByteArrayResource> gravarArquivoCsv() {
+        service.gerarArquivoCsv();
+
+        URI url = service.uploadFile(new File("arquivo.csv"), "csv");
+        System.out.println("URL: " + url);
+        String fileName = String.valueOf(url.toString().replace("https://clover3adscparte2.s3.us-east-2.amazonaws.com/", ""));
+        System.out.println("FILENAME: " + fileName);
+
+        byte[] data = service.downloadFile(fileName);
+        ByteArrayResource resource = new ByteArrayResource(data);
+        return ResponseEntity
+                .ok()
+                .contentLength(data.length)
+                .header("Content-type", "application/octet-stream")
+                .header("Content-disposition", "attachment; filename=\"" + fileName + "\"")
+                .body(resource);
     }
 
     @GetMapping("/gravar-arquivo-txt")
-    public ResponseEntity<Void> gravarArquivoTxt() {
+    public ResponseEntity<ByteArrayResource> gravarArquivoTxt() {
 
         service.gravarArquivoTxt();
 
-        service.uploadFile(new File("arquivo.txt"), "txt");
+        URI url = service.uploadFile(new File("arquivo.txt"), "txt");
+        System.out.println("URL: " + url);
+        String fileName = String.valueOf(url.toString().replace("https://clover3adscparte2.s3.us-east-2.amazonaws.com/", ""));
+        System.out.println("FILENAME: " + fileName);
 
-        return ResponseEntity.status(200).build();
+        byte[] data = service.downloadFile(fileName);
+        ByteArrayResource resource = new ByteArrayResource(data);
+        return ResponseEntity
+                .ok()
+                .contentLength(data.length)
+                .header("Content-type", "application/octet-stream")
+                .header("Content-disposition", "attachment; filename=\"" + fileName + "\"")
+                .body(resource);
 
 //        return service.gravarArquivoTxt() ? ResponseEntity.status(200).build() : ResponseEntity.status(400).build();
     }
@@ -146,5 +198,16 @@ public class AdminController {
     @DeleteMapping("/file/delete/{fileName}")
     public ResponseEntity<String> deleteFile(@PathVariable String fileName){
         return new ResponseEntity<>(service.deleteFile(fileName), HttpStatus.OK);
+    }
+
+    // MÉTRICAS
+
+    @GetMapping("/dashboard")
+    public ResponseEntity<DashboardDTO> getDataDashboard(){
+
+        DashboardDTO dashboard = service.getDataDashboard();
+
+        return dashboard != null ? ResponseEntity.status(200).body(dashboard) : ResponseEntity.status(204).build();
+
     }
 }
