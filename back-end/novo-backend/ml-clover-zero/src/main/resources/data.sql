@@ -158,3 +158,11 @@ INSERT INTO LOCALIDADE_CEP (cep, logradouro, complemento, bairro, cidade, uf, ti
 ('01002900', 'Viaduto do Chá 15', '', 'Centro', 'São Paulo', 'SP', '', '0', '2022-09-23 14:38:01', '1', '-23.5472091', '-46.6370514'),
 ('01003901', 'Rua José Bonifácio 93', '', 'Sé', 'São Paulo', 'SP', '', '0', '2022-09-23 14:38:01', '1', '-23.6624011', '-46.6366836'),
 ('09854690', 'Pau Brasil', '(Jd Pinheiros)', 'Alvarenga', 'São Bernardo do Campo', 'SP', 'Rua', '0', '2022-09-23 14:38:01', '1', '-23.7604539', '-46.5984107');
+
+
+
+INSERT INTO cliente (cpf_ou_cnpj, email, nome, tipo, data_nascimento, genero, is_logado, senha) VALUES
+('47193770845', 'igor@gmail.com', 'Igor Martins', 1, '1999-02-09', 'Masculino', 0, 'RWNvbm9tMUA=');
+
+INSERT INTO perfis VALUES
+(1, 1);

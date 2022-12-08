@@ -1,6 +1,7 @@
 package clover.mlclover.dtos;
 
 import clover.mlclover.entities.Cliente;
+import clover.mlclover.entities.enums.Perfil;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,10 @@ import lombok.Setter;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -24,9 +29,15 @@ public class ClienteDTO {
     @Email(message = "E-mail inválido")
     private String email;
 
+    private List<Integer> perfis = new ArrayList<>();
+
     public ClienteDTO(Cliente obj){
         this.id = obj.getId();
         this.nome = obj.getNome();
         this.email = obj.getEmail();
+
+        // Se o perfil == 1 => ADMIN
+        // Se o perfil == 2 => CLIENTE
+        this.perfis = obj.getPerfis().stream().map(x -> x.getCod()).collect(Collectors.toList());
     }
 }
