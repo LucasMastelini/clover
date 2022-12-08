@@ -11,8 +11,10 @@ import PieCharts from "./components/PieCharts";
 import api from "../../Api/api"
 
 import "./style.css";
+import { useNavigate } from "react-router-dom";
 
 export default function TelaAdmin() {
+  const navegar = useNavigate();
   const [userData] = useState({
     labels: UserData.map((data) => data.year),
     datasets: [
@@ -44,6 +46,25 @@ export default function TelaAdmin() {
     });
   }
 
+  function sair() {
+
+    const values = {
+      id: localStorage.getItem('id'),
+      nome: localStorage.getItem('nome'),
+      email: localStorage.getItem('email')
+    }
+
+    api.post('/logoff', values)
+      .then((res) => {
+        // console.log(res);
+        localStorage.clear();
+        navegar("/")
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
   return (
     <>
       <div className="container-admin">
@@ -63,7 +84,7 @@ export default function TelaAdmin() {
             </button>
           </div>
           <img src={logoClover} alt="" />
-          <button className="upload-button">
+          <button className="upload-button" onClick={sair}>
             <h3>Sair</h3>
             <FiLogOut />
           </button>
