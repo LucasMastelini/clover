@@ -3,13 +3,10 @@ import { useState } from "react";
 import { BsHouseDoor, BsHouseFill } from "react-icons/bs";
 import { IMaskInput } from "react-imask";
 import { useNavigate } from "react-router-dom";
-import FinalizarCompra from "../..";
 import api from "../../../../Api/api";
-import OpcoesCadastradas from "../../components/OpcoesCadastradas";
-import OpcoesFrete from "../../components/OpcoesFrete";
 import "./style.css";
 
-export default function Enderecos({setarPassos, passoAtual}) {
+export default function Enderecos() {
 
     // function enviarDados(passoAtual) {
     //     setarPassos(passoAtual + 1);
@@ -23,9 +20,9 @@ export default function Enderecos({setarPassos, passoAtual}) {
   const [uf, setUf] = useState("");
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
-  const [numero, setNumero] = useState("");
+  // const [numero, setNumero] = useState("");
   const [complemento, setComplemento] = useState("");
-  const [destinatario, setDestinatario] = useState("");
+  // const [destinatario, setDestinatario] = useState("");
 
   const navegar = useNavigate();
 
@@ -54,6 +51,8 @@ export default function Enderecos({setarPassos, passoAtual}) {
           setBairro(cepInfo.bairro);
           setCidade(cepInfo.cidade);
           setUf(cepInfo.uf);
+          setLatitude(cepInfo.latitude);
+          setLongitude(cepInfo.longitude);
 
           document.getElementById("complemento_endereco").value =
             cepInfo.complemento;
@@ -98,6 +97,9 @@ export default function Enderecos({setarPassos, passoAtual}) {
 
     localStorage.setItem('dados_usuario', JSON.stringify(enderecos) );
    
+    if(enderecos !== null) {
+      navegar("/finalizar-compra-dois")
+    }
   }
 
   return (

@@ -2,22 +2,25 @@ import { React, useState, useEffect } from "react";
 import { BiUser } from "react-icons/bi";
 import "./style.css";
 import api from "../../../../Api/api";
+import { useNavigate } from "react-router-dom";
 
 function DadosPessoais() {
   const [dadosUsuario, setDadosUsuario] = useState("");
-  const [nome, setNome] = useState("Vazio");
-  const [sobrenome, setSobrenome] = useState("Vazio");
-  const [email, setEmail] = useState("Vazio");
-  const [cpf, setCpf] = useState("Vazio");
-  const [cpfOuCnpj, setCpfOuCnpj] = useState("");
-  const [tipo, setTipo] = useState("");
-  const [genero, setGenero] = useState("");
-  const [dataNascimento, setDataNascimento] = useState("");
-  const [telCelular, setTelCelular] = useState("vazio");
+  // const [nome, setNome] = useState("Vazio");
+  // const [sobrenome, setSobrenome] = useState("Vazio");
+  // const [email, setEmail] = useState("Vazio");
+  // const [cpf, setCpf] = useState("Vazio");
+  const [cpfOuCnpj] = useState("");
+  const [tipo] = useState("");
+  const [genero] = useState("");
+  const [dataNascimento] = useState("");
+  // const [telCelular, setTelCelular] = useState("vazio");
 
   const [disabled, setDisabled] = useState(true);
   const [isBlue, setIsBlue] = useState(false);
   const [buttonText, setButtonText] = useState(false);
+
+  const navegar = useNavigate();
 
   const idCliente = 1;
 
@@ -47,14 +50,18 @@ function DadosPessoais() {
       dataNascimento: dataNascimento,
       enderecos: [JSON.parse(localStorage.getItem("dados_usuario"))],
     };
+
     if (event.target.innerHTML === "Salvar") {
       api.put(`clientes/payment-info/${idCliente}`, usuario)
         .then((res) => {
           console.log(res);
-        })
+          if(usuario !== null) {
+            navegar("/finalizar-compra-tres")
+          }
+      })
         .catch((err) => {
           console.log(err);
-        });
+      });
     }
   }
 

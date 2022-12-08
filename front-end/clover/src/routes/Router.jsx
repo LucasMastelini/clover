@@ -12,6 +12,9 @@ import FinalizarCompra from '../pages/FinalizarCompra'
 import Filtros from "../pages/Filtros";
 import Erro404 from "../pages/Erro404";
 import TelaAdmin from "../pages/TelaAdmin";
+import FinalizarCompraDois from "../pages/FinalizarCompra/pages/FinalizarCompraDois";
+import FinalizarCompraTres from "../pages/FinalizarCompra/pages/FinalizarCompraTres";
+import FinalizarCompraQuatro from "../pages/FinalizarCompra/pages/FinalizarCompraQuatro";
 // import Teste from "../pages/NotFound/teste";
 
 export default function Router() {
@@ -27,6 +30,9 @@ export default function Router() {
         <Route path="/usuario" element={<Usuario />} />
         <Route path="/carrinho" element={<Carrinho />} />
         <Route path="/finalizar-compra" element={<FinalizarCompra/>} />
+        <Route path="/finalizar-compra-dois" element={<FinalizarCompraDois/>} />
+        <Route path="/finalizar-compra-tres" element={<FinalizarCompraTres/>} />
+        <Route path="/finalizar-compra-quatro" element={<FinalizarCompraQuatro/>} />
         <Route path="/*" element={<Erro404/>} />
         <Route path="/admin" element={<TelaAdmin/>} />
         {/* <Route path="/resumo-pedidos/:produtos" element={<ResumoPedidos />} /> */}

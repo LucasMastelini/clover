@@ -1,20 +1,20 @@
 import React from "react";
 import { useState } from "react";
-import Footer from "../../components/Footer";
-import Header from "../Header";
-import EtapaAFazer from "./components/EtapaAFazer";
-import EtapaFazendo from "./components/EtapaFazendo";
-import EtapaFinalizada from "./components/EtapaFinalizada";
-import CompraCartao from "./pages/CompraCartao";
-import DadosPessoais from "../Usuario/pages/DadosPessoais";
-import PedidoRealizado from "../PedidoRealizado"
-import Enderecos from "./pages/Enderecos";
+import Footer from "../../../../components/Footer";
+import Header from "../../../Header";
+import EtapaAFazer from "../../components/EtapaAFazer";
+import EtapaFazendo from "../../components/EtapaFazendo";
+import EtapaFinalizada from "../../components/EtapaFinalizada";
+import CompraCartao from "../../pages/CompraCartao";
+import DadosPessoais from "../../../Usuario/pages/DadosPessoais";
+import PedidoRealizado from "../../../PedidoRealizado";
+import Enderecos from "../Enderecos";
 
-import "./style.css";
+import "../../style.css";
 // import { useEffect } from "react";
 
-export default function FinalizarCompra() {
-  const [step, setStep] = useState(2);
+export default function FinalizarCompraDois() {
+  const [step, setStep] = useState(3);
 
   // useEffect(() => {
   //   setStep(step + props)

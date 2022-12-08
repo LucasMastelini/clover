@@ -10,6 +10,7 @@ export default function CompraCartao({ setarPassos, passoAtual }) {
   const [nameCard, setNameCard] = useState("");
   const [mesVencimento, setMesVencimento] = useState("");
   const [anoVencimento, setAnoVencimento] = useState("");
+  const [parcelas, setParcelas] = useState("");
   const [cvv, setCvv] = useState("");
   const [virarCartao, setVirarCartao] = useState(false);
 
@@ -21,10 +22,6 @@ export default function CompraCartao({ setarPassos, passoAtual }) {
     setVirarCartao(false);
   }
 
-  function enviarDados() {
-    setarPassos(passoAtual + 1);
-  }
-
   function cadastrarCartao(evento) {
     // let idCliente = localStorage.getItem('id');
     let idCliente = 1;
@@ -32,22 +29,60 @@ export default function CompraCartao({ setarPassos, passoAtual }) {
     const values = {
       cartoes: [
         {
+          titular: evento.target.name_card.value,
           numero: evento.target.number_card.value,
-          nome: evento.target.name_card.value,
-          mes: evento.target.mounth_card.value,
-          ano: evento.target.year_card.value,
+          datavencimento: evento.target.mounth_card.value + "/" + evento.target.year_card.value,
           cvv: evento.target.cvv_card.value,
         },
       ],
     };
 
+  // const finalizarCompra = {
+  //     cliente : 
+  //         {
+  //             id : idCliente
+  //         },
+  //     enderecoEntrega : 
+  //         {
+  //             id : 1
+  //         },
+  //     pagamento : 
+  //         {
+  //             numeroDeParcelas : parcelas.target.parcel_card.value,
+  //             cartao: {
+  //                 id: 1
+  //             },
+  //         },
+  //     itens : 
+  //     [
+  //         {
+  //             quantidade : 2,
+  //             produto : 
+  //             {
+  //               id : 3
+  //             }
+  //         },
+  //         {
+  //             quantidade : 1,
+  //             produto : 
+  //             {
+  //                 id : 1
+  //             }
+  //         }
+  //     ]
+  // }
+
     api.post(`/clientes/${idCliente}/cartoes`, values)
       .then((res) => {
         console.log(res);
-      })
+    })
       .catch((err) => {
         console.log(err);
-      });
+    });
+
+    // api.post("/pedidos", values) {
+
+    // }
   }
 
   return (
@@ -138,8 +173,6 @@ export default function CompraCartao({ setarPassos, passoAtual }) {
             <span>número do cartão</span>
             <input
               type="number"
-              min={16}
-              max={16}
               defaultValue={numberCard}
               onChange={(event) => {
                 setNumberCard(event.target.value);
@@ -201,15 +234,15 @@ export default function CompraCartao({ setarPassos, passoAtual }) {
                 className="year-input"
               >
                 <option defaultValue="year">ano</option>
-                <option defaultValue="2022">2022</option>
-                <option defaultValue="2023">2023</option>
-                <option defaultValue="2024">2024</option>
-                <option defaultValue="2025">2025</option>
-                <option defaultValue="2026">2026</option>
-                <option defaultValue="2027">2027</option>
-                <option defaultValue="2028">2028</option>
-                <option defaultValue="2029">2029</option>
-                <option defaultValue="2030">2030</option>
+                <option defaultValue="22">2022</option>
+                <option defaultValue="23">2023</option>
+                <option defaultValue="24">2024</option>
+                <option defaultValue="25">2025</option>
+                <option defaultValue="26">2026</option>
+                <option defaultValue="27">2027</option>
+                <option defaultValue="28">2028</option>
+                <option defaultValue="29">2029</option>
+                <option defaultValue="30">2030</option>
               </select>
             </div>
             <div className="input-box">
