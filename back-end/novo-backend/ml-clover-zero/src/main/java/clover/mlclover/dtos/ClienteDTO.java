@@ -39,5 +39,6 @@ public class ClienteDTO {
         // Se o perfil == 1 => ADMIN
         // Se o perfil == 2 => CLIENTE
         this.perfis = obj.getPerfis().stream().map(x -> x.getCod()).collect(Collectors.toList());
+        this.isLogado = obj.isLogado();
     }
 }

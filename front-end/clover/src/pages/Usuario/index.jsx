@@ -6,10 +6,15 @@ import Enderecos from "./pages/Enderecos";
 import { FaRegUserCircle, FaTshirt, FaCity, FaAddressCard } from "react-icons/fa";
 import { BsFillCreditCardFill } from "react-icons/bs";
 import { useState } from "react";
+import api from "../../Api/api";
 import "./style.css";
+import { useNavigate } from "react-router-dom";
 
-var opcaoAnterior;
+  function Usuario() {
 
+    var opcaoAnterior;
+
+  const navegar = useNavigate();
   function mudarOpcoes(event) {
 
     var opcao1 = document.getElementById("sidebar-user-option1");
@@ -23,7 +28,25 @@ var opcaoAnterior;
     opcaoAnterior.className = "selected";
   }
 
-  function Usuario() {
+  function sair() {
+
+    const values = {
+      id: localStorage.getItem('id'),
+      nome: localStorage.getItem('nome'),
+      email: localStorage.getItem('email')
+    }
+
+    api.post('/logoff', values)
+      .then((res) => {
+        // console.log(res);
+        localStorage.clear();
+        navegar("/")
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+  
 
     const [step, setStep] = useState(1);
 
@@ -48,7 +71,7 @@ var opcaoAnterior;
           <div id="sidebar-user-option4" onClick={() => setStep(4)}>
             <FaCity className="icon" /> Endereços
           </div>
-          <div id="sidebar-user-option5" onClick={() => setStep(5)}>
+          <div id="sidebar-user-option5" onClick={sair}>
             <FaTshirt className="icon" /> Sair
           </div>
         </div>
