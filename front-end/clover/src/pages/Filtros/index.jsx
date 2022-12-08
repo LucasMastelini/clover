@@ -11,20 +11,25 @@ import NumeradorPaginas from "./NumeradorPaginas";
 import "./style.css";
 export default function Filtros() {
   const navigate = useNavigate();
-  const [itens , setItens] = useState({});
+  const [itens, setItens] = useState({});
 
-  useEffect(() =>{
-    api.get('/produtos?subcategorias=2')
-    .then(res =>{
-      // console.log(res);
-      setItens(res.data);
-    })
-    .catch(erro => {
-    })
+  useEffect(() => {
+    api.get('/produtos?categorias=1')
+      .then(res => {
+        // console.log(res);
+        localStorage.setItem('itens-filtro',JSON.stringify(res.data))
+        setItens(res.data);
+      })
+      .catch(erro => {
+      })
 
-  },[])
+  }, [])
   console.log(itens);
 
+  function comprar(e)
+  {
+    navigate('/compra-produto')
+  }
 
   return (
     <>
@@ -36,15 +41,17 @@ export default function Filtros() {
           <h4 className="tela-atual">Animes</h4>
         </div>
 
-        <NumeradorPaginas caunt={5}/>
-        
-        <div className="corpo-tela-filtros">
+        <NumeradorPaginas caunt={5} />
+
+        <div className="corpo-tela-filtros" onClick={comprar}>
           {itens.content?.map((produto) => {
-            <CardProduto 
-            nome={produto.nome}
-            preco={produto.preco}
-             />
-          }) }
+            return (<CardProduto
+              nome={produto.nome}
+              preco={produto.preco}
+              precoSimulado={produto.preco}
+            />
+            )
+          })}
         </div>
       </div>
       <Footer />
