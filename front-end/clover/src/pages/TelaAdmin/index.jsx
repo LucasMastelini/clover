@@ -31,7 +31,7 @@ export default function TelaAdmin() {
         console.log(err);
       })
 
-      setAdmin(localStorage.getItem('isLogado'));
+      setAdmin(localStorage.getItem('isAdmin'));
   }, [])
   console.log(faturamento?.map((data) => data.regiao));
 
@@ -70,13 +70,14 @@ export default function TelaAdmin() {
       .then((res) => {
         console.log(res);
         localStorage.clear();
+        navegar('/')
       })
       .catch((err) => {
         console.log(err)
       })
   }
 
-  if (admin ) {
+  if (admin) {
     return (
       <>
         <div className="container-admin">

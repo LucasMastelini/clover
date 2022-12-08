@@ -32,8 +32,6 @@ public class ClienteDTO {
 
     private List<Integer> perfis = new ArrayList<>();
 
-    private boolean isLogado;
-
     public ClienteDTO(Cliente obj){
         this.id = obj.getId();
         this.nome = obj.getNome();
