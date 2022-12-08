@@ -32,6 +32,8 @@ public class ClienteDTO {
 
     private List<Integer> perfis = new ArrayList<>();
 
+    private boolean isLogado;
+
     public ClienteDTO(Cliente obj){
         this.id = obj.getId();
         this.nome = obj.getNome();
@@ -39,5 +41,6 @@ public class ClienteDTO {
         // Se o perfil == 1 => ADMIN
         // Se o perfil == 2 => CLIENTE
         this.perfis = obj.getPerfis().stream().map(x -> x.getCod()).collect(Collectors.toList());
+        this.isLogado = obj.isLogado();
     }
 }
