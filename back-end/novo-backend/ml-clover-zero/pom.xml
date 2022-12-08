@@ -66,6 +66,11 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.6.9</version>
+		</dependency>
+		<dependency>
 			<groupId>com.gtbr</groupId>
 			<artifactId>via-cep</artifactId>
 			<version>1.0.0</version>
