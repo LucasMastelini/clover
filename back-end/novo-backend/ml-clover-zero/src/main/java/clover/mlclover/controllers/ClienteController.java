@@ -22,6 +22,12 @@ public class ClienteController {
     @Autowired
     private ClienteService service;
 
+    @RequestMapping(value = "/clientes-cadastro/{id}", method = RequestMethod.GET)
+    public ResponseEntity<ClienteParaUpdateDTO> findCliente(@PathVariable Integer id){
+        ClienteParaUpdateDTO obj = service.findCliente(id);
+        return obj == null ? ResponseEntity.status(200).body(obj) : ResponseEntity.status(404).build();
+    }
+
     @RequestMapping(value = "/clientes/{id}", method = RequestMethod.GET)
     public ResponseEntity<ClienteCompletoDTO> find(@PathVariable Integer id){
 
@@ -29,6 +35,7 @@ public class ClienteController {
         return ResponseEntity.status(200).body(obj);
     }
 
+    
 
     @RequestMapping(value="/clientes/{id}", method=RequestMethod.PUT)
     public ResponseEntity<Void> update(@Valid @RequestBody ClienteDTO objDto, @PathVariable Integer id){
