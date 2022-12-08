@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css} "/>
+    <link rel="stylesheet" th:href="@{classpath:static/css/seu_css.css}"/>
     <title>Email</title>
 
 
@@ -16,11 +16,11 @@
 <body>
 <div class="container-email">
     <header class="header-email">
-        <img th:src="@{/img/logo.png}" alt="">
+        <img th:src="@{classpath:static/img/logo.png}" alt="">
         <h4 th:text="${#dates.format(pedido.instante, 'dd/MM/yyyy hh:mm')}"></h4>
     </header>
     <div class="caixa-email">
-        <img th:src="@{/img/caixa-pedido-recebido.png}" alt="">
+        <img th:src="@{classpath:static/img/caixa-pedido-recebido.png}" alt="">
         <h1>Pedido Realizado &#128515;</h1>
     </div>
     <div class="body-email">
