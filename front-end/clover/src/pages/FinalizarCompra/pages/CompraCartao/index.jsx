@@ -3,14 +3,15 @@ import { FcSimCardChip } from "react-icons/fc";
 import { FaCcVisa, FaCcMastercard} from "react-icons/fa";
 
 import "./style.css";
-import api from "../../../../Api/api";
+// import api from "../../../../Api/api";
+import { useNavigate } from "react-router-dom";
 
 export default function CompraCartao({ setarPassos, passoAtual }) {
   const [numberCard, setNumberCard] = useState("");
   const [nameCard, setNameCard] = useState("");
   const [mesVencimento, setMesVencimento] = useState("");
   const [anoVencimento, setAnoVencimento] = useState("");
-  const [parcelas, setParcelas] = useState("");
+  // const [parcelas, setParcelas] = useState("");
   const [cvv, setCvv] = useState("");
   const [virarCartao, setVirarCartao] = useState(false);
 
@@ -22,67 +23,33 @@ export default function CompraCartao({ setarPassos, passoAtual }) {
     setVirarCartao(false);
   }
 
-  function cadastrarCartao(evento) {
-    // let idCliente = localStorage.getItem('id');
-    let idCliente = 1;
+  // function cadastrarCartao(evento) {
+  //   let idCliente = localStorage.getItem('id');
+  //   // let idCliente = 1;
 
-    const values = {
-      cartoes: [
-        {
-          titular: evento.target.name_card.value,
-          numero: evento.target.number_card.value,
-          datavencimento: evento.target.mounth_card.value + "/" + evento.target.year_card.value,
-          cvv: evento.target.cvv_card.value,
-        },
-      ],
-    };
+  //   const values = {
+  //     cartoes: [
+  //       {
+  //         titular: evento.target.name_card.value,
+  //         numero: evento.target.number_card.value,
+  //         datavencimento: evento.target.mounth_card.value + "/" + evento.target.year_card.value,
+  //         cvv: evento.target.cvv_card.value,
+  //       },
+  //     ],
+  //   };
 
-  // const finalizarCompra = {
-  //     cliente : 
-  //         {
-  //             id : idCliente
-  //         },
-  //     enderecoEntrega : 
-  //         {
-  //             id : 1
-  //         },
-  //     pagamento : 
-  //         {
-  //             numeroDeParcelas : parcelas.target.parcel_card.value,
-  //             cartao: {
-  //                 id: 1
-  //             },
-  //         },
-  //     itens : 
-  //     [
-  //         {
-  //             quantidade : 2,
-  //             produto : 
-  //             {
-  //               id : 3
-  //             }
-  //         },
-  //         {
-  //             quantidade : 1,
-  //             produto : 
-  //             {
-  //                 id : 1
-  //             }
-  //         }
-  //     ]
+  //   api.post(`/clientes/${idCliente}/cartoes`, values)
+  //     .then((res) => {
+  //       console.log(res);
+  //   })
+  //     .catch((err) => {
+  //       console.log(err);
+  //   });
+
   // }
-
-    api.post(`/clientes/${idCliente}/cartoes`, values)
-      .then((res) => {
-        console.log(res);
-    })
-      .catch((err) => {
-        console.log(err);
-    });
-
-    // api.post("/pedidos", values) {
-
-    // }
+  const navegar = useNavigate()
+  function finalizar() {
+    navegar("/finalizar-compra-quatro")
   }
 
   return (
@@ -167,7 +134,7 @@ export default function CompraCartao({ setarPassos, passoAtual }) {
           action=""
           method="post"
           className="formulario"
-          onSubmit={cadastrarCartao}
+          onSubmit={finalizar}
         >
           <div className="input-box">
             <span>número do cartão</span>

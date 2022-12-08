@@ -1,7 +1,7 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import { BiUser } from "react-icons/bi";
 import "./style.css";
-import api from "../../../../Api/api";
+// import api from "../../../../Api/api";
 import { useNavigate } from "react-router-dom";
 
 function DadosPessoais() {
@@ -10,10 +10,10 @@ function DadosPessoais() {
   // const [sobrenome, setSobrenome] = useState("Vazio");
   // const [email, setEmail] = useState("Vazio");
   // const [cpf, setCpf] = useState("Vazio");
-  const [cpfOuCnpj] = useState("");
-  const [tipo] = useState("");
-  const [genero] = useState("");
-  const [dataNascimento] = useState("");
+  // const [cpfOuCnpj] = useState("");
+  // const [tipo] = useState("");
+  // const [genero] = useState("");
+  // const [dataNascimento] = useState("");
   // const [telCelular, setTelCelular] = useState("vazio");
 
   const [disabled, setDisabled] = useState(true);
@@ -23,7 +23,7 @@ function DadosPessoais() {
   const navegar = useNavigate();
 
   // const idCliente = 1;
-  let idCliente = localStorage.getItem('id');
+  // let idCliente = localStorage.getItem('id');
 
   // useEffect(() => {
   //   api.get(`/clientes-cadastro/${idCliente}`).then((resposta) => {
@@ -37,33 +37,37 @@ function DadosPessoais() {
   //   console.log(e.target.value);
   // };
 
+  function telaTres() {
+    navegar("/finalizar-compra-tres")
+  }
+
   function handleGameClick(event) {
 
     setDisabled(!disabled);
     setIsBlue(!isBlue);
     setButtonText(!buttonText);
 
-    const usuario = {
-      id: idCliente,
-      cpfOuCnpj: event.target.cpfOuCnpj.value,
-      tipo: 1,
-      genero: event.target.genero.value,
-      dataNascimento: event.target.dataNascimento.value,
-      enderecos: [JSON.parse(localStorage.getItem("dados_usuario"))],
-    };
+    telaTres()
+    // const usuario = {
+    //   id: idCliente,
+    //   cpfOuCnpj: event.target.cpfOuCnpj.value,
+    //   tipo: 1,
+    //   genero: event.target.genero.value,
+    //   dataNascimento: event.target.dataNascimento.value,
+    //   // enderecos: [JSON.parse(localStorage.getItem("dados_usuario"))],
+    // };
 
-    if (event.target.innerHTML === "Salvar") {
-      api.put(`clientes/payment-info/${idCliente}`, usuario)
-        .then((res) => {
-          console.log(res);
-          if(usuario !== null) {
-            navegar("/finalizar-compra-tres")
-          }
-      })
-        .catch((err) => {
-          console.log(err);
-      });
-    }
+    // if (event.target.innerHTML === "Salvar") {
+    //   api.put(`clientes/payment-info/${idCliente}`, usuario)
+    //     .then((res) => {
+    //       console.log(res);
+    //         navegar("/finalizar-compra-tres")
+    //   })
+    //     .catch((err) => {
+    //       console.log(err);
+    //   });
+    // }
+    // localStorage.setItem("user", JSON.stringify(usuario))
   }
 
   function handleDadosUsuario(e) {

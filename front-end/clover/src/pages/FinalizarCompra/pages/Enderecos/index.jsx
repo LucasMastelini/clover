@@ -73,98 +73,47 @@ export default function Enderecos() {
     }
   };
 
-  function cadastrar(evento) {
-    // let idCliente = localStorage.getItem('id');
-
-    const endereco = {
-      enderecos:[
-          {
-            localidadeCep: {
-            cep: cep,
-            logradouro: logradouro,
-            complemento: complemento,
-            bairro: bairro,
-            cidade: cidade,
-            uf: uf,
-            tipoLogradouro: tipoLogradouro,
-            latitude: latitude,
-            longitude: longitude,
-          },
-          numero: evento.target.numero_endereco.value,
-          complemento: evento.target.complemento_endereco.value,
-          destinatario: evento.target.destinatario_endereco.value,
-        }
-      ]
-      
-      
-    };
-
-    const handleSubmit = event => {
-      // 👇️ prevent page refresh
-      event.preventDefault();
-      navegar("/finalizar-compra-dois");
-    };
-
-      // let idCliente = localStorage.getItem('id');
-    const idCliente = 1;
-
-    api.post(`clientes/${idCliente}/enderecos`, endereco)
-      .then((res) => {
-        console.log(res);
-        handleSubmit()
-    })
-      .catch((err) => {
-        console.log(err);
-    });
-
-    localStorage.setItem("dados_usuario", JSON.stringify(endereco));
-
-    // if (enderecos !== null) {
-    //   navegar("/finalizar-compra-dois");
-    // }
+  function compraDois() {
+    navegar("/finalizar-compra-dois");
   }
 
-  // function navegarTela() {
+  // function cadastrar(evento) {
   //   // let idCliente = localStorage.getItem('id');
 
-  //   // const endereco = {
-  //   //   enderecos:[
-  //   //       {
-  //   //         localidadeCep: {
-  //   //         cep: cep,
-  //   //         logradouro: logradouro,
-  //   //         complemento: complemento,
-  //   //         bairro: bairro,
-  //   //         cidade: cidade,
-  //   //         uf: uf,
-  //   //         tipoLogradouro: tipoLogradouro,
-  //   //         latitude: latitude,
-  //   //         longitude: longitude,
-  //   //       },
-  //   //       numero: evento.target.numero_endereco.value,
-  //   //       complemento: evento.target.complemento_endereco.value,
-  //   //       destinatario: evento.target.destinatario_endereco.value,
-  //   //     }
-  //   //   ]
-      
-      
-  //   // };
+  //   const endereco = {
+  //     enderecos:[
+  //         {
+  //           localidadeCep: {
+  //           cep: cep,
+  //           logradouro: logradouro,
+  //           complemento: complemento,
+  //           bairro: bairro,
+  //           cidade: cidade,
+  //           uf: uf,
+  //           tipoLogradouro: tipoLogradouro,
+  //           latitude: latitude,
+  //           longitude: longitude,
+  //         },
+  //         numero: evento.target.numero_endereco.value,
+  //         complemento: evento.target.complemento_endereco.value,
+  //         destinatario: evento.target.destinatario_endereco.value,
+  //       }
+  //     ]
+  //   };
 
-  //     // let idCliente = localStorage.getItem('id');
-  //   const idCliente = 1;
 
-  //   api.post(`clientes/${idCliente}/enderecos`)
-  //     .then((res) => {
-  //       console.log(res);
-  //       navegar("/finalizar-compra-dois");
-  //   })
-  //     .catch((err) => {
-  //       console.log(err);
-  //   });
+    
 
-  //   // if (enderecos !== null) {
-  //   //   navegar("/finalizar-compra-dois");
-  //   // }
+  //   // api.post(`clientes/${idCliente}/enderecos`, endereco)
+  //   //   .then((res) => {
+  //   //     console.log(res);
+  //   //     handleSubmit()
+  //   // })
+  //   //   .catch((err) => {
+  //   //     console.log(err);
+  //   // });
+
+  //   localStorage.setItem("dados_usuario", JSON.stringify(endereco));
   // }
 
   return (
@@ -219,7 +168,7 @@ export default function Enderecos() {
           </div>
         </div>
 
-        <form action="" className="dados-complementares" onSubmit={cadastrar.preventDefault}>
+        <form action="" className="dados-complementares" onSubmit={compraDois}>
           <div className="dados-residenciais">
             <div className="box">
               <h4>Número</h4>

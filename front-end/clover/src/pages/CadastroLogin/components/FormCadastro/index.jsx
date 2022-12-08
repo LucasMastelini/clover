@@ -39,6 +39,7 @@ function FormCadastro() {
                 setValidateConfirmacao(true)
                 setValidateEmail(true)
                 setValidateSenha(true)
+                localStorage.setItem('telefone', values.telefone)
                 // console.log(res);
                 alert(`${values.nome} seu cadastrado foi efetuado com sucesso `)
                 actions.resetForm();
