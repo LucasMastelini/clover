@@ -12,6 +12,7 @@ function FormLogin() {
 
     const[validacao , setValidacao] = useState(true);
     const navegar = useNavigate();
+    const isAdmin = true;
 
     function onSubmit(values, actions) {
 
@@ -22,11 +23,13 @@ function FormLogin() {
                 alert(`Bem Vindo ${res.data.nome}!`);
                 localStorage.setItem('nome', res.data.nome);
                 localStorage.setItem('email', res.data.email);
-                // console.log('SUBMIT', res.data);
-                navegar("/")
+                localStorage.setItem('id', res.data.id);
+                localStorage.setItem('isLogado', res.data.logado)
+                isAdmin ? navegar("/admin") : navegar("/");
                 actions.resetForm();
             }).catch(err => {
                 // console.log(err)
+                if(err.response.status === 500) alert(err.response.data.error);  
                 if (err.response.status === 403) {
                     alert("Email ou Senha incorretos")
                 }

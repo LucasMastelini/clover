@@ -15,7 +15,6 @@ function FormCadastro() {
     const [validateEmail, setValidateEmail] = useState(true);
     const [validateSenha, setValidateSenha] = useState(true);
     const [validarCadastrado, setValidarCadastrado] = useState(false);
-
     const [inputValida, setInputValida] = useState("input-valida");
     const [inputInValida, setInputInValida] = useState("input-invalida");
     const navegar = useNavigate();
@@ -46,6 +45,7 @@ function FormCadastro() {
                 navegar("/cadastro-login")
             }).catch(err => {
                 console.log(err.response)
+                if(err.response.status === 500) alert(err.response.data.msg) ;  
                 err.response.data.errors?.map((erro) =>{
                     if(erro.fieldName === "email" )
                     {
@@ -61,7 +61,12 @@ function FormCadastro() {
                     setValidateConfirmacao(true);
                     alert(`${erro.message} de validação (Pelo menos 8 caracteres, uma maiuscula, um "@,/,#,$..." e um numero)`)
                     }
-                })
+                    else if(erro.status === 500)
+                    {
+                    alert(`${erro.data.error}`)    
+                    }
+                    
+                });
                     
                 
             })

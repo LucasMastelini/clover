@@ -28,6 +28,7 @@ public class ClienteDTO {
     @NotEmpty(message = "Preenchimento obrigatório")
     @Email(message = "E-mail inválido")
     private String email;
+    private boolean isLogado;
 
     private List<Integer> perfis = new ArrayList<>();
 
@@ -35,7 +36,6 @@ public class ClienteDTO {
         this.id = obj.getId();
         this.nome = obj.getNome();
         this.email = obj.getEmail();
-
         // Se o perfil == 1 => ADMIN
         // Se o perfil == 2 => CLIENTE
         this.perfis = obj.getPerfis().stream().map(x -> x.getCod()).collect(Collectors.toList());
