@@ -45,9 +45,8 @@ function FormCadastro() {
                 navegar("/cadastro-login")
             }).catch(err => {
                 console.log(err.response)
-                console.log(err.response.data.error)
-                if(err.response.status === 500) alert(err.response.data.error) ;  
-                err.response.data.error?.map((erro) =>{
+                if(err.response.status === 500) alert(err.response.data.msg) ;  
+                err.response.data.errors?.map((erro) =>{
                     if(erro.fieldName === "email" )
                     {
                     setValidateEmail(false);

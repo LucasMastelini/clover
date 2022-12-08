@@ -23,10 +23,12 @@ public class ClienteDTO {
     @NotEmpty(message = "Preenchimento obrigatório")
     @Email(message = "E-mail inválido")
     private String email;
+    private boolean isLogado;
 
     public ClienteDTO(Cliente obj){
         this.id = obj.getId();
         this.nome = obj.getNome();
         this.email = obj.getEmail();
+        this.isLogado = obj.isLogado();
     }
 }
