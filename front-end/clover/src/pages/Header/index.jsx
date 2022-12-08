@@ -20,7 +20,7 @@ function Header() {
 
   useEffect(() => {
   api.get().then(res => {
-    console.log(res);
+    // console.log(res);
     setCategoriasBanco(res.data);
   }).catch(err =>{
     console.log(err);
