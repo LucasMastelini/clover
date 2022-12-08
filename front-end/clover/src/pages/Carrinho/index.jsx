@@ -8,7 +8,6 @@ import sacola from "../../assets/image/sacolavazia.png";
 import { useCarrinho } from "./Context";
 import iconLixeira from "../../assets/image/DeleteFilled.png";
 import "./style.css";
-import { Badge } from "antd";
 
 function Carrinho() {
   const navigate = useNavigate();
@@ -142,13 +141,13 @@ function Carrinho() {
               </div>
             </div>
           </div> */}
-            <div className="container-calc-frete">
+            {/* <div className="container-calc-frete">
               
               <div>
                 <CampoFrete />
               </div>
              
-            </div>
+            </div> */}
 
             <div className="resumo-carrinho">
               <div className="teste-resumo">
@@ -160,7 +159,7 @@ function Carrinho() {
                       <p className="exibe-valor">R$ {valorSubTotalItens()}</p>
                     </div>
                     <div className="envio">
-                      <p>preço de envio</p>
+                      <p>preço fixo de envio</p>
                       <p className="exibe-valor">R$ {valorEnvio.toFixed(2)}</p>
                     </div>
                     {/* <div className="calc-cupom">

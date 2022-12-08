@@ -23,10 +23,10 @@ function DadosPessoais() {
   const navegar = useNavigate();
 
   const idCliente = 1;
+  // let idCliente = localStorage.getItem('id');
 
   useEffect(() => {
-    // let idCliente = localStorage.getItem('id');
-    api.get(`/clientes/${idCliente}`).then((resposta) => {
+    api.get(`/clientes-cadastro/${idCliente}`).then((resposta) => {
       console.log(resposta.data);
       setDadosUsuario(resposta.data);
     });
@@ -38,6 +38,7 @@ function DadosPessoais() {
   // };
 
   function handleGameClick(event) {
+
     setDisabled(!disabled);
     setIsBlue(!isBlue);
     setButtonText(!buttonText);
@@ -45,7 +46,7 @@ function DadosPessoais() {
     const usuario = {
       id: idCliente,
       cpfOuCnpj: cpfOuCnpj,
-      tipo: tipo,
+      tipo: 1,
       genero: genero,
       dataNascimento: dataNascimento,
       enderecos: [JSON.parse(localStorage.getItem("dados_usuario"))],

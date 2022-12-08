@@ -7,10 +7,9 @@ import api from "../../../../Api/api";
 import "./style.css";
 
 export default function Enderecos() {
-
-    // function enviarDados(passoAtual) {
-    //     setarPassos(passoAtual + 1);
-    // }
+  // function enviarDados(passoAtual) {
+  //     setarPassos(passoAtual + 1);
+  // }
 
   const [cep, setCep] = useState("");
   const [tipoLogradouro, setTipoLogradouro] = useState("");
@@ -35,7 +34,7 @@ export default function Enderecos() {
       api
         .post(`/clientes/cep/${cepVar}`)
         .then((result) => {
-            console.log(result);
+          console.log(result);
           let cepInfo = result.data;
           document.getElementById("tipo_logradouro").value =
             cepInfo.tipoLogradouro +
@@ -77,30 +76,96 @@ export default function Enderecos() {
   function cadastrar(evento) {
     // let idCliente = localStorage.getItem('id');
 
-    const enderecos = {
-            localidadeCep:{
-              cep: cep,
-              logradouro: logradouro,
-              complemento: complemento,
-              bairro: bairro,
-              cidade: cidade,
-              uf: uf,
-              tipoLogradouro: tipoLogradouro,
-              latitude: latitude,
-              longitude: longitude,
-            },
-            numero: evento.target.numero_endereco.value,
-            complemento: evento.target.complemento_endereco.value,
-            destinatario: evento.target.destinatario_endereco.value
+    const endereco = {
+      enderecos:[
+          {
+            localidadeCep: {
+            cep: cep,
+            logradouro: logradouro,
+            complemento: complemento,
+            bairro: bairro,
+            cidade: cidade,
+            uf: uf,
+            tipoLogradouro: tipoLogradouro,
+            latitude: latitude,
+            longitude: longitude,
+          },
+          numero: evento.target.numero_endereco.value,
+          complemento: evento.target.complemento_endereco.value,
+          destinatario: evento.target.destinatario_endereco.value,
         }
-  
+      ]
+      
+      
+    };
 
-    localStorage.setItem('dados_usuario', JSON.stringify(enderecos) );
-   
-    if(enderecos !== null) {
-      navegar("/finalizar-compra-dois")
-    }
+    const handleSubmit = event => {
+      // 👇️ prevent page refresh
+      event.preventDefault();
+      navegar("/finalizar-compra-dois");
+    };
+
+      // let idCliente = localStorage.getItem('id');
+    const idCliente = 1;
+
+    api.post(`clientes/${idCliente}/enderecos`, endereco)
+      .then((res) => {
+        console.log(res);
+        handleSubmit()
+    })
+      .catch((err) => {
+        console.log(err);
+    });
+
+    localStorage.setItem("dados_usuario", JSON.stringify(endereco));
+
+    // if (enderecos !== null) {
+    //   navegar("/finalizar-compra-dois");
+    // }
   }
+
+  // function navegarTela() {
+  //   // let idCliente = localStorage.getItem('id');
+
+  //   // const endereco = {
+  //   //   enderecos:[
+  //   //       {
+  //   //         localidadeCep: {
+  //   //         cep: cep,
+  //   //         logradouro: logradouro,
+  //   //         complemento: complemento,
+  //   //         bairro: bairro,
+  //   //         cidade: cidade,
+  //   //         uf: uf,
+  //   //         tipoLogradouro: tipoLogradouro,
+  //   //         latitude: latitude,
+  //   //         longitude: longitude,
+  //   //       },
+  //   //       numero: evento.target.numero_endereco.value,
+  //   //       complemento: evento.target.complemento_endereco.value,
+  //   //       destinatario: evento.target.destinatario_endereco.value,
+  //   //     }
+  //   //   ]
+      
+      
+  //   // };
+
+  //     // let idCliente = localStorage.getItem('id');
+  //   const idCliente = 1;
+
+  //   api.post(`clientes/${idCliente}/enderecos`)
+  //     .then((res) => {
+  //       console.log(res);
+  //       navegar("/finalizar-compra-dois");
+  //   })
+  //     .catch((err) => {
+  //       console.log(err);
+  //   });
+
+  //   // if (enderecos !== null) {
+  //   //   navegar("/finalizar-compra-dois");
+  //   // }
+  // }
 
   return (
     <>
@@ -154,7 +219,7 @@ export default function Enderecos() {
           </div>
         </div>
 
-        <form action="" className="dados-complementares" onSubmit={cadastrar}>
+        <form action="" className="dados-complementares" onSubmit={cadastrar.preventDefault}>
           <div className="dados-residenciais">
             <div className="box">
               <h4>Número</h4>
@@ -163,14 +228,24 @@ export default function Enderecos() {
 
             <div className="box">
               <h4>Complemento e referência</h4>
-              <input type="text" name="complemento_endereco" id="complemento_endereco" />
+              <input
+                type="text"
+                name="complemento_endereco"
+                id="complemento_endereco"
+              />
             </div>
           </div>
           <div className="box">
             <h4>Destinatário</h4>
-            <input type="text" name="destinatario_endereco" id="destinatario_endereco" />
+            <input
+              type="text"
+              name="destinatario_endereco"
+              id="destinatario_endereco"
+            />
           </div>
-          <button type="submit" className="btn-salvar-dados">Salvar</button>
+          <button type="submit" className="btn-salvar-dados">
+            Salvar
+          </button>
         </form>
       </div>
     </>
