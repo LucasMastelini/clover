@@ -12,6 +12,7 @@ function FormLogin() {
 
     const[validacao , setValidacao] = useState(true);
     const navegar = useNavigate();
+    const isAdmin = true;
 
     function onSubmit(values, actions) {
 
@@ -22,9 +23,8 @@ function FormLogin() {
                 alert(`Bem Vindo ${res.data.nome}!`);
                 localStorage.setItem('nome', res.data.nome);
                 localStorage.setItem('email', res.data.email);
-                localStorage.setItem('id', res.data.id)
-                // console.log('SUBMIT', res.data);
-                navegar("/")
+                localStorage.setItem('id', res.data.id);
+                isAdmin ? navegar("/admin") : navegar("/");
                 actions.resetForm();
             }).catch(err => {
                 // console.log(err)
