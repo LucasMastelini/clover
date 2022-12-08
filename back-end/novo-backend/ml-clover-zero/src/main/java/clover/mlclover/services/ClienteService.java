@@ -367,4 +367,7 @@ public class ClienteService {
 
     }
 
+    public ClienteParaUpdateDTO findCliente(Integer id) {
+        return repo.findById(id).map(x -> new ClienteParaUpdateDTO(x)).orElse(null);
+    }
 }
