@@ -336,6 +336,7 @@ public class ClienteService {
 
     public ClienteDTO login(ClienteLoginDTO loginDTO) {
         Cliente cli = repo.findByEmail(loginDTO.getEmail());
+
         if(cli != null){
            // BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
             boolean isPasswordMatches = loginDTO.getSenha().matches(decodificaBase64Decoder(cli.getSenha()));

@@ -25,7 +25,7 @@ public class ClienteController {
     @RequestMapping(value = "/clientes-cadastro/{id}", method = RequestMethod.GET)
     public ResponseEntity<ClienteParaUpdateDTO> findCliente(@PathVariable Integer id){
         ClienteParaUpdateDTO obj = service.findCliente(id);
-        return obj == null ? ResponseEntity.status(200).body(obj) : ResponseEntity.status(404).build();
+        return obj != null ? ResponseEntity.status(200).body(obj) : ResponseEntity.status(404).build();
     }
 
     @RequestMapping(value = "/clientes/{id}", method = RequestMethod.GET)

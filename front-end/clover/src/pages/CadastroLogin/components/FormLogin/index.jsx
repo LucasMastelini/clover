@@ -12,7 +12,6 @@ function FormLogin() {
 
     const[validacao , setValidacao] = useState(true);
     const navegar = useNavigate();
-    const isAdmin = true;
 
     function onSubmit(values, actions) {
 
@@ -24,8 +23,9 @@ function FormLogin() {
                 localStorage.setItem('nome', res.data.nome);
                 localStorage.setItem('email', res.data.email);
                 localStorage.setItem('id', res.data.id);
-                localStorage.setItem('isLogado', res.data.logado)
-                isAdmin ? navegar("/admin") : navegar("/");
+                localStorage.setItem('isLogado', res.data.logado);
+                res.data.perfis?.map((status) => {status === 1 ? localStorage.setItem('isAdmin', true): localStorage.setItem('isAdmin', false );})
+                res.data.perfis?.map((status) => {status === 1 ? navegar("/admin") : navegar("/")})  
                 actions.resetForm();
             }).catch(err => {
                 // console.log(err)
