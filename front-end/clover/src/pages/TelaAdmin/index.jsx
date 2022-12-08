@@ -3,7 +3,7 @@ import { useState } from "react";
 import { AiOutlineCloudDownload, AiOutlineCloudUpload } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
 import { FaTshirt } from "react-icons/fa";
-import { UserData } from "./Data";
+import { PercentualFaturamentoPorRegiao, TaxaConversao, TiketMedio, UserData } from "./Data";
 import logoClover from "../../assets/image/logo.png";
 import BarCharts from "./components/BarCharts";
 import LineCharts from "./components/LineCharts";
@@ -16,40 +16,99 @@ import { useEffect } from "react";
 
 export default function TelaAdmin() {
   const navegar = useNavigate();
-  const [faturamento, setFaturamento] = useState();
   const [admin , setAdmin] = useState(false);
 
 
-  useEffect(() => {
-    var array =[];
-    api.get('/admin/dashboard')
-      .then((res) => {
-        console.log(res.data);
-        setFaturamento(res.data.percentualFaturamentoPorRegiao.lista);
-        for(let i = 0; i < res.data.length; i++) {
-          array.push(res.data[i])
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+  // useEffect(() => {
+  //   var array =[];
+  //   api.get('/admin/dashboard')
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       setFaturamento(res.data.percentualFaturamentoPorRegiao.lista);
+  //       for(let i = 0; i < res.data.length; i++) {
+  //         array.push(res.data[i])
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     })
 
 
-      console.log(array.length);
-      console.log(array.lista);
-      setAdmin(localStorage.getItem('isLogado'));
-  }, [])
-  console.log(faturamento?.map((data) => data.regiao));
+  //     console.log(array.length);
+  //     console.log(array.lista);
+  //     setAdmin(localStorage.getItem('isLogado'));
+  // }, [])
+  // console.log(faturamento?.map((data) => data.regiao));
 
 
 
 
-  const [dados] = useState({
-    labels: faturamento?.map((data) => data.regiao),
+  // const [dados] = useState({
+  //   labels: faturamento?.map((data) => data.regiao),
+  //   datasets: [
+  //     {
+  //       label: "Percentual faturado",
+  //       data: faturamento?.map((data) => data.percentualFaturamentoPorRegiao),
+  //       backgroundColor: [
+  //         "#35DAF0",
+  //         "#510090",
+  //         "#37003D",
+  //         "#082166",
+  //         "#C468CD",
+  //       ],
+  //       borderColor: "black",
+  //       borderWidth: 1,
+  //       color: "#fff",
+  //     },
+  //   ],
+  // });
+  
+  const [faturamento, setFaturamento] = useState({
+    labels: PercentualFaturamentoPorRegiao.map((data) => console.log(data.percentualFaturamento) ),
     datasets: [
       {
         label: "Percentual faturado",
-        data: faturamento?.map((data) => data.percentualFaturamentoPorRegiao),
+        data: PercentualFaturamentoPorRegiao.map((data) => data.regiao),
+        backgroundColor: [
+          "#35DAF0",
+          "#510090",
+          "#37003D",
+          "#082166",
+          "#C468CD",
+        ],
+        borderColor: "black",
+        borderWidth: 1,
+        color: "#fff",
+      },
+    ],
+  });
+
+  const [conversao, setConversao] = useState({
+    labels: TaxaConversao.map((data) => console.log(data.taxaConversao)),
+    datasets: [
+      {
+        label: "Percentual faturado",
+        data: TaxaConversao.map((data) => data.data),
+        backgroundColor: [
+          "#35DAF0",
+          "#510090",
+          "#37003D",
+          "#082166",
+          "#C468CD",
+        ],
+        borderColor: "black",
+        borderWidth: 1,
+        color: "#fff",
+      },
+    ],
+  });
+
+  const [tiket, setTiket] = useState({
+    labels: TiketMedio.map((data) => console.log(data.ticketMedio)),
+    datasets: [
+      {
+        label: "Percentual faturado",
+        data: TaxaConversao.map((data) => data.mes),
         backgroundColor: [
           "#35DAF0",
           "#510090",
@@ -82,7 +141,7 @@ export default function TelaAdmin() {
       })
   }
 
-  if (admin ) {
+  if (!admin ) {
     return (
       <>
         <div className="container-admin">
@@ -116,13 +175,13 @@ export default function TelaAdmin() {
             </div>
             <div className="body-charts">
               <div className="chart">
-                <BarCharts chartData={dados} />
+                <BarCharts chartData={faturamento} />
               </div>
               <div className="chart">
-                <LineCharts chartData={dados} />
+                <LineCharts chartData={conversao} />
               </div>
               <div className="chart">
-                <PieCharts chartData={dados} />
+                <PieCharts chartData={faturamento} />
               </div>
             </div>
           </div>
