@@ -5,36 +5,36 @@ const CarrinhoContext = createContext({});
 
 export function CarrinhoProvider({ children }) {
   const [item, setItem] = useState([
-    // {
-    //   id: 0,
-    //   nome: 'nomeProd',
-    //   valor: 0.45,
-    //   quantidade: 2, 
-    // },
-    // {
-    //   id: 1,
-    //   nome: 'nomeProd',
-    //   valor: 0.45,
-    //   quantidade: 2, 
-    // },
-    // {
-    //   id: 2,
-    //   nome: 'nomeProd',
-    //   valor: 0.45,
-    //   quantidade: 2, 
-    // },
-    // {
-    //   id: 3,
-    //   nome: 'nomeProd',
-    //   valor: 0.45,
-    //   quantidade: 2, 
-    // },
-    // {
-    //   id: 4,
-    //   nome: 'nomeProd',
-    //   valor: 0.45,
-    //   quantidade: 2, 
-    // }
+    {
+      id: 0,
+      nome: 'nomeProd',
+      valor: 0.45,
+      quantidade: 2, 
+    },
+    {
+      id: 1,
+      nome: 'nomeProd',
+      valor: 0.45,
+      quantidade: 2, 
+    },
+    {
+      id: 2,
+      nome: 'nomeProd',
+      valor: 0.45,
+      quantidade: 2, 
+    },
+    {
+      id: 3,
+      nome: 'nomeProd',
+      valor: 0.45,
+      quantidade: 2, 
+    },
+    {
+      id: 4,
+      nome: 'nomeProd',
+      valor: 0.45,
+      quantidade: 2, 
+    }
   ]);
 
   function adicionarProduto(idProd, nomeProd, valorProd) {
@@ -57,7 +57,7 @@ export function CarrinhoProvider({ children }) {
   }
 
   useEffect(() => {
-    console.log(item);
+    // console.log(item);
   }, [item]);
 
   function aumentarQuantidade(idProd) {

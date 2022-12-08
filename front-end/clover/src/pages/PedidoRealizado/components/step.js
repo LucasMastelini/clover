@@ -6,7 +6,7 @@ export default function Step(props) {
      props.updateStep(props.currentStep + 1)
      console.log(props.currentStep)
      console.log(props.index <= props.currentStep)
-    }, 3000)
+    }, 15000)
     return (
         <div className={"stepBlock" + (props.selected ? " selected" : "")}>
             <div className="circleWrapper">

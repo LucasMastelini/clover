@@ -22,15 +22,15 @@ function DadosPessoais() {
 
   const navegar = useNavigate();
 
-  const idCliente = 1;
-  // let idCliente = localStorage.getItem('id');
+  // const idCliente = 1;
+  let idCliente = localStorage.getItem('id');
 
-  useEffect(() => {
-    api.get(`/clientes-cadastro/${idCliente}`).then((resposta) => {
-      console.log(resposta.data);
-      setDadosUsuario(resposta.data);
-    });
-  });
+  // useEffect(() => {
+  //   api.get(`/clientes-cadastro/${idCliente}`).then((resposta) => {
+  //     console.log(resposta.data);
+  //     setDadosUsuario(resposta.data);
+  //   });
+  // });
 
   // const handleEmail = (e) => {
   //   setEmail(e.target.value);
@@ -45,10 +45,10 @@ function DadosPessoais() {
 
     const usuario = {
       id: idCliente,
-      cpfOuCnpj: cpfOuCnpj,
+      cpfOuCnpj: event.target.cpfOuCnpj.value,
       tipo: 1,
-      genero: genero,
-      dataNascimento: dataNascimento,
+      genero: event.target.genero.value,
+      dataNascimento: event.target.dataNascimento.value,
       enderecos: [JSON.parse(localStorage.getItem("dados_usuario"))],
     };
 
@@ -87,7 +87,7 @@ function DadosPessoais() {
                 Nome Completo
                 <input
                   className="input-dados-pessoais"
-                  value={dadosUsuario?.nome}
+                  value={localStorage.getItem('nome')}
                   style={{ borderColor: isBlue ? "#35DAF0" : "#D02EE0" }}
                   onChange={handleDadosUsuario}
                   disabled={disabled}
@@ -99,7 +99,7 @@ function DadosPessoais() {
                 E-mail
                 <input
                   className="input-dados-pessoais"
-                  value={dadosUsuario?.email}
+                  value={localStorage.getItem('email')}
                   style={{ borderColor: isBlue ? "#35DAF0" : "#D02EE0" }}
                   onChange={handleDadosUsuario}
                   disabled={disabled}
@@ -111,7 +111,7 @@ function DadosPessoais() {
                 CPF
                 <input
                   className="input-dados-pessoais"
-                  value={dadosUsuario?.cpfOuCnpj}
+                  // value={dadosUsuario?.cpfOuCnpj}
                   style={{ borderColor: isBlue ? "#35DAF0" : "#D02EE0" }}
                   onChange={handleDadosUsuario}
                   disabled={disabled}
@@ -123,7 +123,7 @@ function DadosPessoais() {
                 Gênero
                 <input
                   className="input-dados-pessoais"
-                  value={dadosUsuario?.genero}
+                  // value={dadosUsuario?.genero}
                   style={{ borderColor: isBlue ? "#35DAF0" : "#D02EE0" }}
                   onChange={handleDadosUsuario}
                   disabled={disabled}
@@ -135,7 +135,7 @@ function DadosPessoais() {
                 Data de nascimento
                 <input
                   className="input-dados-pessoais"
-                  value={dadosUsuario?.dataNascimento}
+                  // value={dadosUsuario?.dataNascimento}
                   style={{ borderColor: isBlue ? "#35DAF0" : "#D02EE0" }}
                   onChange={handleDadosUsuario}
                   disabled={disabled}
@@ -147,7 +147,7 @@ function DadosPessoais() {
                 Celular
                 <input
                   className="input-dados-pessoais"
-                  value={dadosUsuario?.telefone}
+                  value={localStorage.getItem('telefone')}
                   style={{ borderColor: isBlue ? "#35DAF0" : "#D02EE0" }}
                   onChange={handleDadosUsuario}
                   id="telefone"

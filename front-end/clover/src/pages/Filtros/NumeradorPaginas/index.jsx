@@ -2,7 +2,8 @@ import React, {useRef} from "react";
 
 import './style.css';
 
-export default function NumeradorPaginas() {
+export default function NumeradorPaginas(props) {
+  const paginador = props.count;
 
   const carousel = useRef(null);
 
@@ -22,10 +23,7 @@ export default function NumeradorPaginas() {
       <div className="paginacao-container">
         <div className="items-paginacao" ref={carousel}>
             <div className="itens-numeracao-paginas">
-              <h5>1</h5>
-              <h5>2</h5>
-              <h5>3</h5>
-              <h5>4</h5>
+             
             </div>
         </div>
 
