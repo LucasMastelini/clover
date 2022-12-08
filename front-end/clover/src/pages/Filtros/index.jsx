@@ -14,16 +14,16 @@ export default function Filtros() {
   const [itens , setItens] = useState({});
 
   useEffect(() =>{
-    api.get('/produtos?categorias=1')
+    api.get('/produtos?subcategorias=2')
     .then(res =>{
-      console.log(res);
-      setItens(res);
+      // console.log(res);
+      setItens(res.data);
     })
     .catch(erro => {
     })
 
   },[])
-  // console.log(itens);
+  console.log(itens);
 
 
   return (
@@ -36,10 +36,15 @@ export default function Filtros() {
           <h4 className="tela-atual">Animes</h4>
         </div>
 
-        <NumeradorPaginas caunt={itens.length}/>
+        <NumeradorPaginas caunt={5}/>
         
         <div className="corpo-tela-filtros">
-          {itens.data ? <CardProduto/>:<CardProduto/> }
+          {itens.content?.map((produto) => {
+            <CardProduto 
+            nome={produto.nome}
+            preco={produto.preco}
+             />
+          }) }
         </div>
       </div>
       <Footer />
