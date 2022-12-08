@@ -22,6 +22,7 @@ function FormLogin() {
                 alert(`Bem Vindo ${res.data.nome}!`);
                 localStorage.setItem('nome', res.data.nome);
                 localStorage.setItem('email', res.data.email);
+                localStorage.setItem('id', res.data.id)
                 // console.log('SUBMIT', res.data);
                 navegar("/")
                 actions.resetForm();

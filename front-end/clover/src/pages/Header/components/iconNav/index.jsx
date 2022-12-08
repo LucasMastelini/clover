@@ -11,6 +11,15 @@ function IconNav(props) {
     setAbrirLista(true);
   }
 
+  // function filtroSubCat(nome){
+  //   localStorage.setItem('id_sub_cat', nome)
+  //   navegar('/filtros');
+  // }
+
+  // function filtroCat(nome){
+  //   localStorage.setItem('id_cat', nome)
+  //   navegar('/filtros')
+  // }
   // console.log(subCategoria.categoria);
 
   return (
@@ -19,7 +28,9 @@ function IconNav(props) {
       subCategoria.categoria?.map((colecao) => {
         return (
           <div className="container">
-            <p>{colecao.nome}</p>
+            <p
+            // onClick={filtroCat(colecao.nome)}
+            >{colecao.nome}</p>
             <p className="item-sub-categoria">{colecao.subcategorias?.map((sub_cat) => {
               return(
                 <li className="list" onMouseEnter={carregarLista}>
@@ -27,6 +38,7 @@ function IconNav(props) {
                       href="/"
                       className="item-sub-categoria"
                       key={sub_cat.id}
+                      // onClick={filtroSubCat(sub_cat.nome)}
                     >
                       {sub_cat.nome}
                     </a>

@@ -46,7 +46,9 @@ function FormCadastro() {
                 navegar("/cadastro-login")
             }).catch(err => {
                 console.log(err.response)
-                err.response.data.errors?.map((erro) =>{
+                console.log(err.response.data.error)
+                err.response.status === 500 ?  alert(err.response.data.error) : '';  
+                err.response.data.error?.map((erro) =>{
                     if(erro.fieldName === "email" )
                     {
                     setValidateEmail(false);
@@ -61,6 +63,11 @@ function FormCadastro() {
                     setValidateConfirmacao(true);
                     alert(`${erro.message} de validação (Pelo menos 8 caracteres, uma maiuscula, um "@,/,#,$..." e um numero)`)
                     }
+                    else if(erro.status === 500)
+                    {
+                    alert(`${erro.data.error}`)    
+                    }
+                    
                 })
                     
                 
