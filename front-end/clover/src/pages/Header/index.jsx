@@ -184,6 +184,7 @@ function Header() {
                       href="/"
                       className="text"
                       key={colecao.id}
+                      onClick={() => navegar('/filtros')}
                       onMouseEnter={() =>
                         armazenarCategoria(colecao.categorias)
                       }
