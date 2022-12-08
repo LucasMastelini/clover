@@ -12,6 +12,10 @@ function MinhaConta({ sair, navegarUsuario }) {
     return navegar("/cadastro-login");
   }
 
+  function navegarPerfil() {
+    return navegar("/usuarios");
+  }
+
   const [acessoUsuario, setAcessoUsuario] = useState({
     nome: localStorage.getItem("nome"),
     email: localStorage.getItem("email")
@@ -29,7 +33,7 @@ function MinhaConta({ sair, navegarUsuario }) {
           {/* {" "} */}
           <span>Olá, {acessoUsuario.nome.split(" ")[0]}</span>
           <select className="menu-perfil">
-            <option value="" className="option-color"></option>
+            <option value="" className="option-color" onClick={navegarPerfil}>Dados</option>
             <option value="" className="option-color" onClick={sair}>
               Sair
             </option>

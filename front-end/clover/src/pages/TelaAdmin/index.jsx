@@ -8,42 +8,17 @@ import logoClover from "../../assets/image/logo.png";
 import BarCharts from "./components/BarCharts";
 import LineCharts from "./components/LineCharts";
 import PieCharts from "./components/PieCharts";
-import { useNavigate } from "react-router-dom";
+import api from "../../Api/api"
 
 import "./style.css";
-import api from "../../Api/api";
-import { useEffect } from "react";
 
 export default function TelaAdmin() {
-  const navegar = useNavigate();
-  const [faturamento, setFaturamento] = useState();
-  const [admin , setAdmin] = useState(false);
-
-
-  useEffect(() => {
-
-    api.get('/admin/dashboard')
-      .then((res) => {
-        console.log(res.data);
-        setFaturamento(res.data.percentualFaturamentoPorRegiao.lista);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-
-      setAdmin(localStorage.getItem('isAdmin'));
-  }, [])
-  console.log(faturamento?.map((data) => data.regiao));
-
-
-
-
-  const [dados] = useState({
-    labels: faturamento?.map((data) => data.regiao[1]),
+  const [userData] = useState({
+    labels: UserData.map((data) => data.year),
     datasets: [
       {
-        label: "Percentual faturado",
-        data: faturamento?.map((data) => data),
+        label: "Users Gained",
+        data: UserData.map((data) => data.userGain),
         backgroundColor: [
           "#35DAF0",
           "#510090",
@@ -58,75 +33,64 @@ export default function TelaAdmin() {
     ],
   });
 
-  function sair() {
+  const extensao = "csv"
 
-    const values = {
-      id: localStorage.getItem('id'),
-      nome: localStorage.getItem('nome'),
-      email: localStorage.getItem('email')
-    }
-
-    api.post('/logoff', values)
-      .then((res) => {
-        console.log(res);
-        localStorage.clear();
-        navegar('/')
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+  function baixarArquivo(event) {
+    api.get(`gravar-arquivos/${extensao}`, event).then((res) => {
+            console.log(res);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
   }
 
-  if (admin) {
-    return (
-      <>
-        <div className="container-admin">
-          <div className="header-admin">
-            <div className="container-arquivos">
-              <button className="upload-button">
-                <a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer" >
-                  <AiOutlineCloudDownload />
-                  <h3>Download</h3>
+  return (
+    <>
+      <div className="container-admin">
+        <div className="header-admin">
+          <div className="container-arquivos">
+            <button className="upload-button">
+                <a href="" target="_blank" rel="noopener noreferrer" >
+                    <AiOutlineCloudDownload />
+                    <h3>Download</h3>
                 </a>
-              </button>
-              <button className="upload-button">
+            </button>
+            <button className="upload-button">
                 <a href="http://localhost:3001/" target="_blank" rel="noopener noreferrer">
-                  <AiOutlineCloudUpload />
-                  <h3>Upload</h3>
+                    <AiOutlineCloudUpload />
+                    <h3>Upload</h3>
                 </a>
-              </button>
-            </div>
-            <img src={logoClover} alt="" />
-            <button className="upload-button" onClick={sair}>
-              <h3>Sair</h3>
-              <FiLogOut />
             </button>
           </div>
-          <div className="body-admin">
-            <div className="topo-body">
-              <FaTshirt />
-              <h3>
-                Quantidade de produtos total: <span>20</span>
-              </h3>
+          <img src={logoClover} alt="" />
+          <button className="upload-button">
+            <h3>Sair</h3>
+            <FiLogOut />
+          </button>
+        </div>
+        <div className="body-admin">
+          <div className="topo-body">
+            <FaTshirt />
+            <h3>
+              Quantidade de produtos total: <span>20</span>
+            </h3>
+          </div>
+          <div className="body-charts">
+            <div className="chart">
+              <BarCharts chartData={userData} />
             </div>
-            <div className="body-charts">
-              <div className="chart">
-                <BarCharts chartData={dados} />
-              </div>
-              <div className="chart">
-                <LineCharts chartData={dados} />
-              </div>
-              <div className="chart">
-                <PieCharts chartData={dados} />
-              </div>
+            <div className="chart">
+              <LineCharts chartData={userData} />
+            </div>
+            <div className="chart">
+              <PieCharts chartData={userData} />
             </div>
           </div>
-          {/* <div className="area-upload">
+        </div>
+        {/* <div className="area-upload">
           <AreaUpload />
         </div> */}
-        </div>
-      </>
-    );
-  } else{ navegar("/")}
-
+      </div>
+    </>
+  );
 }
