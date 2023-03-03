@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 import "./style.css";
+import slide1 from "../../../../assets/image/the_last_of_us.jpg"
+import slide2 from "../../../../assets/image/lancamento_dc.jpg"
+import slide3 from "../../../../assets/image/wandinha.jpg"
 
 function Slider() {
   useEffect(() => {
@@ -30,17 +33,17 @@ function Slider() {
         <div className="slider">
           <img
             className="img-slides"
-            src="https://lojapiticas.vteximg.com.br/arquivos/ids/167929/SDA%20DESK.png?v=637993828253800000"
+            src={slide1}
             alt=""
           />
           <img
             className="img-slides"
-            src="https://lojapiticas.vteximg.com.br/arquivos/ids/167781/Full_1920x545_v1.png?v=637970367695270000"
+            src={slide2}
             alt=""
           />
           <img
             className="img-slides"
-            src="https://lojapiticas.vteximg.com.br/arquivos/ids/167712/one-piece-adsFull.png?v=637950470315230000"
+            src={slide3}
             alt=""
           />
         </div>

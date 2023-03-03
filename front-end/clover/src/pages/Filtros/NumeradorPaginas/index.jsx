@@ -23,7 +23,11 @@ export default function NumeradorPaginas(props) {
       <div className="paginacao-container">
         <div className="items-paginacao" ref={carousel}>
             <div className="itens-numeracao-paginas">
-             
+             <h5>1</h5>
+             <h5>2</h5>
+             <h5>3</h5>
+             <h5>4</h5>
+             <h5>5</h5>
             </div>
         </div>
 

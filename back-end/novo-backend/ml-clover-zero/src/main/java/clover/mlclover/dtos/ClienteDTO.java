@@ -29,6 +29,8 @@ public class ClienteDTO {
     @Email(message = "E-mail inválido")
     private String email;
 
+    private boolean isLogado;
+
     private List<Integer> perfis = new ArrayList<>();
 
     public ClienteDTO(Cliente obj){
